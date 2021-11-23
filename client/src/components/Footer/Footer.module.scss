@@ -9,14 +9,14 @@
     justify-content: space-around;
     margin: 0 auto;
     max-width: 100%;
-    padding-top: 120px;
+    padding-top: 80px;
   }
   @media screen and (min-width: 970px) and (max-width:1260px) {
     display: flex;
     justify-content: space-around;
     margin: 0 auto;
     max-width: 95%;
-    padding-top: 90px;
+    padding-top: 60px;
     flex-wrap: wrap;
 
   }
@@ -36,7 +36,7 @@
     flex-wrap: wrap;
     margin: 0 auto;
     max-width: 85%;
-    padding-top: 75px;
+    padding-top: 35px;
   }
   }
 
@@ -84,13 +84,14 @@
   font-size: 45px;
   font-weight: 700;
   @media screen and (min-width: 970px) and (max-width:1260px){
-    font-weight: 400;
+    font-weight: 600;
     font-size: 35px;
     padding-left: 15px;
   }
   @media screen and (min-width: 600px) and (max-width:969px) {
     font-size: 22px;
     padding-left: 10px;
+    font-weight: 500;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
   padding-left: 15px;
@@ -271,7 +272,7 @@
     font-weight: 500;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
-    margin-top: 10px;
+    margin-top: 15px;
     
   }
 }
@@ -326,7 +327,7 @@
     margin-bottom: 2px;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
-    margin-top: 10px;
+    margin-top: 15px;
     
   }
 }
@@ -343,110 +344,135 @@
 }
 
 /*footer books subscribe*/
-.footer_newest_books_subscribe{
-  @media screen and (min-width: 1201px){
-  // max-width: 25%;
-  }
-  @media screen and (min-width: 970px) and (max-width:1200px) {
-  max-width: 25%;
+.footer_subscribe{
+  margin-right: 4%;
+  margin-top: 145px;
+  max-width: 640px;
+  @media screen and (min-width: 970px) and (max-width:1260px) {
+    margin-right: 5%;
+    margin-top: 130px;
+    max-width: 540px;
   }
   @media screen and (min-width: 600px) and (max-width:969px) {
-    max-width: 75%;
-  }
-}
-.footer_books_subscribe_title{
-  font-family: $body-font;
-  color: $title-color;
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 500;
-  @media screen and (min-width: 600px) and (max-width:969px){
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 500;
+    margin-right: 3%;
+    margin-top: 110px;
+    max-width: 540px;
+    margin-left: 5px;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
-    margin-top: 15px;
-    text-align: center;
-    font-weight: 400;
+    margin: 0 auto 15px;
+    max-width: 332px;
   }
-}
-.footer_books_subscribe_description{
-  font-family: $body-font;
-  color: $text-color-light;
-  max-width: 427px;
-  margin-top: 30px;
-  @media screen and (min-width: 970px) and (max-width:1260px){
-    margin-top: 20px;
-  }
-  @media screen and (min-width: 600px) and (max-width:969px){
-    margin-top: 12px;
-    max-width: 65%;
-  }
-  @media screen and (min-width: 320px) and (max-width:599px){
-    margin-top: 12px;
-    text-align: center;
-  }
-}
-.footer_label_subscribe{
-  color: #A4A4A4;
-  font-family: $body-font;
 }
 .footer_input_subscribe{
   font-family: $body-font;
-  max-width: 65%;
-  height: 55px;
+  max-width: 70%;
+  min-height: 67px;
   border-radius: 8px;
-  background: #F3F3F3;
+  border: none;
+  background: #F3F3F329;
+  color: #E2E2E2;
+  margin: 0 auto;
   padding-left: 10px;
   @media screen and (min-width: 970px) and (max-width:1260px){
-    max-width: 56%;
-    height: 35px;
+    max-width: 70%;
+    min-height: 50px;
+    margin: 0;
   }
   @media screen and (min-width: 600px) and (max-width:969px){
-    max-width: 55%;
-    height: 35px;
+    max-width: 65%;
+    min-height: 40px;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
-    height: 35px;
-    max-width: 60%;
-    margin-left: 5%;
+    max-width: 72%;
+    min-height: 40px;
+    margin: 0;
   }
 }
 .footer_button_sumbmit {
   margin-left: 15px;
-  color: #F3F3F3;
-  max-width: 30%;
-  height: 55px;
-  padding: 10px 7px;
+  color: #8D28AD;
+  padding: 20px 40px;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  background-color: $first-color;
+  background: #FFFFFF;;
   border-radius: 8px;
   @media screen and (min-width: 970px) and (max-width:1260px){
-    max-width: 32%;
-    font-size: 12px;
-    height: 35px;
-    padding: 6px 7px;
+    font-size: 13px;
+    min-height: 29px;
+    padding: 12px 20px;
   }
   @media screen and (min-width: 600px) and (max-width:969px){
-    max-width: 45%;
-    height: 35px;
-    padding: 5px 15px;
+    padding: 9px 9px;
     font-size: 12px;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
-    height: 35px;
-    padding: 6px 6px;
-    max-width: 30%;
+    max-width: 25%;
+    padding: 8px 10px;
+    font-size: 10px;
+    margin-left: 18px;
   }
 }
-.copyright_section{
-  margin-top: 154px;
 
+
+.footer_subscribe_block{
+  display: flex;
+  justify-content: space-between;
+  background: $first-color;
+  min-height: 340px;
+  width: 100%;
+  @media screen and (min-width: 970px) and (max-width:1260px){
+    min-height: 280px;
+    width: 100%;
+  }
+  @media screen and (min-width: 600px) and (max-width:969px){
+    min-height: 260px;
+    width: 100%;
+  }
+  @media screen and (min-width: 320px) and (max-width:599px){
+    min-height: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 }
+.footer_subscribe_title{
+    margin-left: 4%;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 55px;
+    color: $text-color;
+    margin-top: 145px;
+    max-width: 530px;
+  
+  @media screen and (min-width: 970px) and (max-width:1260px){
+    font-weight: 550;
+    font-size: 35px;
+    line-height: 50px;
+    color: $text-color;
+    margin-top: 130px;
+    max-width: 480px;
 
-.footer_line{
-  // width: 100%;
+  }
+  @media screen and (min-width: 600px) and (max-width:969px){
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 35px;
+    color: #E5E5E5;
+    margin-top: 120px;
+    max-width: 48%;
+
+  }
+  @media screen and (min-width: 320px) and (max-width:599px){
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #E5E5E5;
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 90%;
+  }
 }

@@ -7,19 +7,23 @@ import twitter from "./Footer_img/twitter.png"
 import linked from "./Footer_img/linked.png"
 import insta from "./Footer_img/insta.png"
 import FormSubscribe from "./FormSubscribe"
-import line from "./Footer_img/line.png"
 
 const Footer = () => {
 
 
-    return(
+    return (
         <>
-        <div className={classes.footer_container}>
-            {/* <div className={classes.footer_block}> */}
+            <div className={classes.footer_subscribe_block}>
+                <h3 className={classes.footer_subscribe_title}>Subscribe our newsletter for newest books updates</h3>
+                <div className={classes.footer_subscribe}>
+                    <FormSubscribe />
+                </div>
+            </div>
+            <div className={classes.footer_container}>
                 <div className={classes.footer_follow_us}>
                     <div className={classes.footer_block_logo_title}>
                         <img className={classes.footer_block_logo} src={logo} alt="Clever" />
-                            <p className={classes.footer_block_text}>Clever</p>
+                        <p className={classes.footer_block_text}>Clever</p>
                     </div>
                     <p className={classes.footer_block_description}>Clever is a online bookstore website who sells all genres of
                         books from around the world. Find your book here now</p>
@@ -63,18 +67,7 @@ const Footer = () => {
                     <a className={classes.footer_quick_links_link} href="">Privacy Policy</a>
                     <a className={classes.footer_quick_links_link} href="">FAQ</a>
                 </div>
-
-                <div className={classes.footer_newest_books_subscribe}>
-                    <p className={classes.footer_books_subscribe_title}>Don’t miss the newest books</p>
-                    <p className={classes.footer_books_subscribe_description}>Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed do eiusmod tempor incididunt ut </p>
-                        <FormSubscribe />
-                </div>
             </div>
-            
-                {/* <img className={classes.footer_line} src={line} alt="line" /> */}
-
-            {/* </div> */}
         </>
     )
 }
