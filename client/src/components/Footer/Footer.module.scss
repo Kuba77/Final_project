@@ -6,14 +6,14 @@
   .footer_container{
   @media screen and (min-width: 1261px) {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 92%;
     padding-top: 80px;
   }
   @media screen and (min-width: 970px) and (max-width:1260px) {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 0 auto;
     max-width: 95%;
     padding-top: 60px;
@@ -345,34 +345,31 @@
 
 /*footer books subscribe*/
 .footer_subscribe{
-  margin-right: 4%;
-  margin-top: 145px;
-  max-width: 640px;
+  margin-top: 70px;
+  width: 35%;
+  margin-right: 2%;
   @media screen and (min-width: 970px) and (max-width:1260px) {
-    margin-right: 5%;
-    margin-top: 130px;
+    margin-top: 70px;
     max-width: 540px;
   }
   @media screen and (min-width: 600px) and (max-width:969px) {
-    margin-right: 3%;
-    margin-top: 110px;
-    max-width: 540px;
+    margin-top: 55px;
+    width: 280px;
     margin-left: 5px;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
-    margin: 0 auto 15px;
-    max-width: 332px;
+    margin: 0px 0px 6% 10%;
+    width: 80%;
   }
 }
 .footer_input_subscribe{
   font-family: $body-font;
-  max-width: 70%;
+  max-width: 68%;
   min-height: 67px;
   border-radius: 8px;
   border: none;
   background: #F3F3F329;
   color: #E2E2E2;
-  margin: 0 auto;
   padding-left: 10px;
   @media screen and (min-width: 970px) and (max-width:1260px){
     max-width: 70%;
@@ -384,7 +381,6 @@
     min-height: 40px;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
-    max-width: 72%;
     min-height: 40px;
     margin: 0;
   }
@@ -392,7 +388,7 @@
 .footer_button_sumbmit {
   margin-left: 15px;
   color: #8D28AD;
-  padding: 20px 40px;
+  padding: 20px 22px;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -401,7 +397,7 @@
   @media screen and (min-width: 970px) and (max-width:1260px){
     font-size: 13px;
     min-height: 29px;
-    padding: 12px 20px;
+    padding: 12px 10px;
   }
   @media screen and (min-width: 600px) and (max-width:969px){
     padding: 9px 9px;
@@ -409,9 +405,9 @@
   }
   @media screen and (min-width: 320px) and (max-width:599px){
     max-width: 25%;
-    padding: 8px 10px;
+    padding: 10px 10px;
     font-size: 10px;
-    margin-left: 18px;
+    
   }
 }
 
@@ -420,38 +416,38 @@
   display: flex;
   justify-content: space-between;
   background: $first-color;
-  min-height: 340px;
+  min-height: 250px;
   width: 100%;
   @media screen and (min-width: 970px) and (max-width:1260px){
-    min-height: 280px;
+    min-height: 240px;
     width: 100%;
   }
   @media screen and (min-width: 600px) and (max-width:969px){
-    min-height: 260px;
+    min-height: 170px;
     width: 100%;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
-    min-height: 150px;
+    min-height: 130px;
     width: 100%;
     display: flex;
     flex-direction: column;
   }
 }
 .footer_subscribe_title{
-    margin-left: 4%;
+    margin-left: 2%;
     font-weight: 600;
     font-size: 40px;
     line-height: 55px;
     color: $text-color;
-    margin-top: 145px;
-    max-width: 530px;
+    margin-top: 70px;
+    max-width: 50%;
   
   @media screen and (min-width: 970px) and (max-width:1260px){
     font-weight: 550;
     font-size: 35px;
     line-height: 50px;
     color: $text-color;
-    margin-top: 130px;
+    margin-top: 70px;
     max-width: 480px;
 
   }
@@ -460,7 +456,7 @@
     font-size: 23px;
     line-height: 35px;
     color: #E5E5E5;
-    margin-top: 120px;
+    margin-top: 55px;
     max-width: 48%;
 
   }
@@ -469,7 +465,7 @@
     font-size: 18px;
     line-height: 25px;
     color: #E5E5E5;
-    margin-top: 90px;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
