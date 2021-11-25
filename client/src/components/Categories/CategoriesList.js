@@ -1,19 +1,48 @@
 import React from "react";
-import classes from "./Categories.module.scss"
-import Calc from "./Calc"
+
+import CategoriesItem from "./CategoriesItem";
 
 
-const CategoriesList = (props) => {
-    const {categoryName, item, href} = props
+const CategoriesList = () => {
     return(
-        <a className={classes.action_book} href={href}>{categoryName}
-            <div className={classes.calc_item}>
-                <Calc 
-                    calc={"calc+"}
-                />
-                <p className={classes.item}>{item}</p>
-            </div>
-        </a>
+        <>
+            <CategoriesItem 
+                categoryName={"Action"}
+                calc={"Calc+"}
+                item={"Item"}
+                to={"/books/action"}
+            />
+            <CategoriesItem 
+                categoryName={"Adventure"}
+                calc={"Calc+"}
+                item={"Item"}
+                to={"/books/adventure"}
+            />
+            <CategoriesItem 
+                categoryName={"Comedy"}
+                calc={"Calc+"}
+                item={"Item"}
+                to={"/books/comedy"}
+            />
+            <CategoriesItem 
+                categoryName={"Drama"}
+                calc={"Calc+"}
+                item={"Item"}
+                to={"/books/drama"}
+            />
+            <CategoriesItem 
+                categoryName={"Romance"}
+                calc={"Calc+"}
+                item={"Item"}
+                to={"/books/romance"}
+            />
+            <CategoriesItem 
+                categoryName={"Sports"}
+                calc={"Calc+"}
+                item={"Item"}
+                to={"/books/sports"}
+            />
+        </>                
     )
 }
 

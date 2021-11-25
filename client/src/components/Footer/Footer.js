@@ -1,9 +1,10 @@
 import React from "react";
 import classes from "./Footer.module.scss"
 import logo from "./Footer_img/icon.png"
-import FooterLink from "./FooteLink";
+import FooterCustomerAreaList from "./FooterCustomerAreaLinks";
 import SubscribeBlock from "./SubscribeBlock";
 import FooterIcons from "./FooterIcons";
+import FooterQuickList from "./FooterQuickLinks";
 
 const Footer = () => {
 
@@ -23,55 +24,11 @@ const Footer = () => {
                 </div>
                 <div className={classes.footer_quick_links}>
                     <p className={classes.footer_quick_links_title}>Quick Links</p>
-                    <FooterLink 
-                        name={"About us"}
-                        href={"#"}
-                    />
-                    <FooterLink 
-                        name={"Contact us"}
-                        href={"#"}
-                    />
-                    <FooterLink 
-                        name={"Products"}
-                        href={"#"}
-                    />
-                    <FooterLink 
-                        name={"Login"}
-                        href={"#"}
-                    />
-                    <FooterLink 
-                        name={"Sign Up"}
-                        href={"#"}
-                    />
-                   
+                    <FooterQuickList />                
                 </div>
-
                 <div className={classes.footer_customer_area}>
                     <p className={classes.footer_customer_area_tittle}>Customer Area</p>
-                    <FooterLink 
-                        name={"My Account"}
-                        href={"#"}
-                    />
-                    <FooterLink 
-                        name={"Orders"}
-                        href={"#"}
-                    />
-                    <FooterLink 
-                        name={"Tracking List"}
-                        href={"#"}
-                    />
-                    <FooterLink 
-                        name={"Terms"}
-                        href={"#"}
-                    />
-                    <FooterLink 
-                        name={"Privacy Policy"}
-                        href={"#"}
-                    />
-                    <FooterLink 
-                        name={"FAQ"}
-                        href={"#"}
-                    />
+                    <FooterCustomerAreaList />
                 </div>
             </div>
         </>

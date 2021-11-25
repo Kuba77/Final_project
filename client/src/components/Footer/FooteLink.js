@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./Footer.module.scss"
+import {Link} from "react-router-dom"
 
 const FooterLink = (props) => {
-    const {href, name} = props
+    const {name, to} = props
     return(
-        <a className={classes.footer_quick_links_link} href={href}>{name}</a>
+        <Link className={classes.footer_quick_links_link} to={to}>{name}</Link>
     )
 }
 
