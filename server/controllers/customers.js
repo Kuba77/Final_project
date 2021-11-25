@@ -6,15 +6,6 @@ const getConfigs = require("../config/getConfigs");
 const passport = require("passport");
 const uniqueRandom = require("unique-random");
 const rand = uniqueRandom(10000000, 99999999);
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-const { OAuth2Client } = require("google-auth-library");
-
-//сщздаем клиента
-const client = new OAuth2Client(
-  "649718085227-lo924pc5nifh55shg8u0gf3vm7olsmvn.apps.googleusercontent.com"
-);
-////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Load Customer model
 const Customer = require("../models/Customer");
@@ -30,7 +21,6 @@ exports.createCustomer = (req, res, next) => {
   // Clone query object, because validator module mutates req.body, adding other fields to object
   const initialQuery = _.cloneDeep(req.body);
   initialQuery.customerNo = rand();
-  // console.log(initialQuery);
   // Check Validation
   const { errors, isValid } = validateRegistrationForm(req.body);
 

@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import reducer from "./reducer";
+import rootReducer from "./redusers";
 
 function syncWithLocalStorage({ getState }) {
   return (next) => (action) => {
@@ -9,13 +9,18 @@ function syncWithLocalStorage({ getState }) {
     return updatedAction;
   };
 }
+
+const middleware = [thunk];
+const initialState = {};
+
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
   ? window.__REDUX_DEVTOOLS_EXTENSION__()
   : (f) => f;
 
 const store = createStore(
-  reducer,
-  compose(applyMiddleware(thunk, syncWithLocalStorage), devTools)
+  rootReducer,
+  initialState,
+  compose(applyMiddleware(...middleware, syncWithLocalStorage), devTools)
 );
 
 export default store;

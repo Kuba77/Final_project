@@ -1,19 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import { registerCustomer } from "../../api/userApi";
-import { logoutUser, setUser } from "../../store/actions";
-import { useHistory } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
-
+// import { useHistory } from "react-router-dom";
+import { signUp } from "../../store/actions/authAction";
 import * as Yup from "yup";
 
 const RegPage = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const user = useSelector((state) => state.user);
-  const state = useSelector((state) => state);
-
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -32,36 +23,16 @@ const RegPage = () => {
       login: Yup.string()
         .min(3, "Must be min 3 and max 10 characters ")
         .max(10, "Must be min 3 and max 10 characters"),
-      email: Yup.string().email("Invalid email address").required("Required"),
+      email: Yup.string().email("Invalid email").required("Required"),
       password: Yup.string()
-        .min(7, "Must be 5 characters or less")
+        .min(7, "Must be 5 characters or more")
         .required("Required"),
     }),
     onSubmit: (values) => {
-      registerCustomer(values, dispatch);
+      console.log("click");
+      signUp(values);
     },
   });
-
-  const googleSuccess = async (res) => {
-    const result = res.profileObj;
-    const token = res.tokenId;
-    try {
-      console.log("click");
-      dispatch(setUser(result));
-      history.push("/login");
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const googleFailure = (error) => {
-    console.log("ne Voshel");
-    console.log(error);
-  };
-
-  const logout = () => {
-    dispatch(logoutUser());
-    history.push("/");
-  };
 
   return (
     <div>
@@ -81,16 +52,7 @@ const RegPage = () => {
             <div>{formik.errors.firstName}</div>
           ) : null}
 
-          <label
-            htmlFor="lastName"
-            onClick={() => {
-              console.log("user", user);
-              console.log("state", state);
-              // console.log("errors", errors);
-            }}
-          >
-            Last Name
-          </label>
+          <label htmlFor="lastName">Last Name</label>
           <input
             id="lastName"
             name="lastName"
@@ -142,11 +104,6 @@ const RegPage = () => {
           <button type="submit">Submit</button>
         </form>
       </div>
-      {user.name && <h1>hi {user.name}</h1>}
-
-      <button onClick={logout} type="button">
-        LOG OUT
-      </button>
     </div>
   );
 };
