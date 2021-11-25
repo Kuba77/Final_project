@@ -6,6 +6,15 @@ const getConfigs = require("../config/getConfigs");
 const passport = require("passport");
 const uniqueRandom = require("unique-random");
 const rand = uniqueRandom(10000000, 99999999);
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+const { OAuth2Client } = require("google-auth-library");
+
+//сщздаем клиента
+const client = new OAuth2Client(
+  "649718085227-lo924pc5nifh55shg8u0gf3vm7olsmvn.apps.googleusercontent.com"
+);
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Load Customer model
 const Customer = require("../models/Customer");
@@ -21,7 +30,7 @@ exports.createCustomer = (req, res, next) => {
   // Clone query object, because validator module mutates req.body, adding other fields to object
   const initialQuery = _.cloneDeep(req.body);
   initialQuery.customerNo = rand();
-
+  // console.log(initialQuery);
   // Check Validation
   const { errors, isValid } = validateRegistrationForm(req.body);
 
@@ -49,6 +58,7 @@ exports.createCustomer = (req, res, next) => {
 
       // Create query object for qustomer for saving him to DB
       const newCustomer = new Customer(queryCreator(initialQuery));
+      // console.log(newCustomer);
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newCustomer.password, salt, (err, hash) => {
@@ -61,9 +71,14 @@ exports.createCustomer = (req, res, next) => {
           }
 
           newCustomer.password = hash;
+          // console.log(newCustomer);
+
           newCustomer
             .save()
-            .then((customer) => res.json(customer))
+            .then((customer) => {
+              res.json(customer);
+              console.log(customer);
+            })
             .catch((err) =>
               res.status(400).json({
                 message: `Error happened on server: "${err}" `,
@@ -267,4 +282,115 @@ exports.updatePassword = (req, res) => {
       }
     });
   });
+};
+exports.googlelogin = (req, res) => {
+  const { tokenId } = req.body;
+
+  client
+    .verifyIdToken({
+      idToken: tokenId,
+      audience:
+        "649718085227-lo924pc5nifh55shg8u0gf3vm7olsmvn.apps.googleusercontent.com",
+    })
+    .then((response) => {
+      const { email_verified, name, email, given_name, family_name } =
+        response.payload;
+      // console.log(response);
+      // console.log(email_verified, name, email, given_name, family_name);
+
+      if (email_verified) {
+        Customer.findOne({ email }).exec((err, customer) => {
+          // проверяем вдруг ошибка во время проверки
+          if (err) {
+            return res.status(400).json({ message: "some went wrong" });
+          } else {
+            // проверка если покупатель уже есть значит его нужно залогинить
+            if (customer) {
+              const payload = {
+                id: customer.id,
+                firstName: customer.firstName,
+                lastName: customer.lastName,
+                isAdmin: customer.isAdmin,
+              }; // Create JWT Payload
+
+              // Sign Token
+              jwt.sign(
+                payload,
+                keys.secretOrKey,
+                { expiresIn: 36000 },
+                (err, token) => {
+                  res.json({
+                    success: true,
+                    token: "Bearer " + token,
+                  });
+                }
+              );
+            } else {
+              // если человека в базе нет регаем
+              // создали ему пароль ибо он не вводит
+              const password = "1234567";
+              // приводим к однотипному обьекту что бы передать на регистрацию
+              const initialQuery = _.cloneDeep({
+                email,
+                password,
+                firstName: given_name,
+                lastName: family_name,
+              });
+              // рандомим какойто номер(как было нам дано)
+              initialQuery.customerNo = rand();
+              //создаем клиента
+              const newCustomer = new Customer(queryCreator(initialQuery));
+              console.log(initialQuery);
+
+              newCustomer
+                // проблема тут 100 проц
+                .save()
+                .then((customer) => {
+                  res.json(customer);
+                  console.log(customer);
+                })
+                .catch((err) =>
+                  res.status(400).json({
+                    message: `Error happened on server: "${err}" `,
+                  })
+                );
+
+              // const newCustomer = new Customer({
+              //   email,
+              //   password,
+              //   firstName: given_name,
+              //   lastName: family_name,
+              // });
+
+              // newCustomer
+              //   .save((err, data) => {
+              //     if (err) {
+              //       return res.status(400).json({ message: "some went wrong" });
+              //     }
+              //     const token = jwt.sign(
+              //       { _id: data._id },
+              //       payload,
+              //       keys.secretOrKey,
+              //       { expiresIn: 36000 },
+              //       (err, token) => {
+              //         res.json({
+              //           success: true,
+              //           token: "Bearer " + token,
+              //         });
+              //       }
+              //     );
+              //     const { _id, firstName, email } = newCustomer;
+              //     res.json({ token, user: _id, firstName, email });
+              //   })
+              //   .catch((err) =>
+              //     res.status(400).json({
+              //       message: `Error happened on server: "${err}" `,
+              //     })
+              //   );
+            }
+          }
+        });
+      }
+    });
+  // console.log();
 };

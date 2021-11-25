@@ -1,83 +1,82 @@
 import React from "react";
 import { useFormik } from "formik";
-// import { useDispatch } from "react-redux";
-// import * as yup from "yup";
-// import Button from "@material-ui/core/Button";
-// import TextField from "@material-ui/core/TextField";/
-import { loginCustomer, logOutCustomer } from "../../api/userApi";
-// import { isAuth, setUser } from "../store/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { loginCustomer, logOrRegisterCustomer } from "../../api/userApi";
 
-///////////////////ПРАВИЛА ИНПУТОВ////////////////////////
+import { GoogleLogin } from "react-google-login";
 
-// const validationSchema = yup.object({
-//   loginOrEmail: yup
-//     .string("Enter your email")
-//     .email("Enter a valid email")
-//     .required("Email is required"),
-//   password: yup
-//     .string("Enter your password")
-//     .min(8, "Password should be of minimum 8 characters length")
-//     .required("Password is required"),
-// });
+import * as Yup from "yup";
+
 const LoginPage = () => {
-  ////////////////---ФОРМА---/////////////////////
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  let user = useSelector((state) => state.user);
+
+  const responseSuccessGoogle = (response) => {
+    logOrRegisterCustomer(response);
+    console.log("GOOGLE", response);
+  };
+  const responseErrorGoogle = (response) => {};
+
   const formik = useFormik({
     initialValues: {
-      // firstName: "",
+      loginOrEmail: "",
       password: "",
-      email: "",
     },
-    // validationSchema: validationSchema,
+    validationSchema: Yup.object({
+      loginOrEmail: Yup.string()
+        .email("Invalid email address")
+        .required("Required"),
+      password: Yup.string()
+        .min(7, "Must be 5 characters or more")
+        .required("Required"),
+    }),
     onSubmit: (values) => {
-      console.log(values);
-      loginCustomer(values);
+      loginCustomer(values, dispatch);
     },
   });
 
   return (
     <div>
-      <h1>LoginPage</h1>
-
+      <h1>LOGIN</h1>
       <div className="Form zone">
-        <div>
-          <form onSubmit={formik.handleSubmit}>
-            {/* <label htmlFor="firstName">First Name</label>
-            <input
-              id="firstName"
-              name="firstName"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.firstName}
-            /> */}
-            <label htmlFor="lastName">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.lastName}
-            />
-            <label htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              onChange={formik.handleChange}
-              value={formik.values.email}
-            />
-            <button type="submit">Submit</button>
-          </form>
-
-          <button
-            onClick={() => {
-              logOutCustomer();
-              // dispatch(isAuth(false));
-            }}
-          >
-            LOGOUT
-          </button>
-        </div>
+        <form onSubmit={formik.handleSubmit}>
+          <label htmlFor="loginOrEmail">Email Address</label>
+          <input
+            id="email"
+            name="loginOrEmail"
+            type="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.loginOrEmail}
+          />
+          {formik.touched.loginOrEmail && formik.errors.loginOrEmail ? (
+            <div>{formik.errors.loginOrEmail}</div>
+          ) : null}
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+          />
+          {formik.touched.password && formik.errors.password ? (
+            <div>{formik.errors.password}</div>
+          ) : null}
+          <button type="submit">Submit</button>
+        </form>
+        {user.name && <h1>hi {user.name}</h1>}
+      </div>
+      <div>
+        <GoogleLogin
+          clientId="649718085227-lo924pc5nifh55shg8u0gf3vm7olsmvn.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseSuccessGoogle}
+          onFailure={responseErrorGoogle}
+          cookiePolicy={"single_host_origin"}
+        />
+        ,
       </div>
     </div>
   );

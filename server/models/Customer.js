@@ -46,6 +46,9 @@ const CustomerSchema = new Schema(
       required: true,
       default: false,
     },
+    googleId: {
+      type: String,
+    },
     enabled: {
       type: Boolean,
       required: true,
