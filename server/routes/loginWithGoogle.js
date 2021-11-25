@@ -1,28 +1,12 @@
 const express = require("express");
-const passport = require("passport");
-// const { isUserAuthenticated } = require("../middlewares/auth");
-
 const router = express.Router();
 
-const successLoginUrl = "http://localhost:3000/login/success";
-const errorLoginUrl = "http://localhost:3000/login/error";
+//Import controllers
+const { googlelogin } = require("../controllers/google");
 
-router.get(
-  "/login/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
-
-router.get(
-  "/auth/google/callback",
-  passport.authenticate("google", {
-    failureMessage: "Cannot login to Google, please try again later!",
-    failureRedirect: errorLoginUrl,
-    successRedirect: successLoginUrl,
-  }),
-  (req, res) => {
-    console.log("User: ", req.user);
-    res.send("Thank you for signing in!");
-  }
-);
-
+///////////////////////////////////////////////////////////
+// @route   POST /customers/googlelogin
+// @desc    Register customer
+// @access  Public
+router.post("/", googlelogin);
 module.exports = router;

@@ -20,7 +20,7 @@ router.post("/", createCustomer);
 // @route   POST /customers/googlelogin
 // @desc    Register customer
 // @access  Public
-router.post("/googlelogin", googlelogin);
+// router.post("/googlelogin", googlelogin);
 ///////////////////////////////////////////////////////////
 // @route   POST /customers/login
 // @desc    Login Customer / Returning JWT Token

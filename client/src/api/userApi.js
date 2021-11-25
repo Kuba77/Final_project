@@ -4,7 +4,7 @@ import { setUser, isAuth } from "../store/actions";
 export async function logOrRegisterCustomer(response) {
   try {
     axios
-      .post("/customers/googlelogin", { tokenId: response.tokenId })
+      .post("/logingoogle", { tokenId: response.tokenId })
       .then((response) => {
         console.log("response from baze", response);
       });
