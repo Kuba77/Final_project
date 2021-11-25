@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/Header/Header";
-
+import Main from './components/Main/Main'
 
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <Header />
+        <Main />
       </Router>
 
     </Provider>

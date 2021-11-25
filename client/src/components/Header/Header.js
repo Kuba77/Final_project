@@ -30,7 +30,7 @@ const Header = () => {
     return (
         <header className={classes.header}>
              <Link to="/" className={classes.header__logo}>
-                <img src='https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637850933/icon_nh6ic4.svg'/>
+                <img src='https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637850933/icon_nh6ic4.svg' alt='Cevr'/>
                 <h1>マンガ</h1>
              </Link>
              <Nav />

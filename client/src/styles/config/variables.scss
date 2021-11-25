@@ -17,11 +17,12 @@ $container-color: #fff;
 
 /*========== Typography ==========*/
 $body-font: 'Poppins', sans-serif;
-$big-font-size: 2rem;
+$big-font-size: 3rem;
 $h1-font-size: 1.5rem;
 $h2-font-size: 1.25rem;
 $h3-font-size: 1rem;
 $normal-font-size: .938rem;
+$medium-font-size: 2.4rem;
 $small-font-size: .813rem;
 $smaller-font-size: .75rem;
 
@@ -29,10 +30,11 @@ $smaller-font-size: .75rem;
 
 /*========== Responsible Typography ==========*/
     @media screen and (min-width: 968px){
-        $big-font-size: 3.5rem;
+        $big-font-size: 3.2rem;
         $h1-font-size: 2.25rem;
         $h2-font-size: 1.5rem;
         $h3-font-size: 1.25rem;
+        $medium-font-size: 2.7rem;
         $normal-font-size: 1rem;
         $small-font-size: .875rem;
         $smaller-font-size: .813rem;
