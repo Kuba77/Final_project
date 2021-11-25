@@ -3,7 +3,7 @@ import { store } from "./store";
 import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer"
-import CategoriesBlock from "./components/Categories/Categories"
+import Categories from "./components/Categories/Categories"
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <Header />
-        <CategoriesBlock />
+        <Categories />
         <Footer />
       </Router>
 

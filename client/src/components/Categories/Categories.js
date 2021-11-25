@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./Categories.module.scss"
+import CategoriesList from "./CategoriesList";
 
-const CategoriesBlock = () => {
+const Categories = () => {
 
 
     return(
@@ -10,42 +11,42 @@ const CategoriesBlock = () => {
                 <div className={classes.categories_block}>
                     <h1 className={classes.categories_title}>Categories</h1>
                     <div className={classes.categories_module}>
-                        <a className={classes.action_book} href="#">Action
-                            <div className={classes.calc_item}>
-                                <p className={classes.calc}>Calc+</p>
-                                <p className={classes.item}>Item</p>
-                            </div>
-                        </a>
-                        <a className={classes.adventure_book} href="#">Adventure
-                            <div className={classes.calc_item}>
-                                <p className={classes.calc}>Calc+</p>
-                                <p className={classes.item}>Item</p>
-                            </div>
-                        </a>
-                        <a className={classes.comedy_book} href="#">Comedy
-                            <div className={classes.calc_item}>
-                                <p className={classes.calc}>Calc+</p>
-                                <p className={classes.item}>Item</p>
-                            </div>
-                        </a>
-                        <a className={classes.drama_book} href="#">Drama
-                            <div className={classes.calc_item}>
-                                <p className={classes.calc}>Calc+</p>
-                                <p className={classes.item}>Item</p>
-                            </div>
-                        </a>
-                        <a className={classes.romance_book} href="#">Romance
-                            <div className={classes.calc_item}>
-                                <p className={classes.calc}>Calc+</p>
-                                <p className={classes.item}>Item</p>
-                            </div>
-                        </a>
-                        <a className={classes.sports_book} href="#">Sports
-                            <div className={classes.calc_item}>
-                                <p className={classes.calc}>Calc+</p>
-                                <p className={classes.item}>Item</p>
-                            </div>
-                        </a>
+                        <CategoriesList 
+                            categoryName={"Action"}
+                            calc={"Calc+"}
+                            item={"Item"}
+                            href={"#"}
+                        />
+                        <CategoriesList 
+                            categoryName={"Adventure"}
+                            calc={"Calc+"}
+                            item={"Item"}
+                            href={"#"}
+                        />
+                        <CategoriesList 
+                            categoryName={"Comedy"}
+                            calc={"Calc+"}
+                            item={"Item"}
+                            href={"#"}
+                        />
+                        <CategoriesList 
+                            categoryName={"Drama"}
+                            calc={"Calc+"}
+                            item={"Item"}
+                            href={"#"}
+                        />
+                        <CategoriesList 
+                            categoryName={"Romance"}
+                            calc={"Calc+"}
+                            item={"Item"}
+                            href={"#"}
+                        />
+                        <CategoriesList 
+                            categoryName={"Sports"}
+                            calc={"Calc+"}
+                            item={"Item"}
+                            href={"#"}
+                        />
                     </div>
                 </div>
             </div>
@@ -54,4 +55,4 @@ const CategoriesBlock = () => {
 }
 
 
-export default CategoriesBlock;
+export default Categories;

@@ -7,7 +7,6 @@ function FormSubscribe() {
         email: yup.string().email('Invalid email').typeError('must be string')
     })
 
-
     return (
         <div>
             <Formik
