@@ -1,47 +1,137 @@
+@import '../../styles/config/variables.scss';
+
 .categories_wrapper{
     width: 100%;
     min-height: 300px;    
-    @media screen and (min-width: 970px) and (max-width:1260px){
-
-    }
-    @media screen and (min-width: 600px) and (max-width:969px){
-
-    }
-    @media screen and (min-width: 320px) and (max-width:599px){
-    
-    }
 }
 .categories_block{
-    max-width: 90%;
+    max-width: 94%;
     margin: 0 auto;
     display: block;
 
-    @media screen and (min-width: 970px) and (max-width:1260px){
-
-    }
-    @media screen and (min-width: 600px) and (max-width:969px){
-
-    }
-    @media screen and (min-width: 320px) and (max-width:599px){
-    
+    @media screen and (min-width: 383px) and (max-width:720px){
+    max-width: 90%;
+    margin: 0 auto;
+    display: block;
     }
 }
 .categories_title{
-    
     font-weight: 600;
     font-size: 35px;
     line-height: 52px;
-
-
-
-color: #000000;
+    color: $title-color;
     @media screen and (min-width: 970px) and (max-width:1260px){
 
     }
     @media screen and (min-width: 600px) and (max-width:969px){
-
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 52px;
+    color: $title-color;   
     }
     @media screen and (min-width: 320px) and (max-width:599px){
-    
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 52px;
+    color: $title-color;
     }
+}
+.categories_module{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    @media screen and (min-width: 320px) and (max-width:720px){
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    }
+}
+
+// BOOKS
+.action_book{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #8D28AD;
+    padding: 38px 196px 91px 45px;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+.adventure_book{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #8D28AD;
+    padding: 38px 186px 91px 45px;
+    border-radius: 30px;
+    margin-top: 20px;
+    
+}
+.comedy_book{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #8D28AD;
+    padding: 38px 196px 91px 45px;
+    border-radius: 30px;
+    margin-top: 20px;
+    
+}
+.drama_book{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #8D28AD;
+    padding: 38px 196px 91px 45px;
+    border-radius: 30px;
+    margin-top: 20px;
+    
+}
+.romance_book{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #8D28AD;
+    padding: 38px 196px 91px 45px;
+    border-radius: 30px;
+    margin-top: 20px;
+
+}
+.sports_book{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #8D28AD;
+    padding: 38px 196px 91px 45px;
+    border-radius: 30px;
+    margin-top: 20px;
+
+}
+
+// BOOKS CALC
+
+.calc_item{
+    display: flex;
+    margin-top: 10px;
+}
+.calc{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.6);
+}
+.item{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.6);
+
 }

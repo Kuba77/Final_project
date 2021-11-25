@@ -13,7 +13,7 @@
     backdrop-filter: blur(5px);
     z-index: 100;
     transition: all 0.2s ease;
-    
+    position: relative;
     &__logo{
         display: flex;
         flex-grow: 4;
