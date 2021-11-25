@@ -1,0 +1,12 @@
+@import "../../styles/config/variables.scss";
+@import "../../styles/layout/layout.scss";
+
+.content {
+  padding: 50px;
+  h2 {
+    margin-left: 150px;
+    margin-bottom: 70px;
+    color: $title-color;
+    font-size: 45px;
+  }
+}
