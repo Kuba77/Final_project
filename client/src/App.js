@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import LoginPage from "./pages/login-page/LoginPage";
+import LoginPage from "./pages/login-page/loginPage";
 import RegPage from "./pages/reg-page/regPage";
 
 function App() {

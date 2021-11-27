@@ -14,7 +14,7 @@ const customerSlice = createSlice({
       state.errorsData = action.payload;
     },
     clearErrors: (state, action) => {
-      state.errorsData = {};
+      state.errorsData = [];
     },
   },
 });

@@ -1,16 +1,17 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logOrRegisterCustomer, loginCustomer } from "../../api/userApi";
 import { setErors, clearErrors } from "../../store/errors/reducer";
 import { setCustomer } from "../../store/customer/reducer";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
-
-import * as Yup from "yup";
+import { LoginSchema } from "../../components/forms/components/formValidation";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const customer = useSelector((state) => state.customer.customerData);
+  const error = useSelector((state) => state.errors.errorsData);
 
   async function singIn(info) {
     try {
@@ -35,24 +36,14 @@ const LoginPage = () => {
       dispatch(setErors(e.response));
     }
   }
-
-  const responseErrorGoogle = (response) => {
-    dispatch(setErors(response.message));
-  };
+  async function responseErrorGoogle(response) {}
 
   const formik = useFormik({
     initialValues: {
       loginOrEmail: "",
       password: "",
     },
-    validationSchema: Yup.object({
-      loginOrEmail: Yup.string()
-        .email("Invalid email address")
-        .required("Required"),
-      password: Yup.string()
-        .min(7, "Must be 5 characters or more")
-        .required("Required"),
-    }),
+    validationSchema: LoginSchema,
     onSubmit: (values) => {
       singIn(values);
     },
@@ -61,7 +52,7 @@ const LoginPage = () => {
   return (
     <div>
       <h1>LOGIN</h1>
-      <div className="Form zone">
+      <div className="Form">
         <form onSubmit={formik.handleSubmit}>
           <label htmlFor="loginOrEmail">Email Address</label>
           <input
@@ -99,6 +90,8 @@ const LoginPage = () => {
           cookiePolicy={"single_host_origin"}
         />
       </div>
+      <h2> Welcome back {customer.firstName}</h2>
+      <h2>{error.loginOrEmail}</h2>
     </div>
   );
 };

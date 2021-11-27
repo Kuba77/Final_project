@@ -1,11 +1,12 @@
 import axios from "./api";
+import configData from "../config/config.json";
 import { setAuthToken } from "./api";
 import jwtDecode from "jwt-decode";
 
 export async function logOrRegisterCustomer(value) {
   try {
     return await axios
-      .post("/logingoogle", {
+      .post(configData.GOOGLE_LOGIN_URL, {
         tokenId: value.tokenId,
       })
       .then((res) => {
@@ -19,7 +20,7 @@ export async function logOrRegisterCustomer(value) {
 
 export async function registerCustomer(value) {
   try {
-    return await axios.post("/customers", value).then((res) => {
+    return await axios.post(configData.CUSTOMERS_URL, value).then((res) => {
       console.log("res", res);
       return res;
     });
@@ -32,11 +33,13 @@ export async function registerCustomer(value) {
 
 export async function loginCustomer(value) {
   try {
-    return await axios.post(`customers/login`, value).then((res) => {
-      sessionStorage.setItem("token", res.data.token);
-      setAuthToken(res.data.token);
-      return jwtDecode(res.data.token);
-    });
+    return await axios
+      .post(configData.CUSTOMERS_LOGIN_URL, value)
+      .then((res) => {
+        sessionStorage.setItem("token", res.data.token);
+        setAuthToken(res.data.token);
+        return jwtDecode(res.data.token);
+      });
   } catch (error) {
     return error.response.data;
   }

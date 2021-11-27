@@ -1,26 +1,25 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCustomer, removeCustomer } from "../../store/customer/reducer";
 import { setErors, clearErrors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer, registerCustomer } from "../../api/userApi";
 import { GoogleLogin } from "react-google-login";
-import * as Yup from "yup";
 import configData from "../../config/config.json";
+import { RegistrationSchema } from "../../components/forms/components/formValidation";
 
 const RegPage = () => {
   const dispatch = useDispatch();
-
-  const user = useSelector((state) => state.customer.customerData);
 
   async function singUp(value) {
     try {
       let newCustomer = await registerCustomer(value);
       if (newCustomer.message) {
         dispatch(setErors(newCustomer.message));
+      } else {
+        dispatch(setCustomer(newCustomer.data));
+        dispatch(clearErrors());
       }
-      dispatch(setCustomer(newCustomer.data));
-      dispatch(clearErrors());
     } catch (err) {
       dispatch(setErors(err.response));
     }
@@ -29,7 +28,11 @@ const RegPage = () => {
   async function responseSuccessGoogle(response) {
     try {
       let customer = await logOrRegisterCustomer(response);
-      dispatch(setCustomer(customer));
+      if (customer.message) {
+        dispatch(setErors(customer.message));
+      } else {
+        dispatch(setCustomer(customer));
+      }
     } catch (e) {
       dispatch(setErors(e.response));
     }
@@ -46,21 +49,7 @@ const RegPage = () => {
       email: "",
       password: "",
     },
-    validationSchema: Yup.object({
-      firstName: Yup.string()
-        .max(15, "Must be 15 characters or less")
-        .required("Required"),
-      lastName: Yup.string()
-        .max(20, "Must be 20 characters or less")
-        .required("Required"),
-      login: Yup.string()
-        .min(3, "Must be min 3 and max 10 characters ")
-        .max(10, "Must be min 3 and max 10 characters"),
-      email: Yup.string().email("Invalid email").required("Required"),
-      password: Yup.string()
-        .min(7, "Must be 5 characters or more")
-        .required("Required"),
-    }),
+    validationSchema: RegistrationSchema,
     onSubmit: (values) => {
       singUp(values);
     },
@@ -69,7 +58,7 @@ const RegPage = () => {
   return (
     <div>
       <h1> REGISTRATION</h1>
-      <div className="Form zone">
+      <div className="Form">
         <form onSubmit={formik.handleSubmit}>
           <label htmlFor="firstName">First Name</label>
           <input
@@ -152,8 +141,6 @@ const RegPage = () => {
       >
         LOGOUT
       </button>
-      {/* <h2>{error.message}</h2> */}
-      <h2>{user.firstName}</h2>
     </div>
   );
 };
