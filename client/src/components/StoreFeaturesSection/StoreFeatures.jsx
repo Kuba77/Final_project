@@ -1,9 +1,9 @@
 import React from "react";
-import "./StoreFeatures.scss";
+import "./styles.scss";
 import StoreFeature from "./StoreFeature";
 const dataContent = require("./FeaturesContent.json");
 
-const StoreFeatures = () => {
+const StoreFeaturesSection = () => {
     const arrContent = JSON.parse(JSON.stringify(dataContent));
     
     return (
@@ -17,4 +17,4 @@ const StoreFeatures = () => {
     )
 }
 
-export default StoreFeatures;
+export default StoreFeaturesSection;
