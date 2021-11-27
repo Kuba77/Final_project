@@ -1,0 +1,26 @@
+[
+    {
+        "img": "https://res.cloudinary.com/dl7xlw7cl/image/upload/FeaturesStore/delivery_maqggl",
+        "imgAlt": "delivery",
+        "title": "Quick Delivery",
+        "text": "Self-delivery from the <<NOVA POSHTA>> branch, <<JUSTIN>> branch. Courier delivery."
+    },
+    {
+        "img": "https://res.cloudinary.com/dl7xlw7cl/image/upload/FeaturesStore/payment_i4dwzs",
+        "imgAlt": "payment",
+        "title": "Secure Payment",
+        "text": "Cash on delivery at the branch. To the courier when ordering with delivery. Card payment."
+    },
+    {
+        "img": "https://res.cloudinary.com/dl7xlw7cl/image/upload/FeaturesStore/quality_hz05nh",
+        "imgAlt": "quality",
+        "title": "Best Quality",
+        "text": "We work for you! Individual approach to each customer - our constant rule."
+    },
+    {
+        "img": "https://res.cloudinary.com/dl7xlw7cl/image/upload/FeaturesStore/guarantee_mgscys",
+        "imgAlt": "guarantee",
+        "title": "Return Guarantee",
+        "text": "You can return the item within 14 days."
+    }
+]
