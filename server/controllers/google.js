@@ -2,12 +2,12 @@ const { OAuth2Client } = require("google-auth-library");
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys");
 const uniqueRandom = require("unique-random");
-const GOOGLE_CLIENT_ID = require("../config/keys").GOOGLE_CLIENT_ID;
 
 const rand = uniqueRandom(10000000, 99999999);
 
 //сщздаем клиента
-const client = new OAuth2Client(GOOGLE_CLIENT_ID);
+const client = new OAuth2Client(keys.googleClientId);
+
 // Load Customer model
 const Customer = require("../models/Customer");
 
@@ -19,7 +19,7 @@ exports.googlelogin = (req, res) => {
     //проверка токена и клиента айди(в креденшеналах)
     .verifyIdToken({
       idToken: tokenId,
-      audience: GOOGLE_CLIENT_ID,
+      audience: keys.googleClientId,
     })
     //берем инфу из профиля гугла
     .then((response) => {
@@ -71,17 +71,19 @@ exports.googlelogin = (req, res) => {
                 customerNo,
                 lastName: family_name,
               });
+
               //сохраняем пользывателя
               newCustomer.save().then((customer) => {
-                res.json(customer);
+                // res.json(customer);
                 //после удачного создания делаем ему токен и возвращаем
                 const payload = {
                   id: customer.id,
                   firstName: customer.firstName,
                   lastName: customer.lastName,
+                  email: customer.email,
                   isAdmin: customer.isAdmin,
                 };
-                // Sign Token
+                // создание токена
                 jwt.sign(
                   payload,
                   keys.secretOrKey,
