@@ -45,6 +45,7 @@ exports.googlelogin = (req, res) => {
                 id: customer.id,
                 firstName: customer.firstName,
                 lastName: customer.lastName,
+                email: customer.email,
                 isAdmin: customer.isAdmin,
               };
               // создание токена

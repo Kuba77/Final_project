@@ -1,34 +1,43 @@
-// import axios, { setAuthToken } from "./Api";
-// import { setUser, isAuth } from "../store/actions/authAction";
+import axios from "./api";
+import { setAuthToken } from "./api";
+import jwtDecode from "jwt-decode";
 
-// export async function logOrRegisterCustomer(response) {
-//   try {
-//     axios
-//       .post("/logingoogle", { tokenId: response.tokenId })
-//       .then((response) => {
-//         console.log("response from baze", response);
-//       });
-//   } catch (err) {
-//     console.log(err.response.data);
-//   }
-// }
+export async function logOrRegisterCustomer(value) {
+  try {
+    return await axios
+      .post("/logingoogle", {
+        tokenId: value.tokenId,
+      })
+      .then((res) => {
+        const user = jwtDecode(res.data.token);
+        return user;
+      });
+  } catch (e) {
+    return e.message;
+  }
+}
 
-// export async function loginCustomer(info, dispatch) {
-//   try {
-//     await axios.post(`customers/login`, info).then((res) => {
-//       //закинли токен если успешен в сторедж что бы потом его подлаживать под запросы
-//       sessionStorage.setItem("token", res.data.token);
-//       //запись токена в покупателя
-//       dispatch(isAuth({ t: res.data.token }));
-//       //запись в голову запросов
-//       setAuthToken(res.data.token);
-//     });
-//     //юзера получили по токену
-//     return await axios.get(`customers/customer`).then((res) => {
-//       //докинули токен в обьект юзера
-//       dispatch(isAuth(res.data));
-//     });
-//   } catch (e) {
-//     console.log(e.response.data);
-//   }
-// }
+export async function registerCustomer(value) {
+  try {
+    return await axios.post("/customers", value).then((res) => {
+      console.log("res", res);
+      return res;
+    });
+  } catch (error) {
+    console.log("res", error.response.data);
+
+    return error.response.data;
+  }
+}
+
+export async function loginCustomer(value) {
+  try {
+    return await axios.post(`customers/login`, value).then((res) => {
+      sessionStorage.setItem("token", res.data.token);
+      setAuthToken(res.data.token);
+      return jwtDecode(res.data.token);
+    });
+  } catch (error) {
+    return error.response.data;
+  }
+}

@@ -1,10 +1,43 @@
 import React from "react";
 import { useFormik } from "formik";
-// import { useHistory } from "react-router-dom";
-import { signUp } from "../../store/actions/authAction";
+import { useDispatch, useSelector } from "react-redux";
+import { setCustomer, removeCustomer } from "../../store/customer/reducer";
+import { setErors, clearErrors } from "../../store/errors/reducer";
+import { logOrRegisterCustomer, registerCustomer } from "../../api/userApi";
+import { GoogleLogin } from "react-google-login";
 import * as Yup from "yup";
+import configData from "../../config/config.json";
 
 const RegPage = () => {
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.customer.customerData);
+
+  async function singUp(value) {
+    try {
+      let newCustomer = await registerCustomer(value);
+      if (newCustomer.message) {
+        dispatch(setErors(newCustomer.message));
+      }
+      dispatch(setCustomer(newCustomer.data));
+      dispatch(clearErrors());
+    } catch (err) {
+      dispatch(setErors(err.response));
+    }
+  }
+
+  async function responseSuccessGoogle(response) {
+    try {
+      let customer = await logOrRegisterCustomer(response);
+      dispatch(setCustomer(customer));
+    } catch (e) {
+      dispatch(setErors(e.response));
+    }
+  }
+
+  const responseErrorGoogle = (response) => {
+    dispatch(setErors(response.message));
+  };
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -29,14 +62,13 @@ const RegPage = () => {
         .required("Required"),
     }),
     onSubmit: (values) => {
-      console.log("click");
-      signUp(values);
+      singUp(values);
     },
   });
 
   return (
     <div>
-      <h1>REGISTRATION</h1>
+      <h1> REGISTRATION</h1>
       <div className="Form zone">
         <form onSubmit={formik.handleSubmit}>
           <label htmlFor="firstName">First Name</label>
@@ -104,6 +136,24 @@ const RegPage = () => {
           <button type="submit">Submit</button>
         </form>
       </div>
+      <GoogleLogin
+        clientId={configData.REACT_APP_GOOGLE_CLIENT_ID}
+        buttonText="Login"
+        onSuccess={responseSuccessGoogle}
+        onFailure={responseErrorGoogle}
+        cookiePolicy={"single_host_origin"}
+      />
+
+      <button
+        type="button"
+        onClick={() => {
+          dispatch(removeCustomer());
+        }}
+      >
+        LOGOUT
+      </button>
+      {/* <h2>{error.message}</h2> */}
+      <h2>{user.firstName}</h2>
     </div>
   );
 };

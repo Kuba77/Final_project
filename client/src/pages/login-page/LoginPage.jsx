@@ -1,21 +1,44 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import { loginCustomer, logOrRegisterCustomer } from "../../api/userApi";
-
+import { useDispatch } from "react-redux";
+import { logOrRegisterCustomer, loginCustomer } from "../../api/userApi";
+import { setErors, clearErrors } from "../../store/errors/reducer";
+import { setCustomer } from "../../store/customer/reducer";
 import { GoogleLogin } from "react-google-login";
+import configData from "../../config/config.json";
 
 import * as Yup from "yup";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  let user = useSelector((state) => state.user);
 
-  const responseSuccessGoogle = (response) => {
-    logOrRegisterCustomer(response);
-    console.log("GOOGLE", response);
+  async function singIn(info) {
+    try {
+      let customer = await loginCustomer(info);
+      if (customer.loginOrEmail) {
+        dispatch(setErors(customer));
+      } else {
+        dispatch(setCustomer(customer));
+        dispatch(clearErrors());
+      }
+    } catch (e) {
+      console.log(e.response);
+      dispatch(setErors(e.response));
+    }
+  }
+
+  async function responseSuccessGoogle(response) {
+    try {
+      let customer = await logOrRegisterCustomer(response);
+      dispatch(setCustomer(customer));
+    } catch (e) {
+      dispatch(setErors(e.response));
+    }
+  }
+
+  const responseErrorGoogle = (response) => {
+    dispatch(setErors(response.message));
   };
-  const responseErrorGoogle = (response) => {};
 
   const formik = useFormik({
     initialValues: {
@@ -31,7 +54,7 @@ const LoginPage = () => {
         .required("Required"),
     }),
     onSubmit: (values) => {
-      loginCustomer(values, dispatch);
+      singIn(values);
     },
   });
 
@@ -66,17 +89,15 @@ const LoginPage = () => {
           ) : null}
           <button type="submit">Submit</button>
         </form>
-        {user.name && <h1>hi {user.name}</h1>}
       </div>
       <div>
         <GoogleLogin
-          clientId="649718085227-lo924pc5nifh55shg8u0gf3vm7olsmvn.apps.googleusercontent.com"
+          clientId={configData.REACT_APP_GOOGLE_CLIENT_ID}
           buttonText="Login"
           onSuccess={responseSuccessGoogle}
           onFailure={responseErrorGoogle}
           cookiePolicy={"single_host_origin"}
         />
-        ,
       </div>
     </div>
   );

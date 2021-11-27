@@ -10,6 +10,4 @@ export const setAuthToken = (token) => {
   }
 };
 
-// подлаживаем токены под каждый запрос из стореджа
-
 export default axios;
