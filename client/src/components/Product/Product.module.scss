@@ -1,0 +1,259 @@
+@import '../../styles/config/variables.scss';
+
+.product__header {
+    background-color: $first-color-light;
+    color: $product-text-color;
+    padding: 24px 0 24px 120px;
+
+    @include breakpoint(lg-only) {
+        padding: 20px 70px;
+    }
+
+    @include breakpoint(md-only) {
+        padding: 15px 30px;
+    }
+}
+
+.product_block {
+    color: $product-text-color;
+    max-width: 980px;
+    margin: 90px auto;
+
+    @include breakpoint(lg-only) {
+        max-width: 700px;
+        margin: 60px auto;
+    }
+
+    @include breakpoint(md-only) {
+        max-width: 550px;
+        margin: 40px auto;
+    }
+
+    @include breakpoint(sm-only) {
+        max-width: 270px;
+        margin: 30px auto;
+    }
+
+    &__title {
+        color: $title-color;
+        font-size: 26px;
+        margin: 30px 0;
+    }
+
+    &__main {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-column-gap: 30px;
+
+        @include breakpoint(lg-only) {
+            grid-template-columns: 1fr 2fr;
+            grid-column-gap: 20px;
+        }
+
+        @include breakpoint(sm-only) {
+            display: block;
+        }
+    }
+}
+
+.product_info {
+    max-width: 450px;
+
+    @include breakpoint(lg-only) {
+        max-width: 300px;
+    }
+
+    @include breakpoint(md-only) {
+        max-width: 270px;
+    }
+
+    &__title {
+        font-weight: $font-semi-bold;
+        font-size: 34px;
+
+        @include breakpoint(md-only) {
+            font-size: $h1-font-size;
+        }
+    }
+
+    &__autor {
+        font-size: 20px;
+        margin: 25px 0;
+
+        @include breakpoint(md-only) {
+            font-size: $normal-font-size;
+            margin: 10px 0;
+        }
+    }
+
+    &__text {
+        text-align: justify;
+        font-size: 16px;
+
+        @include breakpoint(md-only) {
+            font-size: 14px;
+        }
+
+        @include breakpoint(sm-only) {
+            font-size: $small-font-size;
+        }
+    }
+
+    &__price {
+        font-size: $h1-font-size;
+        color: $text-color-light;
+        font-weight: $font-semi-bold;
+        margin: 45px 0 20px 0;
+
+        @include breakpoint(sm-only) {
+            margin: 15px 0;
+        }
+    }
+}
+
+.product_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    @include breakpoint(sm-only) {
+        margin-bottom: 30px;
+    }
+
+    & button {
+        width: 70px;
+        background-color: $first-color;
+        padding: 10px;
+        margin-right: 40px;
+        border-radius: 9%;
+
+        &:hover {
+            background-color: $first-color-alt;
+        }
+
+        @include breakpoint(md-only) {
+            width: 50px;
+            margin-right: 20px;
+        }
+
+        & i {
+            color: $body-color;
+            font-size: 20px;
+
+            @include breakpoint(md-only) {
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+.product_button__counter {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 40px;
+
+    @include breakpoint(md-only) {
+        margin-right: 20px;
+    }
+
+    & button {
+        background-color: $first-color-lighten;
+        margin: 0;
+
+        &:hover {
+            background-color: $first-color;
+        }
+    }
+
+    & span {
+        margin: auto 15px;
+    }
+}
+
+.product_img {
+    display: flex;
+    position: relative;
+
+    &__large {
+        margin-right: 25px;
+        position: relative;
+        box-sizing: border-box;
+        align-self: flex-start;
+        text-align: center;
+
+        & img {
+            width: 320px;
+            margin: 0;
+
+            @include breakpoint(lg-only) {
+                width: 280px
+            }
+
+            @include breakpoint(md-only) {
+                width: 195px
+            }
+        }
+    }
+}
+
+.gallery {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 80px;
+
+    @include breakpoint(lg-only) {
+        width: 70px
+    }
+
+    @include breakpoint(md-only) {
+        width: 50px;
+    }
+
+    &__item {
+        margin-bottom: 20px;
+
+        @include breakpoint(md-only) {
+            margin-bottom: 15px;
+        }
+    }
+
+}
+
+.product_block__details {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 20px 0;
+    font-size: 14px;
+
+    @include breakpoint(sm-only) {
+        font-size: 10px;
+    }
+
+    & .product_categories {
+        background-color: $product-background-color;
+
+        & p {
+            color: $body-color;
+            padding: 15px 0 15px 30px;
+
+            @include breakpoint(sm-only) {
+                padding: 10px 0 10px 10px;
+            }
+        }
+    }
+
+    & .product_data {
+        background-color: $product-background-color-light;
+
+        & p {
+            padding: 15px 0 15px 60px;
+
+            @include breakpoint(sm-only) {
+                padding: 10px 0 10px 15px;
+            }
+        }
+    }
+}
