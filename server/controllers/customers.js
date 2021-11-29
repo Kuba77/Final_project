@@ -115,7 +115,8 @@ exports.loginCustomer = async (req, res, next) => {
             firstName: customer.firstName,
             lastName: customer.lastName,
             isAdmin: customer.isAdmin,
-          }; // Create JWT Payload
+          };
+          // Create JWT Payload
 
           // Sign Token
           jwt.sign(
