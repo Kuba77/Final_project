@@ -48,7 +48,6 @@ exports.createCustomer = (req, res, next) => {
 
       // Create query object for qustomer for saving him to DB
       const newCustomer = new Customer(queryCreator(initialQuery));
-      // console.log(newCustomer);
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newCustomer.password, salt, (err, hash) => {
@@ -61,7 +60,6 @@ exports.createCustomer = (req, res, next) => {
           }
 
           newCustomer.password = hash;
-          // console.log(newCustomer);
 
           newCustomer
             .save()

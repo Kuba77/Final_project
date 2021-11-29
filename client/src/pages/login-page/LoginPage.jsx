@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { logOrRegisterCustomer, loginCustomer } from "../../api/userApi";
@@ -13,29 +13,36 @@ const LoginPage = () => {
   const customer = useSelector((state) => state.customer.customerData);
   const error = useSelector((state) => state.errors.errorsData);
 
-  async function singIn(info) {
-    try {
-      let customer = await loginCustomer(info);
-      if (customer.loginOrEmail) {
-        dispatch(setErors(customer));
-      } else {
-        dispatch(setCustomer(customer));
-        dispatch(clearErrors());
+  const singIn = useCallback(
+    async (info) => {
+      try {
+        let customer = await loginCustomer(info);
+        if (customer.loginOrEmail) {
+          dispatch(setErors(customer));
+        } else {
+          dispatch(setCustomer(customer));
+          dispatch(clearErrors());
+        }
+      } catch (e) {
+        console.log(e.response);
+        dispatch(setErors(e.response));
       }
-    } catch (e) {
-      console.log(e.response);
-      dispatch(setErors(e.response));
-    }
-  }
+    },
+    [customer]
+  );
+  ////////////////////////////////////////////////////////////////
+  const responseSuccessGoogle = useCallback(
+    async (response) => {
+      try {
+        let customer = await logOrRegisterCustomer(response);
+        dispatch(setCustomer(customer));
+      } catch (e) {
+        dispatch(setErors(e.response));
+      }
+    },
+    [customer]
+  );
 
-  async function responseSuccessGoogle(response) {
-    try {
-      let customer = await logOrRegisterCustomer(response);
-      dispatch(setCustomer(customer));
-    } catch (e) {
-      dispatch(setErors(e.response));
-    }
-  }
   async function responseErrorGoogle(response) {}
 
   const formik = useFormik({
