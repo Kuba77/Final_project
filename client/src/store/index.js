@@ -13,12 +13,9 @@ function syncWithLocalStorage({ getState }) {
 }
 
 export const store = configureStore({
-  //собираем обзий стор
   reducer: {
     cart: cartReducer,
     favorites: favoriteReducer,
-    //кастомер инишеал стор для юзера
-    //кастомер редюсер в нем созадем масив и в него пушим
     customer: customerReducer,
     errors: errorsReducer,
   },

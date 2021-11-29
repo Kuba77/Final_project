@@ -8,9 +8,7 @@ const customerSlice = createSlice({
   name: "errors",
   initialState,
   reducers: {
-    //actions  резузультат который хотим хаписать
     setErors: (state, action) => {
-      //приравниваем
       state.errorsData = action.payload;
     },
     clearErrors: (state, action) => {

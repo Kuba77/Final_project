@@ -8,9 +8,7 @@ const customerSlice = createSlice({
   name: "customer",
   initialState,
   reducers: {
-    //actions  резузультат который хотим хаписать
     setCustomer: (state, action) => {
-      //приравниваем
       state.customerData = action.payload;
     },
     removeCustomer: (state, action) => {

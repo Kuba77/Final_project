@@ -33,14 +33,11 @@ const ProductSchema = new Schema(
         required: true,
       },
     ],
-    ///
     genre: [
       {
         type: String,
       },
     ],
-
-    ///
     quantity: {
       type: Number,
       required: true,

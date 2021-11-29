@@ -65,7 +65,6 @@ exports.createCustomer = (req, res, next) => {
             .save()
             .then((customer) => {
               res.json(customer);
-              console.log(customer);
             })
             .catch((err) =>
               res.status(400).json({

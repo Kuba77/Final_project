@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCustomer, removeCustomer } from "../../store/customer/reducer";
 import { setErors, clearErrors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer, registerCustomer } from "../../api/userApi";
@@ -10,37 +10,45 @@ import { RegistrationSchema } from "../../components/forms/components/formValida
 
 const RegPage = () => {
   const dispatch = useDispatch();
+  const customer = useSelector((state) => state.customer.customerData);
+  const error = useSelector((state) => state.errors.errorsData);
 
-  async function singUp(value) {
-    try {
-      let newCustomer = await registerCustomer(value);
-      if (newCustomer.message) {
-        dispatch(setErors(newCustomer.message));
-      } else {
-        dispatch(setCustomer(newCustomer.data));
-        dispatch(clearErrors());
+  const singUp = useCallback(
+    async (value) => {
+      try {
+        let newCustomer = await registerCustomer(value);
+        if (newCustomer.message) {
+          dispatch(setErors(newCustomer.message));
+        } else {
+          dispatch(setCustomer(newCustomer.data));
+          dispatch(clearErrors());
+        }
+      } catch (err) {
+        dispatch(setErors(err.response));
       }
-    } catch (err) {
-      dispatch(setErors(err.response));
-    }
-  }
+    },
+    [customer]
+  );
 
-  async function responseSuccessGoogle(response) {
-    try {
-      let customer = await logOrRegisterCustomer(response);
-      if (customer.message) {
-        dispatch(setErors(customer.message));
-      } else {
-        dispatch(setCustomer(customer));
+  const responseSuccessGoogle = useCallback(
+    async (response) => {
+      try {
+        let customer = await logOrRegisterCustomer(response);
+        if (customer.message) {
+          dispatch(setErors(customer.message));
+        } else {
+          dispatch(setCustomer(customer));
+        }
+      } catch (e) {
+        dispatch(setErors(e.response));
       }
-    } catch (e) {
-      dispatch(setErors(e.response));
-    }
-  }
+    },
+    [customer]
+  );
 
-  const responseErrorGoogle = (response) => {
+  const responseErrorGoogle = useCallback(async (response) => {
     dispatch(setErors(response.message));
-  };
+  });
   const formik = useFormik({
     initialValues: {
       firstName: "",

@@ -26,9 +26,7 @@ const paymentMethods = require("./routes/paymentMethods");
 const partners = require("./routes/partners");
 const mainRoute = require("./routes/index");
 
-////////////////////////////////////////////////////////////////////////
 const loginGoogle = require("./routes/loginWithGoogle");
-////////////////////////////////////////////////////////////////////////
 
 const app = express();
 
@@ -74,9 +72,7 @@ app.use("/api/payment-methods", paymentMethods);
 app.use("/api/partners", partners);
 app.use("/", mainRoute);
 
-////////////////////////////////////////////////////////////////////////
 app.use("/api/logingoogle", loginGoogle);
-////////////////////////////////////////////////////////////////////////
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {

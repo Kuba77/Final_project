@@ -24,18 +24,21 @@ const LoginPage = () => {
           dispatch(clearErrors());
         }
       } catch (e) {
-        console.log(e.response);
         dispatch(setErors(e.response));
       }
     },
     [customer]
   );
-  ////////////////////////////////////////////////////////////////
+
   const responseSuccessGoogle = useCallback(
     async (response) => {
       try {
         let customer = await logOrRegisterCustomer(response);
-        dispatch(setCustomer(customer));
+        if (customer.message) {
+          dispatch(setErors(customer.message));
+        } else {
+          dispatch(setCustomer(customer));
+        }
       } catch (e) {
         dispatch(setErors(e.response));
       }
@@ -43,8 +46,9 @@ const LoginPage = () => {
     [customer]
   );
 
-  async function responseErrorGoogle(response) {}
-
+  const responseErrorGoogle = useCallback(async (response) => {
+    dispatch(setErors(response.message));
+  });
   const formik = useFormik({
     initialValues: {
       loginOrEmail: "",
