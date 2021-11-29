@@ -9,7 +9,8 @@ const Button = ({ onClick, type, children, size = 's' }) => {
         'btn--primary': type === 'primary',
         'btn--small': size === 's',
         'btn--medium': size === 'm',
-        'btn--transparent': type === 'transparent'
+        'btn--transparent': type === 'transparent',
+        'btn--main': type === 'main'
       });
 
     return (
@@ -21,4 +22,4 @@ const Button = ({ onClick, type, children, size = 's' }) => {
         </button>
     )
 }
-export default Button
+export default React.memo(Button)

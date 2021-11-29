@@ -11,12 +11,11 @@ const Nav = ({ isMenu, menuToggle }) => {
                     <Link to="/">Home</Link>
                 </li>
                 
-                {isMenu ? (
+                {isMenu && (
                     <li onClick={menuToggle}>
                         <Link to="/login">Sign in</Link>
                     </li>
-                ): null}
-               
+                )}
                 <li onClick={menuToggle}>
                     <Link to="/categories">Categories</Link>
                 </li>

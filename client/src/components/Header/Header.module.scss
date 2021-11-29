@@ -1,4 +1,4 @@
-@import '../../styles/config/variables.scss';
+@import "../../styles/config/variables.scss";
 
 .header {
     height: $header-height;
@@ -13,40 +13,9 @@
     z-index: 10;
     transition: all 0.2s ease;
     
-  
-    &__logo{
-        display: flex;
-        flex-grow: 4;
-        color: $title-color;
-        font-size: $normal-font-size;
-            img{
-                margin: .3rem;
-                width: 2rem;
-                height: 2rem;
-            }
-    }
-
-    &__cart{
-        display: flex;
-        text-decoration: none;
-        position: relative;
-        margin-top: .2rem;
-        transition: all 0.1s ease;
-
-            &:hover{
-                transform: scale(1.2);
-            }
-    }
-    
     @include breakpoint(md) {
         padding: 0 3rem;
     }
-
-    &__cart{
-         margin-right: 1rem;
-         margin-top: 0.1rem;
-        }
-    
     
     &__menu{
         @include breakpoint(md) {

@@ -12,9 +12,7 @@
 }
 
 .btn--primary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+   
     background-color: $first-color;
     font-weight: $font-medium;
     color: white;
@@ -48,4 +46,17 @@
     &:hover{
         color: $hover-color
     }
+}
+
+.btn--main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $first-color;
+    width:24vh;
+    font-weight: $font-medium;
+    color: white;
+        &:hover{
+            background-color: $hover-color;
+        }
 }

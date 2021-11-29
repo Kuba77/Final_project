@@ -10,17 +10,21 @@
     background-size:cover;
     background-position: center top;
     box-shadow: $box-shadow;
-       
+
     &__container{
         width: 50vw;
         display: flex;
         flex-direction: column;
         gap:3vh;
+
             @include breakpoint(md) { 
                 width: 30vw;
                 gap:4vh;    
             }
-            h1{
+            svg{
+                margin-top: 1px;
+            }
+            h2{
                 color:white;
                 font-size: $medium-font-size;
                     @include breakpoint(md) {
