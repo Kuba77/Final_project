@@ -18,7 +18,8 @@ const ProductPage = () => {
         img1: "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Haikyuu4_goablb.jpg",
         img2: "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602209/Haikyuu3_ov2wvz.jpg",
         img3: "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602206/Haikyuu2_gzvz0r.jpg",
-        img4: "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Haikyuu1_sno4kw.jpg"
+        img4: "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Haikyuu1_sno4kw.jpg",
+        storage: 46
     }
 
     return (

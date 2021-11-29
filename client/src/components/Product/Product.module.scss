@@ -17,7 +17,7 @@
 .product_block {
     color: $product-text-color;
     max-width: 980px;
-    margin: 90px auto;
+    margin: 80px auto;
 
     @include breakpoint(lg-only) {
         max-width: 700px;
@@ -37,12 +37,20 @@
     &__title {
         color: $title-color;
         font-size: 26px;
-        margin: 30px 0;
+        margin: 40px 0 20px 0;
+
+        @include breakpoint(md-only) {
+            margin: 30px 0 0 0;
+        }
+
+        @include breakpoint(sm-only) {
+            margin: 0;
+        }
+
     }
 
     &__main {
         display: grid;
-        grid-template-columns: auto auto;
         grid-column-gap: 30px;
 
         @include breakpoint(lg-only) {
@@ -50,14 +58,35 @@
             grid-column-gap: 20px;
         }
 
-        @include breakpoint(sm-only) {
-            display: block;
+        @include breakpoint(sm) {
+            grid-template-areas:
+                "title img img"
+                "info img img"
+                "info img img"
         }
+
+        @include breakpoint(sm-only) {
+            grid-template-areas:
+                "title"
+                "img"
+                "info"
+        }
+    }
+}
+
+.title_block {
+    grid-area: title;
+    font-weight: $font-semi-bold;
+    font-size: 30px;
+
+    @include breakpoint(md-only) {
+        font-size: $h1-font-size;
     }
 }
 
 .product_info {
     max-width: 450px;
+    grid-area: info;
 
     @include breakpoint(lg-only) {
         max-width: 300px;
@@ -70,15 +99,17 @@
     &__title {
         font-weight: $font-semi-bold;
         font-size: 34px;
+        margin-bottom: 40px;
 
         @include breakpoint(md-only) {
             font-size: $h1-font-size;
+            margin-bottom: 20px;
         }
     }
 
     &__autor {
         font-size: 20px;
-        margin: 25px 0;
+        margin: 20px 0;
 
         @include breakpoint(md-only) {
             font-size: $normal-font-size;
@@ -91,24 +122,48 @@
         font-size: 16px;
 
         @include breakpoint(md-only) {
-            font-size: 14px;
+            font-size: 13px;
         }
 
         @include breakpoint(sm-only) {
             font-size: $small-font-size;
+            margin-top: 10px;
         }
     }
 
     &__price {
-        font-size: $h1-font-size;
+        font-size: $big-font-size;
         color: $text-color-light;
-        font-weight: $font-semi-bold;
-        margin: 45px 0 20px 0;
+
+        @include breakpoint(md-only) {
+            font-size: $h1-font-size;
+        }
+    }
+
+    &__store {
+        @include breakpoint(sm) {
+            font-size: $h2-font-size;
+        }
+    }
+}
+
+.price_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: $font-semi-bold;
+
+    // & p {
+        margin: 60px 0 30px 0;
+
+        @include breakpoint(md-only) {
+            margin: 25px 0 20px 0;
+        }
 
         @include breakpoint(sm-only) {
             margin: 15px 0;
         }
-    }
+    // }
 }
 
 .product_button {
@@ -173,6 +228,7 @@
 .product_img {
     display: flex;
     position: relative;
+    grid-area: img;
 
     &__large {
         margin-right: 25px;
@@ -202,7 +258,7 @@
     right: 0;
     top: 0;
     height: 100%;
-    width: 80px;
+    width: 75px;
 
     @include breakpoint(lg-only) {
         width: 70px
@@ -213,7 +269,7 @@
     }
 
     &__item {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
 
         @include breakpoint(md-only) {
             margin-bottom: 15px;

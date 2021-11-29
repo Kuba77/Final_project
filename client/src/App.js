@@ -10,6 +10,7 @@ function App() {
     <Provider store={store}>
       <Router>
         {/* <Header /> */}
+        {/* <Route path="/product" component={ProductPage} /> */}
         <ProductPage />
       </Router>
     </Provider>
