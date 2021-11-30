@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import classes from "./Product-item.module.scss";
-import getProductList from "../../../api/GetProductsList";
-import axios from "axios";
 
-const ProductItem = () => {
-  const [productsState, setProducts] = useState({
-    products: [],
-  });
-
-  useEffect(() => {
-    getProductList().then((resp) => {
-      const productsList = resp.data;
-      setProducts({ products: productsList });
-    });
-  }, [setProducts]);
-  const productsListArray = productsState.products;
-  console.log(productsListArray);
+const ProductItem = ({ products, loading }) => {
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
   return (
     <div className={classes.product__container}>
-      {productsListArray.map((product) => {
+      {products.map((product, index) => {
         return (
-          <div key={product.id} className={classes.product_item__container}>
+          <div key={index} className={classes.product_item__container}>
             <img src={product.img1} />
             <div className={classes.product_item__raiting}>
               <p>Star</p>
