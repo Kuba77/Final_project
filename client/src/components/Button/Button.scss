@@ -53,7 +53,8 @@
     align-items: center;
     justify-content: center;
     background-color: $first-color;
-    width:24vh;
+    white-space: nowrap;
+    max-width:30vh;
     font-weight: $font-medium;
     color: white;
         &:hover{
