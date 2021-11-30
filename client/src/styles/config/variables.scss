@@ -13,6 +13,9 @@ $text-color-light: #8D28AD;
 $body-color: #FFFFFF;
 $hover-color:#b170c5;
 $container-color: #fff;
+$product-text-color:#000000B2;
+$product-background-color: #4D4D4D;
+$product-background-color-light: #FCF8FD;
 
 
 /*========== Typography ==========*/
@@ -80,6 +83,11 @@ $box-shadow-secondary:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     } @else if $point == lg {
         // 1024px
         @media (min-width: 64em) {
+            @content;
+        }
+    } @else if $point == lg-only{
+        // 1023px
+        @media (max-width: 1023px) {
             @content;
         }
     } @else if $point == md {
