@@ -51,4 +51,5 @@
     "sass-loader": "^12.3.0",
     "style-loader": "^3.3.1"
   }
+  "proxi": "http://5000"
 }
