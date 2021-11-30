@@ -15,7 +15,6 @@ function FormSubscribe() {
                 }}
                 validateOnBlur
                 onSubmit={(values, { resetForm }) => {
-                    console.log(values);
                     resetForm();
                 }}
                 validationSchema={validationSchema}
