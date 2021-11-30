@@ -12,14 +12,11 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/register">
-            <h1>роздел регистр</h1>
             <RegPage />
-            <h1>==========================</h1>
           </Route>
           <Route exact path="/login">
             <LoginPage />
           </Route>
-          <h1>==========================</h1>
         </Switch>
       </Router>
     </Provider>

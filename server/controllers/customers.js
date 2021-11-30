@@ -233,7 +233,6 @@ exports.updatePassword = (req, res) => {
   // find our user by ID
   Customer.findOne({ _id: req.user.id }, (err, customer) => {
     let oldPassword = req.body.password;
-
     customer.comparePassword(oldPassword, function (err, isMatch) {
       if (!isMatch) {
         errors.password = "Password does not match";

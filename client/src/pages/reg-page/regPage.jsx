@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCustomer, removeCustomer } from "../../store/customer/reducer";
 import { setErors, clearErrors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer, registerCustomer } from "../../api/userApi";
@@ -10,8 +10,6 @@ import { RegistrationSchema } from "../../components/forms/components/formValida
 
 const RegPage = () => {
   const dispatch = useDispatch();
-  const customer = useSelector((state) => state.customer.customerData);
-  const error = useSelector((state) => state.errors.errorsData);
 
   const singUp = useCallback(
     async (value) => {
@@ -27,7 +25,7 @@ const RegPage = () => {
         dispatch(setErors(err.response));
       }
     },
-    [customer]
+    [dispatch]
   );
 
   const responseSuccessGoogle = useCallback(
@@ -39,16 +37,19 @@ const RegPage = () => {
         } else {
           dispatch(setCustomer(customer));
         }
-      } catch (e) {
-        dispatch(setErors(e.response));
+      } catch (error) {
+        dispatch(setErors(error.response));
       }
     },
-    [customer]
+    [dispatch]
+  );
+  const responseErrorGoogle = useCallback(
+    async (response) => {
+      dispatch(setErors(response.message));
+    },
+    [dispatch]
   );
 
-  const responseErrorGoogle = useCallback(async (response) => {
-    dispatch(setErors(response.message));
-  });
   const formik = useFormik({
     initialValues: {
       firstName: "",

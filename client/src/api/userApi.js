@@ -10,7 +10,6 @@ export async function logOrRegisterCustomer(value) {
         tokenId: value.tokenId,
       })
       .then((res) => {
-        console.log(res);
         const user = jwtDecode(res.data.token);
         return user;
       });
@@ -22,7 +21,6 @@ export async function logOrRegisterCustomer(value) {
 export async function registerCustomer(value) {
   try {
     return await axios.post(configData.CUSTOMERS_URL, value).then((res) => {
-      console.log("res", res);
       return res;
     });
   } catch (error) {
@@ -40,6 +38,35 @@ export async function loginCustomer(value) {
         sessionStorage.setItem("token", res.data.token);
         setAuthToken(res.data.token);
         return jwtDecode(res.data.token);
+      });
+  } catch (error) {
+    return error.response.data;
+  }
+}
+export function logoutCustomer() {
+  try {
+    sessionStorage.removeItem("token");
+    setAuthToken(false);
+  } catch (error) {
+    return error.response.data;
+  }
+}
+
+export async function updateCustomer(value) {
+  try {
+    return await axios.put(configData.CUSTOMERS_URL, value).then((res) => {
+      return res.data;
+    });
+  } catch (error) {
+    return error.response.data;
+  }
+}
+export async function updateCustomerPassword(value) {
+  try {
+    return await axios
+      .put(configData.CUSTOMERS_PASSWORD_URL, value)
+      .then((res) => {
+        return res.data;
       });
   } catch (error) {
     return error.response.data;

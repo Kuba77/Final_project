@@ -7,27 +7,27 @@ import { setCustomer } from "../../store/customer/reducer";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
 import { LoginSchema } from "../../components/forms/components/formValidation";
+import { customerName, errorloginOrEmail } from "../../store/selectors";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const customer = useSelector((state) => state.customer.customerData);
-  const error = useSelector((state) => state.errors.errorsData);
+  const store = useSelector((state) => state);
 
   const singIn = useCallback(
-    async (info) => {
+    async (values) => {
       try {
-        let customer = await loginCustomer(info);
+        let customer = await loginCustomer(values);
         if (customer.loginOrEmail) {
           dispatch(setErors(customer));
         } else {
           dispatch(setCustomer(customer));
           dispatch(clearErrors());
         }
-      } catch (e) {
-        dispatch(setErors(e.response));
+      } catch (error) {
+        dispatch(setErors(error.response));
       }
     },
-    [customer]
+    [dispatch]
   );
 
   const responseSuccessGoogle = useCallback(
@@ -39,16 +39,19 @@ const LoginPage = () => {
         } else {
           dispatch(setCustomer(customer));
         }
-      } catch (e) {
-        dispatch(setErors(e.response));
+      } catch (error) {
+        dispatch(setErors(error.response));
       }
     },
-    [customer]
+    [dispatch]
   );
 
-  const responseErrorGoogle = useCallback(async (response) => {
-    dispatch(setErors(response.message));
-  });
+  const responseErrorGoogle = useCallback(
+    async (response) => {
+      dispatch(setErors(response.message));
+    },
+    [dispatch]
+  );
   const formik = useFormik({
     initialValues: {
       loginOrEmail: "",
@@ -101,8 +104,8 @@ const LoginPage = () => {
           cookiePolicy={"single_host_origin"}
         />
       </div>
-      <h2> Welcome back {customer.firstName}</h2>
-      <h2>{error.loginOrEmail}</h2>
+      <h2> Welcome back {customerName(store)}</h2>
+      <h2>{errorloginOrEmail(store)}</h2>
     </div>
   );
 };
