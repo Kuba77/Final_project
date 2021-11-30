@@ -11,16 +11,18 @@ $title-color: #000000;
 $text-color: #E5E5E5;
 $text-color-light: #8D28AD;
 $body-color: #FFFFFF;
+$hover-color:#b170c5;
 $container-color: #fff;
 
 
 /*========== Typography ==========*/
 $body-font: 'Poppins', sans-serif;
-$big-font-size: 2rem;
+$big-font-size: 3rem;
 $h1-font-size: 1.5rem;
 $h2-font-size: 1.25rem;
 $h3-font-size: 1rem;
 $normal-font-size: .938rem;
+$medium-font-size: 2.4rem;
 $small-font-size: .813rem;
 $smaller-font-size: .75rem;
 
@@ -28,10 +30,11 @@ $smaller-font-size: .75rem;
 
 /*========== Responsible Typography ==========*/
     @media screen and (min-width: 968px){
-        $big-font-size: 3.5rem;
+        $big-font-size: 3.2rem;
         $h1-font-size: 2.25rem;
         $h2-font-size: 1.5rem;
         $h3-font-size: 1.25rem;
+        $medium-font-size: 2.7rem;
         $normal-font-size: 1rem;
         $small-font-size: .875rem;
         $smaller-font-size: .813rem;
@@ -64,6 +67,7 @@ $spacing-xl: 4rem;
 /*========== Box Shadow ==========*/ 
 
 $box-shadow:rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+$box-shadow-secondary:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
 
 /*========== Breakpoings ==========*/

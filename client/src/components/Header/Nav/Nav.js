@@ -8,8 +8,14 @@ const Nav = ({ isMenu, menuToggle }) => {
         <nav className={isMenu ? classes.menu__nav : classes.nav}>
             <ul>
             <li onClick={menuToggle}>
-                    <Link to="/categories">Home</Link>
+                    <Link to="/">Home</Link>
                 </li>
+                
+                {isMenu && (
+                    <li onClick={menuToggle}>
+                        <Link to="/login">Sign in</Link>
+                    </li>
+                )}
                 <li onClick={menuToggle}>
                     <Link to="/categories">Categories</Link>
                 </li>
@@ -19,7 +25,6 @@ const Nav = ({ isMenu, menuToggle }) => {
             </ul>
           
         </nav>
-       
     );
 };
 
