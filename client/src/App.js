@@ -1,20 +1,18 @@
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { BrowserRouter as Router } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer"
-import Categories from "./components/Categories/Categories"
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import CartPage from "./pages/cart-page/cart-page";
+import MainPage from "./pages/main-page/main-page";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Header />
-        <Categories />
-        <Footer />
-      </Router>
-
+        <Route exact path="/" component={MainPage} />
+        
+    
+        <Route path="/cart"  component={CartPage} />
+      </Router>   
     </Provider>
   );
 }

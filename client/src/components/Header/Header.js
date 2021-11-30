@@ -6,6 +6,7 @@ import Nav from "./Nav/Nav";
 import useWindowSize from '../../hooks/useWindowSize';
 import { BsBasket } from 'react-icons/bs';
 
+
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const size = useWindowSize();
@@ -33,7 +34,7 @@ const Header = () => {
              </Link>
              <Nav />
             <div className={classes.header__cart}>
-                    <Link to="/cart">
+                    <Link  to="/cart">
                         <BsBasket  color={'black'} size={22}/>
                     </Link>
             </div>
