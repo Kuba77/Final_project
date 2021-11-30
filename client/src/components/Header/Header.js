@@ -9,18 +9,18 @@ import Button from "../Button/Button";
 
 
 const Header = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const size = useWindowSize();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const size = useWindowSize();
 
-    useEffect(() => {
-        if (size.width > 768 && menuOpen) {
-            setMenuOpen(false);
-        }
-    }, [size, menuOpen]);
+  useEffect(() => {
+    if (size.width > 768 && menuOpen) {
+      setMenuOpen(false);
+    }
+  }, [size, menuOpen]);
 
-    const handleMenuToggle = () => {
-        setMenuOpen((p) => !p);
-    };
+  const handleMenuToggle = () => {
+    setMenuOpen((p) => !p);
+  };
 
     const menuToggle = !menuOpen ? (
         <CgMenuRight onClick={handleMenuToggle} color='black' />

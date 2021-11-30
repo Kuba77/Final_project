@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./Nav.module.scss";
 
-
 const Nav = ({ isMenu, menuToggle }) => {
     return (
         <nav className={isMenu ? classes.menu__nav : classes.nav}>
