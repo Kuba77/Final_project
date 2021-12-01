@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./Product-item.module.scss";
+import classes from "./Products-item.module.scss";
 
-const ProductItem = ({ products, loading }) => {
+const ProductsItem = ({ products, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -26,4 +26,4 @@ const ProductItem = ({ products, loading }) => {
   );
 };
 
-export default ProductItem;
+export default ProductsItem;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import ProductItem from "../../components/Product/Product-item/Product-item";
+import ProductsItem from "../../components/Products/Products-item/Products-item";
 import classes from "./products-list-page.module.scss";
-import Pagination from "../../components/Product/Pagination/Pagination";
+import Pagination from "../../components/Products/Pagination/Pagination";
+import { getAllProducts } from "../../api/productsApi";
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -13,7 +13,7 @@ function ProductsList() {
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
-      const response = await axios.get("./products.json");
+      const response = await getAllProducts();
       setProducts(response.data);
       setLoading(false);
     };
@@ -29,7 +29,7 @@ function ProductsList() {
   return (
     <div className={classes.content}>
       <h2>Manga</h2>
-      <ProductItem products={currentProduct} loading={loading} />
+      <ProductsItem products={currentProduct} loading={loading} />
       <Pagination
         productsInPage={productsInPage}
         totalProducts={products.length}
