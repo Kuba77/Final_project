@@ -24,6 +24,8 @@ img {
     color: $text-color-light;
     font-weight: $font-semi-bold;
     font-size: $normal-font-size;
+    overflow: hidden;
+    max-width: 350px;
   }
   &__title {
     color: $title-color;

@@ -10,15 +10,19 @@ const ProductsItem = ({ products, loading }) => {
       {products.map((product, index) => {
         return (
           <div key={index} className={classes.product_item__container}>
-            <img src={product.img1} />
+            <img src={product.imageUrls[0]} />
             <div className={classes.product_item__raiting}>
               <p>Star</p>
               <p>166 reviews</p>
             </div>
-            <h5 className={classes.product_item__genre}>{product.genre[0]}</h5>
-            <h4 className={classes.product_item__title}>{product.title}</h4>
+            <h5 className={classes.product_item__genre}>
+              {product.genre.join("/")}
+            </h5>
+            <h4 className={classes.product_item__title}>{product.name}</h4>
             <p className={classes.product_item__author}>{product.author}</p>
-            <p className={classes.product_item__price}>${product.price}</p>
+            <p className={classes.product_item__price}>
+              ${product.currentPrice}
+            </p>
           </div>
         );
       })}
