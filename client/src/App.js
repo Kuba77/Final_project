@@ -20,7 +20,7 @@ function App() {
           {/* <Main />    */}
         {/* <ProductPage /> */}
         <ProductsList />
-        <StoreFeatures />
+        
         <Route exact path="/" component={MainPage} />
         {/* <Route exact path="/productPage" component={ProductPage} /> */}
         <Route path="/cart"  component={CartPage} />
@@ -29,6 +29,9 @@ function App() {
         </Route>
         <Route exact path="/login">
             <LoginPage />
+          </Route>
+          <Route>
+          <StoreFeatures />
           </Route>
       </Router>   
     </Provider>
