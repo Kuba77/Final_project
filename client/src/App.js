@@ -17,7 +17,7 @@ function App() {
           {/* <Header /> */}
           {/* <Main />    */}
         {/* <ProductPage /> */}
-        {/* <ProductsList /> */}
+        <ProductsList />
         <Route exact path="/" component={MainPage} />
         {/* <Route exact path="/productPage" component={ProductPage} /> */}
         <Route path="/cart"  component={CartPage} />
