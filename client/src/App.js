@@ -8,6 +8,7 @@ import CartPage from "./pages/cart-page/cart-page";
 import MainPage from "./pages/main-page/main-page";
 import LoginPage from "./pages/login-page/LoginPage";
 import RegPage from "./pages/reg-page/regPage";
+import ProductsList from "./pages/products-list-page/products-list-page";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           {/* <Header /> */}
           {/* <Main />    */}
         {/* <ProductPage /> */}
+        {/* <ProductsList /> */}
         <Route exact path="/" component={MainPage} />
         {/* <Route exact path="/productPage" component={ProductPage} /> */}
         <Route path="/cart"  component={CartPage} />
@@ -28,6 +30,7 @@ function App() {
       </Router>   
     </Provider>
   );
-}
+  }
 
-export default App;
+
+export default App
