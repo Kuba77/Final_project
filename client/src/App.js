@@ -9,6 +9,8 @@ import MainPage from "./pages/main-page/main-page";
 import LoginPage from "./pages/login-page/LoginPage";
 import RegPage from "./pages/reg-page/regPage";
 import ProductsList from "./pages/products-list-page/products-list-page";
+// import Header from "./components/Header/Header";
+import StoreFeatures from "./components/StoreFeaturesSection/StoreFeatures";
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           {/* <Main />    */}
         {/* <ProductPage /> */}
         <ProductsList />
+        <StoreFeatures />
         <Route exact path="/" component={MainPage} />
         {/* <Route exact path="/productPage" component={ProductPage} /> */}
         <Route path="/cart"  component={CartPage} />
