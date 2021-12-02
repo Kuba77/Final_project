@@ -5,6 +5,10 @@ import {MdRemoveShoppingCart} from "react-icons/md"
 const CartProduct = (props) => {
     const {product, removeProductFromCart} = props;
 
+
+
+
+    
     return(
         <div className={classes.block_product}>
             <div className={classes.product_img_and_text}>
@@ -23,7 +27,13 @@ const CartProduct = (props) => {
             </div>
             <div className={classes.product_culc_and_price}>
                 <div className={classes.product_culc}>
-
+                    <div className={classes.cart_button}>
+                        <div className={classes.cart_button__counter}>
+                            <button>-</button>
+                            <span>1</span>
+                            <button>+</button>
+                        </div>                           
+                    </div>
                 </div>
                 <div className={classes.product_price}>
                     <p>$</p>

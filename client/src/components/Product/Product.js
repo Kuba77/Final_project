@@ -24,7 +24,6 @@ const Product = (props) => {
 
                     <div className={classes.title_block}>
                         <h2 className={classes.product_info__title}>{props.product.title}</h2>
-                        {/* <a className={classes.review} href="#review">Reviews</a> */}
                         <h5 className={classes.product_info__autor}>{props.product.author}</h5>
                     </div>
 
