@@ -18,7 +18,7 @@ function App() {
       <Router>
           {/* <Header /> */}
           {/* <Main />    */}
-        {/* <ProductPage /> */}
+        <ProductPage />
         <ProductsList />
         
         <Route exact path="/" component={MainPage} />
