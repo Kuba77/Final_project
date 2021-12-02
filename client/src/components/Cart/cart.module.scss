@@ -1,3 +1,6 @@
+@import '../../styles/config/variables.scss';
+
+
 .block_cart{
     display: flex;
     justify-content: space-between;
@@ -91,12 +94,12 @@
     align-items: center;
     margin-right: 5%;
 }
-.product_culc{
-    width: 183px;
-    height: 65px;
-    background: #EBEBEB;
-    border-radius: 10px;
-}
+// .product_culc{
+//     width: 183px;
+//     height: 65px;
+//     background: #EBEBEB;
+//     border-radius: 10px;
+// }
 .product_price{
     display: flex;
     margin-left: 125px;
@@ -255,4 +258,66 @@ hr{
     font-size: 16px;
     line-height: 24px;
     color: #8D28AD;
+}
+
+//Counter
+
+.cart_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    // @include breakpoint(sm-only) {
+    //     margin-bottom: 30px;
+    // }
+
+    & button {
+        width: 70px;
+        background-color: $first-color;
+        padding: 10px;
+        margin-right: 40px;
+        border-radius: 9%;
+
+        &:hover {
+            background-color: $first-color-alt;
+        }
+
+        // @include breakpoint(md-only) {
+        //     width: 50px;
+        //     margin-right: 20px;
+        // }
+
+        & i {
+            color: $body-color;
+            font-size: 20px;
+
+            // @include breakpoint(md-only) {
+            //     font-size: 15px;
+            // }
+        }
+    }
+}
+
+.cart_button__counter {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 40px;
+
+    // @include breakpoint(md-only) {
+    //     margin-right: 20px;
+    // }
+
+    & button {
+        background-color: $first-color-lighten;
+        margin: 0;
+
+        &:hover {
+            background-color: $first-color;
+        }
+    }
+
+    & span {
+        margin: auto 15px;
+        color: black;
+    }
 }

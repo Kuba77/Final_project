@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import { useHistory } from "react-router-dom";
 import { CgMenuRight, CgClose } from "react-icons/cg";
 import classes from "./Header.module.scss"
 import Nav from "./Nav/Nav";
@@ -28,6 +29,11 @@ const Header = () => {
         <CgClose onClick={handleMenuToggle} />
     );
 
+    const history = useHistory();
+    const HandleGoToLoginPage = useCallback(()=>{
+        history.push('/login')
+    },[history]);
+
     return (
         <header className={classes.header}>
             <Logo />
@@ -38,6 +44,7 @@ const Header = () => {
                  <Button
                  type="primary"
                  size='s'
+                 onClick={HandleGoToLoginPage}
                   >
                      {"Sign in"}
                  </Button>

@@ -1,20 +1,8 @@
 @import "../../styles/config/variables.scss";
 
 .header {
-  height: $header-height;
-  padding: 0 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  // position: fixed;
-  width: 100%;
-  background: white;
-  box-shadow: $box-shadow;
-  backdrop-filter: blur(5px);
-  z-index: 100;
-  transition: all 0.2s ease;
-
-  &__logo {
+    height: $header-height;
+    padding: 0 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,9 +12,12 @@
     backdrop-filter: blur(5px);
     z-index: 10;
     transition: all 0.2s ease;
+    position: fixed;
+
     
     @include breakpoint(md) {
-      display: none;
+        position: relative;
+        padding: 0 3rem;
     }
     
     &__menu{
@@ -36,7 +27,7 @@
         &__toggle {
             color: white;
             position: relative;
-            z-index: 20;
+            z-index: 40;
             cursor: pointer;
             svg {
                 font-size: 2rem;
@@ -59,7 +50,7 @@
             height: 100vh;
             outline: 0;
             background: black;
-            z-index: 19;
+            z-index: 20;
             transform: translateX(100vw);
             opacity: 0;
             transition: all 0.3s ease;
@@ -69,5 +60,4 @@
             opacity: 1;
         }
     }
-  }
 }
