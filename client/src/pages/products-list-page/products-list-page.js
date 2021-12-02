@@ -14,7 +14,7 @@ function ProductsList() {
     const getProducts = async () => {
       setLoading(true);
       const response = await getAllProducts();
-      setProducts(response.data);
+      setProducts(response);
       setLoading(false);
     };
     getProducts();
