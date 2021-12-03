@@ -3,7 +3,6 @@ import classes from "./Footer.module.scss"
 import logo from "./Footer_img/icon.png"
 import FooterCustomerAreaList from "./FooterCustomerAreaLinks";
 import SubscribeBlock from "./SubscribeBlock";
-import FooterIcons from "./FooterIcons";
 import FooterQuickList from "./FooterQuickLinks";
 
 const Footer = () => {
@@ -20,7 +19,6 @@ const Footer = () => {
                     </div>
                     <p className={classes.footer_block_description}>Clever is a online bookstore website who sells all genres of
                         books from around the world. Find your book here now</p>
-                    <FooterIcons />                      
                 </div>
                 <div className={classes.footer_quick_links}>
                     <p className={classes.footer_quick_links_title}>Quick Links</p>

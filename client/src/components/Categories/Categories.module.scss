@@ -37,26 +37,25 @@
     }
 }
 .categories_module{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
     margin-bottom: 20px;
-    @media screen and (min-width: 320px) and (max-width:721px){
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 48px;
+    grid-row-gap: 15px;
+
+    @media screen and (min-width: 320px) and (max-width:1170px){
+    display: grid;
     margin-bottom: 20px;
-    flex-direction: column;
+    grid-template-columns: 1fr 1fr ;
     }
-    @media screen and (min-width: 320px) and (max-width:380px){
-    display: flex;
-    align-content: center;
-    flex-direction: column;
+    @media screen and (min-width: 320px) and (max-width:764px){
+    display: grid;
     margin-bottom: 20px;
+    grid-template-columns: 1fr;
     }
 }
 
-// BOOKS
 .book_category{
     font-weight: 600;
     font-size: 20px;
@@ -65,34 +64,12 @@
     background-color: #8D28AD;
     padding: 38px 180px 91px 45px;
     border-radius: 30px;
-    margin-top: 20px;
-    max-width: 20%;
-    margin-right: 5px;
-    @media screen and (min-width: 1197px){
-        margin-right: 5px;
+    &:hover{
+        background-color: #b170c5;
+        transition: 0.35s;
     }
     @media screen and (min-width: 320px) and (max-width:734px){
         margin-right: 0;
         max-width: 100%;
     }
-}
-
-// BOOKS CALC
-
-.calc_item{
-    display: flex;
-    margin-top: 10px;
-}
-.calc{
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    color: rgba(255, 255, 255, 0.6);
-}
-.item{
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-left: 10px;
 }

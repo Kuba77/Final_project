@@ -16,11 +16,9 @@ const CartProduct = (props) => {
                 <div className={classes.product_text}>
                     <p className={classes.product_article}>article</p>
                     <h3 className={classes.product_title}>
-                        {/* {product.title} */}
                         title
                     </h3>
                     <p className={classes.product_description}>
-                        {/* {product.description} */}
                         description
                     </p>
                 </div>
@@ -29,9 +27,9 @@ const CartProduct = (props) => {
                 <div className={classes.product_culc}>
                     <div className={classes.cart_button}>
                         <div className={classes.cart_button__counter}>
-                            <button>-</button>
+                            <button className={classes.cart_button_minus}>-</button>
                             <span>1</span>
-                            <button>+</button>
+                            <button className={classes.cart_button_plus}>+</button>
                         </div>                           
                     </div>
                 </div>
