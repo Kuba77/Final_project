@@ -1,5 +1,4 @@
 import React from "react";
-
 import CartProductList from "../../components/Cart/CartProductList";
 import CartHeader from "../../components/Cart/CartHeader";
 import Header from "../../components/Header/Header";

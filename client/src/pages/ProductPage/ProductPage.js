@@ -24,9 +24,8 @@ const ProductPage = () => {
 
     return (
         <React.Fragment>
-            {/* <Header /> */}
+            <Header />
             <Product product={product} />
-            {/* <Footer /> */}
         </React.Fragment>
     )
 };

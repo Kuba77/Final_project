@@ -57,7 +57,7 @@
 }
 
 // BOOKS
-.action_book{
+.book_category{
     font-weight: 600;
     font-size: 20px;
     line-height: 30px;
@@ -66,91 +66,14 @@
     padding: 38px 180px 91px 45px;
     border-radius: 30px;
     margin-top: 20px;
-    @media screen and (min-width: 320px) and (max-width:360px){
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 15px;
+    max-width: 20%;
+    margin-right: 5px;
+    @media screen and (min-width: 1197px){
+        margin-right: 5px;
     }
-}
-.adventure_book{
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;
-    color: #fff;
-    background-color: #8D28AD;
-    padding: 38px 186px 91px 45px;
-    border-radius: 30px;
-    margin-top: 20px;
-    @media screen and (min-width: 320px) and (max-width:360px){
+    @media screen and (min-width: 320px) and (max-width:734px){
+        margin-right: 0;
         max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 15px;
-    }
-}
-.comedy_book{
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;
-    color: #fff;
-    background-color: #8D28AD;
-    padding: 38px 196px 91px 45px;
-    border-radius: 30px;
-    margin-top: 20px;
-    @media screen and (min-width: 320px) and (max-width:360px){
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 15px;
-    }
-}
-.drama_book{
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;
-    color: #fff;
-    background-color: #8D28AD;
-    padding: 38px 196px 91px 45px;
-    border-radius: 30px;
-    margin-top: 20px;
-    @media screen and (min-width: 320px) and (max-width:360px){
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 15px;
-    }
-}
-.romance_book{
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;
-    color: #fff;
-    background-color: #8D28AD;
-    padding: 38px 196px 91px 45px;
-    border-radius: 30px;
-    margin-top: 20px;
-    @media screen and (min-width: 320px) and (max-width:360px){
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 15px;
-    }
-}
-.sports_book{
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;
-    color: #fff;
-    background-color: #8D28AD;
-    padding: 38px 196px 91px 45px;
-    border-radius: 30px;
-    margin-top: 20px;
-    @media screen and (min-width: 320px) and (max-width:360px){
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 15px;
     }
 }
 

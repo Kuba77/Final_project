@@ -1,0 +1,42 @@
+@import '../../../styles/config/variables.scss';
+
+
+
+.swiper-slide{
+    cursor: pointer;
+    width:240px;
+    height:340px;
+        h4{
+            font-size: $normal-font-size;
+            color: black;
+        }
+
+}
+.swiper-slide img{
+    box-shadow: $box-shadow;
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+.swiper-container{
+        padding: 3vh;
+    }
+
+.swiper-pagination-fraction{
+    bottom:0;
+}
+.swiper-pagination-bullet{
+    width:25px;
+    height:5px;
+    border-radius: 5px;
+}
+
+
+.swiper-button-prev,
+.swiper-button-next{
+    
+    color:white;
+}
+
