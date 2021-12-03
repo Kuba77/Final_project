@@ -1,0 +1,36 @@
+@import '../../styles/config/variables.scss';
+
+.main{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+    background-image: url('https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637776201/main-img_m63cid.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center top;
+    box-shadow: $box-shadow;
+
+    &__container{
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        gap:3vh;
+
+            @include breakpoint(md) { 
+                width: 30vw;
+                gap:4vh;    
+            }
+            svg{
+                margin-top: 1px;
+            }
+            h2{
+                color:white;
+                font-size: $medium-font-size;
+                    @include breakpoint(md) {
+                        font-size: $medium-font-size;
+                    }
+            }   
+    }
+}
+

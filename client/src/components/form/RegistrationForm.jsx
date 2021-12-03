@@ -1,33 +1,40 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Formik, Form } from 'formik'
-import * as Yup from 'yup'
 import FormikControl from './FormikControl'
+import classes from "./Form.module.scss"
+import { useDispatch } from "react-redux";
+import { setCustomer, removeCustomer } from "../../store/customer/reducer";
+import { setErors, clearErrors } from "../../store/errors/reducer";
+import { logOrRegisterCustomer, registerCustomer } from "../../api/userApi";
+import { GoogleLogin } from "react-google-login";
+import configData from "../../config/config.json";
 
-function RegistrationForm () {
-  const options = [
-    { key: 'Email', value: 'emailmoc' },
-  ]
-  const initialValues = {
-    email: '',
-    password: '',
-    confirmPassword: '',
-  }
+function RegistrationForm(props) {
+  const { initialValues, validationSchema, onSubmit } = props;
 
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email('Invalid email format')
-      .required('Required'),
-    password: Yup.string()
-      .required('Required')
-      .min(7, "Must be 7 characters or more"),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), ''], 'Passwords must match')
-      .required('Required'),
-  })
+  const dispatch = useDispatch();
 
-  const onSubmit = values => {
-    console.log('Form data', values)
-  }
+  const responseSuccessGoogle = useCallback(
+    async (response) => {
+      try {
+        let customer = await logOrRegisterCustomer(response);
+        if (customer.message) {
+          dispatch(setErors(customer.message));
+        } else {
+          dispatch(setCustomer(customer));
+        }
+      } catch (error) {
+        dispatch(setErors(error.response));
+      }
+    },
+    [dispatch]
+  );
+  const responseErrorGoogle = useCallback(
+    async (response) => {
+      dispatch(setErors(response.message));
+    },
+    [dispatch]
+  );
 
   return (
     <Formik
@@ -37,9 +44,27 @@ function RegistrationForm () {
     >
       {formik => {
         return (
-            <div className="form__wrapper">
-                <h1>Registration form</h1>
+          <div className={classes.form__wrapper}>
+          <h1>Registration form</h1>
           <Form>
+            <FormikControl
+              control='input'
+              type='text'
+              label='Please, enter your first name'
+              name='firstName'
+            />
+            <FormikControl
+              control='input'
+              type='text'
+              label='Please, enter your last name'
+              name='lastName'
+            />
+            <FormikControl
+              control='input'
+              type='text'
+              label='Please, enter your login'
+              name='login'
+            />
             <FormikControl
               control='input'
               type='email'
@@ -58,10 +83,24 @@ function RegistrationForm () {
               label='Confirm Password'
               name='confirmPassword'
             />
-            <div className="button__wrapper">
-            <button className="form__btn" type='submit' disabled={!formik.isValid}>
-              Submit
-            </button>
+            <div className={classes.button__wrapper}>
+              <button className={classes.form__btn} type='submit' disabled={!formik.isValid}>
+                Submit
+              </button>
+              {/* <button
+                className="form__btn"
+                type="button"
+                onClick={() => { dispatch(removeCustomer()); }}
+              >
+                LOGOUT
+              </button> */}
+              <GoogleLogin
+                clientId={configData.REACT_APP_GOOGLE_CLIENT_ID}
+                buttonText="Register with google"
+                onSuccess={responseSuccessGoogle}
+                onFailure={responseErrorGoogle}
+                cookiePolicy={"single_host_origin"}
+              />
             </div>
           </Form>
           </div>
