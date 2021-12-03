@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { setCustomer, removeCustomer } from "../../store/customer/reducer";
-import { setErors, clearErrors } from "../../store/errors/reducer";
+import { setErors, clearErrors} from "../../store/errors/reducer";
 import { logOrRegisterCustomer, registerCustomer } from "../../api/userApi";
-import { ValidationSchema } from "../../components/forms/components/validationSchema";
+import ValidationSchema from "../../components/form/ValidationSchema";
 import RegistrationForm from "../../components/form/RegistrationForm";
 import Header from "../../components/Header/Header"
 
@@ -21,7 +21,8 @@ const RegistrationPage = () => {
                     dispatch(clearErrors());
                 }
             } catch (err) {
-                dispatch(setErors(err.response));
+                dispatch(console.log(setErors(err.response)));
+
             }
         },
         [dispatch]
@@ -45,7 +46,7 @@ const RegistrationPage = () => {
     return (
         <>
             <Header />
-                <RegistrationForm initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} />
+                <RegistrationForm initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} />  
         </>
     );
 };

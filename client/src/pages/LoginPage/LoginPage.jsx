@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logOrRegisterCustomer, loginCustomer } from "../../api/userApi";
+import { loginCustomer } from "../../api/userApi";
 import { setErors, clearErrors } from "../../store/errors/reducer";
 import { setCustomer } from "../../store/customer/reducer";
-import { ValidationSchema } from "../../components/forms/components/validationSchema";
+import ValidationSchema from "../../components/form/ValidationSchema";
 import LoginForm from "../../components/form/LoginForm";
 import Header from "../../components/Header/Header"
 
@@ -16,7 +16,7 @@ const LoginPage = () => {
     async (values) => {
       try {
         let customer = await loginCustomer(values);
-        if (customer.loginOrEmail) {
+        if (customer.email) {
           dispatch(setErors(customer));
         } else {
           dispatch(setCustomer(customer));

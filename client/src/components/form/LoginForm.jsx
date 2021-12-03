@@ -5,7 +5,7 @@ import classes from "./Form.module.scss"
 import { useDispatch } from "react-redux";
 import { setCustomer, removeCustomer } from "../../store/customer/reducer";
 import { setErors, clearErrors } from "../../store/errors/reducer";
-import { logOrRegisterCustomer, registerCustomer } from "../../api/userApi";
+import { logOrRegisterCustomer} from "../../api/userApi";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
 
