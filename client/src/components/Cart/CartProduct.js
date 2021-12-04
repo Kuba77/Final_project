@@ -23,9 +23,9 @@ const CartProduct = (props) => {
                     </p>
                 </div>
             </div>
-            <div className={classes.product_culc_and_price}>
+            {/* <div className={classes.product_culc_and_price}> */}
                 <div className={classes.product_culc}>
-                    <div className={classes.cart_button}>
+                    <div className={classes.cart_button_prod}>
                         <div className={classes.cart_button__counter}>
                             <button className={classes.cart_button_minus}>-</button>
                             <span>1</span>
@@ -40,9 +40,10 @@ const CartProduct = (props) => {
                 <div className={classes.product_total_price}>
                     <p>$</p>
                     <p>50</p>
+                    <MdRemoveShoppingCart className={classes.product_remove_icon} />
                 </div>
-                <MdRemoveShoppingCart className={classes.product_remove_icon} />
-            </div>
+                
+            {/* </div> */}
 
         </div>
     )
