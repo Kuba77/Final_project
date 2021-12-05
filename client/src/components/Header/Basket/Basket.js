@@ -7,6 +7,7 @@ import classes from './Basket.module.scss'
 
 const Basket = () => {
 
+
     return (
         <div className={classes.header__cart}>
             <Counter quantity={2}/>

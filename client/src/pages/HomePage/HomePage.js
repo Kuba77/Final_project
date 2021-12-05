@@ -5,6 +5,7 @@ import Feature from '../../components/Feature/Feature';
 import Categories from '../../components/Categories/Categories'
 import Footer from '../../components/Footer/Footer';
 
+
 const HomePage = () => {
     return (
         <>
