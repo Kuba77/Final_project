@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import { createSlice } from '@reduxjs/toolkit';
-
-=======
 import { createSlice } from "@reduxjs/toolkit";
->>>>>>> MisyatsDenisBranch
 
 const initialState = {
   itemsInCart: [],
@@ -27,12 +22,6 @@ const cartSlice = createSlice({
   },
 });
 
-<<<<<<< HEAD
-export const { setItemInCart, deleteItemFromCart, clearCart} = cartSlice.actions;
-export const selectCart = state => state.itemsInCart.book
-export default cartSlice.reducer;
-=======
 export const { setItemInCart, deleteItemFromCart, clearCart } =
   cartSlice.actions;
 export default cartSlice.reducer;
->>>>>>> MisyatsDenisBranch
