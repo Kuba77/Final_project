@@ -24,8 +24,8 @@ const ProductDetails = (props) => {
                     <p>{props.product.book_format}</p>
                     <p>{props.product.date_published}</p>
                     <p>{props.product.publisher}</p>
-                    <p>{props.product.genre.map((item, i, index) => (
-                        <span key={index}> {item}{i !== (props.product.genre.length-1) ? ',' : ''}</span>
+                    <p>{props.product.genre.map((item, index) => (
+                        <span key={index}> {item}{index !== (props.product.genre.length-1) ? ',' : ''}</span>
                     ))}</p>
                 </div>
 

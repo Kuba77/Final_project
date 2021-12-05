@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback} from "react";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../api/productsApi";
 import { useDispatch } from "react-redux";
@@ -14,10 +14,9 @@ import Button from "../Button/Button";
 
 const Product = () => {
   let { productId } = useParams();
-
   const dispatch = useDispatch();
-
   const [product, setProduct] = useState({});
+  const [toggle, setToggle] = useState(0)
 
   function addToCart(info) {
     try {
@@ -29,26 +28,12 @@ const Product = () => {
 
   const getProduct = useCallback(async () => {
     const products = await getSelectedProduct(productId);
-    console.log(products);
     setProduct(products);
   }, [setProduct]);
 
   useEffect(() => {
     getProduct();
   }, []);
-
-  function changeProductImg(event) {
-    if (
-      event.target.id === "0" ||
-      event.target.id === "1" ||
-      event.target.id === "2" ||
-      event.target.id === "3"
-    ) {
-      let mainImg = document.getElementById("gallery_item__large");
-      let iconImg = event.target.getAttribute("src");
-      mainImg.setAttribute("src", iconImg);
-    }
-  }
 
   return (
     <React.Fragment>
@@ -94,21 +79,20 @@ const Product = () => {
               <div className={classes.product_img}>
                 <div className={classes.product_img__large}>
                   <ProductImg
-                    id="gallery_item__large"
                     className={classes.gallery_item__large}
-                    item={product.imageUrls[0]}
+                    item={product.imageUrls[toggle]}
                     alt={product.name}
                   />
                 </div>
 
-                <div className={classes.gallery} onClick={changeProductImg}>
+                <div className={classes.gallery}>
                   {product.imageUrls.map((item, index) => (
                     <ProductImg
-                      id={index}
                       key={index}
                       className={classes.gallery__item}
                       item={item}
                       alt={product.name}
+                      onClick={() => setToggle(index)}
                     />
                   ))}
                 </div>
