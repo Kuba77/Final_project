@@ -47,11 +47,16 @@
     margin-bottom: 20px;
     grid-template-columns: 1fr 1fr ;
     }
-    @media screen and (min-width: 320px) and (max-width:764px){
+    @media screen and (min-width: 370px) and (max-width:764px){
     display: grid;
     margin-bottom: 20px;
     grid-template-columns: 1fr;
     }
+    @media screen and (min-width: 320px) and (max-width:369px){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 }
 
 .book_category{
