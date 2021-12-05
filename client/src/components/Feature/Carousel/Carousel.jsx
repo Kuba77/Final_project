@@ -19,7 +19,7 @@ const Carousel = () => {
         navigation={true}
         effect={"coverflow"}
         centeredSlides={true}
-        slidesPerView={window.innerWidth < 768 ? 1 : "auto"}
+        slidesPerView={window.innerWidth < 768 ? 3 : "auto"}
         loop={true}
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         coverflowEffect={{

@@ -1,0 +1,45 @@
+@import '../../../styles/config/variables.scss';
+
+.content__container{
+
+    width: 100%;
+    min-height: 6em;
+    display: flex;
+    border-bottom: 2px solid #d8d8d852;
+    padding: 6px 8px;
+    align-items: center;
+    z-index: 2;
+        
+        &:hover{
+            cursor: pointer;
+            background-color: rgb(248, 247, 247);
+        }
+
+        &_item{
+            width: auto;
+            height: 100%;
+            display: flex;
+            flex: 0.4;
+
+            &_title{
+                font-size: 15px;
+                color: #000;
+                margin-left: 10px;
+                flex: 2;
+                display: flex; 
+            }
+            &_price{
+                color: #a1a1a1;
+                font-size: 16px;
+                display: flex;
+                flex: 0.2;
+            }
+
+            img {
+                width: auto;
+                height: 100%;
+              }
+        }
+
+    
+}
