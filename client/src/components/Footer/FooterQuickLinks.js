@@ -6,10 +6,6 @@ const FooterQuickList = () =>{
     return(
         <>
             <FooterLink 
-                name={"About us"}
-                to={"/about"}
-            />
-            <FooterLink 
                 name={"Contact us"}
                 to={"/contact"}
             />
