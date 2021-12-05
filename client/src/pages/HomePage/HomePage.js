@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import Main from '../../components/Main/Main';
 import Feature from '../../components/Feature/Feature';
-import Categories from '../../components/Categories/Categories'
+// import Categories from '../../components/Categories/Categories'
 import Footer from '../../components/Footer/Footer';
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
             <Header/>
             <Main/>
             <Feature />
-            <Categories />
+            {/* <Categories /> */}
             <Footer />
         </>
     )

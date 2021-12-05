@@ -1,23 +1,19 @@
 import React, { useEffect, useState, useCallback } from "react";
-import classes from "./Product.module.scss";
-import "./Product.module.scss";
-
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../api/productsApi";
-import Image from "../Image/Image";
 import { useDispatch } from "react-redux";
-
 import { setItemInCart } from "../../store/cart/reducer";
+import ProductTitle from "./ProductTitle/ProductTitle";
+import ProductAutor from "./ProductAutor/ProductAutor";
+import ProductDescription from "./ProductDescription/ProductDescription";
+import ProductPriceBlock from "./ProductPriceBlock/ProductPriceBlock";
+import ProductDetails from "./ProductDetails/ProductDetails";
+import ProductImg from "./ProductImg/ProductImg";
+import classes from "./Product.module.scss";
+import Button from "../Button/Button";
 
-<<<<<<< HEAD
-                    <div className={classes.title_block}>
-                        <h2 className={classes.product_info__title}>{props.product.title}</h2>
-                        <h5 className={classes.product_info__autor}>{props.product.author}</h5>
-                    </div>
-=======
 const Product = () => {
   let { productId } = useParams();
->>>>>>> MisyatsDenisBranch
 
   const dispatch = useDispatch();
 
@@ -43,9 +39,10 @@ const Product = () => {
 
   function changeProductImg(event) {
     if (
-      event.target.id == "1" ||
-      event.target.id == "2" ||
-      event.target.id == "3"
+      event.target.id === "0" ||
+      event.target.id === "1" ||
+      event.target.id === "2" ||
+      event.target.id === "3"
     ) {
       let mainImg = document.getElementById("gallery_item__large");
       let iconImg = event.target.getAttribute("src");
@@ -55,70 +52,63 @@ const Product = () => {
 
   return (
     <React.Fragment>
+
       {!!product.name && (
         <div>
           <div className={classes.product__header}>
-            <p>Home/Books/{product.name}</p>
+            <p><Link to="/">Home</Link>/ <Link to="/products">Books</Link>/{product.name}</p>
           </div>
 
           <div className={classes.product_block}>
+
             <div className={classes.product_block__main}>
+
               <div className={classes.title_block}>
-                <h2 className={classes.product_info__title}>{product.name}</h2>
-                <h5 className={classes.product_info__autor}>
-                  {product.author}
-                </h5>
+                <ProductTitle className={classes.product_info__title} title={product.name} />
+                <ProductAutor className={classes.product_info__author} author={product.author} />
               </div>
 
               <div className={classes.product_info}>
-                <p className={classes.product_info__text}>
-                  {product.description}
-                </p>
 
-                <div className={classes.price_block}>
-                  <p className={classes.product_info__price}>
-                    &#36; {product.currentPrice}
-                  </p>
-                  <p className={classes.product_info__store}>
-                    In stock {product.quantity}
-                  </p>
-                </div>
+                <ProductDescription className={classes.product_info__text} description={product.description} />
+                <ProductPriceBlock product={product} />
 
                 <div className={classes.product_button}>
-                  <div className={classes.product_button__counter}>
-                    <button>-</button>
-                    <span>1</span>
-                    <button>+</button>
-                  </div>
-                  <button
+                  <Button type="main"
                     onClick={() => {
                       addToCart(product);
                     }}
-                  >
-                    <i className="fas fa-shopping-cart"></i>
-                  </button>
-                  <button>
-                    <i className="fas fa-heart"></i>
-                  </button>
+                  ><i className="fas fa-shopping-cart"></i>
+                  </Button>
+
+                  <Button type="main"
+                  // onClick={() => {
+                  //   addToFavorite(product);
+                  // }}
+                  ><i className="fas fa-heart"></i>
+                  </Button>
+
                 </div>
               </div>
 
               <div className={classes.product_img}>
                 <div className={classes.product_img__large}>
-                  <Image
+                  <ProductImg
                     id="gallery_item__large"
-                    className="gallery_item__large"
+                    className={classes.gallery_item__large}
                     item={product.imageUrls[0]}
+                    alt={product.name}
                   />
                 </div>
 
                 <div className={classes.gallery} onClick={changeProductImg}>
                   {product.imageUrls.map((item, index) => (
-                    <Image
+                    <ProductImg
                       id={index}
                       key={index}
                       className={classes.gallery__item}
                       item={item}
+                      alt={product.name}
                     />
                   ))}
                 </div>
@@ -127,41 +117,26 @@ const Product = () => {
 
             <h3 className={classes.product_block__title}>Details</h3>
 
-            <div className={classes.product_block__details}>
-              <div className={classes.product_categories}>
-                <p>Book Title</p>
-                <p>Author</p>
-                <p>Product Code</p>
-                <p>Book Format</p>
-                <p>Date Published</p>
-                <p>Date Published</p>
-                <p>Genre</p>
-              </div>
+            <ProductDetails product={product} />
 
-              <div className={classes.product_data}>
-                <p>{product.name}</p>
-                <p>{product.author}</p>
-                <p>{product.itemNo}</p>
-                <p>{product.book_format}</p>
-                <p>{product.date_published}</p>
-                <p>{product.publisher}</p>
-                {product.genre.map((item, index) => (
-                  <p key={index}>{item}</p>
-                ))}
-              </div>
+            <h3 className={classes.product_block__title} id="review">Customer Reviews</h3>
+
+            <div className={classes.product_block__review}>
+              <form >
+                <textarea id="review" name="Textarea" placeholder="Please, live your comment here..."></textarea>
+                <div className={classes.review__buttons}>
+                  <Button type="main" size="m"
+                  // onClick={() => {
+                  // }}
+                  >Reset</Button>
+                  <Button type="main" size="m"
+                  // onClick={() => {
+                  // }}
+                  >Send</Button>
+                </div>
+              </form>
+
             </div>
-
-            {/* <h3 className={classes.product_block__title} id="review">Customer Reviews</h3>
-
-                <div className={classes.product_block__review}>
-                    <form >
-                        <textarea name="Textarea" placeholder="Live your comment here..."></textarea>
-                        <div className={classes.review__buttons}>
-                            <button type="reset">Reset</button>
-                            <button type="submit">Send</button>
-                        </div>
-                    </form>
-                </div> */}
           </div>
         </div>
       )}
