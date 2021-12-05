@@ -11,6 +11,7 @@ export const customerName = createSelector(
   (customerData) => customerData.firstName
 );
 
+
 const bazeErors = (state) => state.errors;
 const errorsData = createSelector([bazeErors], (errors) => errors.errorsData);
 
@@ -18,3 +19,9 @@ export const errorloginOrEmail = createSelector(
   [errorsData],
   (errorsData) => errorsData.loginOrEmail
 );
+
+export const errorMessage = createSelector(
+  [errorsData],
+  (errorsData) => errorsData
+);
+

@@ -1,5 +1,7 @@
+import classNames from 'classnames'
 import React from 'react'
 import Input from './components/Input'
+import classes from "./Form.module.scss"
 
 
 
@@ -8,7 +10,7 @@ function FormikControl(props) {
     
    switch(control) {
        case 'input': 
-       return <Input {...rest} />
+       return <Input className={classes.form__input} {...rest} />
         default: return null
    }
 }

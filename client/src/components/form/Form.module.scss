@@ -11,14 +11,13 @@
 
 }
 
-label {
+.form__label {
     font-weight: bold;
     display: flex;
     margin-bottom: 5px;
 }
 
-input,
-textarea{
+.form__input{
     display: block;
     width: 100%;
     padding: 6px 12px;
@@ -29,7 +28,8 @@ textarea{
     border-radius: 4px;
 }
 .form__btn{
-    padding: 15px 20px;
+    padding: 0.9375rem 1.25rem;
+    margin-right: 1%;
     background-color: $first-color;
     color: #fff;
     border-radius: 4px;
@@ -37,14 +37,22 @@ textarea{
 .button__wrapper{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .form__control{
     margin: 20px 0px;
     color: rgba(0, 0, 0, 0.35);
 }
+.form__link{
+    color: $first-color;
+    margin-left: 1%;
+}
 
 .error {
     color: red;
     text-align: left;
+}
+button:disabled{
+    background-color: $first-color-disabled;
 }

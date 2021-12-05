@@ -6,6 +6,9 @@ import { setCustomer } from "../../store/customer/reducer";
 import ValidationSchema from "../../components/form/ValidationSchema";
 import LoginForm from "../../components/form/LoginForm";
 import Header from "../../components/Header/Header"
+import Footer from "../../components/Footer/Footer";
+import { Formik } from "formik";
+
 
 
 const LoginPage = () => {
@@ -29,16 +32,6 @@ const LoginPage = () => {
     [dispatch]
   );
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     loginOrEmail: "",
-  //     password: "",
-  //   },
-  //   onSubmit: (values) => {
-  //     singIn(values);
-  //   },
-  // });
-
   const initialValues = {
     email: '',
     password: '',
@@ -51,11 +44,13 @@ const LoginPage = () => {
   }
 
   return (
+  
     <>
       <Header />
         <LoginForm initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} />
         {/* <h2> Welcome back {customerName(store)}</h2>
         <h2>{errorloginOrEmail(store)}</h2> */}
+         <Footer /> 
     </>
   );
 };

@@ -1,10 +1,11 @@
 import React, {useCallback} from 'react'
 import { Formik, Form } from 'formik'
+import { Link } from "react-router-dom";
 import FormikControl from './FormikControl'
 import classes from "./Form.module.scss"
 import { useDispatch } from "react-redux";
-import { setCustomer, removeCustomer } from "../../store/customer/reducer";
-import { setErors, clearErrors } from "../../store/errors/reducer";
+import { setCustomer} from "../../store/customer/reducer";
+import { setErors} from "../../store/errors/reducer";
 import { logOrRegisterCustomer} from "../../api/userApi";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
@@ -45,6 +46,7 @@ function LoginForm(props) {
       onSubmit={onSubmit}
     >
       {formik => {
+        console.log('Formik props', formik)
         return (
           <div className={classes.form__wrapper}>
             <h1>Login form</h1>
@@ -62,16 +64,9 @@ function LoginForm(props) {
                 name='password'
               />
               <div className={classes.button__wrapper}>
-                <button className={classes.form__btn} type='submit' disabled={!formik.isValid}>
+                <button  className={classes.form__btn} type='submit' disabled={!formik.isValid}>
                   Submit
                 </button>
-                {/* <button
-                className="form__btn"
-                type="button"
-                onClick={() => { dispatch(removeCustomer()); }}
-              >
-                LOGOUT
-              </button> */}
                 <GoogleLogin
                   clientId={configData.REACT_APP_GOOGLE_CLIENT_ID}
                   buttonText="Login with google"
@@ -79,6 +74,7 @@ function LoginForm(props) {
                   onFailure={responseErrorGoogle}
                   cookiePolicy={"single_host_origin"}
                 />
+                  <Link className={classes.form__link} to="/registration">Go to register page</Link>
               </div>
             </Form>
           </div>

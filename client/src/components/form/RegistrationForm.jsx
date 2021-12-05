@@ -1,16 +1,17 @@
 import React, { useCallback } from 'react'
-import { Formik, Form } from 'formik'
+import { Formik, Form} from 'formik'
 import FormikControl from './FormikControl'
 import classes from "./Form.module.scss"
 import { useDispatch } from "react-redux";
 import { setCustomer, removeCustomer } from "../../store/customer/reducer";
-import { setErors, clearErrors } from "../../store/errors/reducer";
-import { logOrRegisterCustomer, registerCustomer } from "../../api/userApi";
+import { setErors} from "../../store/errors/reducer";
+import { logOrRegisterCustomer} from "../../api/userApi";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
+import TextError from './components/TextError';
 
 function RegistrationForm(props) {
-  const { initialValues, validationSchema, onSubmit } = props;
+  const { initialValues, validationSchema, onSubmit,  errorMessage} = props;
 
   const dispatch = useDispatch();
 
@@ -71,6 +72,7 @@ function RegistrationForm(props) {
               label='Email'
               name='email'
             />
+            <TextError>{errorMessage}</TextError>
             <FormikControl
               control='input'
               type='password'
