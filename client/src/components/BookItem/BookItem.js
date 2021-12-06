@@ -6,7 +6,7 @@ const BookItem = (props) => {
     const {imageSrc, title, price, author} = props;
 
     return (
-        <Link to=''>
+        <Link to={`/product/${itemNo}`}>
             <div className={classes.collection__item}>
                 <div className={classes.collection__item_img}>
                     <img src={imageSrc} alt={title}/>   
