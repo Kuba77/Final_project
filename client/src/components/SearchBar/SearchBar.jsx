@@ -62,7 +62,7 @@ const SearchBar = () => {
     useDebounce(searchQuery, 500, searchBooks)
 
     return (
-        <motion.div animate={isExpanded ? {height:'20em'}: {height:'3.8em'}} ref={parentRef} className={classes.search__container}>
+        <motion.div animate={isExpanded ? {height:'20em', zIndex:'99'}: {height:'3.3em'}} ref={parentRef} className={classes.search__container}>
             <div className={classes.search__input_container}>
                 <IoSearch className={classes.search__icon}/>
                 <input ref={inputRef} type='text' placeholder='search for manga' onFocus={expandContainer} onChange={changeHandler} value={searchQuery}/>
@@ -77,7 +77,7 @@ const SearchBar = () => {
                         </button>
                     )}
             </div>
-            <div className={classes.search__content_separator}></div>
+
             <div className={classes.search__content}>
                 {isLoading && (
                     <div className={classes.search__content_loader}>

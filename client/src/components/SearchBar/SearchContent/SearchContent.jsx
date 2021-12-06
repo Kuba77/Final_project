@@ -8,7 +8,7 @@ const SearchContent = (props) => {
     return(
         <div className={classes.content__container}>
             <div className={classes.content__container_item}>
-                <img src={imageSrc}/>
+                <img src={imageSrc} alt={title}/>
             </div>
             <div className={classes.content__container_item_title}>
                 {title}
