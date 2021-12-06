@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ProductsItem from "../../components/Products/Products-item/Products-item";
 import classes from "./products-list-page.module.scss";
 import Pagination from "../../components/Products/Pagination/Pagination";
-import { getAllProducts } from "../../api/productsApi";
+import {
+  getAllProducts,
+  getFilteredProductByQuery,
+} from "../../api/productsApi";
 
-
+import { chekingArray } from "../../utils/test";
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -12,15 +15,43 @@ function ProductsList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsInPage] = useState(12);
 
+  const [genderSelected, setgenderSelected] = useState([]);
+
+  function getselectedGenre(value) {
+    const selected = chekingArray(genderSelected, value);
+    console.log(selected);
+    setgenderSelected(selected);
+  }
+
+  const getGenderProducts = useCallback(
+    async (value) => {
+      let params = new URLSearchParams();
+      params.append("genre", value);
+      let string = params.toString();
+      const products = await getFilteredProductByQuery(string);
+      setProducts(products.products);
+    },
+    [setProducts]
+  );
+
   useEffect(() => {
-    const getProducts = async () => {
-      setLoading(true);
-      const response = await getAllProducts();
-      setProducts(response);
-      setLoading(false);
-    };
-    getProducts();
-  }, []);
+    let GenString = genderSelected.join();
+    getGenderProducts(GenString);
+  }, [genderSelected]);
+
+  const getProducts = useCallback(async () => {
+    setLoading(true);
+    const products = await getAllProducts();
+    setProducts(products);
+    setLoading(false);
+  }, [setProducts]);
+
+  useEffect(() => {
+    if (genderSelected.length === 0) {
+      getProducts();
+    }
+  }, [genderSelected]);
+
   const lastProductIndex = currentPage * productsInPage;
   const firstProductIndex = lastProductIndex - productsInPage;
   const currentProduct = products.slice(firstProductIndex, lastProductIndex);
@@ -30,7 +61,65 @@ function ProductsList() {
   };
   return (
     <div className={classes.content}>
-      <h2>Manga</h2>
+      <div>
+        <label>
+          action
+          <input
+            type="checkbox"
+            name="Action"
+            onChange={(e) => {
+              getselectedGenre(e.target.name);
+            }}
+          />
+        </label>
+        <label>
+          drama
+          <input
+            type="checkbox"
+            name="Drama"
+            onChange={(e) => {
+              getselectedGenre(e.target.name);
+            }}
+          />
+        </label>
+        <label>
+          romance
+          <input
+            type="checkbox"
+            name="Romance"
+            onChange={(e) => {
+              getselectedGenre(e.target.name);
+            }}
+          />
+        </label>
+        <label>
+          Supernatural
+          <input
+            type="checkbox"
+            name="Supernatural"
+            onChange={(e) => {
+              getselectedGenre(e.target.name);
+            }}
+          />
+        </label>
+        <label>
+          Adventure
+          <input
+            type="checkbox"
+            name="Adventure"
+            onChange={(e) => {
+              getselectedGenre(e.target.name);
+            }}
+          />
+        </label>
+      </div>
+      <h2
+        onClick={() => {
+          console.log(genderSelected);
+        }}
+      >
+        Manga
+      </h2>
       <ProductsItem products={currentProduct} loading={loading} />
       <Pagination
         productsInPage={productsInPage}
