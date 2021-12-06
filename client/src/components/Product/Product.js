@@ -14,10 +14,9 @@ import Button from "../Button/Button";
 
 const Product = () => {
   let { productId } = useParams();
-
   const dispatch = useDispatch();
-
   const [product, setProduct] = useState({});
+  const [toggle, setToggle] = useState(0);
 
   function addToCart(info) {
     try {
@@ -29,7 +28,6 @@ const Product = () => {
 
   const getProduct = useCallback(async () => {
     const products = await getSelectedProduct(productId);
-    console.log(products);
     setProduct(products);
   }, [setProduct]);
 
@@ -37,78 +35,75 @@ const Product = () => {
     getProduct();
   }, []);
 
-  function changeProductImg(event) {
-    if (
-      event.target.id === "0" ||
-      event.target.id === "1" ||
-      event.target.id === "2" ||
-      event.target.id === "3"
-    ) {
-      let mainImg = document.getElementById("gallery_item__large");
-      let iconImg = event.target.getAttribute("src");
-      mainImg.setAttribute("src", iconImg);
-    }
-  }
-
   return (
     <React.Fragment>
-
       {!!product.name && (
         <div>
           <div className={classes.product__header}>
-            <p><Link to="/">Home</Link>/ <Link to="/products">Books</Link>/{product.name}</p>
+            <p>
+              <Link to="/">Home</Link>/ <Link to="/products">Books</Link>/
+              {product.name}
+            </p>
           </div>
 
           <div className={classes.product_block}>
-
             <div className={classes.product_block__main}>
-
               <div className={classes.title_block}>
-                <ProductTitle className={classes.product_info__title} title={product.name} />
-                <ProductAutor className={classes.product_info__author} author={product.author} />
+                <ProductTitle
+                  className={classes.product_info__title}
+                  title={product.name}
+                />
+                <ProductAutor
+                  className={classes.product_info__author}
+                  author={product.author}
+                />
               </div>
 
               <div className={classes.product_info}>
-
-                <ProductDescription className={classes.product_info__text} description={product.description} />
+                <ProductDescription
+                  className={classes.product_info__text}
+                  description={product.description}
+                />
                 <ProductPriceBlock product={product} />
 
                 <div className={classes.product_button}>
-                  <Button type="main"
+                  <Button
+                    type="main"
                     onClick={() => {
                       addToCart(product);
                     }}
-                  ><i className="fas fa-shopping-cart"></i>
+                  >
+                    <i className="fas fa-shopping-cart"></i>
                   </Button>
 
-                  <Button type="main"
-                  // onClick={() => {
-                  //   addToFavorite(product);
-                  // }}
-                  ><i className="fas fa-heart"></i>
+                  <Button
+                    type="main"
+                    // onClick={() => {
+                    //   addToFavorite(product);
+                    // }}
+                  >
+                    <i className="fas fa-heart"></i>
                   </Button>
-
                 </div>
               </div>
 
               <div className={classes.product_img}>
                 <div className={classes.product_img__large}>
                   <ProductImg
-                    id="gallery_item__large"
                     className={classes.gallery_item__large}
-                    item={product.imageUrls[0]}
+                    item={product.imageUrls[toggle]}
                     alt={product.name}
                   />
                 </div>
 
-                <div className={classes.gallery} onClick={changeProductImg}>
+                <div className={classes.gallery}>
                   {product.imageUrls.map((item, index) => (
                     <ProductImg
-                      id={index}
                       key={index}
                       className={classes.gallery__item}
                       item={item}
                       alt={product.name}
+                      onClick={() => setToggle(index)}
                     />
                   ))}
                 </div>
@@ -119,23 +114,36 @@ const Product = () => {
 
             <ProductDetails product={product} />
 
-            <h3 className={classes.product_block__title} id="review">Customer Reviews</h3>
+            <h3 className={classes.product_block__title} id="review">
+              Customer Reviews
+            </h3>
 
             <div className={classes.product_block__review}>
-              <form >
-                <textarea id="review" name="Textarea" placeholder="Please, live your comment here..."></textarea>
+              <form>
+                <textarea
+                  id="review"
+                  name="Textarea"
+                  placeholder="Please, live your comment here..."
+                ></textarea>
                 <div className={classes.review__buttons}>
-                  <Button type="main" size="m"
-                  // onClick={() => {
-                  // }}
-                  >Reset</Button>
-                  <Button type="main" size="m"
-                  // onClick={() => {
-                  // }}
-                  >Send</Button>
+                  <Button
+                    type="main"
+                    size="m"
+                    // onClick={() => {
+                    // }}
+                  >
+                    Reset
+                  </Button>
+                  <Button
+                    type="main"
+                    size="m"
+                    // onClick={() => {
+                    // }}
+                  >
+                    Send
+                  </Button>
                 </div>
               </form>
-
             </div>
           </div>
         </div>

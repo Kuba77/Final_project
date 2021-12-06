@@ -33,7 +33,17 @@ export async function getFilteredProductByCategory(value) {
     return e.message;
   }
 }
-
+export async function getFilteredProductByQuery(value) {
+  try {
+    return await axios
+      .get(`${configData.FILTERED_PRODUCT_URL}${value}`)
+      .then((res) => {
+        return res.data;
+      });
+  } catch (e) {
+    return e.message;
+  }
+}
 
 export async function getSearchProduct(value) {
   try {
