@@ -8,12 +8,9 @@ const CartHeader = () => {
     return(
         <>
             <div className={classes.block_cart}>
-                <div className={classes.block_cart_left}>
                     <CartItemHeader 
                             name="Item"
                         />
-                </div>
-                <div className={classes.block_cart_right}>
                     <CartItemHeader 
                             name="Quantity"
                         />
@@ -23,7 +20,6 @@ const CartHeader = () => {
                     <CartItemHeader 
                             name="Total Price"
                         />
-                </div>
             </div>
         </>
     )

@@ -21,8 +21,6 @@ function FormSubscribe() {
             >
                 {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
                     <div className={classes.footer_books_subscribe_block_email}>
-
-                        <label className={classes.footer_label_subscribe} htmlFor={"email"}></label><br />
                         <input
                             className={classes.footer_input_subscribe}
                             type={"email"}
@@ -32,9 +30,7 @@ function FormSubscribe() {
                             onBlur={handleBlur}
                             value={values.email}
                         />
-
                         {touched.email && errors.email && <p className={classes.error}> {errors.email}</p>}
-
                         <button
                             className={classes.footer_button_sumbmit}
                             disabled={!isValid && !dirty}
