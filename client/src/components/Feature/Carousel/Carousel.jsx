@@ -36,27 +36,27 @@ const Carousel = () => {
       >
         <SwiperSlide>
           <div>
-             <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637705954/hell_ldxazp.jpg" />
+             <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637705954/hell_ldxazp.jpg" alt={1} />
             <h4>Manga title</h4>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697909/xxxholic_fekubs.jpg"/>
+          <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697909/xxxholic_fekubs.jpg" alt={2}/>
           <h4>Manga title</h4>
         </SwiperSlide>
 
         <SwiperSlide>
-          <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Gantz3_oex07v.jpg"/>
+          <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Gantz3_oex07v.jpg" alt={3}/>
           <h4>Manga title</h4>
         </SwiperSlide>
         <SwiperSlide>
         
-          <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/Berserk2_srstgu.jpg"/>
+          <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/Berserk2_srstgu.jpg" alt={4}/>
           <h4>Manga title</h4>
         </SwiperSlide>
         <SwiperSlide>
         
-        <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697890/ShingekinoKyojin2_fdicyy.jpg"/>
+        <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697890/ShingekinoKyojin2_fdicyy.jpg" alt={5}/>
         <h4>Manga title</h4>
       </SwiperSlide>
     

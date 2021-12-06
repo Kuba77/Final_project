@@ -5,11 +5,15 @@
     align-items: center;
     width: 100%;
     height: 60vh;
-    background-image: url('https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637776201/main-img_m63cid.jpg');
+    background-image: url('https://res.cloudinary.com/dl7xlw7cl/image/upload/v1638784698/hero_img_auj8wy.jpg');
     background-repeat: no-repeat;
     background-size:cover;
-    background-position: center top;
+    background-position: center;
     box-shadow: $box-shadow;
+
+    @include breakpoint(sm-only){
+        background-position: right center;
+    }
 
     &__container{
         width: 50vw;
@@ -31,7 +35,9 @@
                         font-size: $medium-font-size;
                     }
                     @include breakpoint(sm-only) {
+                        width: 40vw;
                         font-size: 2rem;
+                        white-space: pre-wrap;
                     }
             }   
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./pagination.module.scss";
-const Pagination = ({ productsInPage, totalProducts, paginate }) => {
+const Pagination = ({ productsInPage, totalProducts, paginate}) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalProducts / productsInPage); i++) {

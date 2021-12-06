@@ -1,0 +1,31 @@
+@import '../../styles/config/variables.scss';
+
+
+.collection{
+    padding:2vw;
+}
+.collection__container{
+    max-width:1024px;
+    margin: 10vh auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
+    gap:1rem;
+
+        @include breakpoint(md-only){
+            grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+        }
+        @include breakpoint(sm-only){
+            grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+        }
+}
+
+
+.collection__loader{
+    margin-top: 20vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

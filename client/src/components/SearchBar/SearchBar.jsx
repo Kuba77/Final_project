@@ -77,7 +77,7 @@ const SearchBar = () => {
                         </button>
                     )}
             </div>
-            {/* <div className={classes.search__content_separator}></div> */}
+
             <div className={classes.search__content}>
                 {isLoading && (
                     <div className={classes.search__content_loader}>
