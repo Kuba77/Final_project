@@ -1,16 +1,18 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCustomer, removeCustomer } from "../../store/customer/reducer";
+import { useHistory } from "react-router-dom";
+import { setCustomer} from "../../store/customer/reducer";
 import { setErors, clearErrors} from "../../store/errors/reducer";
-import { logOrRegisterCustomer, registerCustomer } from "../../api/userApi";
-import ValidationSchema from "../../components/form/ValidationSchema";
-import RegistrationForm from "../../components/form/RegistrationForm";
+import { registerCustomer } from "../../api/userApi";
+import { RegistrationSchema } from "../../components/Forms/ValidationSchema";
+import RegistrationForm from "../../components/Forms/RegistrationForm";
 import {errorMessage} from "../../store/selectors"
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
 const RegistrationPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const store = useSelector((state) => state);
 
 
@@ -40,11 +42,12 @@ const RegistrationPage = () => {
         password: "",
         confirmPassword: ""
     }
-    const validationSchema = ValidationSchema;
+    const validationSchema = RegistrationSchema;
 
 
     const onSubmit = values => {
         singUp(values);
+        history.push("/");
     }
 
     return (

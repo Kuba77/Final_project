@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import FormikControl from "./FormikControl";
 import classes from "./Form.module.scss";
 import { useDispatch } from "react-redux";
-import { setCustomer, removeCustomer } from "../../store/customer/reducer";
+import { setCustomer} from "../../store/customer/reducer";
 import { setErors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer } from "../../api/userApi";
 import { GoogleLogin } from "react-google-login";
