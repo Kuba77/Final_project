@@ -1,103 +1,155 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import { useParams, Link } from "react-router-dom";
+import { getSelectedProduct } from "../../api/productsApi";
+import { useDispatch } from "react-redux";
+import { setItemInCart } from "../../store/cart/reducer";
+import ProductTitle from "./ProductTitle/ProductTitle";
+import ProductAutor from "./ProductAutor/ProductAutor";
+import ProductDescription from "./ProductDescription/ProductDescription";
+import ProductPriceBlock from "./ProductPriceBlock/ProductPriceBlock";
+import ProductDetails from "./ProductDetails/ProductDetails";
+import ProductImg from "./ProductImg/ProductImg";
 import classes from "./Product.module.scss";
-import "./Product.module.scss";
+import Button from "../Button/Button";
 
-const Product = (props) => {
+const Product = () => {
+  let { productId } = useParams();
+  const dispatch = useDispatch();
+  const [product, setProduct] = useState({});
+  const [toggle, setToggle] = useState(0);
 
-    function changeProductImg(event) {
-        if (event.target.id == "itemA" || event.target.id == "itemB" || event.target.id == "itemC") {
-            let mainImg = document.getElementById("gallery_item__large");
-            let iconImg = event.target.getAttribute("src")
-            mainImg.setAttribute('src', iconImg);
-        }
+  function addToCart(info) {
+    try {
+      dispatch(setItemInCart(info));
+    } catch (error) {
+      console.error(error.message);
     }
+  }
 
-    return (
-        <React.Fragment>
-            <div className={classes.product__header}>
-                <p>Home/Books/{props.product.title}</p>
-            </div>
+  const getProduct = useCallback(async () => {
+    const products = await getSelectedProduct(productId);
+    setProduct(products);
+  }, [setProduct]);
 
-            <div className={classes.product_block}>
+  useEffect(() => {
+    getProduct();
+  }, []);
 
-                <div className={classes.product_block__main}>
+  return (
+    <React.Fragment>
+      {!!product.name && (
+        <div>
+          <div className={classes.product__header}>
+            <p>
+              <Link to="/">Home</Link>/ <Link to="/products">Books</Link>/
+              {product.name}
+            </p>
+          </div>
 
-                    <div className={classes.title_block}>
-                        <h2 className={classes.product_info__title}>{props.product.title}</h2>
-                        <h5 className={classes.product_info__autor}>{props.product.author}</h5>
-                    </div>
+          <div className={classes.product_block}>
+            <div className={classes.product_block__main}>
+              <div className={classes.title_block}>
+                <ProductTitle
+                  className={classes.product_info__title}
+                  title={product.name}
+                />
+                <ProductAutor
+                  className={classes.product_info__author}
+                  author={product.author}
+                />
+              </div>
 
-                    <div className={classes.product_info}>
-                        <p className={classes.product_info__text}>{props.product.description}</p>
+              <div className={classes.product_info}>
+                <ProductDescription
+                  className={classes.product_info__text}
+                  description={product.description}
+                />
+                <ProductPriceBlock product={product} />
 
-                        <div className={classes.price_block}>
-                            <p className={classes.product_info__price}>&#36; {props.product.price}</p>
-                            <p className={classes.product_info__store}>In stock {props.product.storage}</p>
-                        </div>
+                <div className={classes.product_button}>
+                  <Button
+                    type="main"
+                    onClick={() => {
+                      addToCart(product);
+                    }}
+                  >
+                    <i className="fas fa-shopping-cart"></i>
+                  </Button>
 
-                        <div className={classes.product_button}>
-                            <div className={classes.product_button__counter}>
-                                <button>-</button>
-                                <span>1</span>
-                                <button>+</button>
-                            </div>                           
-                            <button><i className="fas fa-shopping-cart"></i></button>
-                            <button><i className="fas fa-heart"></i></button>
-                        </div>
-                    </div>
+                  <Button
+                    type="main"
+                    // onClick={() => {
+                    //   addToFavorite(product);
+                    // }}
+                  >
+                    <i className="fas fa-heart"></i>
+                  </Button>
+                </div>
+              </div>
 
-                    <div className={classes.product_img}>
-                        <div className={classes.product_img__large} ><img id="gallery_item__large" className="gallery_item__large" src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Haikyuu4_goablb.jpg" alt={props.product.title} /></div>
-                        
-                        <div className={classes.gallery} onClick={changeProductImg} >
-                            <img id="itemA" className={classes.gallery__item} src={props.product.img1} alt="Haikyuu!!" />
-                            <img id="itemB" className={classes.gallery__item} src={props.product.img2} alt="Haikyuu!!" />
-                            <img id="itemC" className={classes.gallery__item} src={props.product.img3} alt="Haikyuu!!" />
-                        </div>
-                    </div>
-
+              <div className={classes.product_img}>
+                <div className={classes.product_img__large}>
+                  <ProductImg
+                    className={classes.gallery_item__large}
+                    item={product.imageUrls[toggle]}
+                    alt={product.name}
+                  />
                 </div>
 
-                <h3 className={classes.product_block__title}>Details</h3>
-
-                <div className={classes.product_block__details}>
-                    <div className={classes.product_categories}>
-                        <p>Book Title</p>
-                        <p>Author</p>
-                        <p>Product Code</p>
-                        <p>Book Format</p>
-                        <p>Date Published</p>
-                        <p>Date Published</p>
-                        <p>Genre</p>
-                    </div>
-
-                    <div className={classes.product_data}>
-                        <p>{props.product.title}</p>
-                        <p>{props.product.author}</p>
-                        <p>{props.product.id}</p>
-                        <p>{props.product.book_format}</p>
-                        <p>{props.product.date_published}</p>
-                        <p>{props.product.publisher}</p>
-                        <p>{props.product.genre}</p>
-                    </div>
-
+                <div className={classes.gallery}>
+                  {product.imageUrls.map((item, index) => (
+                    <ProductImg
+                      key={index}
+                      className={classes.gallery__item}
+                      item={item}
+                      alt={product.name}
+                      onClick={() => setToggle(index)}
+                    />
+                  ))}
                 </div>
-
-                {/* <h3 className={classes.product_block__title} id="review">Customer Reviews</h3>
-
-                <div className={classes.product_block__review}>
-                    <form >
-                        <textarea name="Textarea" placeholder="Live your comment here..."></textarea>
-                        <div className={classes.review__buttons}>
-                            <button type="reset">Reset</button>
-                            <button type="submit">Send</button>
-                        </div>
-                    </form>
-                </div> */}
-
+              </div>
             </div>
-        </React.Fragment>
-    )
-}
+
+            <h3 className={classes.product_block__title}>Details</h3>
+
+            <ProductDetails product={product} />
+
+            <h3 className={classes.product_block__title} id="review">
+              Customer Reviews
+            </h3>
+
+            <div className={classes.product_block__review}>
+              <form>
+                <textarea
+                  id="review"
+                  name="Textarea"
+                  placeholder="Please, live your comment here..."
+                ></textarea>
+                <div className={classes.review__buttons}>
+                  <Button
+                    type="main"
+                    size="m"
+                    // onClick={() => {
+                    // }}
+                  >
+                    Reset
+                  </Button>
+                  <Button
+                    type="main"
+                    size="m"
+                    // onClick={() => {
+                    // }}
+                  >
+                    Send
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+    </React.Fragment>
+  );
+};
 
 export default Product;

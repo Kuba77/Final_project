@@ -1,0 +1,55 @@
+@import '../../styles/config/variables.scss';
+
+
+.collection__item{
+    cursor: pointer;
+    & h4{
+        margin-top: .2rem;
+        color: black;
+        
+    }
+    & span{
+        color: rgb(102, 101, 101);
+    }
+        &_info{
+           display: flex;
+           justify-content: space-between; 
+           align-items: center;
+                & h4{
+                    font-size: $small-font-size;
+                }
+                & span{
+                    font-size: $smaller-font-size;
+                }
+        }
+        &_price{
+            color: $first-color;
+            font-size:2rem;
+        }
+    
+}
+
+.collection__item_img{
+    width:100%;
+    height:300px;
+    position: relative;
+
+        & img{
+            width: 100%;
+            height: 100%;
+            border-radius:5px;
+            box-shadow: $box-shadow;
+            opacity: 1;
+            transition: all .1s ease-in-out;
+            &:hover{
+                opacity: .5;
+                background: $first-color;
+            }
+        }
+        
+
+        @include breakpoint(sm-only){
+           height: 270px;     
+        } 
+}
+

@@ -14,14 +14,6 @@ const FooterCustomerAreaList = () => {
                 to={"/orders"}
             />
             <FooterLink 
-                name={"Tracking List"}
-                to={"/tracking"}
-            />
-            <FooterLink 
-                name={"Terms"}
-                to={"/terms"}
-            />
-            <FooterLink 
                 name={"Privacy Policy"}
                 to={"/privacy"}
             />

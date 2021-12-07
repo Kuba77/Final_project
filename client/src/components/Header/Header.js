@@ -7,6 +7,7 @@ import Logo from './Logo/Logo';
 import Basket from "./Basket/Basket";
 import useWindowSize from '../../hooks/useWindowSize';
 import Button from "../Button/Button";
+import SearchBar from '../../components/SearchBar/SearchBar'
 
 
 const Header = () => {
@@ -37,6 +38,10 @@ const Header = () => {
     return (
         <header className={classes.header}>
             <Logo />
+            {size.width > 1116 && (
+                <SearchBar/>
+            )}
+        
             <Nav />
             <Basket />
 
