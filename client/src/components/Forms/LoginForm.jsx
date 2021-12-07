@@ -46,7 +46,6 @@ function LoginForm(props) {
       onSubmit={onSubmit}
     >
       {(formik) => {
-        console.log("Formik props", formik);
         return (
           <div className={classes.form__wrapper}>
             <h1>Login form</h1>
