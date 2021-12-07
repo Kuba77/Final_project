@@ -1,21 +1,20 @@
-import React, {useCallback} from 'react'
-import { Formik, Form } from 'formik'
-import { Link } from "react-router-dom";
-import FormikControl from './FormikControl'
-import classes from "./Form.module.scss"
+import React, { useCallback } from "react";
+import { Formik, Form } from "formik";
+import { Link, useHistory } from "react-router-dom";
+import FormikControl from "./FormikControl";
+import classes from "./Form.module.scss";
 import { useDispatch } from "react-redux";
-import { setCustomer} from "../../store/customer/reducer";
-import { setErors} from "../../store/errors/reducer";
-import { logOrRegisterCustomer} from "../../api/userApi";
+import { setCustomer } from "../../store/customer/reducer";
+import { setErors } from "../../store/errors/reducer";
+import { logOrRegisterCustomer } from "../../api/userApi";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
 
-
 function LoginForm(props) {
-
   const { initialValues, validationSchema, onSubmit } = props;
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const responseSuccessGoogle = useCallback(
     async (response) => {
@@ -25,6 +24,7 @@ function LoginForm(props) {
           dispatch(setErors(customer.message));
         } else {
           dispatch(setCustomer(customer));
+          history.push("/");
         }
       } catch (error) {
         dispatch(setErors(error.response));
@@ -45,26 +45,30 @@ function LoginForm(props) {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {formik => {
-        console.log('Formik props', formik)
+      {(formik) => {
+        console.log("Formik props", formik);
         return (
           <div className={classes.form__wrapper}>
             <h1>Login form</h1>
             <Form>
               <FormikControl
-                control='input'
-                type='email'
-                label='Email'
-                name='email'
+                control="input"
+                type="email"
+                label="Email"
+                name="email"
               />
               <FormikControl
-                control='input'
-                type='password'
-                label='Password'
-                name='password'
+                control="input"
+                type="password"
+                label="Password"
+                name="password"
               />
               <div className={classes.button__wrapper}>
-                <button  className={classes.form__btn} type='submit' disabled={!formik.isValid}>
+                <button
+                  className={classes.form__btn}
+                  type="submit"
+                  disabled={!formik.isValid}
+                >
                   Submit
                 </button>
                 <GoogleLogin
@@ -74,15 +78,16 @@ function LoginForm(props) {
                   onFailure={responseErrorGoogle}
                   cookiePolicy={"single_host_origin"}
                 />
-                  <Link className={classes.form__link} to="/registration">Go to register page</Link>
+                <Link className={classes.form__link} to="/registration">
+                  Go to register page
+                </Link>
               </div>
             </Form>
           </div>
-        )
+        );
       }}
     </Formik>
-  )
-
+  );
 }
 
-export default LoginForm
+export default LoginForm;
