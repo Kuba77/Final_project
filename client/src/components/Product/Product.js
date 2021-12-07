@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback} from "react";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../api/productsApi";
 import { useDispatch } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
+import { BsBasket, BsFillHeartFill } from "react-icons/bs";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAutor from "./ProductAutor/ProductAutor";
 import ProductDescription from "./ProductDescription/ProductDescription";
@@ -73,16 +74,11 @@ const Product = () => {
                       addToCart(product);
                     }}
                   >
-                    <i className="fas fa-shopping-cart"></i>
+                   <BsBasket color="white" size={26} />
                   </Button>
 
-                  <Button
-                    type="main"
-                    // onClick={() => {
-                    //   addToFavorite(product);
-                    // }}
-                  >
-                    <i className="fas fa-heart"></i>
+                  <Button type="main">
+                  <BsFillHeartFill color="white" size={26} />
                   </Button>
                 </div>
               </div>
@@ -126,20 +122,10 @@ const Product = () => {
                   placeholder="Please, live your comment here..."
                 ></textarea>
                 <div className={classes.review__buttons}>
-                  <Button
-                    type="main"
-                    size="m"
-                    // onClick={() => {
-                    // }}
-                  >
+                  <Button type="main" size="m">
                     Reset
                   </Button>
-                  <Button
-                    type="main"
-                    size="m"
-                    // onClick={() => {
-                    // }}
-                  >
+                  <Button type="main" size="m">
                     Send
                   </Button>
                 </div>
