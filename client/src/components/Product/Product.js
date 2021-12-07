@@ -76,12 +76,7 @@ const Product = () => {
                     <i className="fas fa-shopping-cart"></i>
                   </Button>
 
-                  <Button
-                    type="main"
-                    // onClick={() => {
-                    //   addToFavorite(product);
-                    // }}
-                  >
+                  <Button type="main">
                     <i className="fas fa-heart"></i>
                   </Button>
                 </div>
@@ -126,20 +121,10 @@ const Product = () => {
                   placeholder="Please, live your comment here..."
                 ></textarea>
                 <div className={classes.review__buttons}>
-                  <Button
-                    type="main"
-                    size="m"
-                    // onClick={() => {
-                    // }}
-                  >
+                  <Button type="main" size="m">
                     Reset
                   </Button>
-                  <Button
-                    type="main"
-                    size="m"
-                    // onClick={() => {
-                    // }}
-                  >
+                  <Button type="main" size="m">
                     Send
                   </Button>
                 </div>
