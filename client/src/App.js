@@ -1,19 +1,16 @@
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { BrowserRouter as Router } from "react-router-dom";
-import Header from "./components/Header/Header";
-
-
+import RoutePages from '../src/components/RoutePages/RoutePages';
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Header />
+        <RoutePages />
       </Router>
-
     </Provider>
   );
 }
 
-export default App;
+export default App

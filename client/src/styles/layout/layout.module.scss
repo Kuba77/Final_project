@@ -1,0 +1,27 @@
+@import '../config/variables';
+
+
+/*==== Переиспользумые Классы =====*/
+
+.section{
+    padding: 3.5rem 0 1rem;
+    
+    &__title, &__title-center{
+        font-size: $h2-font-size;
+        &-center{
+            text-align: center;
+        }
+    }
+}
+
+.content__container{
+    padding: 0 2.5rem;
+}
+
+.grid{
+    display: grid;
+}
+
+.main{
+    overflow: hidden; 
+}

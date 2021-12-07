@@ -4,6 +4,7 @@
 /*========== Colors ==========*/
 
 $first-color: #8D28AD;
+$first-color-disabled: rgba(141, 40, 173, 0.5);
 $first-color-alt:#FF7A00;
 $first-color-light: #FCF8FD;
 $first-color-lighten: #EEDFF3;
@@ -11,90 +12,133 @@ $title-color: #000000;
 $text-color: #E5E5E5;
 $text-color-light: #8D28AD;
 $body-color: #FFFFFF;
+$hover-color:#b170c5;
 $container-color: #fff;
+$product-text-color:#000000B2;
+$product-background-color: #4D4D4D;
+$product-background-color-light: #FCF8FD;
 
 
 /*========== Typography ==========*/
-$body-font: 'Poppins', sans-serif;
-$big-font-size: 2rem;
+$body-font: 'Poppins',
+sans-serif;
+$big-font-size: 3rem;
 $h1-font-size: 1.5rem;
 $h2-font-size: 1.25rem;
 $h3-font-size: 1rem;
 $normal-font-size: .938rem;
+$medium-font-size: 2.4rem;
 $small-font-size: .813rem;
 $smaller-font-size: .75rem;
 
 
 
 /*========== Responsible Typography ==========*/
-    @media screen and (min-width: 968px){
-        $big-font-size: 3.5rem;
-        $h1-font-size: 2.25rem;
-        $h2-font-size: 1.5rem;
-        $h3-font-size: 1.25rem;
-        $normal-font-size: 1rem;
-        $small-font-size: .875rem;
-        $smaller-font-size: .813rem;
-    }
+@media screen and (min-width: 968px) {
+    $big-font-size: 3.2rem;
+    $h1-font-size: 2.25rem;
+    $h2-font-size: 1.5rem;
+    $h3-font-size: 1.25rem;
+    $medium-font-size: 2.7rem;
+    $normal-font-size: 1rem;
+    $small-font-size: .875rem;
+    $smaller-font-size: .813rem;
+}
 
 
 /*========== Font weight ==========*/
-    $font-medium: 500;
-    $font-semi-bold: 600;
+$font-medium: 500;
+$font-semi-bold: 600;
 
 
-/*========== Margin ==========*/   
-    $mb-0-5: .5rem;
-    $mb-0-75: .75rem;
-    $mb-1: 1rem;
-    $mb-1-5: 1.5rem;
-    $mb-2: 2rem;
-    $mb-2-5: 2.5rem;
+/*========== Margin ==========*/
+$mb-0-5: .5rem;
+$mb-0-75: .75rem;
+$mb-1: 1rem;
+$mb-1-5: 1.5rem;
+$mb-2: 2rem;
+$mb-2-5: 2.5rem;
 
 
-$header-height: 3.5rem;
+$header-height: 3.7rem;
 
 
-/*========== Spacing ==========*/ 
+/*========== Spacing ==========*/
 $spacing-sm: 0.75rem;
 $spacing-md: 1.5rem;
 $spacing-lg: 2rem;
 $spacing-xl: 4rem;
 
-/*========== Box Shadow ==========*/ 
+/*========== Box Shadow ==========*/
 
 $box-shadow:rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+$box-shadow-secondary: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;;
 
 
 /*========== Breakpoings ==========*/
 @mixin breakpoint($point) {
-    @if $point == xl {
+    @if $point==xl {
+
         // 1120px
         @media (min-width: 70em) {
             @content;
         }
-    } @else if $point == lg {
+    }
+
+    @else if $point==lg {
+
         // 1024px
         @media (min-width: 64em) {
             @content;
         }
-    } @else if $point == md {
+    }
+
+    @else if $point==lg-only {
+
+        // 1023px
+        @media (max-width: 1023px) {
+            @content;
+        }
+    }
+
+    @else if $point==md {
+
         // 768px
         @media (min-width: 48em) {
             @content;
         }
-    } @else if $point == md-only {
+    }
+
+    @else if $point==md-only {
+
         // 767px
         @media (max-width: 767px) {
             @content;
         }
-    } @else if $point == sm {
+    }
+
+    @else if $point==sm {
+
         // 600px
         @media (min-width: 37.5em) {
             @content;
         }
-    } @else if $point == sm-only {
+    }
+
+    @else if $point==sm-only {
         @media (max-width: 599px) {
+            @content;
+        }
+    }
+
+    @else if $point==xs {
+        @media (min-width: 450px) {
+            @content;
+        }
+    }
+
+    @else if $point==xs-only {
+        @media (max-width: 449px) {
             @content;
         }
     }

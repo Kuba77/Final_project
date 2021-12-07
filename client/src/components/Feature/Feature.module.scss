@@ -1,0 +1,24 @@
+@import '../../styles/config/variables.scss';
+
+.feature{
+
+        &__container{
+            margin:0 auto;
+            width: 980px;
+                @include breakpoint(md-only){
+                    width:500px
+                }
+                @include breakpoint(sm-only){
+                    width:300px
+                }
+                h2{
+                    
+                    font-size: $medium-font-size;
+                }
+                @include breakpoint(md-only){
+                   h2{
+                       font-size: $h1-font-size;
+                   }
+                }    
+        }
+}

@@ -1,0 +1,63 @@
+@import '../../styles/config/variables.scss';
+
+
+.btn{
+    border-radius: 10px;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: $box-shadow-secondary;
+    transition: all 0.1s ease;
+}
+
+.btn--primary {
+   
+    background-color: $first-color;
+    font-weight: $font-medium;
+    color: white;
+        &:hover{
+            background-color: $hover-color;
+        }
+}
+
+.btn--secondary {
+    background-color: white;
+    font-weight: $font-medium;
+    border: 1px solid $first-color;
+    color: $first-color;
+    
+    &:hover{
+        font-weight: $font-semi-bold;
+    }
+}
+
+.btn--small {
+    font-size: $small-font-size;
+}
+
+.btn--medium {
+    font-size: $normal-font-size;
+}
+
+.btn--transparent {
+    background-color: transparent;
+    color:$first-color;
+    &:hover{
+        color: $hover-color
+    }
+}
+
+.btn--main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $first-color;
+    white-space: nowrap;
+    max-width:30vh;
+    font-weight: $font-medium;
+    color: white;
+        &:hover{
+            background-color: $hover-color;
+        }
+}
