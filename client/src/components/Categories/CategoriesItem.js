@@ -6,7 +6,7 @@ const CategoriesItem = (props) => {
   const { name, id } = props.item;
   return (
     <>
-      <Link className={classes.action_book} to={`category/${id}`}>
+      <Link className={classes.book_category} to={`category/${id}`}>
         {name}
       </Link>
     </>
