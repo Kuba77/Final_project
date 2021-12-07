@@ -1,18 +1,19 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { loginCustomer } from "../../api/userApi";
 import { setErors, clearErrors } from "../../store/errors/reducer";
 import { setCustomer } from "../../store/customer/reducer";
-import ValidationSchema from "../../components/form/ValidationSchema";
-import LoginForm from "../../components/form/LoginForm";
+import { LoginSchema } from "../../components/Forms/ValidationSchema";
+import LoginForm from "../../components/Forms/LoginForm";
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer";
-import { Formik } from "formik";
 
 
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const store = useSelector((state) => state);
 
   const singIn = useCallback(
@@ -36,11 +37,12 @@ const LoginPage = () => {
     email: '',
     password: '',
   }
-  const validationSchema = ValidationSchema;
+  const validationSchema = LoginSchema;
 
 
   const onSubmit = values => {
     singIn(values);
+    history.push("/");
   }
 
   return (
