@@ -35,6 +35,9 @@ export async function loginCustomer(value) {
     return await axios
       .post(configData.CUSTOMERS_LOGIN_URL, value)
       .then((res) => {
+        // Check
+        console.log("res", res);
+        //
         sessionStorage.setItem("token", res.data.token);
         setAuthToken(res.data.token);
         return jwtDecode(res.data.token);
