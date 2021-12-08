@@ -16,11 +16,12 @@ const LoginPage = () => {
     async (values) => {
       try {
         let customer = await loginCustomer(values);
-        if (customer.email) {
-          dispatch(setErors(customer));
-        } else {
+        if (customer.id) {
           dispatch(setCustomer(customer));
           dispatch(clearErrors());
+          history.push("/");
+        } else {
+          dispatch(setErors(customer));
         }
       } catch (error) {
         dispatch(setErors(error.response));
@@ -30,14 +31,13 @@ const LoginPage = () => {
   );
 
   const initialValues = {
-    email: "",
+    loginOrEmail: "",
     password: "",
   };
   const validationSchema = LoginSchema;
 
   const onSubmit = (values) => {
     singIn(values);
-    history.push("/");
   };
 
   return (
