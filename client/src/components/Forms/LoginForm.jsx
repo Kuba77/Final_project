@@ -5,7 +5,7 @@ import FormikControl from "./FormikControl";
 import classes from "./Form.module.scss";
 import { useDispatch } from "react-redux";
 import { setCustomer } from "../../store/customer/reducer";
-import { setErors } from "../../store/errors/reducer";
+import { setErors, clearErrors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer } from "../../api/userApi";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
@@ -25,6 +25,7 @@ function LoginForm(props) {
         } else {
           dispatch(setCustomer(customer));
           history.push("/");
+          dispatch(clearErrors());
         }
       } catch (error) {
         dispatch(setErors(error.response));
@@ -54,7 +55,7 @@ function LoginForm(props) {
                 control="input"
                 type="email"
                 label="Email"
-                name="email"
+                name="loginOrEmail"
               />
               <FormikControl
                 control="input"

@@ -6,25 +6,22 @@ import { setErors, clearErrors } from "../../store/errors/reducer";
 import { setCustomer } from "../../store/customer/reducer";
 import { LoginSchema } from "../../components/Forms/ValidationSchema";
 import LoginForm from "../../components/Forms/LoginForm";
-import Header from "../../components/Header/Header"
+import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-
-
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const store = useSelector((state) => state);
-
   const singIn = useCallback(
     async (values) => {
       try {
         let customer = await loginCustomer(values);
-        if (customer.email) {
-          dispatch(setErors(customer));
-        } else {
+        if (customer.id) {
           dispatch(setCustomer(customer));
           dispatch(clearErrors());
+          history.push("/");
+        } else {
+          dispatch(setErors(customer));
         }
       } catch (error) {
         dispatch(setErors(error.response));
@@ -34,25 +31,24 @@ const LoginPage = () => {
   );
 
   const initialValues = {
-    email: '',
-    password: '',
-  }
+    loginOrEmail: "",
+    password: "",
+  };
   const validationSchema = LoginSchema;
 
-
-  const onSubmit = values => {
+  const onSubmit = (values) => {
     singIn(values);
-    history.push("/");
-  }
+  };
 
   return (
-  
     <>
       <Header />
-        <LoginForm initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} />
-        {/* <h2> Welcome back {customerName(store)}</h2>
-        <h2>{errorloginOrEmail(store)}</h2> */}
-         <Footer /> 
+      <LoginForm
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      />
+      <Footer />
     </>
   );
 };

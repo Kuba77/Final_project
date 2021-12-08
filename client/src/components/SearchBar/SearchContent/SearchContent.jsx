@@ -1,24 +1,21 @@
-import React from 'react';
-import classes from './SearchContent.module.scss'
+import React from "react";
+import { Link } from "react-router-dom";
+import classes from "./SearchContent.module.scss";
 
 const SearchContent = (props) => {
+  const { imageSrc, title, price, itemNo } = props;
 
-    const {imageSrc, title, price} = props;
-
-    return(
-        <div className={classes.content__container}>
-            <div className={classes.content__container_item}>
-                <img src={imageSrc} alt={title}/>
-            </div>
-            <div className={classes.content__container_item_title}>
-                {title}
-            </div>
-            <div className={classes.content__container_item_price}>
-                {price}
-            </div>
+  return (
+    <Link to={`/product/${itemNo}`}>
+      <div className={classes.content__container}>
+        <div className={classes.content__container_item}>
+          <img src={imageSrc} alt={title} />
         </div>
-    )
-}
+        <div className={classes.content__container_item_title}>{title}</div>
+        <div className={classes.content__container_item_price}>{price}</div>
+      </div>
+    </Link>
+  );
+};
 
-
-export default SearchContent
+export default SearchContent;
