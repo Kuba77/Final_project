@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useCallback} from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getSelectedProduct } from "../../api/productsApi";
+import { getSelectedProduct } from "../../services/products";
 import { useDispatch } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
 import { BsBasket, BsFillHeartFill } from "react-icons/bs";
@@ -30,11 +30,11 @@ const Product = () => {
   const getProduct = useCallback(async () => {
     const products = await getSelectedProduct(productId);
     setProduct(products);
-  }, [setProduct]);
+  }, [setProduct, productId]);
 
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [getProduct]);
 
   return (
     <React.Fragment>
@@ -74,11 +74,11 @@ const Product = () => {
                       addToCart(product);
                     }}
                   >
-                   <BsBasket color="white" size={26} />
+                    <BsBasket color="white" size={26} />
                   </Button>
 
                   <Button type="main">
-                  <BsFillHeartFill color="white" size={26} />
+                    <BsFillHeartFill color="white" size={26} />
                   </Button>
                 </div>
               </div>

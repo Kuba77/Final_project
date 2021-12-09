@@ -5,7 +5,7 @@ import { IoSearch, IoClose } from "react-icons/io5";
 import { useClickOutside } from "react-click-outside-hook";
 import PuffLoader from "react-spinners/PuffLoader";
 import { useDebounce } from "../../hooks/useDebounce";
-import { getSearchProduct } from "../../api/productsApi";
+import { getSearchProduct } from "../../services/products";
 import SearchContent from "./SearchContent/SearchContent";
 
 const SearchBar = () => {

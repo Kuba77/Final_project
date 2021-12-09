@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 
 import { useParams, Link } from "react-router-dom";
 
-import { getFilteredProductByCategory } from "../../api/productsApi";
+import { getFilteredProductByCategory } from "../../services/products";
 
 function CategoryPage() {
   let { categoryId } = useParams();

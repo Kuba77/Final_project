@@ -1,4 +1,4 @@
-import axios from "./api";
+import axios from "./htttWraper";
 import configData from "../config/config.json";
 
 export async function getAllProducts() {

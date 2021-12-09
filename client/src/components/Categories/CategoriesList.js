@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import CategoriesItem from "./CategoriesItem";
-import { getAllCategories } from "../../api/catalogApi";
+import getAllCategories from "../../services/catalog";
 
 const CategoriesList = () => {
   const [category, setCategory] = useState([]);
