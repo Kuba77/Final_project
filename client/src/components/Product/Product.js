@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback} from "react";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../api/productsApi";
 import { useDispatch } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
+import { BsBasket, BsFillHeartFill } from "react-icons/bs";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAutor from "./ProductAutor/ProductAutor";
 import ProductDescription from "./ProductDescription/ProductDescription";
@@ -73,11 +74,11 @@ const Product = () => {
                       addToCart(product);
                     }}
                   >
-                    <i className="fas fa-shopping-cart"></i>
+                   <BsBasket color="white" size={26} />
                   </Button>
 
                   <Button type="main">
-                    <i className="fas fa-heart"></i>
+                  <BsFillHeartFill color="white" size={26} />
                   </Button>
                 </div>
               </div>

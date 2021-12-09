@@ -4,7 +4,7 @@ const ProductStore = (props) => {
 
     return (
         <React.Fragment>
-            <p className={props.className}>In stock {props.store}</p>
+            <p className={props.className}>{props.store}</p>
         </React.Fragment>
     )
 }
