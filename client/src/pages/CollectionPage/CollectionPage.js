@@ -9,7 +9,6 @@ import Pagination from "./Pagination/Pagination";
 import Filters from "../../components/Filters/Filters";
 import { chekingArray, filterArray } from "../../utils/utils";
 import { getFilteredProductByQuery } from "../../services/products";
-import { useHistory } from "react-router-dom";
 
 const CollectionPage = () => {
   const [collection, setCollection] = useState([]);
@@ -18,40 +17,43 @@ const CollectionPage = () => {
   const [productsInPage] = useState(15);
 
   const [genderSelected, setgenderSelected] = useState([]);
-  const history = useHistory();
+  const [sort, setSort] = useState("");
+
   function getselectedGenre(value) {
-    console.log("value", value);
     const selected = chekingArray(genderSelected, value);
-    console.log("selected", selected);
     setgenderSelected(selected);
   }
 
-  const getGenderProducts = useCallback(
-    async (value) => {
-      setLoading(true);
-      let params = new URLSearchParams();
-      params.append("genre", value);
-      let string = params.toString();
-      const products = await getFilteredProductByQuery(string);
-      const filtered = filterArray(products.products, genderSelected);
-      setCollection(filtered);
-      setLoading(false);
-    },
-    [setCollection]
-  );
+  function sortProductByPrice(value) {
+    setSort(value);
+  }
+
+  const getGenderProducts = useCallback(async () => {
+    setLoading(true);
+    let params = new URLSearchParams();
+    if (genderSelected.length > 0) {
+      params.append("genre", genderSelected);
+    }
+    if (sort) {
+      params.append("sort", sort);
+    }
+    let string = params.toString();
+    const products = await getFilteredProductByQuery(string);
+    const filtered = filterArray(products.products, genderSelected);
+    setCollection(filtered);
+    setLoading(false);
+  }, [setCollection, genderSelected, sort]);
 
   useEffect(() => {
-    let GenString = genderSelected.join();
-    getGenderProducts(GenString);
-    if (genderSelected.length === 0) {
+    setLoading(true);
+    console.log("OTRABOTANO 2");
+    if (genderSelected.length === 0 && sort === "") {
       getCollection();
+      console.log("OTRABOTANO 3");
     }
-    if (genderSelected.length > 0) {
-      history.push({
-        search: `/filters?genre=${GenString}`,
-      });
-    }
-  }, [genderSelected, getGenderProducts]);
+    getGenderProducts(genderSelected, sort);
+    setLoading(false);
+  }, [genderSelected, sort]);
 
   const getCollection = async () => {
     setLoading(true);
@@ -61,6 +63,7 @@ const CollectionPage = () => {
   };
   useEffect(() => {
     getCollection();
+    console.log("OTRABOTANO 1");
   }, []);
 
   const lastProductIndex = currentPage * productsInPage;
@@ -81,7 +84,12 @@ const CollectionPage = () => {
           </div>
         )}
 
-        <Filters getselectedGenre={getselectedGenre} />
+        {!isLoading && (
+          <Filters
+            getselectedGenre={getselectedGenre}
+            sortProductByPrice={sortProductByPrice}
+          />
+        )}
 
         <div className={classes.collection__container}>
           {!isLoading && <CollectionList collection={currentProduct} />}

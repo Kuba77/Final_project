@@ -1,10 +1,17 @@
 import React from "react";
 
-function SortFilter() {
+function SortFilter(props) {
   return (
     <div>
-      <button onClick={(e) => {}}>sort by decreasing</button>
-      <button onClick={(e) => {}}>sort ascending</button>
+      <select
+        onChange={(e) => {
+          props.sortProductByPrice(e.target.value);
+        }}
+      >
+        <option value="">SORT</option>
+        <option value="-currentPrice">от Дорогого</option>
+        <option value=" currentPrice">от Дешевого</option>
+      </select>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import СheckboxFilter from "./checkboxFilter/СheckboxFilter";
 import SortFilter from "./sortFilter/SortFilter";
 
 function Filters(props) {
-  const { getselectedGenre } = props;
+  const { getselectedGenre, sortProductByPrice } = props;
 
   return (
     <div>
@@ -13,7 +13,7 @@ function Filters(props) {
       </>
       <h1>SORT FILTER</h1>
       <>
-        <SortFilter />
+        <SortFilter sortProductByPrice={sortProductByPrice} />
       </>
     </div>
   );
