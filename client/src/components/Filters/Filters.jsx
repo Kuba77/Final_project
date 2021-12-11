@@ -1,32 +1,22 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import СheckboxFilter from "./checkboxFilter/СheckboxFilter";
-import { getAllCategories } from "../../api/catalogApi";
+import SortFilter from "./sortFilter/SortFilter";
 
 function Filters(props) {
-  const [category, setCategory] = useState([]);
-  const getCategories = useCallback(async () => {
-    const categories = await getAllCategories();
-    setCategory(categories);
-  }, [setCategory]);
+  const { getselectedGenre, sortProductByPrice, genderSelected, sort } = props;
 
-  useEffect(() => {
-    console.log("filters applied", category);
-    getCategories();
-  }, []);
   return (
     <div>
-      <h1
-        onClick={() => {
-          console.log("catArray", category);
-        }}
-      >
-        FILTER
-      </h1>
+      <h1>GENRE FILTER</h1>
       <>
-        {category.length > 0 &&
-          category.map((item) => (
-            <СheckboxFilter item={item} key={item.id} onClick={props.onClick} />
-          ))}
+        <СheckboxFilter
+          getselectedGenre={getselectedGenre}
+          genderSelected={genderSelected}
+        />
+      </>
+      <h1>SORT FILTER</h1>
+      <>
+        <SortFilter sortProductByPrice={sortProductByPrice} sort={sort} />
       </>
     </div>
   );

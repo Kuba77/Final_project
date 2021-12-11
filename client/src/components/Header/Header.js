@@ -9,8 +9,8 @@ import Basket from "./Basket/Basket";
 import useWindowSize from "../../hooks/useWindowSize";
 import Button from "../Button/Button";
 import SearchBar from "../../components/SearchBar/SearchBar";
-
-import { customerName } from "../../store/selectors";
+import UserMenu from "./UserMenu/UserMenu";
+import { customerData } from "../../store/selectors";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,9 +46,11 @@ const Header = () => {
       <Nav />
       <Basket />
 
-      {size.width > 768 && (
+      {customerData(store).id && <UserMenu />}
+
+      {size.width > 768 && !customerData(store).id && (
         <Button type="primary" size="s" onClick={HandleGoToLoginPage}>
-          {customerName(store) ? customerName(store) : "Sign in"}
+          {"Sign in"}
         </Button>
       )}
 

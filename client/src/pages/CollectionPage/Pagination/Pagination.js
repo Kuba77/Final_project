@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./pagination.module.scss";
-const Pagination = ({ productsInPage, totalProducts, paginate}) => {
+const Pagination = ({ productsInPage, totalProducts, paginate }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalProducts / productsInPage); i++) {
@@ -11,7 +11,11 @@ const Pagination = ({ productsInPage, totalProducts, paginate}) => {
       <ul className={classes.pagination_buttons__container}>
         {pageNumbers.map((number) => (
           <li key={number} className={classes.pagination_buttons__item}>
-            <a href="#" onClick={() => paginate(number)}>
+            <a
+              onClick={() => paginate(number)}
+              id={number}
+              data-testid={number}
+            >
               {number}
             </a>
           </li>

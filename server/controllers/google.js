@@ -23,7 +23,7 @@ exports.googlelogin = (req, res) => {
     })
     //берем инфу из профиля гугла
     .then((response) => {
-      const { email_verified, name, email, given_name, family_name } =
+      const { email_verified, name, email, given_name, family_name, picture } =
         response.payload;
 
       if (email_verified) {
@@ -44,6 +44,7 @@ exports.googlelogin = (req, res) => {
                 lastName: customer.lastName,
                 email: customer.email,
                 isAdmin: customer.isAdmin,
+                avatarUrl: customer.avatarUrl,
               };
               // создание токена
               jwt.sign(
@@ -67,6 +68,7 @@ exports.googlelogin = (req, res) => {
                 password,
                 firstName: given_name,
                 login: name,
+                avatarUrl: picture,
                 //номер создаем сами через рандом
                 customerNo,
                 lastName: family_name,
@@ -81,6 +83,7 @@ exports.googlelogin = (req, res) => {
                   firstName: customer.firstName,
                   lastName: customer.lastName,
                   email: customer.email,
+                  avatarUrl: customer.avatarUrl,
                   isAdmin: customer.isAdmin,
                 };
                 // создание токена

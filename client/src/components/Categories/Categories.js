@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import classes from "./Categories.module.scss";
 import CategoriesList from "./CategoriesList";
 

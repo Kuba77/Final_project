@@ -1,6 +1,5 @@
-import axios from "./api";
+import axios, { setAuthToken } from "./htttWraper";
 import configData from "../config/config.json";
-import { setAuthToken } from "./api";
 import jwtDecode from "jwt-decode";
 
 export async function logOrRegisterCustomer(value) {
@@ -10,6 +9,8 @@ export async function logOrRegisterCustomer(value) {
         tokenId: value.tokenId,
       })
       .then((res) => {
+        sessionStorage.setItem("token", res.data.token);
+        setAuthToken(res.data.token);
         const user = jwtDecode(res.data.token);
         return user;
       });
@@ -24,8 +25,6 @@ export async function registerCustomer(value) {
       return res;
     });
   } catch (error) {
-    console.log("res", error.response.data);
-
     return error.response.data;
   }
 }
