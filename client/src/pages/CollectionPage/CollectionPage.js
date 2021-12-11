@@ -44,14 +44,13 @@ const CollectionPage = () => {
     setCollection(filtered);
     setLoading(false);
   }, [setCollection, genderSelected, sort]);
-  
-  useEffect(() => { 
+
+  useEffect(() => {
     if (genderSelected.length === 0 && sort === "") {
       getCollection();
     }
     getGenderProducts(genderSelected, sort);
   }, [genderSelected, sort]);
-
 
   const getCollection = async () => {
     setLoading(true);
@@ -70,7 +69,7 @@ const CollectionPage = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     setLoading(true);
-    setTimeout(() => setLoading(false), 500)
+    setTimeout(() => setLoading(false), 500);
   };
 
   return (
@@ -85,6 +84,8 @@ const CollectionPage = () => {
 
         {!isLoading && (
           <Filters
+            genderSelected={genderSelected}
+            sort={sort}
             getselectedGenre={getselectedGenre}
             sortProductByPrice={sortProductByPrice}
           />

@@ -12,8 +12,6 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import UserMenu from "./UserMenu/UserMenu";
 import { customerData } from "../../store/selectors";
 
-
-
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const size = useWindowSize();
@@ -47,8 +45,8 @@ const Header = () => {
 
       <Nav />
       <Basket />
-      
-      {customerData(store).id && <UserMenu />} 
+
+      {customerData(store).id && <UserMenu />}
 
       {size.width > 768 && !customerData(store).id && (
         <Button type="primary" size="s" onClick={HandleGoToLoginPage}>
