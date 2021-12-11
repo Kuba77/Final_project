@@ -16,7 +16,7 @@ const Nav = ({ isMenu, menuToggle }) => {
                     </li>
                 )}
                 <li onClick={menuToggle}>
-                    <Link to="/categories">Categories</Link>
+                    <Link to="/products">Collection</Link>
                 </li>
                 <li onClick={menuToggle}>
                     <Link to="/favorites">Favorites</Link>

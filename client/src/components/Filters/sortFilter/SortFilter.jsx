@@ -1,9 +1,11 @@
 import React from "react";
 
 function SortFilter(props) {
+  const { sort } = props;
   return (
     <div>
       <select
+        value={sort}
         onChange={(e) => {
           props.sortProductByPrice(e.target.value);
         }}

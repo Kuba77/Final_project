@@ -1,12 +1,13 @@
 import React from "react";
 
 function СheckboxFilter(props) {
-  const { item, getselectedGenre } = props;
+  const { genderSelected, getselectedGenre } = props;
   return (
     <div>
       <label id="Action">
         "Action"
         <input
+          checked={genderSelected.includes("Action")}
           type="checkbox"
           name="Action"
           onChange={(e) => {
@@ -17,6 +18,7 @@ function СheckboxFilter(props) {
       <label id="Drama">
         "Drama"
         <input
+          checked={genderSelected.includes("Drama")}
           type="checkbox"
           name="Drama"
           onChange={(e) => {
@@ -27,6 +29,7 @@ function СheckboxFilter(props) {
       <label id="Romance">
         "Romance"
         <input
+          checked={genderSelected.includes("Romance")}
           type="checkbox"
           name="Romance"
           onChange={(e) => {
@@ -37,6 +40,7 @@ function СheckboxFilter(props) {
       <label id="Supernatural">
         "Supernatural"
         <input
+          checked={genderSelected.includes("Supernatural")}
           type="checkbox"
           name="Supernatural"
           onChange={(e) => {
@@ -47,6 +51,7 @@ function СheckboxFilter(props) {
       <label id="Comedy">
         "Comedy"
         <input
+          checked={genderSelected.includes("Comedy")}
           type="checkbox"
           name="Comedy"
           onChange={(e) => {
@@ -57,6 +62,7 @@ function СheckboxFilter(props) {
       <label id="Adventure">
         "Adventure"
         <input
+          checked={genderSelected.includes("Adventure")}
           type="checkbox"
           name="Adventure"
           onChange={(e) => {
