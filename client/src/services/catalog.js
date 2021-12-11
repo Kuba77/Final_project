@@ -1,7 +1,7 @@
-import axios from "./api";
+import axios from "./htttWraper";
 import configData from "../config/config.json";
 
-export async function getAllCategories() {
+async function getAllCategories() {
   try {
     return await axios.get(configData.ALL_CATALOG_URL).then((res) => {
       return res.data;
@@ -10,3 +10,4 @@ export async function getAllCategories() {
     return e.message;
   }
 }
+export default getAllCategories;

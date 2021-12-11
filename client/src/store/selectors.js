@@ -11,9 +11,8 @@ export const customerName = createSelector(
   (customerData) => customerData.firstName
 );
 
-
 const bazeErors = (state) => state.errors;
-const errorsData = createSelector([bazeErors], (errors) => errors.errorsData);
+export const errorsData = createSelector([bazeErors], (errors) => errors.errorsData);
 
 export const errorloginOrEmail = createSelector(
   [errorsData],
@@ -25,3 +24,5 @@ export const errorMessage = createSelector(
   (errorsData) => errorsData
 );
 
+const bazeCart = (state) => state.cart;
+export const InCart = createSelector([bazeCart], (cart) => cart.itemsInCart);

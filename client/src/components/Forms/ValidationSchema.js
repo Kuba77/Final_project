@@ -1,6 +1,13 @@
 import * as Yup from "yup";
 
-const ValidationSchema = Yup.object({
+export const LoginSchema = Yup.object({
+  loginOrEmail: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string()
+    .min(7, "Must be 7 characters or more")
+    .required("Required"),
+});
+
+export const RegistrationSchema = Yup.object({
   firstName: Yup.string()
     .max(15, "Must be 15 characters or less")
     .required("Required"),
@@ -15,8 +22,6 @@ const ValidationSchema = Yup.object({
     .min(7, "Must be 7 characters or more")
     .required("Required"),
   confirmPassword: Yup.string()
-  .min(7, "Must be 7 characters or more")
-  .required("Required"),  
+    .min(7, "Must be 7 characters or more")
+    .required("Required"),
 });
-
-export default ValidationSchema
