@@ -12,6 +12,8 @@ import Footer from "../../components/Footer/Footer";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const store = useSelector((state) => state);
+
   const singIn = useCallback(
     async (values) => {
       try {
@@ -35,6 +37,7 @@ const LoginPage = () => {
     password: "",
   };
   const validationSchema = LoginSchema;
+
 
   const onSubmit = (values) => {
     singIn(values);
