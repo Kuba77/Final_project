@@ -1,7 +1,7 @@
 import React from "react";
 
 function СheckboxFilter(props) {
-  const { item, getselectedGenre } = props;
+  const {  getselectedGenre } = props;
   return (
     <div>
       <label id="Action">

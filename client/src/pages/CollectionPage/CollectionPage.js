@@ -29,7 +29,6 @@ const CollectionPage = () => {
   }
 
   const getGenderProducts = useCallback(async () => {
-    setLoading(true);
     let params = new URLSearchParams();
     if (genderSelected.length > 0) {
       params.append("genre", genderSelected);
@@ -38,20 +37,21 @@ const CollectionPage = () => {
       params.append("sort", sort);
     }
     let string = params.toString();
+    setLoading(true);
+
     const products = await getFilteredProductByQuery(string);
     const filtered = filterArray(products.products, genderSelected);
     setCollection(filtered);
     setLoading(false);
   }, [setCollection, genderSelected, sort]);
-
-  useEffect(() => {
-    setLoading(true);
+  
+  useEffect(() => { 
     if (genderSelected.length === 0 && sort === "") {
       getCollection();
     }
     getGenderProducts(genderSelected, sort);
-    setLoading(false);
   }, [genderSelected, sort]);
+
 
   const getCollection = async () => {
     setLoading(true);
@@ -67,8 +67,10 @@ const CollectionPage = () => {
   const firstProductIndex = lastProductIndex - productsInPage;
   const currentProduct = collection.slice(firstProductIndex, lastProductIndex);
 
-  const paginate = (pageNumber, setLoading) => {
+  const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
+    setLoading(true);
+    setTimeout(() => setLoading(false), 500)
   };
 
   return (
