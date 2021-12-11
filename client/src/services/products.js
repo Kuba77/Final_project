@@ -1,4 +1,4 @@
-import axios from "./api";
+import axios from "./htttWraper";
 import configData from "../config/config.json";
 
 export async function getAllProducts() {
@@ -35,6 +35,7 @@ export async function getFilteredProductByCategory(value) {
 }
 export async function getFilteredProductByQuery(value) {
   try {
+    console.log("NA SERV", value);
     return await axios
       .get(`${configData.FILTERED_PRODUCT_URL}${value}`)
       .then((res) => {

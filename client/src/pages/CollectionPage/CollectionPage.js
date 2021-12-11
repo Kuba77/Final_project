@@ -2,13 +2,13 @@ import React, { useEffect, useState, useCallback } from "react";
 import Header from "../../components/Header/Header";
 import classes from "./CollectionPage.module.scss";
 import PuffLoader from "react-spinners/PuffLoader";
-import { getAllProducts } from "../../api/productsApi";
+import { getAllProducts } from "../../services/products";
 import CollectionList from "./CollectionList/CollectionList";
 import Pagination from "./Pagination/Pagination";
 
 import Filters from "../../components/Filters/Filters";
-import { chekingArray } from "../../utils/utils";
-import { getFilteredProductByQuery } from "../../api/productsApi";
+import { chekingArray, filterArray } from "../../utils/utils";
+import { getFilteredProductByQuery } from "../../services/products";
 
 const CollectionPage = () => {
   const [collection, setCollection] = useState([]);
@@ -17,37 +17,49 @@ const CollectionPage = () => {
   const [productsInPage] = useState(15);
 
   const [genderSelected, setgenderSelected] = useState([]);
+  const [sort, setSort] = useState("");
 
   function getselectedGenre(value) {
     const selected = chekingArray(genderSelected, value);
-    console.log(selected);
     setgenderSelected(selected);
   }
 
-  const getGenderProducts = useCallback(
-    async (value) => {
-      let params = new URLSearchParams();
-      params.append("genre", value);
-      let string = params.toString();
-      const products = await getFilteredProductByQuery(string);
-      setCollection(products.products);
-    },
-    [setCollection]
-  );
+  function sortProductByPrice(value) {
+    setSort(value);
+  }
+
+  const getGenderProducts = useCallback(async () => {
+    setLoading(true);
+    let params = new URLSearchParams();
+    if (genderSelected.length > 0) {
+      params.append("genre", genderSelected);
+    }
+    if (sort) {
+      params.append("sort", sort);
+    }
+    let string = params.toString();
+    const products = await getFilteredProductByQuery(string);
+    const filtered = filterArray(products.products, genderSelected);
+    setCollection(filtered);
+    setLoading(false);
+  }, [setCollection, genderSelected, sort]);
 
   useEffect(() => {
-    let GenString = genderSelected.join();
-    getGenderProducts(GenString);
-  }, [genderSelected]);
+    setLoading(true);
+    if (genderSelected.length === 0 && sort === "") {
+      getCollection();
+    }
+    getGenderProducts(genderSelected, sort);
+    setLoading(false);
+  }, [genderSelected, sort]);
 
+  const getCollection = async () => {
+    setLoading(true);
+    const response = await getAllProducts();
+    setCollection(response);
+    setLoading(false);
+  };
   useEffect(() => {
-    const getCollection = async () => {
-      setLoading(true);
-      const response = await getAllProducts();
-      console.log(response);
-      setCollection(response);
-      setLoading(false);
-    };
     getCollection();
   }, []);
 
@@ -69,7 +81,12 @@ const CollectionPage = () => {
           </div>
         )}
 
-        <Filters onChange={getselectedGenre} />
+        {!isLoading && (
+          <Filters
+            getselectedGenre={getselectedGenre}
+            sortProductByPrice={sortProductByPrice}
+          />
+        )}
 
         <div className={classes.collection__container}>
           {!isLoading && <CollectionList collection={currentProduct} />}

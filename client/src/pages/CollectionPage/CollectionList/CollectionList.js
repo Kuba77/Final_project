@@ -4,7 +4,7 @@ import BookItem from "../../../components/BookItem/BookItem";
 const CollectionList = ({ collection }) => {
   return collection.map((item, index) => (
     <BookItem
-      index={index}
+      key={index}
       imageSrc={item.imageUrls[2]}
       title={item.name}
       author={item.author}
