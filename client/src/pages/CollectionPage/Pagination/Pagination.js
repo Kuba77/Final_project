@@ -12,7 +12,6 @@ const Pagination = ({ productsInPage, totalProducts, paginate }) => {
         {pageNumbers.map((number) => (
           <li key={number} className={classes.pagination_buttons__item}>
             <a
-              // href="!#"
               onClick={() => paginate(number)}
               id={number}
               data-testid={number}

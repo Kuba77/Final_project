@@ -34,7 +34,7 @@ const Product = () => {
 
   useEffect(() => {
     getProduct();
-  }, [getProduct]);
+  }, [getProduct, productId]);
 
   return (
     <React.Fragment>

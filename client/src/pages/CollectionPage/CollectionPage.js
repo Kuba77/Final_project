@@ -46,10 +46,8 @@ const CollectionPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    console.log("OTRABOTANO 2");
     if (genderSelected.length === 0 && sort === "") {
       getCollection();
-      console.log("OTRABOTANO 3");
     }
     getGenderProducts(genderSelected, sort);
     setLoading(false);
@@ -63,7 +61,6 @@ const CollectionPage = () => {
   };
   useEffect(() => {
     getCollection();
-    console.log("OTRABOTANO 1");
   }, []);
 
   const lastProductIndex = currentPage * productsInPage;
