@@ -8,5 +8,8 @@
     "ALL_PRODUCTS_URL": "/products",
     "SERCH_PRODUCT_URL": "/products/search",
     "FILTERED_PRODUCT_URL": "/products/filter?",
-    "ALL_CATALOG_URL": "/catalog"
+    "ALL_CATALOG_URL": "/catalog",
+    "ALL_COMMENTS_URL": "/comments",
+    "CUSTOMER_COMMENT_URL": "/comments/{id}",
+    "PRODUCT_COMMENTS_URL": "/comments/product/{productId}"
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
+import { createComment, updateComment, deleteComment, getAllProductComments } from "../../services/comments";
 import { useDispatch } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
 import { BsBasket, BsFillHeartFill } from "react-icons/bs";
@@ -17,6 +18,7 @@ const Product = () => {
   let { productId } = useParams();
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
+  const [comments, setComments] = useState({});
   const [toggle, setToggle] = useState(0);
 
   function addToCart(info) {
@@ -35,6 +37,15 @@ const Product = () => {
   useEffect(() => {
     getProduct();
   }, [getProduct, productId]);
+
+  const getComments = useCallback(async () => {
+    const comments = await getAllProductComments(productId);
+    setComments(comments);
+  }, [setComments, productId]);
+
+  useEffect(() => {
+    getComments();
+  }, [getComments, productId]);
 
   return (
     <React.Fragment>
@@ -131,6 +142,13 @@ const Product = () => {
                 </div>
               </form>
             </div>
+
+<div>
+  <p>Customer.firstName & Customer.lastName</p> 
+  <Button type="main" size="m">Upd</Button> <Button type="main" size="m">Del</Button>
+  <p>content</p>
+</div>
+
           </div>
         </div>
       )}
