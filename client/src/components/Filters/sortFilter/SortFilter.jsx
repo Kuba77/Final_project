@@ -1,18 +1,20 @@
 import React from "react";
+import classes from './SortFilter.module.scss'
 
-function SortFilter(props) {
+
+const SortFilter = (props) => {
   const { sort } = props;
   return (
-    <div>
+    <div className={classes.sortfilter__container}>
       <select
+        placeholder='Price range'
         value={sort}
         onChange={(e) => {
           props.sortProductByPrice(e.target.value);
         }}
       >
-        <option value="">SORT</option>
-        <option value="-currentPrice">от Дорогого</option>
-        <option value=" currentPrice">от Дешевого</option>
+        <option value="-currentPrice">From expensive</option>
+        <option value=" currentPrice">From cheap</option>
       </select>
     </div>
   );
