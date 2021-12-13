@@ -6,6 +6,7 @@ import Collection from "../../pages/CollectionPage/CollectionPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import RegistrationPage from "../../pages/RegistrationPage/RegistrationPage";
 import CategoryPage from "../../pages/CategoryPage/CategoryPage";
+import FavoritesPage from "../../pages/FavoritesPage/FavoritesPage"
 
 const RoutePages = () => {
   return (
@@ -13,6 +14,7 @@ const RoutePages = () => {
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="/cart" component={CartPage}></Route>
       <Route exact path="/product/:productId" component={ProductPage}></Route>
+      <Route exact path="/favorites" component={FavoritesPage}></Route>
       <Route exact path="/products" component={Collection}></Route>
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/registration" component={RegistrationPage}></Route>
