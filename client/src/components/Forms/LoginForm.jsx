@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Formik, Form } from "formik";
+import { Formik, Form} from "formik";
 import { Link, useHistory } from "react-router-dom";
 import FormikControl from "./FormikControl";
 import classes from "./Form.module.scss";
@@ -8,11 +8,12 @@ import { setCustomer } from "../../store/customer/reducer";
 import { setErors, clearErrors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer } from "../../services/user";
 import { GoogleLogin } from "react-google-login";
+import TextError from "./components/TextError";
 import configData from "../../config/config.json";
 
 function LoginForm(props) {
-  const { initialValues, validationSchema, onSubmit } = props;
-
+  const { initialValues, validationSchema, onSubmit, errorMessage } = props;
+  console.log(errorMessage)
   const dispatch = useDispatch();
   const history = useHistory();
 

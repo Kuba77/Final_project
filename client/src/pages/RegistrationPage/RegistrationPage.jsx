@@ -26,7 +26,7 @@ const RegistrationPage = () => {
           dispatch(clearErrors());
         }
       } catch (err) {
-        dispatch(console.log(setErors(err.response)));
+        dispatch(setErors(err.response));
       }
     },
     [dispatch]
@@ -41,10 +41,16 @@ const RegistrationPage = () => {
     confirmPassword: "",
   };
   const validationSchema = RegistrationSchema;
+  const error = errorMessage(store);
+  
+  
 
   const onSubmit = (values) => {
     singUp(values);
-    history.push("/");
+    if(error.length === 0) {
+       history.push("/");
+    }
+   
   };
 
   return (
@@ -54,7 +60,7 @@ const RegistrationPage = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
-        errorMessage={errorMessage(store)}
+        errorMessage={error}
       />
       <Footer />
     </>

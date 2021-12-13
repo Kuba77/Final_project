@@ -5,7 +5,7 @@ import ProductPage from "../../pages/ProductPage/ProductPage";
 import Collection from "../../pages/CollectionPage/CollectionPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import RegistrationPage from "../../pages/RegistrationPage/RegistrationPage";
-import CategoryPage from "../../pages/category-page/CategoryPage";
+import CategoryPage from "../../pages/CategoryPage/CategoryPage";
 
 const RoutePages = () => {
   return (

@@ -9,6 +9,8 @@ export async function logOrRegisterCustomer(value) {
         tokenId: value.tokenId,
       })
       .then((res) => {
+        sessionStorage.setItem("token", res.data.token);
+        setAuthToken(res.data.token);
         const user = jwtDecode(res.data.token);
         return user;
       });

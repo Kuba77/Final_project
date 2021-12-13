@@ -100,6 +100,7 @@ const SearchBar = () => {
           !isEmpty &&
           findedContent.map((item) => (
             <SearchContent
+              collapseContainer={collapseContainer}
               imageSrc={item.imageUrls[0]}
               title={item.name}
               itemNo={item.itemNo}
