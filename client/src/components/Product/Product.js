@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
 import { BsBasket, BsFillHeartFill } from "react-icons/bs";
 import ProductTitle from "./ProductTitle/ProductTitle";
@@ -13,19 +13,31 @@ import ProductImg from "./ProductImg/ProductImg";
 import classes from "./Product.module.scss";
 import Button from "../Button/Button";
 
+import { addProductToCart } from "../../services/cart";
+import { customerData } from "../../store/selectors";
+
 const Product = () => {
   let { productId } = useParams();
+  const store = useSelector((state) => state);
+
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
   const [toggle, setToggle] = useState(0);
 
-  function addToCart(info) {
+  const addToCart = async (info) => {
     try {
-      dispatch(setItemInCart(info));
+      if (customerData(store).id) {
+        await addProductToCart(info._id);
+        console.log("Loged customer");
+        dispatch(setItemInCart(info._id));
+      } else {
+        dispatch(setItemInCart(info._id));
+        console.log("Anonim");
+      }
     } catch (error) {
       console.error(error.message);
     }
-  }
+  };
 
   const getProduct = useCallback(async () => {
     const products = await getSelectedProduct(productId);
