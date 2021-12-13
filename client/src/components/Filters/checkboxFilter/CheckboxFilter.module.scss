@@ -40,29 +40,10 @@
         background:rgba(255, 255, 255, 0.1)
     }
     
-    div:nth-child(6n + 1) label input[type="checkbox"]:checked ~ span{
-        background-color: rgb(18, 18, 177);
-        box-shadow: 0 2px 10px rgb(18, 18, 177);
+    div label input[type="checkbox"]:checked ~ span{
+        background-color: rgb(124, 11, 146);
+        box-shadow: 0 2px 10px rgb(124, 11, 146);
     }
-    div:nth-child(6n + 2) label input[type="checkbox"]:checked ~ span{
-        background-color: rgb(10, 14, 19);
-        box-shadow: 0 2px 10px rgb(10, 14, 19);
-    }
-    div:nth-child(6n + 3) label input[type="checkbox"]:checked ~ span{
-        background-color: rgb(187, 9, 9);
-        box-shadow: 0 2px 10px rgb(187, 9, 9);
-    }
-    div:nth-child(6n + 4) label input[type="checkbox"]:checked ~ span{
-        background-color: rgb(16, 187, 230);
-        box-shadow: 0 2px 10px rgb(16, 187, 230);
-    }
-    div:nth-child(6n + 5) label input[type="checkbox"]:checked ~ span{
-        background-color: rgb(219, 205, 11);
-        box-shadow: 0 2px 10px rgb(219, 205, 11);
-    }
-    div:nth-child(6n + 6) label input[type="checkbox"]:checked ~ span{
-        background-color: rgb(1, 155, 39);
-        box-shadow: 0 2px 10px rgb(1, 155, 39);
-    }
+
 }
 

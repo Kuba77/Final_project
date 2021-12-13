@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const defaultState = {
   customerData: [],
 };
+
+const initialState = JSON.parse(localStorage.getItem('redux')).customer || defaultState
 
 const customerSlice = createSlice({
   name: "customer",
