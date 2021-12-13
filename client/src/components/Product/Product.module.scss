@@ -85,7 +85,7 @@
         }
 
         & form {
-            width: 600px;
+            width: 700px;
 
             @include breakpoint(md-only) {
                 width: 500px;
@@ -102,7 +102,9 @@
 
         & textarea {
             width: 100%;
-            min-height: 150px;
+            min-height: 120px;
+            padding: 5px 10px;
+            border: 1px solid rgb(206, 206, 206);
 
             @include breakpoint(xs-only) {
                 min-height: 100px;
@@ -147,6 +149,7 @@
         font-weight: $font-semi-bold;
         font-size: 34px;
         margin-bottom: 20px;
+        max-width: 480px;
 
         @include breakpoint(md-only) {
             font-size: $h1-font-size;
@@ -279,7 +282,7 @@
     top: 0;
 
     &__item {
-        margin-bottom: 15px;
+        margin-bottom: 16px;
         width: 80px;
         height: 108px;
 
@@ -304,9 +307,41 @@
 .review__buttons {
     display: flex;
     justify-content: center;
-    margin: 10px 0;
+    margin: 10px 0 30px 0;
 
     & button:first-child {
         margin-right: 40px;
+    }
+
+    & button {
+        background-color: $first-color;
+    }
+}
+
+.review {
+    border: 1px solid rgb(206, 206, 206);
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $first-color-light;
+    }
+
+    &__customer {
+        padding: 0 10px;
+    }
+
+    & button {
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+        padding: 7px;
+    }
+
+    &__text {
+        padding: 5px 10px;
     }
 }

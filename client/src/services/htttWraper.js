@@ -1,6 +1,5 @@
 import configData from "../config/config.json";
 const axios = require("axios");
-
 axios.defaults.baseURL = configData.BASE_URL;
 
 export const setAuthToken = (token) => {

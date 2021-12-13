@@ -1,18 +1,20 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useSelector } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
-import { createComment, updateComment, deleteComment, getAllProductComments } from "../../services/comments";
+import { createProductComment, deleteProductComment, getAllProductComments } from "../../services/comments";
 import { useDispatch } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
-import { BsBasket, BsFillHeartFill } from "react-icons/bs";
+import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
+import { useFormik } from "formik";
 import ProductTitle from "./ProductTitle/ProductTitle";
-import ProductAutor from "./ProductAutor/ProductAutor";
+import ProductAuthor from "./ProductAuthor/ProductAuthor";
 import ProductDescription from "./ProductDescription/ProductDescription";
 import ProductPriceBlock from "./ProductPriceBlock/ProductPriceBlock";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductImg from "./ProductImg/ProductImg";
 import classes from "./Product.module.scss";
 import Button from "../Button/Button";
+import { customerData } from "../../store/selectors";
 
 const Product = () => {
   let { productId } = useParams();
@@ -37,15 +39,41 @@ const Product = () => {
   useEffect(() => {
     getProduct();
   }, [getProduct, productId]);
+  /*
+    const getComments = useCallback(async () => {
+      const comments = await getAllProductComments(productId);
+      setComments(comments);
+    }, [setComments, productId]);
+  
+    useEffect(() => {
+      getComments();
+    }, [getComments, productId]);
 
-  const getComments = useCallback(async () => {
-    const comments = await getAllProductComments(productId);
-    setComments(comments);
-  }, [setComments, productId]);
+ const deleteComments = useCallback(async ({comment._id}) => {
+      const comments = await deleteProductComment({comment._id});
+      setComments(comments);
+    }, [setComments, comment._id]);
 
-  useEffect(() => {
-    getComments();
-  }, [getComments, productId]);
+    useEffect(() => {
+      deleteComment();
+    }, [deleteComment, {comment._id}]);
+*/
+  const formik = useFormik({
+    initialValues: {
+      customer: customerData._id,
+      product: product._id,
+      category: product.categories,
+      content: "",
+      date: Date.now()
+    },
+    onSubmit: async values => {
+      try {
+        await createProductComment(values)
+      } catch (error) {
+        alert(error)
+      }
+    }
+  })
 
   return (
     <React.Fragment>
@@ -65,7 +93,7 @@ const Product = () => {
                   className={classes.product_info__title}
                   title={product.name}
                 />
-                <ProductAutor
+                <ProductAuthor
                   className={classes.product_info__author}
                   author={product.author}
                 />
@@ -126,28 +154,53 @@ const Product = () => {
             </h3>
 
             <div className={classes.product_block__review}>
-              <form>
+              <form
+                onSubmit={
+                  // customerData._id(store) ? 
+                  formik.handleSubmit
+                  // : alert("You must be authorized to leave a comment")
+                }
+              >
                 <textarea
-                  id="review"
-                  name="Textarea"
+                  id="content"
+                  name="content"
+                  type="text"
                   placeholder="Please, live your comment here..."
-                ></textarea>
+                  onChange={formik.handleChange}
+                  value={formik.values.content}>
+                </textarea>
+
                 <div className={classes.review__buttons}>
-                  <Button type="main" size="m">
+                  <Button type="reset" size="m" onClick={formik.handleReset}>
                     Reset
                   </Button>
-                  <Button type="main" size="m">
+
+                  <Button type="submit" size="m">
                     Send
                   </Button>
                 </div>
               </form>
             </div>
 
-<div>
-  <p>Customer.firstName & Customer.lastName</p> 
-  <Button type="main" size="m">Upd</Button> <Button type="main" size="m">Del</Button>
-  <p>content</p>
-</div>
+            {/*don't delete    render comments 
+
+            {comments ?
+              comments.map((comments, index) => (
+                <div key={comments._id} className={classes.review}>
+                  <div className={classes.review__header}>
+                    <p className={classes.review__customer}>{comments.customer}firstName lastName</p>
+                    <Button type="main"
+                    // onClick={deleteComment}
+                    >
+                      <BsFillTrashFill color="white" size={16} /></Button>
+                  </div>
+                  <p className={classes.review__text}>{comments.content} content</p>
+                </div>
+              )) :
+            <div key={comments._id} className={classes.review}>
+              <p className={classes.review__text}>This product don't have review. Yours'll be the first. </p>
+            </div>
+            } */}
 
           </div>
         </div>

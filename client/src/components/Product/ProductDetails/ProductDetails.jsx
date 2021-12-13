@@ -1,7 +1,10 @@
 import React from "react";
 import classes from "./ProductDetails.module.scss";
+import PropTypes from "prop-types";
 
 const ProductDetails = (props) => {
+  const { product } = props;
+
   return (
     <React.Fragment>
       <div className={classes.product_block__details}>
@@ -16,25 +19,35 @@ const ProductDetails = (props) => {
         </div>
 
         <div className={classes.product_data}>
-          <p>{props.product.name}</p>
-          <p>{props.product.author}</p>
-          <p>{props.product.itemNo}</p>
-          <p>{props.product.book_format}</p>
-          <p>{props.product.date_published}</p>
-          <p>{props.product.publisher}</p>
+          <p>{product.name}</p>
+          <p>{product.author}</p>
+          <p>{product.itemNo}</p>
+          <p>{product.book_format}</p>
+          <p>{product.date_published}</p>
+          <p>{product.publisher}</p>
           <p>
-            {props.product.genre.map((item, index) => (
-              <span key={index}>
+            {product.genre.map((item, index) => {
+             return <span key={item}>
                 {" "}
                 {item}
-                {index !== props.product.genre.length - 1 ? "," : ""}
+                {index !== product.genre.length - 1 ? "," : ""}
               </span>
-            ))}
+            })}
           </p>
         </div>
       </div>
     </React.Fragment>
   );
+};
+
+ProductDetails.propTypes = {
+  name: PropTypes.string,
+  author: PropTypes.string,
+  itemNo: PropTypes.string,
+  book_format: PropTypes.string,
+  date_published: PropTypes.string,
+  publisher: PropTypes.string,
+  genre: PropTypes.string
 };
 
 export default ProductDetails;
