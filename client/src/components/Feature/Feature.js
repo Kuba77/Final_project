@@ -9,10 +9,10 @@ const Feature = () => {
     return (
         <section className={classes.feature}>
             <div className={layout.section}>
-         
+            
                 <div className={classes.feature__container}>
                         <>
-                            <h2>Featured Manga</h2>
+                        <h2>Featured Manga</h2>
                             <Carousel/>
                         </>
             </div>

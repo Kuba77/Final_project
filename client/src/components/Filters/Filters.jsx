@@ -1,23 +1,20 @@
 import React from "react";
 import СheckboxFilter from "./checkboxFilter/СheckboxFilter";
 import SortFilter from "./sortFilter/SortFilter";
+import classes from './Filters.module.scss'
 
-function Filters(props) {
+const Filters = (props) => {
   const { getselectedGenre, sortProductByPrice, genderSelected, sort } = props;
 
   return (
-    <div>
-      <h1>GENRE FILTER</h1>
-      <>
+    <div className={classes.filters__container}>
+     
         <СheckboxFilter
           getselectedGenre={getselectedGenre}
           genderSelected={genderSelected}
         />
-      </>
-      <h1>SORT FILTER</h1>
-      <>
         <SortFilter sortProductByPrice={sortProductByPrice} sort={sort} />
-      </>
+   
     </div>
   );
 }
