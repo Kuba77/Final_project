@@ -1,12 +1,28 @@
+import React from "react";
 import { Formik } from "formik";
-import classes from "./Footer.module.scss"
+import classes from "./Footer.module.scss";
 import * as yup from "yup";
 
-function FormSubscribe() {
-    const validationSchema = yup.object().shape({
-        email: yup.string().email('Invalid email').typeError('must be string')
-    })
+import createNewSubscribe from "../../store/subscribe/middleware"
+import { connect } from "react-redux";
+import {latteHtmlSubscribe, letterSubjectSubscribe} from './letterConfig'
 
+
+const FormSubscribe = connect (null, {createNewSubscribe})(({
+    email,
+    setIsSubscribed, createNewSubscribe
+}) => {
+  
+    const addSubscriber = async(email, letterSubject, letterHtml) =>{
+        const result = await createNewSubscribe({email, letterSubject, letterHtml})
+        if (!result && result.status !== 200)
+        return setIsSubscribed(() => true)
+    }
+
+    const validationSchema = yup.object().shape({
+        email: yup.string().min(4, 'Too short email').email('Invalid email').typeError('must be string').required('Enter email')
+    })
+    
     return (
         <div>
             <Formik
@@ -15,8 +31,11 @@ function FormSubscribe() {
                 }}
                 validateOnBlur
                 onSubmit={(values, { resetForm }) => {
-                    resetForm();
-                }}
+                    resetForm();           
+                    let email = values;   
+                    addSubscriber(email, letterSubjectSubscribe, latteHtmlSubscribe);
+                    } 
+                }  
                 validationSchema={validationSchema}
             >
                 {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
@@ -44,7 +63,8 @@ function FormSubscribe() {
         </div>
 
     )
-}
-
+})
+        
+                  
 
 export default FormSubscribe;
