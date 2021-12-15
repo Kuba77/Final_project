@@ -6,6 +6,7 @@ import Collection from "../../pages/CollectionPage/CollectionPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import RegistrationPage from "../../pages/RegistrationPage/RegistrationPage";
 import CategoryPage from "../../pages/CategoryPage/CategoryPage";
+import OrderPage from "../Order-page/Order-page";
 
 const RoutePages = () => {
   return (
@@ -21,6 +22,7 @@ const RoutePages = () => {
         path="/category/:categoryId"
         component={CategoryPage}
       ></Route>
+      <Route exact path="/order" component={OrderPage}></Route>
     </Switch>
   );
 };
