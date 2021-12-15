@@ -6,7 +6,7 @@ export const addProductToCart = async (value) => {
     return await axios
       .put(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
       .then((res) => {
-        console.log("Added Prod", res);
+        return res.data;
       });
   } catch (e) {
     return e.message;
@@ -15,9 +15,32 @@ export const addProductToCart = async (value) => {
 export const decreaseProductQuantity = async (value) => {
   try {
     return await axios
-      .put(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
+      .delete(`${configData.DECREASE_PRODUCT_QUANTITY}/${value}`)
       .then((res) => {
-        console.log("Deleted", res);
+        return res.data;
+      });
+  } catch (e) {
+    return e.message;
+  }
+};
+export const removeProductFromCart = async (value) => {
+  try {
+    return await axios
+      .delete(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
+      .then((res) => {
+        return res.data;
+      });
+  } catch (e) {
+    return e.message;
+  }
+};
+export const updateCart = async (value) => {
+  try {
+    return await axios
+      .put(`${configData.ADD_PRODUCT_TO_CART}`, value)
+      .then((res) => {
+        console.log(res);
+        return res.data;
       });
   } catch (e) {
     return e.message;
@@ -28,6 +51,18 @@ export const getCustomerCart = async () => {
     return await axios.get(`${configData.ADD_PRODUCT_TO_CART}`).then((res) => {
       return res.data;
     });
+  } catch (e) {
+    return e.message;
+  }
+};
+export const moveCartToDB = async (value) => {
+  try {
+    return await axios
+      .post(`${configData.ADD_PRODUCT_TO_CART}`, value)
+      .then((res) => {
+        console.log("removed Cart", res);
+        return res.data;
+      });
   } catch (e) {
     return e.message;
   }

@@ -27,13 +27,13 @@ function LoginForm(props) {
         } else {
           try {
             const customerCart = await getCustomerCart();
+            console.log("customerCart", customerCart);
             if (customerCart.message) {
               dispatch(setErors(customerCart.message));
             }
             customerCart.products.forEach(function (item) {
               dispatch(setItemInCart(item));
             });
-            console.log("customerCart", customerCart);
           } catch (error) {
             dispatch(setErors(error.response));
           }

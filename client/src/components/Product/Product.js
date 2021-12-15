@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
 import { useDispatch, useSelector } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
-import { setFavoriteItems } from '../../store/favorites/reducer'
+import { setFavoriteItems } from "../../store/favorites/reducer";
 import { BsBasket, BsFillHeartFill } from "react-icons/bs";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAutor from "./ProductAutor/ProductAutor";
@@ -27,26 +27,34 @@ const Product = () => {
 
   const addToCart = async (info) => {
     try {
+      let q = {};
+      Object.assign(
+        q,
+        { _id: product._id },
+        { product: product },
+        { cartQuantity: 1 }
+      );
+      console.log(q);
       if (customerData(store).id) {
         await addProductToCart(info._id);
         console.log("Loged customer");
-        dispatch(setItemInCart(info._id));
+        dispatch(setItemInCart(q));
       } else {
-        dispatch(setItemInCart(info._id));
+        dispatch(setItemInCart(q));
         console.log("Anonim");
       }
     } catch (error) {
       console.error(error.message);
     }
   };
-  
+
   const addToWishList = (info) => {
     try {
       dispatch(setFavoriteItems(info));
     } catch (error) {
       console.error(error.message);
     }
-  }
+  };
 
   const getProduct = useCallback(async () => {
     const products = await getSelectedProduct(productId);
@@ -97,11 +105,11 @@ const Product = () => {
                   >
                     <BsBasket color="white" size={26} />
                   </Button>
-                  <Button 
-                  type="main"
-                  onClick={() => {
-                    addToWishList(product);
-                  }}
+                  <Button
+                    type="main"
+                    onClick={() => {
+                      addToWishList(product);
+                    }}
                   >
                     <BsFillHeartFill color="white" size={26} />
                   </Button>
