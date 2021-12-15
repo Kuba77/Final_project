@@ -1,7 +1,15 @@
 import axios from "./htttWraper";
 import configData from "../config/config.json";
 
-export async function createProductComment(newComment) {
+export async function createProductComment(value) {
+  let { product, customer, content } = value
+
+  const newComment = {
+    product: product,
+    customer: customer,
+    content: content.content
+  };
+
   try {
     return await axios
       .post(configData.ALL_COMMENTS_URL, newComment)
@@ -13,24 +21,26 @@ export async function createProductComment(newComment) {
   }
 }
 
-export async function deleteProductComment(id) {
+export async function getAllProductComments(value) {
   try {
-    return await axios
-      .delete(configData.CUSTOMER_COMMENT_URL, id)
-      .then((response) => {
+    return await axios.get(`${configData.PRODUCT_COMMENTS_URL}/${value}`) 
+    .then((response) => {
         return response.data;
-      });
-  } catch (error) {
-    return error.response.data;
+      })
+} catch (error) {
+    return error.message;
   }
 }
 
-export async function getAllProductComments() {
+export async function deleteProductComment(value) {
   try {
-    return await axios.get(configData.PRODUCT_COMMENTS_URL).then((response) => {
-      return response.data;
-    });
+    return await axios
+      .delete(`${configData.ALL_COMMENTS_URL}/${value}`)
+      .then((response) => {
+        console.log(response.data);
+        return response.data;
+      })
   } catch (error) {
-    return error.message;
+    return error.response.data;
   }
 }

@@ -320,6 +320,7 @@
 
 .review {
     border: 1px solid rgb(206, 206, 206);
+    margin-bottom: 15px;
 
     &__header {
         display: flex;
@@ -333,15 +334,20 @@
     }
 
     & button {
-        border-radius: 0;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        -ms-border-radius: 0;
-        -o-border-radius: 0;
+        box-shadow: unset;
         padding: 7px;
+        background-color: transparent;
+        
+        &:hover svg {
+            color: white;
+        }
     }
 
     &__text {
         padding: 5px 10px;
+    }
+
+    &__dis {
+        border: none;
     }
 }

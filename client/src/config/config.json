@@ -10,6 +10,5 @@
     "FILTERED_PRODUCT_URL": "/products/filter?",
     "ALL_CATALOG_URL": "/catalog",
     "ALL_COMMENTS_URL": "/comments",
-    "CUSTOMER_COMMENT_URL": "/comments/{id}",
-    "PRODUCT_COMMENTS_URL": "/comments/product/{productId}"
+    "PRODUCT_COMMENTS_URL": "/comments/product"
 }

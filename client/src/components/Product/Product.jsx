@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useCallback, useSelector } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
 import { createProductComment, deleteProductComment, getAllProductComments } from "../../services/comments";
-import { useDispatch } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
 import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
 import { useFormik } from "formik";
@@ -20,7 +20,8 @@ const Product = () => {
   let { productId } = useParams();
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
-  const [comments, setComments] = useState({});
+  const [comments, setComments] = useState([]);
+  const store = useSelector((state) => state);
   const [toggle, setToggle] = useState(0);
 
   function addToCart(info) {
@@ -39,36 +40,36 @@ const Product = () => {
   useEffect(() => {
     getProduct();
   }, [getProduct, productId]);
-  /*
-    const getComments = useCallback(async () => {
-      const comments = await getAllProductComments(productId);
-      setComments(comments);
-    }, [setComments, productId]);
-  
-    useEffect(() => {
-      getComments();
-    }, [getComments, productId]);
 
- const deleteComments = useCallback(async ({comment._id}) => {
-      const comments = await deleteProductComment({comment._id});
-      setComments(comments);
-    }, [setComments, comment._id]);
+  const getComments = useCallback(async () => {
+    const product = await getSelectedProduct(productId);
+    const productComments = await getAllProductComments(product._id);
+    setComments(productComments);
+  }, [productId]);
 
-    useEffect(() => {
-      deleteComment();
-    }, [deleteComment, {comment._id}]);
-*/
+  useEffect(() => {
+    getComments();
+  }, [getComments]);
+
+  const deleteComment = useCallback(async (value) => {
+    await deleteProductComment(value);
+    getComments();
+  },[getComments]);
+
   const formik = useFormik({
     initialValues: {
-      customer: customerData._id,
-      product: product._id,
-      category: product.categories,
-      content: "",
-      date: Date.now()
+      content: ""
     },
-    onSubmit: async values => {
+    onSubmit: async function setValues(value) {
+      let commentObject = {
+        product: product,
+        customer: customerData(store),
+        content: value
+      }
       try {
-        await createProductComment(values)
+        await createProductComment(commentObject);
+        formik.handleReset()
+        getComments();
       } catch (error) {
         alert(error)
       }
@@ -154,13 +155,7 @@ const Product = () => {
             </h3>
 
             <div className={classes.product_block__review}>
-              <form
-                onSubmit={
-                  // customerData._id(store) ? 
-                  formik.handleSubmit
-                  // : alert("You must be authorized to leave a comment")
-                }
-              >
+              <form onSubmit={formik.handleSubmit}>
                 <textarea
                   id="content"
                   name="content"
@@ -171,37 +166,49 @@ const Product = () => {
                 </textarea>
 
                 <div className={classes.review__buttons}>
-                  <Button type="reset" size="m" onClick={formik.handleReset}>
+                  <Button
+                    type="reset"
+                    size="m"
+                    onClick={formik.handleReset}>
                     Reset
                   </Button>
 
-                  <Button type="submit" size="m">
+                  <Button
+                    type="submit"
+                    size="m"
+                    onClick={() => {
+                      if (!customerData(store).id) alert("You must be authorized to leave a comment")
+                    }}>
                     Send
                   </Button>
                 </div>
               </form>
             </div>
 
-            {/*don't delete    render comments 
-
-            {comments ?
-              comments.map((comments, index) => (
-                <div key={comments._id} className={classes.review}>
-                  <div className={classes.review__header}>
-                    <p className={classes.review__customer}>{comments.customer}firstName lastName</p>
-                    <Button type="main"
-                    // onClick={deleteComment}
-                    >
-                      <BsFillTrashFill color="white" size={16} /></Button>
-                  </div>
-                  <p className={classes.review__text}>{comments.content} content</p>
-                </div>
-              )) :
-            <div key={comments._id} className={classes.review}>
-              <p className={classes.review__text}>This product don't have review. Yours'll be the first. </p>
-            </div>
-            } */}
-
+            {comments.length === 0 ?
+              (<div className={classes.review__dis}>
+                <p className={classes.review__text}>This product don't have review. Yours 'll be the first.</p>
+              </div>)
+              :
+              (comments.map((item) => {
+                return (
+                  <div key={item._id} className={classes.review}
+                  >
+                    <div className={classes.review__header}>
+                      <p className={classes.review__customer}>{item.customer.firstName} {item.customer.lastName}</p>
+                      <Button
+                        type="main"
+                        onClick={() => {
+                          if (customerData(store).id === item.customer._id) {
+                            deleteComment(item._id)
+                          }
+                        }}
+                      >
+                        <BsFillTrashFill color="#8D28AD" size={16} /></Button>
+                    </div>
+                    <p className={classes.review__text}>{item.content}</p>
+                  </div>)
+              }))}
           </div>
         </div>
       )}
