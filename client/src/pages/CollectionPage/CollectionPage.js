@@ -14,7 +14,7 @@ const CollectionPage = () => {
   const [collection, setCollection] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsInPage] = useState(15);
+  const [productsInPage] = useState(20);
 
   const [genderSelected, setgenderSelected] = useState([]);
   const [sort, setSort] = useState("");
@@ -76,13 +76,7 @@ const CollectionPage = () => {
     <>
       <Header />
       <section className={classes.collection}>
-        {isLoading && (
-          <div className={classes.collection__loader}>
-            <PuffLoader loading={isLoading} color="purple" size={120} />
-          </div>
-        )}
-
-        {!isLoading && (
+      {(
           <Filters
             genderSelected={genderSelected}
             sort={sort}
@@ -91,15 +85,22 @@ const CollectionPage = () => {
           />
         )}
 
+        {isLoading && (
+          <div className={classes.collection__loader}>
+            <PuffLoader loading={isLoading} color="purple" size={120} />
+          </div>
+        )}
         <div className={classes.collection__container}>
           {!isLoading && <CollectionList collection={currentProduct} />}
         </div>
 
-        <Pagination
+        {!isLoading && ( <Pagination
           productsInPage={productsInPage}
           totalProducts={collection.length}
           paginate={paginate}
         />
+        )}
+
       </section>
     </>
   );

@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = []
+const defaultState = {
+  favoriteItems: []
+}
+
+const initialState = JSON.parse(localStorage.getItem('redux')).favorites|| defaultState
 
 const favoriteSlice = createSlice({
   name: 'favorites',
@@ -10,7 +14,7 @@ const favoriteSlice = createSlice({
       state.favoriteItems.push(action.payload)
     },
     deleteFavorites: (state, action) => {
-      state.favoriteItems = state.favoriteItems.filter(book => book.id !== action.payload)
+      state.favoriteItems = state.favoriteItems.filter(book => book.itemNo !== action.payload)
     },
   }
 });

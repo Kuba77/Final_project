@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
 import { useDispatch } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
+import { setFavoriteItems } from '../../store/favorites/reducer'
 import { BsBasket, BsFillHeartFill } from "react-icons/bs";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAutor from "./ProductAutor/ProductAutor";
@@ -22,6 +23,13 @@ const Product = () => {
   function addToCart(info) {
     try {
       dispatch(setItemInCart(info));
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+  const addToWishList = (info) => {
+    try {
+      dispatch(setFavoriteItems(info));
     } catch (error) {
       console.error(error.message);
     }
@@ -76,8 +84,12 @@ const Product = () => {
                   >
                     <BsBasket color="white" size={26} />
                   </Button>
-
-                  <Button type="main">
+                  <Button 
+                  type="main"
+                  onClick={() => {
+                    addToWishList(product);
+                  }}
+                  >
                     <BsFillHeartFill color="white" size={26} />
                   </Button>
                 </div>
