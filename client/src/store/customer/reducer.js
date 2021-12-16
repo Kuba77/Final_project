@@ -4,7 +4,8 @@ const defaultState = {
   customerData: [],
 };
 
-const initialState = JSON.parse(localStorage.getItem('redux')).customer || defaultState
+const initialState =
+  JSON.parse(localStorage.getItem("redux"))?.customer || defaultState;
 
 const customerSlice = createSlice({
   name: "customer",

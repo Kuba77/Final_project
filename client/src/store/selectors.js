@@ -12,7 +12,10 @@ export const customerName = createSelector(
 );
 
 const bazeErors = (state) => state.errors;
-export const errorsData = createSelector([bazeErors], (errors) => errors.errorsData);
+export const errorsData = createSelector(
+  [bazeErors],
+  (errors) => errors.errorsData
+);
 
 export const errorloginOrEmail = createSelector(
   [errorsData],
@@ -25,4 +28,4 @@ export const errorMessage = createSelector(
 );
 
 const bazeCart = (state) => state.cart;
-export const InCart = createSelector([bazeCart], (cart) => cart.itemsInCart);
+export const InCart = createSelector([bazeCart], (cart) => cart.products);

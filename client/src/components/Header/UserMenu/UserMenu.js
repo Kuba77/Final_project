@@ -7,6 +7,8 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { customerData } from "../../../store/selectors";
 import { logoutCustomer } from "../../../services/user";
 import { removeCustomer } from "../../../store/customer/reducer";
+import { clearCart } from "../../../store/cart/reducer";
+import { removeFavorites } from "../../../store/favorites/reducer";
 
 const UserMenu = () => {
   const [isOpen, setOpen] = useState(false);
@@ -19,6 +21,8 @@ const UserMenu = () => {
   const logOutCustomer = () => {
     logoutCustomer();
     dispatch(removeCustomer());
+    dispatch(clearCart());
+    dispatch(removeFavorites());
   };
 
   return (

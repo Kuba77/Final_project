@@ -8,6 +8,8 @@ import { LoginSchema } from "../../components/Forms/ValidationSchema";
 import LoginForm from "../../components/Forms/LoginForm";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import { getCustomerCart } from "../../services/cart";
+import { setItemInCart } from "../../store/cart/reducer";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,16 @@ const LoginPage = () => {
       try {
         let customer = await loginCustomer(values);
         if (customer.id) {
+          try {
+            const customerCart = await getCustomerCart();
+            console.log("customerCart", customerCart);
+            customerCart.products.forEach(function (item) {
+              dispatch(setItemInCart(item));
+            });
+          } catch (error) {
+            dispatch(setErors(error.response));
+          }
+
           dispatch(setCustomer(customer));
           dispatch(clearErrors());
           history.push("/");
@@ -37,7 +49,6 @@ const LoginPage = () => {
     password: "",
   };
   const validationSchema = LoginSchema;
-
 
   const onSubmit = (values) => {
     singIn(values);

@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Formik, Form} from "formik";
+import { Formik, Form } from "formik";
 import { Link, useHistory } from "react-router-dom";
 import FormikControl from "./FormikControl";
 import classes from "./Form.module.scss";
@@ -7,23 +7,36 @@ import { useDispatch } from "react-redux";
 import { setCustomer } from "../../store/customer/reducer";
 import { setErors, clearErrors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer } from "../../services/user";
+import { getCustomerCart } from "../../services/cart";
 import { GoogleLogin } from "react-google-login";
 import TextError from "./components/TextError";
 import configData from "../../config/config.json";
+import { setItemInCart } from "../../store/cart/reducer";
 
 function LoginForm(props) {
   const { initialValues, validationSchema, onSubmit, errorMessage } = props;
-  console.log(errorMessage)
   const dispatch = useDispatch();
   const history = useHistory();
 
   const responseSuccessGoogle = useCallback(
     async (response) => {
       try {
-        let customer = await logOrRegisterCustomer(response);
+        const customer = await logOrRegisterCustomer(response);
         if (customer.message) {
           dispatch(setErors(customer.message));
         } else {
+          try {
+            const customerCart = await getCustomerCart();
+            console.log("customerCart", customerCart);
+            if (customerCart.message) {
+              dispatch(setErors(customerCart.message));
+            }
+            customerCart.products.forEach(function (item) {
+              dispatch(setItemInCart(item));
+            });
+          } catch (error) {
+            dispatch(setErors(error.response));
+          }
           dispatch(setCustomer(customer));
           history.push("/");
           dispatch(clearErrors());
@@ -88,7 +101,6 @@ function LoginForm(props) {
         );
       }}
     </Formik>
-
   );
 }
 
