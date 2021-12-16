@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide} from 'swiper/react'
+import  useWindowSize from '../../../hooks/useWindowSize'
 import "swiper/swiper.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/pagination/pagination.min.css";
@@ -13,13 +14,16 @@ import SwiperCore, {
 SwiperCore.use([EffectCoverflow, Navigation, Autoplay]);
 
 const Carousel = () => {
+
+  const size = useWindowSize()
+
   return (
      
       <Swiper
         navigation={true}
         effect={"coverflow"}
         centeredSlides={true}
-        slidesPerView={window.innerWidth < 768 ? 3 : "auto"}
+        slidesPerView={size < 768 ? 3 : "auto"}
         loop={true}
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         coverflowEffect={{

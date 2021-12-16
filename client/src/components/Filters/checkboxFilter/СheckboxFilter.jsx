@@ -1,11 +1,12 @@
 import React from "react";
+import classes from "./CheckboxFilter.module.scss";
 
-function СheckboxFilter(props) {
+const СheckboxFilter = (props) => {
   const { genderSelected, getselectedGenre } = props;
   return (
-    <div>
+    <div className={classes.checkbox__container}>
+      <div>
       <label id="Action">
-        "Action"
         <input
           checked={genderSelected.includes("Action")}
           type="checkbox"
@@ -13,10 +14,14 @@ function СheckboxFilter(props) {
           onChange={(e) => {
             getselectedGenre(e.target.name);
           }}
+          
         />
+        <span>Action</span>
       </label>
+      </div>
+      <div>
       <label id="Drama">
-        "Drama"
+        
         <input
           checked={genderSelected.includes("Drama")}
           type="checkbox"
@@ -25,9 +30,11 @@ function СheckboxFilter(props) {
             getselectedGenre(e.target.name);
           }}
         />
+      <span>Drama</span>
       </label>
+      </div>
+      <div>
       <label id="Romance">
-        "Romance"
         <input
           checked={genderSelected.includes("Romance")}
           type="checkbox"
@@ -36,9 +43,11 @@ function СheckboxFilter(props) {
             getselectedGenre(e.target.name);
           }}
         />
+      <span>Romance</span>
       </label>
+      </div>
+      <div>
       <label id="Supernatural">
-        "Supernatural"
         <input
           checked={genderSelected.includes("Supernatural")}
           type="checkbox"
@@ -47,9 +56,11 @@ function СheckboxFilter(props) {
             getselectedGenre(e.target.name);
           }}
         />
+      <span>Supernatural</span>
       </label>
+      </div>
+      <div>
       <label id="Comedy">
-        "Comedy"
         <input
           checked={genderSelected.includes("Comedy")}
           type="checkbox"
@@ -58,9 +69,12 @@ function СheckboxFilter(props) {
             getselectedGenre(e.target.name);
           }}
         />
+      <span>Comedy</span>
       </label>
+      </div>
+
+      <div>
       <label id="Adventure">
-        "Adventure"
         <input
           checked={genderSelected.includes("Adventure")}
           type="checkbox"
@@ -69,7 +83,9 @@ function СheckboxFilter(props) {
             getselectedGenre(e.target.name);
           }}
         />
+       <span>Adventure</span>
       </label>
+      </div>
     </div>
   );
 }
