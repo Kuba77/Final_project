@@ -8,25 +8,18 @@ import { connect } from "react-redux";
 import {letterHtmlSubscribe, letterSubjectSubscribe} from './letterConfig'
 
 const FormSubscribe = connect (null, {createNewSubscribe})(({
-    email,
     setIsSubscribed,
      createNewSubscribe
 }) => {
-    const addSubscriber = async(email, letterSubject, letterHtml) =>{
-        const result = await createNewSubscribe({email, letterSubject, letterHtml})
-        if (!result && result.status !== 200)
-        return setIsSubscribed(() => true)
-        console.log(result);
-    }
-    
     const validationSchema = yup.object().shape({
         email: yup.string().min(4, 'Too short email').email('Invalid email').typeError('must be string').required('Enter email')
     })
-    const onSubmit = (email) => {
-      const credentials = {
-        email, letterHtml: letterHtmlSubscribe, letterSubject: letterSubjectSubscribe
-      }
-      createNewSubscribe(credentials)
+    const onSubmit = async(values, { resetForm }) => {
+        resetForm();       
+        const result = await createNewSubscribe({email: values.email, letterHtml: letterHtmlSubscribe, 
+        letterSubject: letterSubjectSubscribe})
+        if (!result && result.status !== 200)
+        return setIsSubscribed(() => true)
     }
     return (
         <div>
@@ -35,11 +28,7 @@ const FormSubscribe = connect (null, {createNewSubscribe})(({
                     email: "",
                 }}
                 validateOnBlur
-                onSubmit={(values, { resetForm }) => {
-                    resetForm();           
-                    addSubscriber(onSubmit(values.email), letterSubjectSubscribe, letterHtmlSubscribe);
-                    } 
-                }  
+                onSubmit= {onSubmit}  
                 validationSchema={validationSchema}
             >
                 {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
