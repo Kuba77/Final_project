@@ -3,9 +3,9 @@ import { Formik, Form } from "formik";
 import FormikControl from "./FormikControl";
 import classes from "./Form.module.scss";
 import { useDispatch } from "react-redux";
-import { setCustomer} from "../../store/customer/reducer";
+import { setCustomer } from "../../store/customer/reducer";
 import { setErors } from "../../store/errors/reducer";
-import { logOrRegisterCustomer } from "../../api/userApi";
+import { logOrRegisterCustomer } from "../../services/user";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
 import TextError from "./components/TextError";
@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 
 function RegistrationForm(props) {
   const { initialValues, validationSchema, onSubmit, errorMessage } = props;
+
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -39,7 +40,7 @@ function RegistrationForm(props) {
     },
     [dispatch]
   );
-
+console.log(errorMessage)
   return (
     <Formik
       initialValues={initialValues}

@@ -11,7 +11,7 @@ const ProductDetails = (props) => {
           <p>Product Code</p>
           <p>Book Format</p>
           <p>Date Published</p>
-          <p>Date Published</p>
+          <p>Publisher</p>
           <p>Genre</p>
         </div>
 

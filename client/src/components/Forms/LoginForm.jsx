@@ -5,26 +5,41 @@ import FormikControl from "./FormikControl";
 import classes from "./Form.module.scss";
 import { useDispatch } from "react-redux";
 import { setCustomer } from "../../store/customer/reducer";
-import { setErors } from "../../store/errors/reducer";
-import { logOrRegisterCustomer } from "../../api/userApi";
+import { setErors, clearErrors } from "../../store/errors/reducer";
+import { logOrRegisterCustomer } from "../../services/user";
+import { getCustomerCart } from "../../services/cart";
 import { GoogleLogin } from "react-google-login";
+import TextError from "./components/TextError";
 import configData from "../../config/config.json";
+import { setItemInCart } from "../../store/cart/reducer";
 
 function LoginForm(props) {
-  const { initialValues, validationSchema, onSubmit } = props;
-
+  const { initialValues, validationSchema, onSubmit, errorMessage } = props;
   const dispatch = useDispatch();
   const history = useHistory();
 
   const responseSuccessGoogle = useCallback(
     async (response) => {
       try {
-        let customer = await logOrRegisterCustomer(response);
+        const customer = await logOrRegisterCustomer(response);
         if (customer.message) {
           dispatch(setErors(customer.message));
         } else {
+          try {
+            const customerCart = await getCustomerCart();
+            console.log("customerCart", customerCart);
+            if (customerCart.message) {
+              dispatch(setErors(customerCart.message));
+            }
+            customerCart.products.forEach(function (item) {
+              dispatch(setItemInCart(item));
+            });
+          } catch (error) {
+            dispatch(setErors(error.response));
+          }
           dispatch(setCustomer(customer));
           history.push("/");
+          dispatch(clearErrors());
         }
       } catch (error) {
         dispatch(setErors(error.response));
@@ -46,6 +61,7 @@ function LoginForm(props) {
       onSubmit={onSubmit}
     >
       {(formik) => {
+        console.log(formik)
         return (
           <div className={classes.form__wrapper}>
             <h1>Login form</h1>
@@ -54,7 +70,7 @@ function LoginForm(props) {
                 control="input"
                 type="email"
                 label="Email"
-                name="email"
+                name="loginOrEmail"
               />
               <FormikControl
                 control="input"

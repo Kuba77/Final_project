@@ -1,0 +1,13 @@
+@import '../../../styles/config/variables.scss';
+
+.sortfilter__container{
+    
+        select{
+            padding: 10px 10px;
+            border-radius: 10px;
+            font-size: $h3-font-size;
+            border: none;
+            outline: none;
+            box-shadow: $box-shadow;
+        }
+}

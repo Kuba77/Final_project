@@ -1,5 +1,6 @@
 import React from 'react'
 import Input from './components/Input'
+import Textarea from './components/Textarea'
 import classes from "./Form.module.scss"
 
 
@@ -10,6 +11,8 @@ function FormikControl(props) {
    switch(control) {
        case 'input': 
        return <Input className={classes.form__input} {...rest} />
+       case 'textarea': 
+       return <Textarea {...rest} />
         default: return null
    }
 }
