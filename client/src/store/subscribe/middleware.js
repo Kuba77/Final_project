@@ -1,39 +1,56 @@
 import axios from "axios";
-import configData from "../../config/config.json";
 import {message} from 'antd';
+import configData from "../../config/config.json";
 
-const BASE_ENDPOINT = `${configData.BASE_URL}`;
+const BASE_URL = configData.SUBSCRIBERS;
 
-export const getHeaders = () => ({
-    Autorization: localStorage.getItem('token'),
-    'Content Type': 'application/json'
-})
-
-const createNewSubscribe = (credential) =>{
-    axios.post(`${BASE_ENDPOINT} /subscribers`, credential)
+const createNewSubscribe = (credentials) =>{
+    console.log(credentials);
+    axios.post(BASE_URL, credentials)
     .then ((response) => {
         if(response.status === 200) {
-            message.info('You have been subscribed to updates')
+            message.info('Thanks for subscribed')
         }
     })
     .catch((error) => {
-        const requestMessage = error.response.data.message
-        if(requestMessage){
-            message.warning(`${requestMessage}`)
-        }
-        else{
-            message.warning('Somethink went wrong, please try again')
-        }
-    })
-}
+            const requestMessage = error.response.data.message;
+            if(requestMessage){
+                message.warning(`${requestMessage}`)
+            }
+            else{
+                message.warning('Somethink wrong') 
+            }
+        })
 
-export const getSubscriber = (email) =>{
-    const headers = getHeaders();
-    const result = axios
-        .get(`${BASE_ENDPOINT} /${email}`, {headers})
-        .then((data) => data)
-        .catch((err) => err.response)
-        return result
+
+
+
 }
+    
+// export const getHeaders = () => ({
+//     Autorization: localStorage.getItem('token'),
+//     'Content Type': 'application/json'
+// })
+
+// export const getSubscriber = (email) =>{
+//     const headers = getHeaders();
+//     const result = axios
+//         .get(`${BASE_URL} /${email}`, {headers})
+//         .then((data) => data)
+//         .catch((err) => err.response)
+//         return result
+// }
+
 
 export default createNewSubscribe;
+
+
+
+
+
+
+
+
+
+
+// export default createNewSubscriber;

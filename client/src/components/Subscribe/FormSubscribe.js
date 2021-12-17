@@ -5,24 +5,29 @@ import * as yup from "yup";
 
 import createNewSubscribe from "../../store/subscribe/middleware"
 import { connect } from "react-redux";
-import {latteHtmlSubscribe, letterSubjectSubscribe} from './letterConfig'
-
+import {letterHtmlSubscribe, letterSubjectSubscribe} from './letterConfig'
 
 const FormSubscribe = connect (null, {createNewSubscribe})(({
     email,
-    setIsSubscribed, createNewSubscribe
+    setIsSubscribed,
+     createNewSubscribe
 }) => {
-  
     const addSubscriber = async(email, letterSubject, letterHtml) =>{
         const result = await createNewSubscribe({email, letterSubject, letterHtml})
         if (!result && result.status !== 200)
         return setIsSubscribed(() => true)
+        console.log(result);
     }
-
+    
     const validationSchema = yup.object().shape({
         email: yup.string().min(4, 'Too short email').email('Invalid email').typeError('must be string').required('Enter email')
     })
-    
+    const onSubmit = (email) => {
+      const credentials = {
+        email, letterHtml: letterHtmlSubscribe, letterSubject: letterSubjectSubscribe
+      }
+      createNewSubscribe(credentials)
+    }
     return (
         <div>
             <Formik
@@ -32,8 +37,7 @@ const FormSubscribe = connect (null, {createNewSubscribe})(({
                 validateOnBlur
                 onSubmit={(values, { resetForm }) => {
                     resetForm();           
-                    let email = values;   
-                    addSubscriber(email, letterSubjectSubscribe, latteHtmlSubscribe);
+                    addSubscriber(onSubmit(values.email), letterSubjectSubscribe, letterHtmlSubscribe);
                     } 
                 }  
                 validationSchema={validationSchema}
