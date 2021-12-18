@@ -9,11 +9,12 @@
     "SERCH_PRODUCT_URL": "/products/search",
     "FILTERED_PRODUCT_URL": "/products/filter?",
     "ALL_CATALOG_URL": "/catalog",
-
-
     "ADD_PRODUCT_TO_CART":"/cart",
-    "DECREASE_PRODUCT_QUANTITY":"/cart/product"
+    "DECREASE_PRODUCT_QUANTITY":"/cart/product",
+    "SUBSCRIBERS": "/subscribers"
 
 
     
 }
+ 
+

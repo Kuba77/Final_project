@@ -2,12 +2,10 @@ import React from "react";
 import classes from "./Footer.module.scss"
 import logo from "./Footer_img/icon.png"
 import FooterCustomerAreaList from "./FooterCustomerAreaLinks";
-import SubscribeBlock from "./SubscribeBlock";
+import SubscribeBlock from "../../components/Subscribe/SubscribeBlock";
 import FooterQuickList from "./FooterQuickLinks";
 
 const Footer = () => {
-
-
     return (
         <>
             <SubscribeBlock />
