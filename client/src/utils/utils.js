@@ -61,3 +61,19 @@ export const calcTotalPrice = (items) => {
 export const calcPromoTotalPrice = (price) => {
   return price - (price * 13) / 100;
 };
+
+export const prepToMove = (arr) => {
+  console.log("start");
+  let R = arr.reduce((acc, item) => {
+    acc.push(
+      Object.assign({
+        ["product"]: item.product["_id"],
+        ["cartQuantity"]: item["cartQuantity"],
+      })
+    );
+    console.log("acc", acc);
+    return acc;
+  }, []);
+  console.log("R", R);
+  return { products: R };
+};

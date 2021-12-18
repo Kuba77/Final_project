@@ -8,8 +8,12 @@ import { LoginSchema } from "../../components/Forms/ValidationSchema";
 import LoginForm from "../../components/Forms/LoginForm";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { getCustomerCart } from "../../services/cart";
+import { getCustomerCart, moveCartToDB, updateCart } from "../../services/cart";
 import { setItemInCart } from "../../store/cart/reducer";
+
+///
+import { InCart } from "../../store/selectors";
+import { prepToMove } from "../../utils/utils";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -23,14 +27,24 @@ const LoginPage = () => {
         if (customer.id) {
           try {
             const customerCart = await getCustomerCart();
-            console.log("customerCart", customerCart);
-            customerCart.products.forEach(function (item) {
-              dispatch(setItemInCart(item));
-            });
+            if (customerCart === null && InCart(store).length > 0) {
+              const localCart = prepToMove(InCart(store));
+              await moveCartToDB(localCart);
+              console.log("1");
+            }
+            if (customerCart !== null && InCart(store).length > 0) {
+              const localCart = prepToMove(InCart(store));
+              await updateCart(localCart);
+              console.log("2");
+            } else {
+              customerCart.products.forEach(function (item) {
+                dispatch(setItemInCart(item));
+                console.log("3");
+              });
+            }
           } catch (error) {
             dispatch(setErors(error.response));
           }
-
           dispatch(setCustomer(customer));
           dispatch(clearErrors());
           history.push("/");
@@ -52,6 +66,7 @@ const LoginPage = () => {
 
   const onSubmit = (values) => {
     singIn(values);
+    console.log("InCart(store222)", InCart(store));
   };
 
   return (
