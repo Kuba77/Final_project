@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import classes from "./cart.module.scss";
 import { MdRemoveShoppingCart } from "react-icons/md";
+import { calcTotalPriceOneProd } from "../../utils/utils";
 
 const CartProduct = (props) => {
   const { item, deleteProductFromCart, decreaseProduct, increaseProduct } =
@@ -53,7 +54,7 @@ const CartProduct = (props) => {
       </div>
       <div className={classes.product_total_price}>
         <p>$</p>
-        <p>50</p>
+        <p>{calcTotalPriceOneProd(item)}</p>
         <MdRemoveShoppingCart
           className={classes.product_remove_icon}
           onClick={() => {

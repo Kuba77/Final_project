@@ -30,9 +30,34 @@ export const addItemQuantity = (arr, _id) => {
   let updateItem = arr.map((item) => {
     if (item._id === _id) {
       return { ...item, cartQuantity: item.cartQuantity + 1 };
+    } else {
+      return item;
     }
-    return item;
   });
-  console.log("updateItem", updateItem);
   return updateItem;
+};
+export const decreaseItemQuantity = (arr, _id) => {
+  let updateItem = arr.map((item) => {
+    if (item._id === _id) {
+      return { ...item, cartQuantity: item.cartQuantity - 1 };
+    } else {
+      return item;
+    }
+  });
+  return updateItem;
+};
+
+export const calcTotalPriceOneProd = (item) => {
+  return item.product.currentPrice * item.cartQuantity;
+};
+
+export const calcTotalPrice = (items) => {
+  const sum = items.reduce((acc, item) => {
+    acc += item.product.currentPrice * item.cartQuantity;
+    return acc;
+  }, 0);
+  return sum;
+};
+export const calcPromoTotalPrice = (price) => {
+  return price - (price * 13) / 100;
 };

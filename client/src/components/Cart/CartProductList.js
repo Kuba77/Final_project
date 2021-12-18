@@ -3,7 +3,6 @@ import CartProduct from "./CartProduct";
 import { InCart } from "../../store/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import classes from "../../pages/FavoritesPage/FavoritesPage.module.scss";
-
 import { customerData } from "../../store/selectors";
 import { deleteItemFromCart, rewrite } from "../../store/cart/reducer";
 import {
@@ -12,71 +11,24 @@ import {
   decreaseProductQuantity,
   addProductToCart,
 } from "../../services/cart";
-import { addItemQuantity } from "../../utils/utils";
+import {
+  addItemQuantity,
+  decreaseItemQuantity,
+  calcTotalPrice,
+} from "../../utils/utils";
 
 const CartProductList = () => {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    console.log("cart chenge");
-    dispatch(rewrite(cart));
-  }, [cart]);
-
-  const deleteProductFromCart = useCallback(
-    async (value) => {
-      try {
-        const response = await removeProductFromCart(value);
-        setCart(response.products);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    [setCart]
-  );
-  const localIncrease = useCallback((_id) => {
-    console.log("cart", _id);
-    let newarr = addItemQuantity(cart, _id);
-    console.log("newarr", newarr);
-  }, []);
-
-  const localRemoveProd = useCallback(
-    (value) => {
-      dispatch(deleteItemFromCart(value));
-      setCart(InCart(store));
-    },
-    [deleteItemFromCart, InCart(store)]
-  );
-
-  const increaseProduct = useCallback(
-    async (value) => {
-      try {
-        const response = await addProductToCart(value);
-        setCart(response.products);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    [setCart]
-  );
-
-  const decreaseProduct = useCallback(
-    async (value) => {
-      try {
-        const response = await decreaseProductQuantity(value);
-        setCart(response.products);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    [setCart]
-  );
+  const [sum, setSum] = useState(0);
 
   const getCart = useCallback(async () => {
     try {
       if (customerData(store).id) {
         const customerCart = await getCustomerCart();
+        console.log("customerCart", customerCart);
+        console.log("customerCart.products", customerCart.products);
         setCart(customerCart.products);
       } else {
         setCart(InCart(store));
@@ -90,6 +42,69 @@ const CartProductList = () => {
     getCart();
   }, []);
 
+  useEffect(() => {
+    setCart(InCart(store));
+  }, [InCart(store)]);
+
+  const localIncrease = useCallback(
+    (_id) => {
+      let newarr = addItemQuantity(cart, _id);
+      dispatch(rewrite(newarr));
+    },
+    [cart]
+  );
+  const localDecrease = useCallback(
+    (_id) => {
+      let newarr = decreaseItemQuantity(cart, _id);
+      dispatch(rewrite(newarr));
+    },
+    [cart]
+  );
+
+  const localRemoveProd = useCallback(
+    (value) => {
+      dispatch(deleteItemFromCart(`${value}`));
+      setCart(InCart(store));
+    },
+    [InCart(store)]
+  );
+
+  const deleteProductFromCart = useCallback(
+    async (value) => {
+      try {
+        const response = await removeProductFromCart(value);
+        dispatch(rewrite(response.products));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [removeProductFromCart]
+  );
+
+  const increaseProduct = useCallback(
+    async (value) => {
+      try {
+        const response = await addProductToCart(value);
+        dispatch(rewrite(response.products));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [addProductToCart]
+  );
+
+  const decreaseProduct = useCallback(
+    async (value) => {
+      try {
+        const response = await decreaseProductQuantity(value);
+        dispatch(rewrite(response.products));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [decreaseProductQuantity]
+  );
+
   return (
     <>
       {customerData(store).id ? (
@@ -102,6 +117,7 @@ const CartProductList = () => {
                 deleteProductFromCart={deleteProductFromCart}
                 decreaseProduct={decreaseProduct}
                 increaseProduct={increaseProduct}
+                sum={sum}
               />
             ))
           ) : (
@@ -120,6 +136,8 @@ const CartProductList = () => {
                 key={index}
                 deleteProductFromCart={localRemoveProd}
                 increaseProduct={localIncrease}
+                decreaseProduct={localDecrease}
+                sum={sum}
               />
             ))
           ) : (

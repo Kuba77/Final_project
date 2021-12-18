@@ -49,6 +49,7 @@ export const updateCart = async (value) => {
 export const getCustomerCart = async () => {
   try {
     return await axios.get(`${configData.ADD_PRODUCT_TO_CART}`).then((res) => {
+      console.log("res.data", res.data);
       return res.data;
     });
   } catch (e) {
