@@ -6,12 +6,11 @@ import Footer from "../../components/Footer/Footer";
 import CartSummary from "../../components/Cart/CartSummary";
 
 import { InCart } from "../../store/selectors";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { calcTotalPrice, calcPromoTotalPrice } from "../../utils/utils";
 
 const CartPage = () => {
   const store = useSelector((state) => state);
-  const dispatch = useDispatch();
   const [totalSum, setTotalSum] = useState("");
   const [promocode, setPromocode] = useState("");
   const [wrongPromocode, setwrongPromocode] = useState("");
@@ -22,20 +21,17 @@ const CartPage = () => {
     } else {
       setTotalSum(calcTotalPrice(InCart(store)));
     }
-  }, [InCart(store), promocode]);
+  }, [promocode, store]);
 
   const addPromoCode = useCallback((value) => {
-    if (value == "Skill") {
+    if (value === "Skill") {
       setPromocode(value);
-      console.log("promocode", promocode);
     } else {
-      console.log("wrongPromocode");
       setwrongPromocode(value);
     }
   }, []);
 
   useEffect(() => {
-    console.log("CHENGE InCart(store)");
     sumaryProdCart();
   }, [InCart(store), promocode]);
 

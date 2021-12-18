@@ -11,24 +11,17 @@ import {
   decreaseProductQuantity,
   addProductToCart,
 } from "../../services/cart";
-import {
-  addItemQuantity,
-  decreaseItemQuantity,
-  calcTotalPrice,
-} from "../../utils/utils";
+import { addItemQuantity, decreaseItemQuantity } from "../../utils/utils";
 
 const CartProductList = () => {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const [cart, setCart] = useState([]);
-  const [sum, setSum] = useState(0);
 
   const getCart = useCallback(async () => {
     try {
       if (customerData(store).id) {
         const customerCart = await getCustomerCart();
-        console.log("customerCart", customerCart);
-        console.log("customerCart.products", customerCart.products);
         setCart(customerCart.products);
       } else {
         setCart(InCart(store));
@@ -36,29 +29,29 @@ const CartProductList = () => {
     } catch (err) {
       console.log(err);
     }
-  }, [customerData(store).id, InCart(store)]);
+  }, [store]);
 
   useEffect(() => {
     getCart();
-  }, []);
+  });
 
   useEffect(() => {
     setCart(InCart(store));
-  }, [InCart(store)]);
+  }, [store]);
 
   const localIncrease = useCallback(
     (_id) => {
       let newarr = addItemQuantity(cart, _id);
       dispatch(rewrite(newarr));
     },
-    [cart]
+    [cart, dispatch]
   );
   const localDecrease = useCallback(
     (_id) => {
       let newarr = decreaseItemQuantity(cart, _id);
       dispatch(rewrite(newarr));
     },
-    [cart]
+    [cart, dispatch]
   );
 
   const localRemoveProd = useCallback(
@@ -66,7 +59,7 @@ const CartProductList = () => {
       dispatch(deleteItemFromCart(`${value}`));
       setCart(InCart(store));
     },
-    [InCart(store)]
+    [store, dispatch]
   );
 
   const deleteProductFromCart = useCallback(
@@ -78,7 +71,7 @@ const CartProductList = () => {
         console.log(error);
       }
     },
-    [removeProductFromCart]
+    [dispatch]
   );
 
   const increaseProduct = useCallback(
@@ -90,7 +83,7 @@ const CartProductList = () => {
         console.log(error);
       }
     },
-    [addProductToCart]
+    [dispatch]
   );
 
   const decreaseProduct = useCallback(
@@ -102,7 +95,7 @@ const CartProductList = () => {
         console.log(error);
       }
     },
-    [decreaseProductQuantity]
+    [dispatch]
   );
 
   return (
@@ -117,12 +110,14 @@ const CartProductList = () => {
                 deleteProductFromCart={deleteProductFromCart}
                 decreaseProduct={decreaseProduct}
                 increaseProduct={increaseProduct}
-                sum={sum}
               />
             ))
           ) : (
             <div className={classes.favorites__noitem}>
-              <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639408051/sideAssets/SeekPng.com_anime-blush-png_380918_jzwoqn.png" />
+              <img
+                alt="No items in cart"
+                src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639408051/sideAssets/SeekPng.com_anime-blush-png_380918_jzwoqn.png"
+              />
               <h3>No items in cart</h3>
             </div>
           )}
@@ -137,12 +132,14 @@ const CartProductList = () => {
                 deleteProductFromCart={localRemoveProd}
                 increaseProduct={localIncrease}
                 decreaseProduct={localDecrease}
-                sum={sum}
               />
             ))
           ) : (
             <div className={classes.favorites__noitem}>
-              <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639408051/sideAssets/SeekPng.com_anime-blush-png_380918_jzwoqn.png" />
+              <img
+                alt="No items in cart"
+                src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639408051/sideAssets/SeekPng.com_anime-blush-png_380918_jzwoqn.png"
+              />
               <h3>No items in cart</h3>
             </div>
           )}

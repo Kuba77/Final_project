@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React from "react";
 import classes from "./cart.module.scss";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { calcTotalPriceOneProd } from "../../utils/utils";
@@ -10,7 +10,7 @@ const CartProduct = (props) => {
   return (
     <div className={classes.block_product}>
       <div className={classes.product_img_and_text}>
-        <a className={classes.product_img} href="#">
+        <a className={classes.product_img} href={`/products/${item.itemNo}`}>
           <img
             className={classes.product_img}
             src={item.product.imageUrls[0]}

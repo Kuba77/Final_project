@@ -39,7 +39,6 @@ export const updateCart = async (value) => {
     return await axios
       .put(`${configData.ADD_PRODUCT_TO_CART}`, value)
       .then((res) => {
-        console.log("Update BD", res);
         return res.data;
       });
   } catch (e) {
@@ -49,7 +48,6 @@ export const updateCart = async (value) => {
 export const getCustomerCart = async () => {
   try {
     return await axios.get(`${configData.ADD_PRODUCT_TO_CART}`).then((res) => {
-      console.log("From BD", res.data);
       return res.data;
     });
   } catch (e) {
@@ -61,7 +59,6 @@ export const moveCartToDB = async (value) => {
     return await axios
       .post(`${configData.ADD_PRODUCT_TO_CART}`, value)
       .then((res) => {
-        console.log("Move Cart to BD", res);
         return res.data;
       });
   } catch (e) {

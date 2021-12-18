@@ -30,16 +30,13 @@ const LoginPage = () => {
             if (customerCart === null && InCart(store).length > 0) {
               const localCart = prepToMove(InCart(store));
               await moveCartToDB(localCart);
-              console.log("1");
             }
             if (customerCart !== null && InCart(store).length > 0) {
               const localCart = prepToMove(InCart(store));
               await updateCart(localCart);
-              console.log("2");
             } else {
               customerCart.products.forEach(function (item) {
                 dispatch(setItemInCart(item));
-                console.log("3");
               });
             }
           } catch (error) {
@@ -55,7 +52,7 @@ const LoginPage = () => {
         dispatch(setErors(error.response));
       }
     },
-    [dispatch]
+    [dispatch, history, store]
   );
 
   const initialValues = {
@@ -66,7 +63,6 @@ const LoginPage = () => {
 
   const onSubmit = (values) => {
     singIn(values);
-    console.log("InCart(store222)", InCart(store));
   };
 
   return (

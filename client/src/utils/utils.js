@@ -1,10 +1,8 @@
 export function chekingArray(arr, info) {
   if (arr.includes(info)) {
     let n = arr.filter((item) => item !== info);
-    console.log("info BAD", info);
     return n;
   } else {
-    console.log("info OK", info);
     arr.push(info);
     const arr2 = arr.slice();
     return arr2;
@@ -63,17 +61,14 @@ export const calcPromoTotalPrice = (price) => {
 };
 
 export const prepToMove = (arr) => {
-  console.log("start");
-  let R = arr.reduce((acc, item) => {
+  let newArr = arr.reduce((acc, item) => {
     acc.push(
       Object.assign({
         ["product"]: item.product["_id"],
         ["cartQuantity"]: item["cartQuantity"],
       })
     );
-    console.log("acc", acc);
     return acc;
   }, []);
-  console.log("R", R);
-  return { products: R };
+  return { products: newArr };
 };

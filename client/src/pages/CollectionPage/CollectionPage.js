@@ -50,7 +50,7 @@ const CollectionPage = () => {
       getCollection();
     }
     getGenderProducts(genderSelected, sort);
-  }, [genderSelected, sort]);
+  }, [genderSelected, sort, getGenderProducts]);
 
   const getCollection = async () => {
     setLoading(true);
@@ -76,14 +76,14 @@ const CollectionPage = () => {
     <>
       <Header />
       <section className={classes.collection}>
-      {(
+        {
           <Filters
             genderSelected={genderSelected}
             sort={sort}
             getselectedGenre={getselectedGenre}
             sortProductByPrice={sortProductByPrice}
           />
-        )}
+        }
 
         {isLoading && (
           <div className={classes.collection__loader}>
@@ -94,13 +94,13 @@ const CollectionPage = () => {
           {!isLoading && <CollectionList collection={currentProduct} />}
         </div>
 
-        {!isLoading && ( <Pagination
-          productsInPage={productsInPage}
-          totalProducts={collection.length}
-          paginate={paginate}
-        />
+        {!isLoading && (
+          <Pagination
+            productsInPage={productsInPage}
+            totalProducts={collection.length}
+            paginate={paginate}
+          />
         )}
-
       </section>
     </>
   );

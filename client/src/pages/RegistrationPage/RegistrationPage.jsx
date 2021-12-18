@@ -3,12 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setCustomer } from "../../store/customer/reducer";
 import { setErors, clearErrors } from "../../store/errors/reducer";
-import { registerCustomer } from "../../services/user";
+import { registerCustomer, loginCustomer } from "../../services/user";
 import { RegistrationSchema } from "../../components/Forms/ValidationSchema";
 import RegistrationForm from "../../components/Forms/RegistrationForm";
 import { errorMessage } from "../../store/selectors";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import { InCart } from "../../store/selectors";
+import { prepToMove } from "../../utils/utils";
+import { getCustomerCart, moveCartToDB } from "../../services/cart";
+import { setItemInCart } from "../../store/cart/reducer";
 
 const RegistrationPage = () => {
   const dispatch = useDispatch();
@@ -19,17 +23,38 @@ const RegistrationPage = () => {
     async (value) => {
       try {
         let newCustomer = await registerCustomer(value);
-        if (newCustomer.message) {
-          dispatch(setErors(newCustomer.message));
-        } else {
-          dispatch(setCustomer(newCustomer.data));
-          dispatch(clearErrors());
+        if (newCustomer.data._id) {
+          let customer = await loginCustomer({
+            loginOrEmail: value.email,
+            password: value.password,
+          });
+          if (customer.id) {
+            try {
+              const customerCart = await getCustomerCart();
+              if (customerCart === null && InCart(store).length > 0) {
+                const localCart = prepToMove(InCart(store));
+                await moveCartToDB(localCart);
+              } else {
+                customerCart.products.forEach(function (item) {
+                  dispatch(setItemInCart(item));
+                });
+              }
+            } catch (error) {
+              dispatch(setErors(error.response));
+            }
+            dispatch(setCustomer(customer));
+            dispatch(clearErrors());
+            history.push("/");
+          } else {
+            dispatch(setErors(customer));
+          }
         }
-      } catch (err) {
-        dispatch(setErors(err.response));
+      } catch (error) {
+        dispatch(setErors(error.response));
       }
     },
-    [dispatch]
+
+    [dispatch, history, store]
   );
 
   const initialValues = {
@@ -42,15 +67,12 @@ const RegistrationPage = () => {
   };
   const validationSchema = RegistrationSchema;
   const error = errorMessage(store);
-  
-  
 
   const onSubmit = (values) => {
     singUp(values);
-    if(error.length === 0) {
-       history.push("/");
+    if (error.length === 0) {
+      history.push("/");
     }
-   
   };
 
   return (
