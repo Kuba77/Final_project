@@ -19,9 +19,6 @@ const FormSubscribe = connect(null, { createNewSubscribe })(
     });
     const onSubmit = async (values, { resetForm }) => {
       resetForm();
-      console.log("values", values);
-      console.log("letterHtmlSubscribe", letterHtmlSubscribe);
-      console.log("letterSubject", letterSubjectSubscribe);
       const result = await createNewSubscribe({
         email: values.email,
         letterHtml: letterHtmlSubscribe,

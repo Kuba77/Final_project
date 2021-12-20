@@ -39,7 +39,6 @@ export const updateCart = async (value) => {
     return await axios
       .put(`${configData.ADD_PRODUCT_TO_CART}`, value)
       .then((res) => {
-        console.log("Uodate", res);
         return res.data;
       });
   } catch (e) {
@@ -60,7 +59,6 @@ export const moveCartToDB = async (value) => {
     return await axios
       .post(`${configData.ADD_PRODUCT_TO_CART}`, value)
       .then((res) => {
-        console.log("move", res);
         return res.data;
       });
   } catch (e) {
