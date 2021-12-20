@@ -7,14 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCustomer } from "../../store/customer/reducer";
 import { setErors, clearErrors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer } from "../../services/user";
-import { getCustomerCart, moveCartToDB, updateCart } from "../../services/cart";
 import { GoogleLogin } from "react-google-login";
-// import TextError from "./components/TextError";
 import configData from "../../config/config.json";
-import { setItemInCart } from "../../store/cart/reducer";
-
-import { InCart } from "../../store/selectors";
-import { prepToMove } from "../../utils/utils";
+import { setItemInCart, clearCart } from "../../store/cart/reducer";
+import { stateCart } from "../../store/selectors";
+import { customerCartMovement } from "../../utils/utils";
 
 function LoginForm(props) {
   const { initialValues, validationSchema, onSubmit } = props;
@@ -28,18 +25,11 @@ function LoginForm(props) {
         const customer = await logOrRegisterCustomer(response);
         if (customer.id) {
           try {
-            const customerCart = await getCustomerCart();
-            if (customerCart === null && InCart(store).length > 0) {
-              const localCart = prepToMove(InCart(store));
-              await moveCartToDB(localCart);
-            } else if (customerCart !== null && InCart(store).length > 0) {
-              const localCart = prepToMove(InCart(store));
-              await updateCart(localCart);
-            } else {
-              customerCart.products.forEach(function (item) {
-                dispatch(setItemInCart(item));
-              });
-            }
+            const customerCart = await customerCartMovement(stateCart(store));
+            dispatch(clearCart());
+            customerCart.forEach(function (item) {
+              dispatch(setItemInCart(item));
+            });
           } catch (error) {
             dispatch(setErors(error.response));
           }

@@ -9,10 +9,9 @@ import RegistrationForm from "../../components/Forms/RegistrationForm";
 import { errorMessage } from "../../store/selectors";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { InCart } from "../../store/selectors";
-import { prepToMove } from "../../utils/utils";
-import { getCustomerCart, moveCartToDB } from "../../services/cart";
-import { setItemInCart } from "../../store/cart/reducer";
+import { stateCart } from "../../store/selectors";
+import { customerCartMovement } from "../../utils/utils";
+import { setItemInCart, clearCart } from "../../store/cart/reducer";
 
 const RegistrationPage = () => {
   const dispatch = useDispatch();
@@ -30,15 +29,11 @@ const RegistrationPage = () => {
           });
           if (customer.id) {
             try {
-              const customerCart = await getCustomerCart();
-              if (customerCart === null && InCart(store).length > 0) {
-                const localCart = prepToMove(InCart(store));
-                await moveCartToDB(localCart);
-              } else {
-                customerCart.products.forEach(function (item) {
-                  dispatch(setItemInCart(item));
-                });
-              }
+              const customerCart = await customerCartMovement(stateCart(store));
+              dispatch(clearCart());
+              customerCart.forEach(function (item) {
+                dispatch(setItemInCart(item));
+              });
             } catch (error) {
               dispatch(setErors(error.response));
             }

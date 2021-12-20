@@ -48,9 +48,10 @@ const CollectionPage = () => {
   useEffect(() => {
     if (genderSelected.length === 0 && sort === "") {
       getCollection();
+    } else {
+      getGenderProducts(genderSelected, sort);
     }
-    getGenderProducts(genderSelected, sort);
-  }, [genderSelected, sort, getGenderProducts]);
+  }, [genderSelected, sort]);
 
   const getCollection = async () => {
     setLoading(true);

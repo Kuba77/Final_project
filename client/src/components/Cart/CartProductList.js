@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import CartProduct from "./CartProduct";
-import { InCart } from "../../store/selectors";
+import { itemsInCart } from "../../store/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import classes from "../../pages/FavoritesPage/FavoritesPage.module.scss";
 import { customerData } from "../../store/selectors";
@@ -22,9 +22,11 @@ const CartProductList = () => {
     try {
       if (customerData(store).id) {
         const customerCart = await getCustomerCart();
-        setCart(customerCart.products);
+        if (customerCart._id) {
+          setCart(customerCart.products);
+        }
       } else {
-        setCart(InCart(store));
+        setCart(itemsInCart(store));
       }
     } catch (err) {
       console.log(err);
@@ -33,10 +35,10 @@ const CartProductList = () => {
 
   useEffect(() => {
     getCart();
-  });
+  }, []);
 
   useEffect(() => {
-    setCart(InCart(store));
+    setCart(itemsInCart(store));
   }, [store]);
 
   const localIncrease = useCallback(
@@ -57,7 +59,7 @@ const CartProductList = () => {
   const localRemoveProd = useCallback(
     (value) => {
       dispatch(deleteItemFromCart(`${value}`));
-      setCart(InCart(store));
+      setCart(itemsInCart(store));
     },
     [store, dispatch]
   );
@@ -90,6 +92,7 @@ const CartProductList = () => {
     async (value) => {
       try {
         const response = await decreaseProductQuantity(value);
+        console.log(value);
         dispatch(rewrite(response.products));
       } catch (error) {
         console.log(error);

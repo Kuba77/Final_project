@@ -1,3 +1,5 @@
+import { getCustomerCart, moveCartToDB, updateCart } from "../services/cart";
+
 export function chekingArray(arr, info) {
   if (arr.includes(info)) {
     let n = arr.filter((item) => item !== info);
@@ -56,19 +58,19 @@ export const calcTotalPrice = (items) => {
   }, 0);
   return sum;
 };
-export const calcPromoTotalPrice = (price) => {
-  return price - (price * 13) / 100;
+export const calcPromoTotalPrice = (price, promocode) => {
+  return price - (price * promocode.interest) / 100;
 };
 
-export const prepToMove = (arr) => {
-  let newArr = arr.reduce((acc, item) => {
-    acc.push(
-      Object.assign({
-        ["product"]: item.product["_id"],
-        ["cartQuantity"]: item["cartQuantity"],
-      })
-    );
-    return acc;
-  }, []);
-  return { products: newArr };
+export const customerCartMovement = async (arr) => {
+  const customerCart = await getCustomerCart();
+  if (customerCart === null && arr.products.length > 0) {
+    const response = await moveCartToDB(arr);
+    return response.products;
+  }
+  if (customerCart !== null && arr.products.length > 0) {
+    const response = await updateCart(arr);
+    return response.products;
+  }
+  return customerCart.products;
 };

@@ -34,14 +34,11 @@ const Product = () => {
         { product: product },
         { cartQuantity: 1 }
       );
-      console.log(q);
       if (customerData(store).id) {
         await addProductToCart(info._id);
-        console.log("Loged customer");
         dispatch(setItemInCart(q));
       } else {
         dispatch(setItemInCart(q));
-        console.log("Anonim");
       }
     } catch (error) {
       console.error(error.message);

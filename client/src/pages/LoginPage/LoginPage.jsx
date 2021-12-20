@@ -8,12 +8,10 @@ import { LoginSchema } from "../../components/Forms/ValidationSchema";
 import LoginForm from "../../components/Forms/LoginForm";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { getCustomerCart, moveCartToDB, updateCart } from "../../services/cart";
-import { setItemInCart } from "../../store/cart/reducer";
+import { setItemInCart, clearCart } from "../../store/cart/reducer";
 
-///
-import { InCart } from "../../store/selectors";
-import { prepToMove } from "../../utils/utils";
+import { stateCart } from "../../store/selectors";
+import { customerCartMovement } from "../../utils/utils";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -26,19 +24,11 @@ const LoginPage = () => {
         let customer = await loginCustomer(values);
         if (customer.id) {
           try {
-            const customerCart = await getCustomerCart();
-            if (customerCart === null && InCart(store).length > 0) {
-              const localCart = prepToMove(InCart(store));
-              await moveCartToDB(localCart);
-            }
-            if (customerCart !== null && InCart(store).length > 0) {
-              const localCart = prepToMove(InCart(store));
-              await updateCart(localCart);
-            } else {
-              customerCart.products.forEach(function (item) {
-                dispatch(setItemInCart(item));
-              });
-            }
+            const customerCart = await customerCartMovement(stateCart(store));
+            dispatch(clearCart());
+            customerCart.forEach(function (item) {
+              dispatch(setItemInCart(item));
+            });
           } catch (error) {
             dispatch(setErors(error.response));
           }
