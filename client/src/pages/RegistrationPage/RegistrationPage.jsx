@@ -42,15 +42,12 @@ const RegistrationPage = () => {
   };
   const validationSchema = RegistrationSchema;
   const error = errorMessage(store);
-  
-  
 
   const onSubmit = (values) => {
     singUp(values);
-    if(error.length === 0) {
-       history.push("/");
+    if (error.length === 0) {
+      history.push("/");
     }
-   
   };
 
   return (
