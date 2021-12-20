@@ -5,7 +5,6 @@ import Header from '../../components/Header/Header'
 import FavoritesItem from './FavoriteItem/FavoriteItem'
 
 
-
 const FavoritesPage = () => {
 
     const wishList = useSelector((state) => state.favorites.favoriteItems);
@@ -16,6 +15,7 @@ const FavoritesPage = () => {
         <Header />
            
         <section className={classes.favorites}>
+        <h3 className={classes.favorites__title}>Your Wishlist</h3>
         { wishList.length == 0 && (
             <>
                 <div className={classes.favorites__noitem}>
@@ -30,7 +30,8 @@ const FavoritesPage = () => {
                 imgSrc={item.imageUrls[2]} 
                 title={item.name}
                 author={item.author}
-                categories={item.categories}
+                salePrice={item.salePrice}
+                price={item.currentPrice}
                 quantity={item.quantity}
                 itemNo={item.itemNo}
             />)}

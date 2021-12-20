@@ -38,6 +38,9 @@ const Header = () => {
     history.push("/login");
   }, [history]);
 
+
+
+
   return (
     <header className={classes.header}>
       <Logo />
@@ -57,7 +60,12 @@ const Header = () => {
       <div className={classes.header__menu}>
         <div className={classes.header__menu__toggle}>{menuToggle}</div>
         <aside className={`${classes.menu} ${menuOpen && classes.show}`}>
-          <Nav isMenu menuToggle={handleMenuToggle} />
+      
+          <Nav isMenu menuToggle={handleMenuToggle} customerName={customerData(store).firstName} />
+            <div className={classes.searchBar__burger}> 
+              <SearchBar/>
+            </div>
+       
         </aside>
       </div>
     </header>

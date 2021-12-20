@@ -49,6 +49,7 @@ const CategoryPage = () => {
                 title={item.name}
                 author={item.author}
                 itemNo={item.itemNo}
+                salePrice={item.salePrice}
             />
         </Link>
       ))}

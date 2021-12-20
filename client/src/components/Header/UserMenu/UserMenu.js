@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import classes from "./UserMenu.module.scss";
@@ -7,41 +7,49 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { customerData } from "../../../store/selectors";
 import { logoutCustomer } from "../../../services/user";
 import { removeCustomer } from "../../../store/customer/reducer";
+import { useClickOutside } from "react-click-outside-hook";
 
 const UserMenu = () => {
   const [isOpen, setOpen] = useState(false);
+  const [parentRef, isClickOutside] = useClickOutside();
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const userMenuHandler = () => {
     setOpen(!isOpen);
   };
-
   const logOutCustomer = () => {
     logoutCustomer();
     dispatch(removeCustomer());
   };
+  const closeMenuHandler = () => {
+    setOpen(false);
+  }; 
+
+
+  useEffect(() => {
+    if (isClickOutside) {
+      closeMenuHandler();
+    }
+  }, [isClickOutside]);
 
   return (
-    <div className={classes.header__userMenu}>
-      <div
-        className={classes.header__userMenu_profile}
-        onClick={userMenuHandler}
-      >
+    <div className={classes.header__userMenu} ref={parentRef} onClick={userMenuHandler}>
+      <div className={classes.header__userMenu_profile}>
         <img
           src={
             customerData(store).avatarUrl
               ? customerData(store).avatarUrl
-              : "https://www.pngarts.com/files/8/Cute-Anime-PNG-Image.png"
+              : "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639851745/sideAssets/overlord-keeno-fasris-inberun-evileye-oboi-8754_w635_ld1qrx.jpg"
           }
           alt="profile"
         />
       </div>
       <div
         className={classes.header__userMenu_menu}
-        style={isOpen ? { opacity: 1 } : { opacity: 0 }}
+        style={isOpen ? { display: 'block' } : { display: 'none'}}
       >
         <ul>
-          <Link to="/">
+          <Link to="/profile">
             <li>
               <FaUserCog /> Profile
             </li>
