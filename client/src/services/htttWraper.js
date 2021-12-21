@@ -14,6 +14,5 @@ export const setAuthToken = (token) => {
 
 if (JWTToken) {
   setAuthToken(JWTToken);
-  console.log("if (JWTToken)", JWTToken);
 }
 export default axios;

@@ -8,8 +8,10 @@ import { LoginSchema } from "../../components/Forms/ValidationSchema";
 import LoginForm from "../../components/Forms/LoginForm";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { getCustomerCart } from "../../services/cart";
-import { setItemInCart } from "../../store/cart/reducer";
+import { setItemInCart, clearCart } from "../../store/cart/reducer";
+
+import { stateCart } from "../../store/selectors";
+import { customerCartMovement } from "../../utils/utils";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -22,15 +24,14 @@ const LoginPage = () => {
         let customer = await loginCustomer(values);
         if (customer.id) {
           try {
-            const customerCart = await getCustomerCart();
-            console.log("customerCart", customerCart);
-            customerCart.products.forEach(function (item) {
+            const customerCart = await customerCartMovement(stateCart(store));
+            dispatch(clearCart());
+            customerCart.forEach(function (item) {
               dispatch(setItemInCart(item));
             });
           } catch (error) {
             dispatch(setErors(error.response));
           }
-
           dispatch(setCustomer(customer));
           dispatch(clearErrors());
           history.push("/");
@@ -41,7 +42,7 @@ const LoginPage = () => {
         dispatch(setErors(error.response));
       }
     },
-    [dispatch]
+    [dispatch, history, store]
   );
 
   const initialValues = {
