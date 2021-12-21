@@ -2,14 +2,11 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
-import { useDispatch, useSelector } from "react-redux";
 import { setItemInCart, deleteItemFromCart } from "../../store/cart/reducer";
 import { setFavoriteItems, deleteFavorites } from '../../store/favorites/reducer'
-import { BsBasket, BsFillHeartFill } from "react-icons/bs";
+import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
 import { MdOutlineCancel } from 'react-icons/md'
 import { createProductComment, deleteProductComment, getAllProductComments } from "../../services/comments";
-import { setItemInCart } from "../../store/cart/reducer";
-import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
 import { useFormik } from "formik";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAuthor from "./ProductAuthor/ProductAuthor";
@@ -19,14 +16,12 @@ import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductImg from "./ProductImg/ProductImg";
 import classes from "./Product.module.scss";
 import Button from "../Button/Button";
-import { customerData } from "../../store/selectors";
 
 import { addProductToCart } from "../../services/cart";
 import { customerData } from "../../store/selectors";
 
 const Product = () => {
   let { productId } = useParams();
-  const store = useSelector((state) => state);
 
   const dispatch = useDispatch();
   const wishList = useSelector((state) => state.favorites.favoriteItems)
