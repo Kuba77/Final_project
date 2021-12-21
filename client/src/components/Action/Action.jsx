@@ -16,10 +16,6 @@ import PropTypes from "prop-types";
 
 const Action = (props) => {
   const { timer } = props;
-  let { productId } = useParams();
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.itemsInCart)
-  const isItemInCart = cart.some((item) => item.itemNo === productId);
   const [action, setAction] = useState([]);
   const [firstCardToggle, setFirstCardToggle] = useState(0);
   const [secondCardToggle, setSecondCardToggle] = useState(1);
@@ -39,7 +35,7 @@ const Action = (props) => {
 
   useEffect(() => {
     getCollection();
-  }, [getCollection]);
+  }, []);
 
   const rightClick = useCallback(() => {
     if (firstCardToggle === action.length - 1) {
@@ -81,20 +77,7 @@ const Action = (props) => {
 
   useEffect(() => {
     getActionTime();
-  }, [getActionTime]);
-
-  const addToCart = (info) => {
-    try {
-      if (isItemInCart) {
-        dispatch(deleteItemFromCart(productId))
-      }
-      else {
-        dispatch(setItemInCart(info))
-      }
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
+  }, []);
 
   return (
     <React.Fragment>
@@ -164,15 +147,13 @@ const Action = (props) => {
                     />
                   )}
 
-                  <Button
+                  {/* <Button
                     type="main"
-                    onClick={() => {
-                      addToCart(action);
                     }}
                   >
                     <BsBasket color="white" size={26}
                     />
-                  </Button>
+                  </Button> */}
 
                 </div>
               </div>
@@ -228,11 +209,11 @@ const Action = (props) => {
                         />
                       )}
 
-                      <Button
+                      {/* <Button
                         type="main"
                       >
                         <BsBasket color="white" size={26} />
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
 

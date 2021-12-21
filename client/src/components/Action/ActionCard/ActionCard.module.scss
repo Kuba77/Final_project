@@ -66,11 +66,12 @@
 
         @include breakpoint(sm-only) {
             font-size: 1.7rem;
+            // min-width: 150px;
         }
 
         @include breakpoint(xs-only) {
             margin: 0;
-            text-align: center;
+            text-align: start;
         }
     }
 
