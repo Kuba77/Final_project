@@ -1,19 +1,26 @@
 {
-  "name": "server",
+  "name": "final_project",
   "version": "1.0.0",
   "description": "Back End code for final projects of Front End groups\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[DDANIT\u001b[3~ Front End groups",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server.js",
-    "build": "webpack"
+    "start": "cross-env NODE_ENV=production node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/dan-it/js-course-development/fe-final-backend.git"
+    "url": "git+https://github.com/Kuba77/Final_project.git"
   },
-  "author": "Saribeg",
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kuba77/Final_project/issues"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -33,7 +40,8 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
     "unique-random": "^2.1.0",
-    "validator": "^11.1.0"
+    "validator": "^11.1.0",
+    "concurrently": "^6.5.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
