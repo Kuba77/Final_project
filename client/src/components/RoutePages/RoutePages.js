@@ -10,8 +10,7 @@ import CategoryPage from "../../pages/CategoryPage/CategoryPage";
 import FavoritesPage from "../../pages/FavoritesPage/FavoritesPage"
 import ProfilePage from "../../pages/ProfilePage/ProfilePage"
 import { customerData } from "../../store/selectors";
-
-
+import OrderPage from "../Order-page/Order-page";
 
 const RoutePages = () => {
 
@@ -34,6 +33,7 @@ const RoutePages = () => {
         path="/category/:categoryId"
         component={CategoryPage}
       ></Route>
+      <Route exact path="/order" component={OrderPage}></Route>
     </Switch>
   );
 };
