@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,14 +7,19 @@ import { setItemInCart, deleteItemFromCart } from "../../store/cart/reducer";
 import { setFavoriteItems, deleteFavorites } from '../../store/favorites/reducer'
 import { BsBasket, BsFillHeartFill } from "react-icons/bs";
 import { MdOutlineCancel } from 'react-icons/md'
+import { createProductComment, deleteProductComment, getAllProductComments } from "../../services/comments";
+import { setItemInCart } from "../../store/cart/reducer";
+import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
+import { useFormik } from "formik";
 import ProductTitle from "./ProductTitle/ProductTitle";
-import ProductAutor from "./ProductAutor/ProductAutor";
+import ProductAuthor from "./ProductAuthor/ProductAuthor";
 import ProductDescription from "./ProductDescription/ProductDescription";
 import ProductPriceBlock from "./ProductPriceBlock/ProductPriceBlock";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductImg from "./ProductImg/ProductImg";
 import classes from "./Product.module.scss";
 import Button from "../Button/Button";
+import { customerData } from "../../store/selectors";
 
 import { addProductToCart } from "../../services/cart";
 import { customerData } from "../../store/selectors";
@@ -26,6 +32,8 @@ const Product = () => {
   const wishList = useSelector((state) => state.favorites.favoriteItems)
   const cart = useSelector((state) => state.cart.itemsInCart)
   const [product, setProduct] = useState({});
+  const [comments, setComments] = useState([]);
+  const store = useSelector((state) => state);
   const [toggle, setToggle] = useState(0);
 
   const isItemInFavorites = wishList.some((item) => item.itemNo === productId);
@@ -69,6 +77,41 @@ const addToCart = (info) => {
     getProduct();
   }, [getProduct, productId]);
 
+  const getComments = useCallback(async () => {
+    const product = await getSelectedProduct(productId);
+    const productComments = await getAllProductComments(product._id);
+    setComments(productComments);
+  }, [productId]);
+
+  useEffect(() => {
+    getComments();
+  }, [getComments]);
+
+  const deleteComment = useCallback(async (value) => {
+    await deleteProductComment(value);
+    getComments();
+  },[getComments]);
+
+  const formik = useFormik({
+    initialValues: {
+      content: ""
+    },
+    onSubmit: async function setValues(value) {
+      let commentObject = {
+        product: product,
+        customer: customerData(store),
+        content: value
+      }
+      try {
+        await createProductComment(commentObject);
+        formik.handleReset()
+        getComments();
+      } catch (error) {
+        alert(error)
+      }
+    }
+  })
+
   return (
     <React.Fragment>
       {!!product.name && (
@@ -87,7 +130,7 @@ const addToCart = (info) => {
                   className={classes.product_info__title}
                   title={product.name}
                 />
-                <ProductAutor
+                <ProductAuthor
                   className={classes.product_info__author}
                   author={product.author}
                 />
@@ -153,22 +196,60 @@ const addToCart = (info) => {
             </h3>
 
             <div className={classes.product_block__review}>
-              <form>
+              <form onSubmit={formik.handleSubmit}>
                 <textarea
-                  id="review"
-                  name="Textarea"
+                  id="content"
+                  name="content"
+                  type="text"
                   placeholder="Please, live your comment here..."
-                ></textarea>
+                  onChange={formik.handleChange}
+                  value={formik.values.content}>
+                </textarea>
+
                 <div className={classes.review__buttons}>
-                  <Button type="main" size="m">
+                  <Button
+                    type="reset"
+                    size="m"
+                    onClick={formik.handleReset}>
                     Reset
                   </Button>
-                  <Button type="main" size="m">
+
+                  <Button
+                    type="submit"
+                    size="m"
+                    onClick={() => {
+                      if (!customerData(store).id) alert("You must be authorized to leave a comment")
+                    }}>
                     Send
                   </Button>
                 </div>
               </form>
             </div>
+
+            {comments.length === 0 ?
+              (<div className={classes.review__dis}>
+                <p className={classes.review__text}>This product don't have review. Yours 'll be the first.</p>
+              </div>)
+              :
+              (comments.map((item) => {
+                return (
+                  <div key={item._id} className={classes.review}
+                  >
+                    <div className={classes.review__header}>
+                      <p className={classes.review__customer}>{item.customer.firstName} {item.customer.lastName}</p>
+                      <Button
+                        type="main"
+                        onClick={() => {
+                          if (customerData(store).id === item.customer._id) {
+                            deleteComment(item._id)
+                          }
+                        }}
+                      >
+                        <BsFillTrashFill color="#8D28AD" size={16} /></Button>
+                    </div>
+                    <p className={classes.review__text}>{item.content}</p>
+                  </div>)
+              }))}
           </div>
         </div>
       )}
