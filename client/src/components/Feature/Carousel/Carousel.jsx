@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide} from 'swiper/react'
+import { Link } from "react-router-dom";
 import  useWindowSize from '../../../hooks/useWindowSize'
 import "swiper/swiper.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
@@ -13,7 +14,7 @@ import SwiperCore, {
 
 SwiperCore.use([EffectCoverflow, Navigation, Autoplay]);
 
-const Carousel = () => {
+const Carousel = ({feature}) => {
 
   const size = useWindowSize()
 
@@ -38,32 +39,19 @@ const Carousel = () => {
         }}
       
       >
-        <SwiperSlide>
-          <div>
-             <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637705954/hell_ldxazp.jpg" alt={1} />
-            <h4>Manga title</h4>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697909/xxxholic_fekubs.jpg" alt={2}/>
-          <h4>Manga title</h4>
-        </SwiperSlide>
+      
+       {feature.map((item, index) => (
+         <SwiperSlide index={index}>
+           {item.salePrice && (<span className={'feature__item_cover'}></span>)}
 
-        <SwiperSlide>
-          <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Gantz3_oex07v.jpg" alt={3}/>
-          <h4>Manga title</h4>
-        </SwiperSlide>
-        <SwiperSlide>
+            <Link to={`/product/${item.itemNo}`}>
+                <img src={item.imageUrls[2]}/>
+                <h4>{item.name}</h4>
+            </Link>
+         </SwiperSlide>
+       ))}
+        <SwiperSlide style={{display:'none'}}></SwiperSlide>
         
-          <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/Berserk2_srstgu.jpg" alt={4}/>
-          <h4>Manga title</h4>
-        </SwiperSlide>
-        <SwiperSlide>
-        
-        <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697890/ShingekinoKyojin2_fdicyy.jpg" alt={5}/>
-        <h4>Manga title</h4>
-      </SwiperSlide>
-    
       </Swiper>
   );
 }

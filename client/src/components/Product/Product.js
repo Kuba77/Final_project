@@ -2,9 +2,10 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
 import { useDispatch, useSelector } from "react-redux";
-import { setItemInCart } from "../../store/cart/reducer";
-import { setFavoriteItems } from "../../store/favorites/reducer";
+import { setItemInCart, deleteItemFromCart } from "../../store/cart/reducer";
+import { setFavoriteItems, deleteFavorites } from '../../store/favorites/reducer'
 import { BsBasket, BsFillHeartFill } from "react-icons/bs";
+import { MdOutlineCancel } from 'react-icons/md'
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAutor from "./ProductAutor/ProductAutor";
 import ProductDescription from "./ProductDescription/ProductDescription";
@@ -22,36 +23,42 @@ const Product = () => {
   const store = useSelector((state) => state);
 
   const dispatch = useDispatch();
+  const wishList = useSelector((state) => state.favorites.favoriteItems)
+  const cart = useSelector((state) => state.cart.itemsInCart)
   const [product, setProduct] = useState({});
   const [toggle, setToggle] = useState(0);
 
-  const addToCart = async (info) => {
+  const isItemInFavorites = wishList.some((item) => item.itemNo === productId);
+  const isItemInCart = cart.some((item) => item.itemNo === productId);
+
+ 
+const addToCart = (info) => {
     try {
-      let q = {};
-      Object.assign(
-        q,
-        { _id: product._id },
-        { product: product },
-        { cartQuantity: 1 }
-      );
-      if (customerData(store).id) {
-        await addProductToCart(info._id);
-        dispatch(setItemInCart(q));
-      } else {
-        dispatch(setItemInCart(q));
+      if(isItemInCart){
+        dispatch(deleteItemFromCart(productId))
+      }
+      else{
+        dispatch(setItemInCart(info))
       }
     } catch (error) {
       console.error(error.message);
     }
-  };
+  }
 
   const addToWishList = (info) => {
     try {
-      dispatch(setFavoriteItems(info));
+      if(isItemInFavorites){
+        dispatch(deleteFavorites(productId))
+      }
+      else{
+        dispatch(setFavoriteItems(info))
+      }
     } catch (error) {
       console.error(error.message);
     }
-  };
+  }
+ 
+  
 
   const getProduct = useCallback(async () => {
     const products = await getSelectedProduct(productId);
@@ -100,15 +107,16 @@ const Product = () => {
                       addToCart(product);
                     }}
                   >
-                    <BsBasket color="white" size={26} />
+                    {isItemInCart ? <MdOutlineCancel color="white" size={30}/> : <BsBasket color="white" size={26} /> }
+
                   </Button>
-                  <Button
-                    type="main"
-                    onClick={() => {
-                      addToWishList(product);
-                    }}
+                  <Button 
+                  type={isItemInFavorites ? 'transparent' : 'main'}
+                  onClick={() => {
+                    addToWishList(product);
+                  }}
                   >
-                    <BsFillHeartFill color="white" size={26} />
+                    <BsFillHeartFill color={isItemInFavorites ? 'red' : 'white'} size={26} />
                   </Button>
                 </div>
               </div>

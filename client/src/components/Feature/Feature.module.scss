@@ -2,7 +2,7 @@
 
 .feature{
     max-width: 1024px;
-    margin: 0 auto;
+    margin: 1vh auto;
     
         &__container{
             max-width: 94%;
@@ -10,11 +10,20 @@
         
                 h2{           
                     font-size: $medium-font-size;
+                    
                 }
                 @include breakpoint(md-only){
                    h2{
                        font-size: $h1-font-size;
                    }
                 } 
+        }
+        &__loading{
+            margin-top: 5vh;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 }

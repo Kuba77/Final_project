@@ -4,8 +4,7 @@ const defaultState = {
   favoriteItems: [],
 };
 
-const initialState =
-  JSON.parse(localStorage.getItem("redux"))?.favorites || defaultState;
+const initialState = JSON.parse(localStorage.getItem('redux'))?.favorites || defaultState
 
 const favoriteSlice = createSlice({
   name: "favorites",

@@ -12,6 +12,7 @@ const ProductPriceBlock = (props) => {
         <ProductPrice
           className={classes.product_info__price}
           price={product.currentPrice}
+          salePrice={product.salePrice}
         />
         {product.quantity > 0 ? (
           <ProductStore
