@@ -44,7 +44,7 @@ export const decreaseItemQuantity = (arr, _id) => {
       return item;
     }
   });
-  return updateItem;
+  return updateItem.filter((item) => item.cartQuantity !== 0);
 };
 
 export const calcTotalPriceOneProd = (item) => {

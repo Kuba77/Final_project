@@ -2,14 +2,16 @@ import axios from "axios";
 import { message } from "antd";
 import configData from "../../config/config.json";
 
+import "antd/dist/antd.css";
+
 const createNewSubscribe = (credentials) => {
   axios
     .post(`${configData.SUBSCRIBERS}`, credentials)
     .then((response) => {
       if (response.status === 200) {
-        message.info("Thanks for subscribed");
+        message.success("Thanks for subscribed");
       } else {
-        console.log("response.message", response.message);
+        message.warning("Somethink wrong, try again latter", response.message);
       }
     })
     .catch((error) => {
@@ -22,15 +24,9 @@ const createNewSubscribe = (credentials) => {
     });
 };
 
-export const getHeaders = () => ({
-  Autorization: localStorage.getItem("token"),
-  "Content Type": "application/json",
-});
-
 export const getSubscriber = (email) => {
-  const headers = getHeaders();
   const result = axios
-    .get(`${configData.SUBSCRIBERS}/${email}`, { headers })
+    .get(`${configData.SUBSCRIBERS}/${email}`)
     .then((data) => data)
     .catch((err) => err.response);
   return result;
