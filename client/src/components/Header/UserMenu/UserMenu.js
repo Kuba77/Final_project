@@ -7,12 +7,9 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { customerData } from "../../../store/selectors";
 import { logoutCustomer } from "../../../services/user";
 import { removeCustomer } from "../../../store/customer/reducer";
-<<<<<<< HEAD
 import { clearCart } from "../../../store/cart/reducer";
 import { removeFavorites } from "../../../store/favorites/reducer";
-=======
 import { useClickOutside } from "react-click-outside-hook";
->>>>>>> Arkadii
 
 const UserMenu = () => {
   const [isOpen, setOpen] = useState(false);
