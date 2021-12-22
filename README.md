@@ -17,7 +17,7 @@ $ npm start
 
 ```
 If you download archive of this repository:
-Extract archive anywhere you want. Open folder with project in terminal 
+extract archive anywhere you want, open folder with project in terminal 
 and enter the following commands.
 
 ```
