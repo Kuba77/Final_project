@@ -1,175 +1,9 @@
-@import '../../styles/config/variables.scss';
-
-.action_block {
-    max-height: 350px;
-    background-color: $action-background-color-light;
-    margin: 80px 0;
-    position: relative;
-
-    &__container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 25px 0;
-        display: grid;
-        grid-column-gap: 10px;
-        grid-template-areas:
-            "timer info";
-
-        @include breakpoint(lg-only) {
-            justify-content: center;
-            padding: 10px 0 20px 0;
-            grid-template-areas:
-                "timer"
-                "info";
-        }
-
-        @include breakpoint(md-only) {
-            max-width: 580px;
-        }
-
-        @include breakpoint(sm-only) {
-            max-width: 430px;
-        }
-
-        @include breakpoint(xs-only) {
-            max-width: 300px;
-        }
-    }
-}
-
-.timer {
-    grid-area: timer;
-    max-width: 300px;
-    margin-left: 15px;
-
-    @include breakpoint(lg-only) {
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        width: 700px;
-    }
-
-    @include breakpoint(xs-only) {
-        flex-direction: column;
-    }
-
-    & h2 {
-        color: $body-color;
-        font-size: 2.2rem;
-        align-self: center;
-
-        @include breakpoint(lg-only) {
-            text-align: end;
-            min-width: 220px;
-            margin: 0 0 10px 0;
-        }
-
-        @include breakpoint(sm-only) {
-            font-size: 1.7rem;
-            // min-width: 150px;
-        }
-
-        @include breakpoint(xs-only) {
-            margin: 0;
-            text-align: start;
-        }
-    }
-
-    & p {
-        font-size: 14px;
-        margin: 10px 0;
-
-        @include breakpoint(lg-only) {
-            display: none;
-        }
-    }
-
-    & span {
-        font-size: 2.2rem;
-
-        @include breakpoint(lg-only) {
-            text-align: start;
-            margin: 0 0 10px 15px;
-
-            min-width: 220px;
-        }
-
-        @include breakpoint(sm-only) {
-            font-size: 1.7rem;
-            min-width: 150px;
-        }
-
-        @include breakpoint(xs-only) {
-            margin: 0 auto;
-            text-align: start;
-        }
-    }
-}
-
-.action_content {
-    grid-area: info;
-    display: flex;
-    align-items: center;
-    max-width: 800px;
-
-    @include breakpoint(lg-only) {
-        max-width: 760px;
-    }
-
-    @include breakpoint(md-only) {
-        justify-content: center;
-    }
-
-    & button {
-        height: 46px;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-
-
-        &:first-child {
-            @include breakpoint(xs-only) {
-                background-color: transparent;
-                box-shadow: none;
-                position: absolute;
-                z-index: 2;
-                left: 0;
-            }
-        }
-
-        &:nth-child(3) {
-            position: absolute;
-            z-index: 2;
-            right: 290px;
-
-            @include breakpoint(md-only) {
-                position: static;
-            }
-
-            @include breakpoint(xs-only) {
-                background-color: transparent;
-                box-shadow: none;
-                position: absolute;
-                right: 0;
-            }
-        }
-
-
-    }
-
-    & .action:last-child {
-        @include breakpoint(md-only) {
-            display: none;
-        }
-    }
-}
+@import '../../../styles/config/variables.scss';
 
 .action {
     display: flex;
     width: 350px;
-    height: 245px;
+    height: 240px;
     margin: 0 10px;
     background-color: $action-background-color;
     border-radius: 4%;
@@ -209,19 +43,19 @@
     &_info {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
+        text-align: center;
         padding: 20px 0;
         margin-right: 20px;
         width: 100%;
 
-        @include breakpoint(md-only) {
-            text-align: center;
-            justify-content: unset;
+        @include breakpoint(sm-only) {
+            font-size: 0.75rem;
         }
 
-        @include breakpoint(sm-only) {
-            justify-content: inherit;
-            font-size: 0.75rem;
+        & h2,
+        p {
+            margin: 2px;
         }
 
         &__title {
@@ -241,6 +75,7 @@
         &__priceblock {
             display: flex;
             align-items: center;
+            justify-content: center;
 
             @include breakpoint(md-only) {
                 justify-content: center;
@@ -262,51 +97,12 @@
             }
         }
 
-        & button {
-            width: 46px;
-            height: 46px;
-            margin-right: 15px;
-            align-self: end;
+        &:last-child {
+            margin: 0;
 
-            @include breakpoint(md-only) {
-                position: absolute;
-                bottom: 43px;
-                margin-right: 5px;
-            }
-
-            @include breakpoint(sm-only) {
-                position: absolute;
-                bottom: 38px;
-                margin-right: 0;
+            &_img {
+                padding: auto;
             }
         }
-    }
-
-    &:last-child {
-        margin: 0;
-
-        &_img {
-            padding: auto;
-        }
-    }
-}
-
-.blur {
-    position: absolute;
-    top: 10%;
-    right: 0;
-    height: 85%;
-    min-width: 320px;
-    background-color: #5c067ca6;
-    filter: blur(35px);
-    -webkit-filter: blur(35px);
-
-    @include breakpoint(lg-only) {
-        top: 21%;
-        height: 70%;
-    }
-
-    @include breakpoint(md-only) {
-        display: none;
     }
 }
