@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setItemInCart } from "../../store/cart/reducer";
+import { setFavoriteItems } from "../../store/favorites/reducer";
 import { BsBasket, BsFillHeartFill } from "react-icons/bs";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAutor from "./ProductAutor/ProductAutor";
@@ -13,19 +14,44 @@ import ProductImg from "./ProductImg/ProductImg";
 import classes from "./Product.module.scss";
 import Button from "../Button/Button";
 
+import { addProductToCart } from "../../services/cart";
+import { customerData } from "../../store/selectors";
+
 const Product = () => {
   let { productId } = useParams();
+  const store = useSelector((state) => state);
+
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
   const [toggle, setToggle] = useState(0);
 
-  function addToCart(info) {
+  const addToCart = async (info) => {
     try {
-      dispatch(setItemInCart(info));
+      let q = {};
+      Object.assign(
+        q,
+        { _id: product._id },
+        { product: product },
+        { cartQuantity: 1 }
+      );
+      if (customerData(store).id) {
+        await addProductToCart(info._id);
+        dispatch(setItemInCart(q));
+      } else {
+        dispatch(setItemInCart(q));
+      }
     } catch (error) {
       console.error(error.message);
     }
-  }
+  };
+
+  const addToWishList = (info) => {
+    try {
+      dispatch(setFavoriteItems(info));
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   const getProduct = useCallback(async () => {
     const products = await getSelectedProduct(productId);
@@ -76,8 +102,12 @@ const Product = () => {
                   >
                     <BsBasket color="white" size={26} />
                   </Button>
-
-                  <Button type="main">
+                  <Button
+                    type="main"
+                    onClick={() => {
+                      addToWishList(product);
+                    }}
+                  >
                     <BsFillHeartFill color="white" size={26} />
                   </Button>
                 </div>
