@@ -2,9 +2,10 @@ import React from "react";
 import ProductPrice from "../ProductPrice/ProductPrice";
 import ProductStore from "../ProductStore/ProductStore";
 import classes from "./ProductPriceBlock.module.scss";
+import PropTypes from "prop-types";
 
 const ProductPriceBlock = (props) => {
-  let { product } = props;
+  const { product } = props;
 
   return (
     <React.Fragment>
@@ -12,6 +13,7 @@ const ProductPriceBlock = (props) => {
         <ProductPrice
           className={classes.product_info__price}
           price={product.currentPrice}
+          salePrice={product.salePrice}
         />
         {product.quantity > 0 ? (
           <ProductStore
@@ -28,5 +30,10 @@ const ProductPriceBlock = (props) => {
     </React.Fragment>
   );
 };
+
+ProductPriceBlock.propTypes = {
+  currentPrice: PropTypes.number,
+  quantity: PropTypes.number,
+}
 
 export default ProductPriceBlock;

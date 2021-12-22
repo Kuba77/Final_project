@@ -10,6 +10,7 @@
             cursor: pointer;
             margin-right: 10px;
             box-shadow: $box-shadow;
+            object-fit: cover;
             @include breakpoint(md){
                 margin-right: 2px;
                 width:40px;
@@ -19,7 +20,7 @@
 }
 
 .header__userMenu_menu{
-    opacity: 0;
+    display: none;
     position: absolute;
     width: 120px;
     top:40px;

@@ -38,24 +38,20 @@ const CategoryPage = () => {
           </div>
         )}
 
-        <div className={classes.categoryPage__container}>
-          {!isLoading &&
-            product.map((item) => (
-              <Link
-                id={item.itemNo}
-                key={item.itemNo}
-                to={`/product/${item.itemNo}`}
-              >
-                <BookItem
-                  imageSrc={item.imageUrls[1]}
-                  price={item.currentPrice}
-                  title={item.name}
-                  author={item.author}
-                  itemNo={item.itemNo}
-                />
-              </Link>
-            ))}
-        </div>
+        {!isLoading &&
+          product.map((item, index) => (
+            // <Link id={item.itemNo} key={item.itemNo} to={`/product/${item.itemNo}`}>
+            <BookItem
+              imageSrc={item.imageUrls[1]}
+              price={item.currentPrice}
+              title={item.name}
+              author={item.author}
+              itemNo={item.itemNo}
+              salePrice={item.salePrice}
+              key={index}
+            />
+            // </Link>
+          ))}
       </section>
     </>
   );
