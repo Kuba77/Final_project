@@ -61,17 +61,15 @@ const Action = (props) => {
               <Swiper
                 navigation={true}
                 loop={true}
-                // autoplay={{ delay: 5000, disableOnInteraction: false }}
                 pagination={{
                   clickable: true,
                 }}
               >
                 {action.map((item, index) => (
-                  <SwiperSlide key={index} className="slide-item">
-                    <ActionCard key={item.name} item={item} className="action-item"/>
+                  <SwiperSlide key={index}>
+                    <ActionCard key={item.name} item={item} />
                   </SwiperSlide>
                 ))}
-                <SwiperSlide style={{ display: "none" }}></SwiperSlide>
               </Swiper>
             </div>
           </div>

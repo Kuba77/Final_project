@@ -42,6 +42,7 @@ const Carousel = ({ feature }) => {
           </Link>
         </SwiperSlide>
       ))}
+      <SwiperSlide style={{ display: "none" }}></SwiperSlide>
     </Swiper>
   );
 };

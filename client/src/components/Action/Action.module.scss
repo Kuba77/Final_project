@@ -1,146 +1,145 @@
-@import '../../styles/config/variables.scss';
+@import "../../styles/config/variables.scss";
 
 .action_block {
-    max-height: 350px;
-    background-color: $action-background-color-light;
-    margin: 80px 0;
-    position: relative;
+  max-height: 350px;
+  background-color: $action-background-color-light;
+  margin: 80px 0;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
 
-    &__container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 25px 0;
-        display: grid;
-        grid-column-gap: 10px;
-        grid-template-areas:
-            "timer info";
-
-        @include breakpoint(lg-only) {
-            justify-content: center;
-            padding: 10px 0 20px 0;
-            grid-template-areas:
-                "timer"
-                "info";
-        }
-
-        @include breakpoint(md-only) {
-            max-width: 580px;
-        }
-
-        @include breakpoint(sm-only) {
-            max-width: 430px;
-        }
-
-        @include breakpoint(xs-only) {
-            max-width: 300px;
-        }
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px 0;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-areas: "timer info";
+    & img {
+      max-width: 200px;
+      max-height: 200px;
     }
-}
-
-.timer {
-    grid-area: timer;
-    max-width: 300px;
-    margin-left: 15px;
-
     @include breakpoint(lg-only) {
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        width: 700px;
+      justify-content: center;
+      padding: 10px 0 20px 0;
+      grid-template-areas:
+        "timer"
+        "info";
+    }
+
+    @include breakpoint(md-only) {
+      max-width: 580px;
+    }
+
+    @include breakpoint(sm-only) {
+      max-width: 430px;
     }
 
     @include breakpoint(xs-only) {
-        flex-direction: column;
+      max-width: 300px;
+    }
+  }
+}
+
+.timer {
+  grid-area: timer;
+  max-width: 300px;
+  margin-left: 15px;
+
+  @include breakpoint(lg-only) {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 700px;
+  }
+
+  @include breakpoint(xs-only) {
+    flex-direction: column;
+  }
+
+  & h2 {
+    color: $body-color;
+    font-size: 2.2rem;
+    align-self: center;
+
+    @include breakpoint(lg-only) {
+      text-align: end;
+      min-width: 220px;
+      margin: 0 0 10px 0;
     }
 
-    & h2 {
-        color: $body-color;
-        font-size: 2.2rem;
-        align-self: center;
-
-        @include breakpoint(lg-only) {
-            text-align: end;
-            min-width: 220px;
-            margin: 0 0 10px 0;
-        }
-
-        @include breakpoint(sm-only) {
-            font-size: 1.7rem;
-            min-width: 150px;
-        }
-
-        @include breakpoint(xs-only) {
-            margin: 0;
-            text-align: start;
-        }
+    @include breakpoint(sm-only) {
+      font-size: 1.7rem;
+      min-width: 150px;
     }
 
-    & p {
-        font-size: 14px;
-        margin: 10px 0;
+    @include breakpoint(xs-only) {
+      margin: 0;
+      text-align: start;
+    }
+  }
 
-        @include breakpoint(lg-only) {
-            display: none;
-        }
+  & p {
+    font-size: 14px;
+    margin: 10px 0;
+
+    @include breakpoint(lg-only) {
+      display: none;
+    }
+  }
+
+  & span {
+    font-size: 2.2rem;
+
+    @include breakpoint(lg-only) {
+      text-align: start;
+      margin: 0 0 10px 15px;
+      min-width: 220px;
     }
 
-    & span {
-        font-size: 2.2rem;
-
-        @include breakpoint(lg-only) {
-            text-align: start;
-            margin: 0 0 10px 15px;
-            min-width: 220px;
-        }
-
-        @include breakpoint(sm-only) {
-            font-size: 1.7rem;
-            min-width: 150px;
-        }
-
-        @include breakpoint(xs-only) {
-            margin: 0 auto;
-            text-align: start;
-        }
+    @include breakpoint(sm-only) {
+      font-size: 1.7rem;
+      min-width: 150px;
     }
+
+    @include breakpoint(xs-only) {
+      margin: 0 auto;
+      text-align: start;
+    }
+  }
 }
 
 .action_content {
+  grid-area: info;
+  display: flex;
+  align-items: center;
+  max-width: 800px;
 
-    // & div {
-    //     width: 380px;
-    // }
+  @include breakpoint(lg-only) {
+    max-width: 760px;
+  }
 
-    grid-area: info;
-    display: flex;
-    align-items: center;
-    max-width: 800px;
-
-    @include breakpoint(lg-only) {
-        max-width: 760px;
-    }
-
-    @include breakpoint(md-only) {
-        justify-content: center;
-    }
+  @include breakpoint(md-only) {
+    justify-content: center;
+  }
 }
 
 .blur {
-    position: absolute;
-    top: 10%;
-    right: 0;
-    height: 85%;
-    min-width: 320px;
-    background-color: #5c067ca6;
-    filter: blur(35px);
-    -webkit-filter: blur(35px);
+  position: absolute;
+  top: 10%;
+  right: 0;
+  height: 85%;
+  min-width: 320px;
+  background-color: #5c067ca6;
+  filter: blur(35px);
+  -webkit-filter: blur(35px);
 
-    @include breakpoint(lg-only) {
-        top: 21%;
-        height: 70%;
-    }
+  @include breakpoint(lg-only) {
+    top: 21%;
+    height: 70%;
+  }
 
-    @include breakpoint(md-only) {
-        display: none;
-    }
+  @include breakpoint(md-only) {
+    display: none;
+  }
 }
