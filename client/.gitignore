@@ -2,7 +2,9 @@
 
 # dependencies
 **/node_modulesgit
+node_modules
 /node_modules
+/node_modules/.cache
 /.pnp
 .pnp.js
 

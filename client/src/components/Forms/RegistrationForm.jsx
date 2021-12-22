@@ -31,7 +31,7 @@ function RegistrationForm(props) {
         dispatch(setErors(error.response));
       }
     },
-    [dispatch]
+    [dispatch, history]
   );
   const responseErrorGoogle = useCallback(
     async (response) => {
@@ -39,7 +39,7 @@ function RegistrationForm(props) {
     },
     [dispatch]
   );
-
+  console.log(errorMessage);
   return (
     <Formik
       initialValues={initialValues}

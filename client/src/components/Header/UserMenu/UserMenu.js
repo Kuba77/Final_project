@@ -7,6 +7,8 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { customerData } from "../../../store/selectors";
 import { logoutCustomer } from "../../../services/user";
 import { removeCustomer } from "../../../store/customer/reducer";
+import { clearCart } from "../../../store/cart/reducer";
+import { removeFavorites } from "../../../store/favorites/reducer";
 import { useClickOutside } from "react-click-outside-hook";
 
 const UserMenu = () => {
@@ -20,6 +22,8 @@ const UserMenu = () => {
   const logOutCustomer = () => {
     logoutCustomer();
     dispatch(removeCustomer());
+    dispatch(clearCart());
+    dispatch(removeFavorites());
   };
   const closeMenuHandler = () => {
     setOpen(false);
