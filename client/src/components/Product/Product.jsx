@@ -28,6 +28,7 @@ import {
   itemsInCart,
   itemsInFavorite,
 } from "../../store/selectors";
+import { removeProductFromCart, addProductToCart } from "../../services/cart";
 
 const Product = () => {
   let { productId } = useParams();
@@ -43,8 +44,23 @@ const Product = () => {
   const isItemInCart = itemsInCart(store).some(
     (item) => item._id === product._id
   );
-  const addToCart = (value) => {
-    try {
+  console.log("itemsInCart(store)", itemsInCart(store));
+  console.log("product._id", product._id);
+  console.log("isItemInCart", isItemInCart);
+  const addToCart = async (value) => {
+    if (customerData(store).id) {
+      if (isItemInCart) {
+        let r = await removeProductFromCart(value._id);
+        console.log("r", r);
+        dispatch(deleteItemFromCart(value._id));
+      } else {
+        let q = await addProductToCart(value._id);
+        console.log("q", q);
+        dispatch(
+          setItemInCart({ _id: value._id, product: value, cartQuantity: 1 })
+        );
+      }
+    } else {
       if (isItemInCart) {
         dispatch(deleteItemFromCart(value._id));
       } else {
@@ -52,8 +68,6 @@ const Product = () => {
           setItemInCart({ _id: value._id, product: value, cartQuantity: 1 })
         );
       }
-    } catch (error) {
-      console.error(error.message);
     }
   };
 

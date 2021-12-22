@@ -28,19 +28,20 @@ const Timer = (props) => {
       }
     });
   };
-
   useEffect(() => {
     startTimer();
-  });
+  }, []);
 
   return (
     <span className={classes.timer__clock}>
-    {hour < 10 ? ("0" + hour) : (hour)} : {minute < 10 ? ("0" + minute) : (minute)} : {second < 10 ? ("0" + second) : (second)}</span>
+      {hour < 10 ? "0" + hour : hour} : {minute < 10 ? "0" + minute : minute} :{" "}
+      {second < 10 ? "0" + second : second}
+    </span>
   );
-}
+};
 
 Timer.propTypes = {
-  time: PropTypes.string
-}
+  time: PropTypes.string,
+};
 
 export default Timer;

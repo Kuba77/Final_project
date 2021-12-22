@@ -10,13 +10,11 @@ import Promo from "../../components/Promo/Promo";
 const HomePage = () => {
   return (
     <>
-    <Header />
+      <Header />
       <Main />
-      {/* добавила блок промо */}
-      <Promo /> 
+      <Promo />
       <Feature />
       <Categories />
-      {/* добавила блок акция */}
       <Action timer="22 Dec 2021 22:40:00 GMT+2" />
       <Footer />
     </>
