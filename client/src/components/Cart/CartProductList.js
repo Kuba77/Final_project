@@ -51,6 +51,7 @@ const CartProductList = () => {
   const localDecrease = useCallback(
     (_id) => {
       let newarr = decreaseItemQuantity(cart, _id);
+      console.log(newarr);
       dispatch(rewrite(newarr));
     },
     [cart, dispatch]

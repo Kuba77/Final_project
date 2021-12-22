@@ -29,3 +29,9 @@ export const errorMessage = createSelector(
 
 export const stateCart = (state) => state.cart;
 export const itemsInCart = createSelector([stateCart], (cart) => cart.products);
+
+const stateFavorites = (state) => state.favorites;
+export const itemsInFavorite = createSelector(
+  [stateFavorites],
+  (favorites) => favorites.favoriteItems
+);
