@@ -4,7 +4,8 @@ const defaultState = {
   favoriteItems: [],
 };
 
-const initialState = JSON.parse(localStorage.getItem('redux'))?.favorites || defaultState
+const initialState =
+  JSON.parse(localStorage.getItem("redux"))?.favorites || defaultState;
 
 const favoriteSlice = createSlice({
   name: "favorites",
@@ -15,7 +16,7 @@ const favoriteSlice = createSlice({
     },
     deleteFavorites: (state, action) => {
       state.favoriteItems = state.favoriteItems.filter(
-        (book) => book.itemNo !== action.payload
+        (book) => book._id !== action.payload
       );
     },
     removeFavorites: (state, action) => {
