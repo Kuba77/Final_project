@@ -21,7 +21,6 @@ extract archive anywhere you want, open folder with project in terminal
 and enter the following commands.
 
 ```
-$ git clone https://github.com/Kuba77/Manga_store.git
 $ cd server
 $ npm i
 $ npm run server
