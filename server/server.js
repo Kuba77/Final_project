@@ -75,20 +75,17 @@ app.use("/", mainRoute);
 app.use("/api/logingoogle", loginGoogle);
 
 // Server static assets if in production
-// if (process.env.NODE_ENV === "production") {
-//   // Set static folder
-//   app.use(express.static("client/build"));
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
 
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "client", "build"));
-//   });
-// }
-// app.use('/static', express.static(path.join(__dirname, '../client/build/static')));
-// app.get('*', function(req, res) {
-//   res.sendFile('index.html', {root: path.join(__dirname, '../../client/build/')});
-// });
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build"));
+  });
+}
 
-app.use(express.static('../client/build'));
+
+// app.use(express.static('../client/build'));
 
 
 
