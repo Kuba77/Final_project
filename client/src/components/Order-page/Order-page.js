@@ -10,6 +10,8 @@ import Footer from "../Footer/Footer";
 import { createNewOrder } from "../../services/order";
 import { errorMessage } from "../../store/selectors";
 import { getCustomerCart } from "../../services/cart";
+import axios from "../../services/htttWraper";
+import configData from "../../config/config.json";
 
 const OrderPage = () => {
   // const customerCartData = await getCustomerCart();
@@ -38,7 +40,7 @@ const OrderPage = () => {
   const onSubmit = async (values) => {
     const resp = await getCustomerCart();
     const customer = resp.customerId;
-    const product = resp.products[0].product;
+    // const product = resp.products[0].product;
 
     const newOrder = {
       customerId: customer._id,
@@ -52,22 +54,27 @@ const OrderPage = () => {
       letterHtml:
         "<h1>Your order is placed. OrderNo is 023689452.</h1><p>{Other details about order in your HTML}</p>",
     };
+    createOrderObject(newOrder);
 
-    console.log(customer);
-    console.log(newOrder);
+    axios.get(configData.ORDERS_URL).then((resp) => {
+      console.log(resp);
+      alert(`Your order #${resp.data[0].orderNo}`);
+      setTimeout(() => {
+        history.push("/");
+      }, 2000);
+    });
   };
   const initialValues = {
-    customerId: ``,
     deliveryAdress: {
-      country: "asd",
-      city: "asd",
-      adress: "asd",
-      postal: "12345",
+      country: "",
+      city: "",
+      adress: "",
+      postal: "",
     },
-    firstName: "asd",
-    lastName: "asd",
-    email: "asd@qwe.qwe",
-    mobile: "1234567",
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
   };
   const validationSchema = OrderSchema;
   return (

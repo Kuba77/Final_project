@@ -6,7 +6,7 @@ import { setItemInCart } from "../../store/cart/reducer";
 import { setFavoriteItems } from "../../store/favorites/reducer";
 import { BsBasket, BsFillHeartFill } from "react-icons/bs";
 import ProductTitle from "./ProductTitle/ProductTitle";
-import ProductAutor from "./ProductAutor/ProductAutor";
+import ProductAuthor from "./ProductAuthor/ProductAuthor";
 import ProductDescription from "./ProductDescription/ProductDescription";
 import ProductPriceBlock from "./ProductPriceBlock/ProductPriceBlock";
 import ProductDetails from "./ProductDetails/ProductDetails";
@@ -80,7 +80,7 @@ const Product = () => {
                   className={classes.product_info__title}
                   title={product.name}
                 />
-                <ProductAutor
+                <ProductAuthor
                   className={classes.product_info__author}
                   author={product.author}
                 />
