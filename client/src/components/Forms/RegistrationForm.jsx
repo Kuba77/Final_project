@@ -14,7 +14,6 @@ import { useHistory } from "react-router-dom";
 function RegistrationForm(props) {
   const { initialValues, validationSchema, onSubmit, errorMessage } = props;
 
-
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -32,7 +31,7 @@ function RegistrationForm(props) {
         dispatch(setErors(error.response));
       }
     },
-    [dispatch]
+    [dispatch, history]
   );
   const responseErrorGoogle = useCallback(
     async (response) => {
@@ -40,7 +39,7 @@ function RegistrationForm(props) {
     },
     [dispatch]
   );
-console.log(errorMessage)
+  console.log(errorMessage);
   return (
     <Formik
       initialValues={initialValues}
