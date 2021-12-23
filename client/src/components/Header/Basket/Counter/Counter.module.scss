@@ -1,0 +1,18 @@
+@import '../../../../styles/config/variables.scss';
+
+.counter {
+    position: absolute;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    background-color: $first-color;
+    border-radius: 15px;
+    font-size: $small-font-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 2;
+    left: 12px;
+    top: 12px;
+}

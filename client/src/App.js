@@ -1,7 +1,16 @@
-import ProductsList from "./pages/products-list-page/products-list-page";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import { BrowserRouter as Router } from "react-router-dom";
+import RoutePages from '../src/components/RoutePages/RoutePages';
 
 function App() {
-  return <ProductsList />;
+  return (
+    <Provider store={store}>
+      <Router>
+        <RoutePages />
+      </Router>
+    </Provider>
+  );
 }
 
-export default App;
+export default App

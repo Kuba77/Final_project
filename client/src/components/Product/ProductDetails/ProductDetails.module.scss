@@ -1,0 +1,66 @@
+@import '../../../styles/config/variables.scss';
+
+.product_block__title {
+        color: $title-color;
+        font-size: 26px;
+        margin: 40px 0 20px 0;
+
+        @include breakpoint(md-only) {
+            margin: 30px 0 0 0;
+            font-size: $h3-font-size;
+        }
+
+        @include breakpoint(sm-only) {
+            margin: 0;
+            font-size: $normal-font-size;
+        }
+}
+
+.product_block__details {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 20px 0;
+    font-size: 15px;
+    box-shadow: $box-shadow;
+
+    @include breakpoint(md-only) {
+        font-size: 13px;
+    }
+
+    @include breakpoint(sm-only) {
+        font-size: 9px;
+    }
+
+    @include breakpoint(s-only) {
+        font-size: 8px;
+    }
+
+    & .product_categories {
+        background-color: $product-background-color;
+
+        & p {
+            color: $body-color;
+            padding: 15px 0 15px 30px;
+
+            @include breakpoint(sm-only) {
+                padding: 8px 0 8px 8px;
+            }
+        }
+    }
+
+    & .product_data {
+        background-color: $product-background-color-light;
+
+        & p {
+            padding: 15px 0 15px 40px;
+
+            @include breakpoint(sm-only) {
+                padding: 8px 0 8px 10px;
+            }
+        }
+
+        & p:first-child {
+            text-transform: uppercase;
+        }
+    }
+}
