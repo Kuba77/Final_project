@@ -1,10 +1,13 @@
 import React from "react";
 import FormikControl from "./FormikControl";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import classes from "./Form.module.scss";
+// import { useSelector } from "react-redux";
 
 const OrderForm = (props) => {
   const { initialValues, validationSchema, onSubmit } = props;
+  // const store = useSelector((state) => state);
+  // const customerData = store.customer.customerData;
   return (
     <Formik
       initialValues={initialValues}
@@ -16,18 +19,6 @@ const OrderForm = (props) => {
           <div className={classes.form__wrapper}>
             <h1 className={classes.from_title}>Order form</h1>
             <Form>
-              <FormikControl
-                control="input"
-                type="text"
-                label="Please, enter your firstname"
-                name="firstName"
-              />
-              <FormikControl
-                control="input"
-                type="text"
-                label="Please, enter your lastname"
-                name="lastName"
-              />
               <FormikControl
                 control="input"
                 type="tel"
