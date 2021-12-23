@@ -12,7 +12,7 @@ const HomePage = () => {
       <Header />
       <Main />
       <Feature />
-      <Categories />
+      {/* <Categories /> */}
       <Footer />
     </>
   );
