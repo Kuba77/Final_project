@@ -1,25 +1,27 @@
 import axios from "axios";
 import { message } from "antd";
 import configData from "../../config/config.json";
-
+import {successMassage, warningMessage, errorMessage} from "../../components/TosterMessages/TosterMessages";
 import "antd/dist/antd.css";
+
+const warningMessageRequest = (requestMessage) => message.warning(`${requestMessage}`);
 
 const createNewSubscribe = (credentials) => {
   axios
     .post(`${configData.SUBSCRIBERS}`, credentials)
     .then((response) => {
       if (response.status === 200) {
-        message.success("Thanks for subscribed");
+        successMassage()
       } else {
-        message.warning("Somethink wrong, try again latter", response.message);
+        warningMessage()
       }
     })
     .catch((error) => {
       const requestMessage = error.response.data.message;
       if (requestMessage) {
-        message.warning(`${requestMessage}`);
+        warningMessageRequest(requestMessage)
       } else {
-        message.warning("Somethink wrong");
+        errorMessage()
       }
     });
 };
