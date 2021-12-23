@@ -16,6 +16,8 @@ const FavoriteItem = (props) => {
   const store = useSelector((state) => state);
 
   const isItemInCart = itemsInCart(store).some((item) => item._id === item._id);
+  console.log(itemsInCart(store));
+  console.log(isItemInCart);
 
   const deleteFavoritesClick = (e) => {
     e.stopPropagation();
