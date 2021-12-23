@@ -40,12 +40,13 @@ export const OrderSchema = Yup.object({
   mobile: Yup.string()
     .matches(phoneRegExp, "Phone number is not valid")
     .required("Required"),
-
-  country: Yup.string().required(),
-  city: Yup.string().required(),
-  adress: Yup.string().required(),
-  postal: Yup.string()
-    .max(5, "Must be 5 numbers of postal index")
-    .min(5, "Must be 5 numbers of postal index")
-    .required("Required"),
+  deliveryAdress: Yup.object({
+    country: Yup.string().required("Required"),
+    city: Yup.string().required("Required"),
+    adress: Yup.string().required("Required"),
+    postal: Yup.string()
+      .max(5, "Must be 5 numbers of postal index")
+      .min(5, "Must be 5 numbers of postal index")
+      .required("Required"),
+  }),
 });

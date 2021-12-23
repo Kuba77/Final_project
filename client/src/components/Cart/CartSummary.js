@@ -39,7 +39,9 @@ const CartSummary = (props) => {
             </div>
           </div>
           <div className={classes.block_summary_button_position}>
-            <button className={classes.block_summary_button}>Buy</button>
+            <Link className={classes.block_summary_button} to="/order">
+              Buy
+            </Link>
             <Link
               to={`/products`}
               className={classes.block_summary_button_to_other_products}
