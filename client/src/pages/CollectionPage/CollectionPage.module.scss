@@ -2,10 +2,14 @@
 
 
 .collection{
+    max-width:1024px;
+    margin: 4vh auto;
     padding:2vw;
+    @include breakpoint(sm-only){
+        margin: 10vh auto;
+    }
 }
 .collection__container{
-    max-width:1024px;
     margin: 10vh auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 180px));

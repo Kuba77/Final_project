@@ -1,0 +1,152 @@
+@import '../../../styles/config/variables.scss';
+
+.favorites__item{
+    height:280px;
+    width: 100%;
+    position: relative;
+    border-radius:20px;
+    box-shadow:$box-shadow;
+    display: flex;
+    background-color:#f7def5;
+        @include breakpoint(sm-only){
+            height:230px;
+        }
+    
+    &__img{
+
+        img{
+            height:280px;
+            border-radius:10px;
+            box-shadow:$box-shadow;
+            @include breakpoint(sm-only){
+                height:230px;
+            }
+        }
+        svg {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right:10px;
+        }
+    }
+  
+    
+    &__textarea{
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:space-between;
+        margin-top: 2vh;
+        padding: 2vw;
+        width: 70%;
+        text-align: center;
+            @include breakpoint(sm-only){
+                margin-top: 3vh;
+            }
+
+            h4{
+                cursor: pointer;
+                font-size: $h2-font-size;
+                text-transform: capitalize;
+                color:black;
+                @include breakpoint(sm-only){
+                    font-size: $small-font-size;
+
+                }
+                &:hover{
+                    color:$first-color;
+                }
+                
+            }
+            h5{
+              
+                font-size:1rem;
+                text-transform: capitalize;
+                color:$first-color;
+                @include breakpoint(sm-only){
+                    font-size: $small-font-size;
+                }
+            }
+           
+            p{
+                font-size: $small-font-size;
+                margin-top: 2vh;
+                color:rgb(56, 56, 56);
+            }
+    }
+    &_btn{
+        padding-left: 1vh;
+    }
+    &__btn_wrapper{
+        position:absolute;
+        bottom: 10px;
+        right: 8%;
+    }
+    button{
+        width: 70%;
+        display: block;
+        padding: .6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $first-color;
+        color: #FFF;
+        font-weight: 600;
+        text-align: center;
+        border-radius: .5rem;
+        transition: .3s;
+            @include breakpoint(sm-only){
+                width: 60%;
+            }
+
+        &:hover{
+            background-color: $hover-color;
+        }
+    }
+
+    &_price{
+        color: $first-color;
+        font-size:$h2-font-size;
+    }
+}
+
+
+.favorites__item span{
+    position: absolute;
+    top: -4px;
+    left: -6px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    overflow: hidden;
+}
+.favorites__item span::before{
+    content:"Sale";
+    position: absolute;
+    color: white;
+    width: 150%;
+    height: 40px;
+    font-size: $h1-font-size;
+    font-weight: 600;
+    background-color:rgba(8, 224, 240, 0.945);
+    transform: rotate(-45deg) translateY(-20px);
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow: 0 5px 10px  rgba(0,0,0,0.1);
+}
+
+.favorites__item span::after{
+    content:'';
+    position: absolute;
+    bottom:0;
+    left: 0;
+    height: 10px;
+    width: 10px;
+    background-color:rgb(45, 35, 46);
+    z-index: -1;
+    box-shadow: 140px -140px $first-color;
+}

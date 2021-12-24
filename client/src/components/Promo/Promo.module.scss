@@ -1,0 +1,79 @@
+@import '../../styles/config/variables.scss';
+
+.promo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    // justify-content: center;
+    background-color: $first-color-light;
+    padding: 40px;
+
+    @include breakpoint(md-only) {
+      padding: 15px;
+      grid-column-gap: 15px;
+    }
+
+    @include breakpoint(sm-only) {
+        display: none;
+    }
+
+    &_block {
+
+       
+
+        //         @include breakpoint(sm) {
+        //           
+        //         }
+
+        //         @include breakpoint(sm-only) {
+        //       
+        //         }
+
+        & div {
+            width: 100%;
+            height: 60px;
+            background-repeat: no-repeat;
+            margin-bottom: 15px;
+
+            @include breakpoint(md-only) {
+                background-position: center;
+            }
+        }
+
+        &__title {
+            margin-bottom: 10px;
+
+            @include breakpoint(md-only) {
+                font-size: 12px;
+                text-align: center;
+            }
+        }
+
+        &__text {
+            margin-bottom: 10px;
+            color: #00000080;
+            justify-content: center;
+
+            @include breakpoint(md-only) {
+                display: none;
+            }
+        }
+
+        &__img1 {
+            background-image: url("https://res.cloudinary.com/dl7xlw7cl/image/upload/v1638044977/FeaturesStore/delivery_maqggl.png");
+        }
+
+        &__img2 {
+            background-image: url("https://res.cloudinary.com/dl7xlw7cl/image/upload/v1638044977/FeaturesStore/payment_i4dwzs.png");
+        }
+
+        &__img3 {
+            background-image: url("https://res.cloudinary.com/dl7xlw7cl/image/upload/v1638044977/FeaturesStore/quality_hz05nh.png");
+        }
+
+        &__img4 {
+            background-image: url("https://res.cloudinary.com/dl7xlw7cl/image/upload/v1638044977/FeaturesStore/guarantee_mgscys.png");
+        }
+    }
+
+}

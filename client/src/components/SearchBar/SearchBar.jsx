@@ -98,12 +98,13 @@ const SearchBar = () => {
         {!isLoading && isEmpty && <div>No items found</div>}
         {!isLoading &&
           !isEmpty &&
-          findedContent.map((item) => (
+          findedContent.map((item, index) => (
             <SearchContent
               collapseContainer={collapseContainer}
               imageSrc={item.imageUrls[0]}
               title={item.name}
               itemNo={item.itemNo}
+              key={index}
             />
           ))}
       </div>

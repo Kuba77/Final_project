@@ -1,0 +1,9 @@
+@import '../../styles/config/variables.scss';
+
+.filters__container{
+    margin-top: 2vh;
+    position: relative;
+    display: flex;
+    justify-content:space-between;
+    flex-flow:wrap;
+}
