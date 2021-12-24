@@ -10,6 +10,7 @@ const CollectionList = ({ collection }) => {
       author={item.author}
       price={item.currentPrice}
       itemNo={item.itemNo}
+      salePrice={item.salePrice}
     />
   ));
 };

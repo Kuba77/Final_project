@@ -13,6 +13,9 @@
     box-shadow: $box-shadow-secondary;
     overflow: hidden;
     background-color: #fff;
+        @include breakpoint(sm-only){
+            width: 220px;
+        }
 }
 
 .search__input_container{

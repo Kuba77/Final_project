@@ -1,6 +1,5 @@
 {
     "REACT_APP_GOOGLE_CLIENT_ID":"649718085227-lo924pc5nifh55shg8u0gf3vm7olsmvn.apps.googleusercontent.com",
-    "BASE_URL":"http://localhost:3000/api",
     "GOOGLE_LOGIN_URL":"/logingoogle",
     "CUSTOMERS_URL":"/customers",
     "CUSTOMERS_LOGIN_URL":"/customers/login",
@@ -8,5 +7,13 @@
     "ALL_PRODUCTS_URL": "/products",
     "SERCH_PRODUCT_URL": "/products/search",
     "FILTERED_PRODUCT_URL": "/products/filter?",
-    "ALL_CATALOG_URL": "/catalog"
+    "ALL_CATALOG_URL": "/catalog",
+    "ADD_PRODUCT_TO_CART":"/cart",
+    "DECREASE_PRODUCT_QUANTITY":"/cart/product",
+    "SUBSCRIBERS": "/subscribers",
+    "ALL_COMMENTS_URL": "/comments",
+    "PRODUCT_COMMENTS_URL": "/comments/product",
+    "ORDERS_URL": "/orders"
+    
 }
+ 

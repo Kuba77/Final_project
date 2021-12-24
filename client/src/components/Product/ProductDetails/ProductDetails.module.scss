@@ -20,8 +20,8 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     margin: 20px 0;
-    // font-size: 14px;
     font-size: 15px;
+    box-shadow: $box-shadow;
 
     @include breakpoint(md-only) {
         font-size: 13px;

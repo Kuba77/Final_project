@@ -1,0 +1,312 @@
+@import '../../styles/config/variables.scss';
+
+.action_block {
+    max-height: 350px;
+    background-color: $action-background-color-light;
+    margin: 80px 0;
+    position: relative;
+
+    &__container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 25px 0;
+        display: grid;
+        grid-column-gap: 10px;
+        grid-template-areas:
+            "timer info";
+
+        @include breakpoint(lg-only) {
+            justify-content: center;
+            padding: 10px 0 20px 0;
+            grid-template-areas:
+                "timer"
+                "info";
+        }
+
+        @include breakpoint(md-only) {
+            max-width: 580px;
+        }
+
+        @include breakpoint(sm-only) {
+            max-width: 430px;
+        }
+
+        @include breakpoint(xs-only) {
+            max-width: 300px;
+        }
+    }
+}
+
+.timer {
+    grid-area: timer;
+    max-width: 300px;
+    margin-left: 15px;
+
+    @include breakpoint(lg-only) {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 700px;
+    }
+
+    @include breakpoint(xs-only) {
+        flex-direction: column;
+    }
+
+    & h2 {
+        color: $body-color;
+        font-size: 2.2rem;
+        align-self: center;
+
+        @include breakpoint(lg-only) {
+            text-align: end;
+            min-width: 220px;
+            margin: 0 0 10px 0;
+        }
+
+        @include breakpoint(sm-only) {
+            font-size: 1.7rem;
+            // min-width: 150px;
+        }
+
+        @include breakpoint(xs-only) {
+            margin: 0;
+            text-align: start;
+        }
+    }
+
+    & p {
+        font-size: 14px;
+        margin: 10px 0;
+
+        @include breakpoint(lg-only) {
+            display: none;
+        }
+    }
+
+    & span {
+        font-size: 2.2rem;
+
+        @include breakpoint(lg-only) {
+            text-align: start;
+            margin: 0 0 10px 15px;
+
+            min-width: 220px;
+        }
+
+        @include breakpoint(sm-only) {
+            font-size: 1.7rem;
+            min-width: 150px;
+        }
+
+        @include breakpoint(xs-only) {
+            margin: 0 auto;
+            text-align: start;
+        }
+    }
+}
+
+.action_content {
+    grid-area: info;
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+
+    @include breakpoint(lg-only) {
+        max-width: 760px;
+    }
+
+    @include breakpoint(md-only) {
+        justify-content: center;
+    }
+
+    & button {
+        height: 46px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+
+
+        &:first-child {
+            @include breakpoint(xs-only) {
+                background-color: transparent;
+                box-shadow: none;
+                position: absolute;
+                z-index: 2;
+                left: 0;
+            }
+        }
+
+        &:nth-child(3) {
+            position: absolute;
+            z-index: 2;
+            right: 290px;
+
+            @include breakpoint(md-only) {
+                position: static;
+            }
+
+            @include breakpoint(xs-only) {
+                background-color: transparent;
+                box-shadow: none;
+                position: absolute;
+                right: 0;
+            }
+        }
+
+
+    }
+
+    & .action:last-child {
+        @include breakpoint(md-only) {
+            display: none;
+        }
+    }
+}
+
+.action {
+    display: flex;
+    width: 350px;
+    height: 245px;
+    margin: 0 10px;
+    background-color: $action-background-color;
+    border-radius: 4%;
+    -webkit-border-radius: 4%;
+    -moz-border-radius: 4%;
+    -ms-border-radius: 4%;
+    -o-border-radius: 4%;
+    color: $body-color;
+
+    @include breakpoint(lg-only) {
+        width: 330px;
+    }
+
+    @include breakpoint(md-only) {
+        height: 240px;
+        width: 380px;
+        margin: 0 20px;
+    }
+
+    @include breakpoint(sm-only) {
+        height: 200px;
+        width: 300px;
+        margin: 0 10px;
+    }
+
+    &_img {
+        width: 130px;
+        height: 195px;
+        margin: 20px;
+
+        @include breakpoint(sm-only) {
+            width: 110px;
+            height: 155px;
+        }
+    }
+
+    &_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0;
+        margin-right: 20px;
+        width: 100%;
+
+        @include breakpoint(md-only) {
+            text-align: center;
+            justify-content: unset;
+        }
+
+        @include breakpoint(sm-only) {
+            justify-content: inherit;
+            font-size: 0.75rem;
+        }
+
+        &__title {
+            font-size: $h3-font-size;
+            color: $container-color;
+            text-transform: uppercase;
+
+            @include breakpoint(md-only) {
+                font-size: $h2-font-size;
+            }
+
+            @include breakpoint(sm-only) {
+                font-size: 0.85rem;
+            }
+        }
+
+        &__priceblock {
+            display: flex;
+            align-items: center;
+
+            @include breakpoint(md-only) {
+                justify-content: center;
+            }
+
+            & p:first-child {
+                color: $action-text-color;
+                font-size: 1.5rem;
+                font-weight: $font-semi-bold;
+
+                @include breakpoint(md-only) {
+                    font-size: 1rem;
+                }
+            }
+
+            & p:last-child {
+                margin-left: 10px;
+                text-decoration: line-through;
+            }
+        }
+
+        & button {
+            width: 46px;
+            height: 46px;
+            margin-right: 15px;
+            align-self: end;
+
+            @include breakpoint(md-only) {
+                position: absolute;
+                bottom: 43px;
+                margin-right: 5px;
+            }
+
+            @include breakpoint(md-only) {
+                position: absolute;
+                bottom: 38px;
+                margin-right: 0;
+            }
+        }
+    }
+
+    &:last-child {
+        margin: 0;
+
+        &_img {
+            padding: auto;
+        }
+    }
+}
+
+.blur {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 85%;
+    min-width: 320px;
+    background-color: #5c067ca6;
+    filter: blur(35px);
+    -webkit-filter: blur(35px);
+
+    @include breakpoint(lg-only) {
+        top: 21%;
+        height: 70%;
+    }
+
+    @include breakpoint(md-only) {
+        display: none;
+    }
+}

@@ -16,7 +16,6 @@ Object {
           >
             <a
               data-testid="1"
-              href="!#"
               id="1"
             >
               1
@@ -27,7 +26,6 @@ Object {
           >
             <a
               data-testid="2"
-              href="!#"
               id="2"
             >
               2
@@ -38,7 +36,6 @@ Object {
           >
             <a
               data-testid="3"
-              href="!#"
               id="3"
             >
               3
@@ -60,7 +57,6 @@ Object {
         >
           <a
             data-testid="1"
-            href="!#"
             id="1"
           >
             1
@@ -71,7 +67,6 @@ Object {
         >
           <a
             data-testid="2"
-            href="!#"
             id="2"
           >
             2
@@ -82,7 +77,6 @@ Object {
         >
           <a
             data-testid="3"
-            href="!#"
             id="3"
           >
             3
