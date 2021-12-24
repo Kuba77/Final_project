@@ -85,11 +85,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-<<<<<<< HEAD
-// app.use(express.static('../client/build'));
+// app.use('/static', express.static(path.join(__dirname, '../client/build/static')));
+// app.use('/', mainRoute);
 
-=======
->>>>>>> developer
 
 
 const port = process.env.PORT || 5000;
