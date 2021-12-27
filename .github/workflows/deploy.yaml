@@ -14,7 +14,7 @@ jobs:
           heroku_app_name: "api-manga-store"
           heroku_email: ${{secrets.HEROKU_API_KEY}}
         env:
-          HD_APP_BASE: "Manga_store/server"
+          HD_APP_BASE: "server"
       - name: Release Web Client
         uses: akhileshns/heroku-deploy@v3.0.4
         with:
@@ -22,5 +22,5 @@ jobs:
           heroku_app_name: "web-manga-store"
           heroku_email: ${{secrets.HEROKU_API_KEY}}
         env:
-          HD_APP_BASE: "Manga_store/client"
+          HD_APP_BASE: "client"
           HD_REACT_APP_API_URL: "https://api-manga-store.herokuapp.com"
