@@ -84,12 +84,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-
-// app.use('/static', express.static(path.join(__dirname, '../client/build/static')));
-// app.use('/', mainRoute);
-
-
-
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
