@@ -2,12 +2,12 @@ import axios from "./htttWraper";
 import configData from "../config/config.json";
 
 export async function createProductComment(value) {
-  let { product, customer, content } = value
+  let { product, customer, content } = value;
 
   const newComment = {
     product: product,
     customer: customer,
-    content: content.content
+    content: content.content,
   };
 
   try {
@@ -23,11 +23,12 @@ export async function createProductComment(value) {
 
 export async function getAllProductComments(value) {
   try {
-    return await axios.get(`${configData.PRODUCT_COMMENTS_URL}/${value}`) 
-    .then((response) => {
+    return await axios
+      .get(`${configData.PRODUCT_COMMENTS_URL}/${value}`)
+      .then((response) => {
         return response.data;
-      })
-} catch (error) {
+      });
+  } catch (error) {
     return error.message;
   }
 }
@@ -37,9 +38,8 @@ export async function deleteProductComment(value) {
     return await axios
       .delete(`${configData.ALL_COMMENTS_URL}/${value}`)
       .then((response) => {
-        console.log(response.data);
         return response.data;
-      })
+      });
   } catch (error) {
     return error.response.data;
   }

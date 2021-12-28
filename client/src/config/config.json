@@ -14,6 +14,8 @@
     "SUBSCRIBERS": "/subscribers",
     "ALL_COMMENTS_URL": "/comments",
     "PRODUCT_COMMENTS_URL": "/comments/product",
-    "ORDERS_URL": "/orders"
+    "ORDERS_URL": "/orders",
+    "WISHLIST": "/wishlist"
+    
 }
  
