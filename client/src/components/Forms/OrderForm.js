@@ -2,12 +2,9 @@ import React from "react";
 import FormikControl from "./FormikControl";
 import { Formik, Form } from "formik";
 import classes from "./Form.module.scss";
-// import { useSelector } from "react-redux";
 
 const OrderForm = (props) => {
   const { initialValues, validationSchema, onSubmit } = props;
-  // const store = useSelector((state) => state);
-  // const customerData = store.customer.customerData;
   return (
     <Formik
       initialValues={initialValues}

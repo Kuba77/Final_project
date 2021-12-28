@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const newOrder = {
-  order: [],
+  order: {},
 };
 
 const orderSlice = createSlice({

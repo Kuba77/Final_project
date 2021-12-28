@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
-export const successOrderNotification = (orderNumber) => {
-  toast.success(`Your order ${orderNumber} is success`, {
+export const successOrderNotification = () => {
+  toast.success(`Your order is success`, {
     position: toast.POSITION.TOP_CENTER,
     autoClose: 8000,
     hideProgressBar: false,
