@@ -4,8 +4,14 @@ import { MdRemoveShoppingCart } from "react-icons/md";
 import { calcTotalPriceOneProd } from "../../utils/utils";
 
 const CartProduct = (props) => {
-  const { item, deleteProductFromCart, decreaseProduct, increaseProduct } =
-    props;
+  const {
+    item,
+    deleteProductFromCart,
+    decreaseProduct,
+    increaseProduct,
+    customer,
+    localAddRemoveQuantity,
+  } = props;
 
   return (
     <div className={classes.block_product}>
@@ -27,8 +33,13 @@ const CartProduct = (props) => {
           <div className={classes.cart_button__counter_prod}>
             <button
               className={classes.cart_button_minus}
-              onClick={() => {
-                decreaseProduct(item.product._id);
+              name="minus"
+              onClick={(e) => {
+                if (!customer) {
+                  localAddRemoveQuantity(item.product, e.target.name);
+                } else {
+                  decreaseProduct(item.product);
+                }
               }}
             >
               -
@@ -39,8 +50,13 @@ const CartProduct = (props) => {
             </span>
             <button
               className={classes.cart_button_plus}
-              onClick={() => {
-                increaseProduct(item.product._id);
+              name="plus"
+              onClick={(e) => {
+                if (!customer) {
+                  localAddRemoveQuantity(item.product, e.target.name);
+                } else {
+                  increaseProduct(item.product);
+                }
               }}
             >
               +
@@ -58,7 +74,7 @@ const CartProduct = (props) => {
         <MdRemoveShoppingCart
           className={classes.product_remove_icon}
           onClick={() => {
-            deleteProductFromCart(item.product._id);
+            deleteProductFromCart(item.product);
           }}
         />
       </div>
