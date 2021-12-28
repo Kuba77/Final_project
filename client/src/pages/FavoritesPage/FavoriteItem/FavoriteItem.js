@@ -5,38 +5,28 @@ import classes from "./FavoriteItem.module.scss";
 import { AiFillHeart } from "react-icons/ai";
 import { BsBasket } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
-import { setItemInCart, deleteItemFromCart } from "../../../store/cart/reducer";
-import { deleteFavorites } from "../../../store/favorites/reducer";
+import { addOrRemoveProductToCart } from "../../../store/cart/reducer";
 import { itemsInCart } from "../../../store/selectors";
+import { addOrRemoveProductToFavorite } from "../../../store/favorites/reducer";
 
 const FavoriteItem = (props) => {
-  const { imgSrc, title, author, quantity, itemNo, price, salePrice, item } =
-    props;
+  const {
+    imgSrc,
+    title,
+    author,
+    quantity,
+    itemNo,
+    price,
+    salePrice,
+    item,
+    id,
+  } = props;
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
 
-  const isItemInCart = itemsInCart(store).some((item) => item._id === item._id);
-  console.log(itemsInCart(store));
-  console.log(isItemInCart);
-
-  const deleteFavoritesClick = (e) => {
-    e.stopPropagation();
-    dispatch(deleteFavorites(item._id));
-  };
-
-  const addToCart = (value) => {
-    try {
-      if (isItemInCart) {
-        dispatch(deleteItemFromCart(value._id));
-      } else {
-        dispatch(
-          setItemInCart({ _id: value._id, product: value, cartQuantity: 1 })
-        );
-      }
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
+  const isItemInCart = itemsInCart(store).some(
+    (item) => item.product._id === id
+  );
 
   return (
     <div className={classes.favorites__item}>
@@ -45,7 +35,9 @@ const FavoriteItem = (props) => {
         <AiFillHeart
           color="rgb(211, 6, 6)"
           size={32}
-          onClick={deleteFavoritesClick}
+          onClick={() => {
+            dispatch(addOrRemoveProductToFavorite(item._id));
+          }}
         />
         {salePrice && <span></span>}
       </div>
@@ -69,7 +61,7 @@ const FavoriteItem = (props) => {
 
         <button
           onClick={() => {
-            addToCart(item);
+            dispatch(addOrRemoveProductToCart(item));
           }}
         >
           {isItemInCart ? (

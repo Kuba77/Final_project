@@ -2,11 +2,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
-import { setItemInCart, deleteItemFromCart } from "../../store/cart/reducer";
-import {
-  setFavoriteItems,
-  deleteFavorites,
-} from "../../store/favorites/reducer";
+import { addOrRemoveProductToCart } from "../../store/cart/reducer";
+import { addOrRemoveProductToFavorite } from "../../store/favorites/reducer";
 import { MdOutlineCancel } from "react-icons/md";
 import {
   createProductComment,
@@ -28,7 +25,6 @@ import {
   itemsInCart,
   itemsInFavorite,
 } from "../../store/selectors";
-import { removeProductFromCart, addProductToCart } from "../../services/cart";
 
 const Product = () => {
   let { productId } = useParams();
@@ -41,43 +37,9 @@ const Product = () => {
   const isItemInFavorites = itemsInFavorite(store).some(
     (item) => item._id === product._id
   );
-  const isItemInCart = itemsInCart(store).some(
-    (item) => item._id === product._id
+  const isItemInCart = itemsInCart(store)?.some(
+    (item) => item.product._id === product._id
   );
-
-  const addToCart = async (value) => {
-    if (customerData(store).id) {
-      if (isItemInCart) {
-        let r = await removeProductFromCart(value._id);
-        dispatch(deleteItemFromCart(value._id));
-      } else {
-        let q = await addProductToCart(value._id);
-        dispatch(
-          setItemInCart({ _id: value._id, product: value, cartQuantity: 1 })
-        );
-      }
-    } else {
-      if (isItemInCart) {
-        dispatch(deleteItemFromCart(value._id));
-      } else {
-        dispatch(
-          setItemInCart({ _id: value._id, product: value, cartQuantity: 1 })
-        );
-      }
-    }
-  };
-
-  const addToWishList = (info) => {
-    try {
-      if (isItemInFavorites) {
-        dispatch(deleteFavorites(productId));
-      } else {
-        dispatch(setFavoriteItems(info));
-      }
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
 
   const getProduct = useCallback(async () => {
     const products = await getSelectedProduct(productId);
@@ -161,7 +123,7 @@ const Product = () => {
                   <Button
                     type="main"
                     onClick={() => {
-                      addToCart(product);
+                      dispatch(addOrRemoveProductToCart(product));
                     }}
                   >
                     {isItemInCart ? (
@@ -173,7 +135,7 @@ const Product = () => {
                   <Button
                     type={isItemInFavorites ? "transparent" : "main"}
                     onClick={() => {
-                      addToWishList(product);
+                      dispatch(addOrRemoveProductToFavorite(product._id));
                     }}
                   >
                     <BsFillHeartFill
