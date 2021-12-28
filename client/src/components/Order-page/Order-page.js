@@ -57,7 +57,6 @@ const OrderPage = () => {
     createOrderObject(newOrder);
 
     axios.get(configData.ORDERS_URL).then((resp) => {
-      console.log(resp);
       alert(`Your order #${resp.data[0].orderNo}`);
       setTimeout(() => {
         history.push("/");
