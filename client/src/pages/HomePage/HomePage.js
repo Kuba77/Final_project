@@ -11,9 +11,9 @@ const HomePage = () => {
     <>
       <Header />
       <Main />
-      {/* <Feature /> */}
-      {/* <Categories /> */}
-      {/* <Action timer="22 Dec 2021 22:40:00 GMT+2" /> */}
+      <Feature />
+      <Categories />
+      <Action timer="31 Dec 2021 22:40:00 GMT+2" />
       <Footer />
     </>
   );
