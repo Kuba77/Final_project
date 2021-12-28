@@ -1,6 +1,6 @@
 require('dotenv').config();
-// const JwtStrategy = require("passport-jwt").Strategy;
-const JwtStrategy = require("passport-local").Strategy;
+const JwtStrategy = require("passport-jwt").Strategy;
+// const JwtStrategy = require("passport-local").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
 const Customer = mongoose.model("customers");
@@ -13,9 +13,6 @@ module.exports = async (passport) => {
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
   opts.secretOrKey = keys.secretOrKey;
   
-
-
-  console.log(`JWT FROM REQUEST${opts.jwtFromRequest}`)
 
   passport.use(
     "jwt",
