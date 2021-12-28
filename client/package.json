@@ -2,6 +2,9 @@
   "name": "clever",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "<=16.13.1"
+},
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.15.0",

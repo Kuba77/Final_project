@@ -1,5 +1,6 @@
 {
     "REACT_APP_GOOGLE_CLIENT_ID":"649718085227-lo924pc5nifh55shg8u0gf3vm7olsmvn.apps.googleusercontent.com",
+    "BASE_URL":"http://localhost:3000/api",
     "GOOGLE_LOGIN_URL":"/logingoogle",
     "CUSTOMERS_URL":"/customers",
     "CUSTOMERS_LOGIN_URL":"/customers/login",
