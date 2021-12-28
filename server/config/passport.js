@@ -1,6 +1,6 @@
 require('dotenv').config();
-import { Strategy } from 'passport-local';
 // const JwtStrategy = require("passport-jwt").Strategy;
+const JwtStrategy = require("passport-local").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
 const Customer = mongoose.model("customers");
@@ -16,7 +16,7 @@ module.exports = async (passport) => {
 
   passport.use(
     "jwt",
-    new Strategy(opts, (jwt_payload, done) => {
+    new JwtStrategy(opts, (jwt_payload, done) => {
       Customer.findById(jwt_payload.id)
         .then((customer) => {
           if (customer) {
@@ -30,7 +30,7 @@ module.exports = async (passport) => {
 
   passport.use(
     "jwt-admin",
-    new Strategy(opts, (jwt_payload, done) => {
+    new JwtStrategy(opts, (jwt_payload, done) => {
       Customer.findById(jwt_payload.id)
         .then((customer) => {
           if (customer && customer.isAdmin) {
