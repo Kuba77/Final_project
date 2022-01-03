@@ -5,19 +5,20 @@ import { getSelectedProduct } from "../../services/products";
 import { addOrRemoveProductToCart } from "../../store/cart/reducer";
 import { addOrRemoveProductToFavorite } from "../../store/favorites/reducer";
 import { MdOutlineCancel } from "react-icons/md";
-import {
-  createProductComment,
-  deleteProductComment,
-  getAllProductComments,
-} from "../../services/comments";
+// import {
+//   createProductComment,
+//   deleteProductComment,
+//   getAllProductComments,
+// } from "../../services/comments";
 import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
-import { useFormik } from "formik";
+// import { useFormik } from "formik";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAuthor from "./ProductAuthor/ProductAuthor";
 import ProductDescription from "./ProductDescription/ProductDescription";
 import ProductPriceBlock from "./ProductPriceBlock/ProductPriceBlock";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductImg from "./ProductImg/ProductImg";
+import ProductComments from "./ProductComments/ProductComments";
 import classes from "./Product.module.scss";
 import Button from "../Button/Button";
 import {
@@ -29,65 +30,64 @@ import {
 const Product = () => {
   let { productId } = useParams();
   const store = useSelector((state) => state);
-
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
-  const [comments, setComments] = useState([]);
+  // const [comments, setComments] = useState([]);
   const [toggle, setToggle] = useState(0);
-  const isItemInFavorites = itemsInFavorite(store).some(
-    (item) => item._id === product._id
-  );
-  const isItemInCart = itemsInCart(store)?.some(
-    (item) => item.product._id === product._id
-  );
+  // const isItemInFavorites = itemsInFavorite(store).some(
+  //   (item) => item._id === product._id
+  // );
+  // const isItemInCart = itemsInCart(store)?.some(
+  //   (item) => item.product._id === product._id
+  // );
 
   const getProduct = useCallback(async () => {
-    const products = await getSelectedProduct(productId);
-    setProduct(products);
+    const productItem = await getSelectedProduct(productId);
+    setProduct(productItem);
   }, [setProduct, productId]);
 
   useEffect(() => {
     getProduct();
   }, [getProduct, productId]);
 
-  const getComments = useCallback(async () => {
-    const product = await getSelectedProduct(productId);
-    const productComments = await getAllProductComments(product._id);
-    setComments(productComments);
-  }, [productId]);
+  // const getComments = useCallback(async () => {
+  //   const product = await getSelectedProduct(productId);
+  //   const productCommentsArray = await getAllProductComments(product._id);
+  //   setComments(productCommentsArray);
+  // }, [productId]);
 
-  useEffect(() => {
-    getComments();
-  }, [getComments]);
+  // useEffect(() => {
+  //   getComments();
+  // }, [getComments]);
 
-  const deleteComment = useCallback(
-    async (value) => {
-      await deleteProductComment(value);
-      getComments();
-    },
-    [getComments]
-  );
+  // const deleteComment = useCallback(
+  //   async (value) => {
+  //     await deleteProductComment(value);
+  //     getComments();
+  //   },
+  //   [getComments]
+  // );
 
-  const formik = useFormik({
-    initialValues: {
-      content: "",
-    },
-    onSubmit: async function setValues(value) {
-      let commentObject = {
-        product: product,
-        customer: customerData(store),
-        content: value,
-      };
-      try {
-        await createProductComment(commentObject);
-        formik.handleReset();
-        getComments();
-      } catch (error) {
-        alert(error);
-      }
-    },
-  });
-
+  // const formik = useFormik({
+  //   initialValues: {
+  //     content: "",
+  //   },
+  //   onSubmit: async function setValues(value) {
+  //     let commentObject = {
+  //       product: product,
+  //       customer: customerData(store),
+  //       content: value,
+  //     };
+  //     try {
+  //       await createProductComment(commentObject);
+  //       formik.handleReset();
+  //       getComments();
+  //     } catch (error) {
+  //       alert(error);
+  //     }
+  //   },
+  // });
+ 
   return (
     <React.Fragment>
       {!!product.name && (
@@ -126,20 +126,20 @@ const Product = () => {
                       dispatch(addOrRemoveProductToCart(product));
                     }}
                   >
-                    {isItemInCart ? (
+                    {/* {isItemInCart ? (
                       <MdOutlineCancel color="white" size={30} />
                     ) : (
                       <BsBasket color="white" size={26} />
-                    )}
+                    )} */}
                   </Button>
                   <Button
-                    type={isItemInFavorites ? "transparent" : "main"}
+                    // type={isItemInFavorites ? "transparent" : "main"}
                     onClick={() => {
                       dispatch(addOrRemoveProductToFavorite(product._id));
                     }}
                   >
                     <BsFillHeartFill
-                      color={isItemInFavorites ? "red" : "white"}
+                      // color={isItemInFavorites ? "red" : "white"}
                       size={26}
                     />
                   </Button>
@@ -177,7 +177,7 @@ const Product = () => {
               Customer Reviews
             </h3>
 
-            <div className={classes.product_block__review}>
+            {/* <div className={classes.product_block__review}>
               <form onSubmit={formik.handleSubmit}>
                 <textarea
                   id="content"
@@ -205,9 +205,11 @@ const Product = () => {
                   </Button>
                 </div>
               </form>
-            </div>
+            </div> */}
 
-            {comments.length === 0 ? (
+            <ProductComments product={product} />
+
+            {/* {comments.length === 0 ? (
               <div className={classes.review__dis}>
                 <p className={classes.review__text}>
                   This product don't have review. Yours 'll be the first.
@@ -236,7 +238,7 @@ const Product = () => {
                   </div>
                 );
               })
-            )}
+            )} */}
           </div>
         </div>
       )}

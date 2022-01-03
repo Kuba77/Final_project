@@ -15,17 +15,10 @@ const ProductPriceBlock = (props) => {
           price={product.currentPrice}
           salePrice={product.salePrice}
         />
-        {product.quantity > 0 ? (
-          <ProductStore
-            className={classes.product_info__store}
-            store={`In stock ${product.quantity}`}
-          />
-        ) : (
-          <ProductStore
-            className={classes.product_info__store}
-            store="Sold out"
-          />
-        )}
+        <ProductStore
+          className={classes.product_info__store}
+          quantity={product.quantity}
+        />
       </div>
     </React.Fragment>
   );
@@ -33,6 +26,7 @@ const ProductPriceBlock = (props) => {
 
 ProductPriceBlock.propTypes = {
   currentPrice: PropTypes.number,
+  salePrice: PropTypes.number,
   quantity: PropTypes.number,
 }
 

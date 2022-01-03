@@ -1,4 +1,4 @@
-@import '../../styles/config/variables.scss';
+@import '../../../styles/config/variables.scss';
 
 .product__header {
     text-transform: uppercase;
@@ -76,41 +76,41 @@
         }
     }
 
-    // &__review {
-    //     margin: 20px 0;
+    &__review {
+        margin: 20px 0;
 
-    //     @include breakpoint(sm-only) {
-    //         display: flex;
-    //         justify-content: center;
-    //     }
+        @include breakpoint(sm-only) {
+            display: flex;
+            justify-content: center;
+        }
 
-    //     & form {
-    //         width: 700px;
+        & form {
+            width: 700px;
 
-    //         @include breakpoint(md-only) {
-    //             width: 500px;
-    //         }
+            @include breakpoint(md-only) {
+                width: 500px;
+            }
 
-    //         @include breakpoint(sm-only) {
-    //             width: 400px;
-    //         }
+            @include breakpoint(sm-only) {
+                width: 400px;
+            }
 
-    //         @include breakpoint(xs-only) {
-    //             width: 300px;
-    //         }
-    //     }
+            @include breakpoint(xs-only) {
+                width: 300px;
+            }
+        }
 
-    //     // & textarea {
-    //     //     width: 100%;
-    //     //     min-height: 120px;
-    //     //     padding: 5px 10px;
-    //     //     border: 1px solid rgb(206, 206, 206);
+        & textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 5px 10px;
+            border: 1px solid rgb(206, 206, 206);
 
-    //     //     @include breakpoint(xs-only) {
-    //     //         min-height: 100px;
-    //     //     }
-    //     // }
-    // }
+            @include breakpoint(xs-only) {
+                min-height: 100px;
+            }
+        }
+    }
 }
 
 .title_block {
@@ -302,19 +302,19 @@
     }
 }
 
-// .review__buttons {
-//     display: flex;
-//     justify-content: center;
-//     margin: 10px 0 30px 0;
+.review__buttons {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 30px 0;
 
-//     & button:first-child {
-//         margin-right: 40px;
-//     }
+    & button:first-child {
+        margin-right: 40px;
+    }
 
-//     & button {
-//         background-color: $first-color;
-//     }
-// }
+    & button {
+        background-color: $first-color;
+    }
+}
 
 .review {
     border: 1px solid rgb(206, 206, 206);

@@ -5,6 +5,14 @@ import PropTypes from "prop-types";
 const ProductDetails = (props) => {
   const { product } = props;
 
+  const ProductGenre = product.genre.map((item, index) => {
+    return <span key={item}>
+       {" "}
+       {item}
+       {index !== product.genre.length - 1 ? "," : ""}
+     </span>
+   })
+
   return (
     <React.Fragment>
       <div className={classes.product_block__details}>
@@ -25,15 +33,7 @@ const ProductDetails = (props) => {
           <p>{product.book_format}</p>
           <p>{product.date_published}</p>
           <p>{product.publisher}</p>
-          <p>
-            {product.genre.map((item, index) => {
-             return <span key={item}>
-                {" "}
-                {item}
-                {index !== product.genre.length - 1 ? "," : ""}
-              </span>
-            })}
-          </p>
+          <p>{ProductGenre}</p>
         </div>
       </div>
     </React.Fragment>

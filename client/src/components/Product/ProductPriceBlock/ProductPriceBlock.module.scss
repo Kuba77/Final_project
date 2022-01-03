@@ -5,7 +5,7 @@
     &__price {
         font-size: $big-font-size;
         color: $text-color-light;
-
+        margin: 0;
         
         @include breakpoint(lg-only) {
             font-size: 35px;
@@ -17,6 +17,8 @@
     }
 
     &__store {
+        margin: 0;
+        
         @include breakpoint(sm) {
             font-size: $h2-font-size;
         }

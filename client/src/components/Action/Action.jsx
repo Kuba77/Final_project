@@ -28,7 +28,7 @@ const Action = (props) => {
 
   useEffect(() => {
     getCollection();
-  }, []);
+  });
 
   const getActionTime = useCallback(() => {
     if (new Date(timer).getTime() > new Date().getTime()) {
@@ -38,15 +38,19 @@ const Action = (props) => {
     }
   }, [timer]);
 
-  // setInterval(getActionTime, 1000);
-
   useEffect(() => {
     getActionTime();
-  }, []);
+  });
 
-  return (
-    <React.Fragment>
-      {action.length !== 0 && actionTime ? (
+  const ActionArr = action.map((item, index) => (
+    <SwiperSlide key={index}>
+      <ActionCard key={item.name} item={item} />
+    </SwiperSlide>
+  ))
+
+  const ActionSlider = (action, actionTime, timer) => {
+    return (
+      action.length !== 0 && actionTime ?
         <div className={classes.action_block}>
           <div className={classes.action_block__container}>
             <div className={classes.timer}>
@@ -57,28 +61,30 @@ const Action = (props) => {
               </p>
               <Timer time={timer} />
             </div>
+
             <div className={classes.action_content}>
               <Swiper
                 navigation={true}
                 loop={true}
+                autoplay={{ delay: 4000, disableOnInteraction: false }}
                 pagination={{
                   clickable: true,
                 }}
               >
-                {action.map((item, index) => (
-                  <SwiperSlide key={index}>
-                    <ActionCard key={item.name} item={item} />
-                  </SwiperSlide>
-                ))}
+                {ActionArr}
               </Swiper>
             </div>
           </div>
 
           <div className={classes.blur}></div>
-        </div>
-      ) : (
-        ""
-      )}
+
+        </div> : ""
+    )
+  }
+
+  return (
+    <React.Fragment>      
+      {ActionSlider(action, actionTime, timer)}
     </React.Fragment>
   );
 };
