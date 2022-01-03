@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
-import CartProduct from "./CartProduct";
+import classes from './Basket.module.scss'
+import BasketItem from './BasketItem';
 import Empty from "../Empty/Empty";
 import { itemsInCart } from "../../store/selectors";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,13 +14,14 @@ import {
 import { addRemoveQuantity } from "../../utils/utils";
 import PuffLoader from "react-spinners/PuffLoader";
 
-const CartProductList = () => {
-  const store = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const [cart, setCart] = useState([]);
-  const [isLoading, setLoading] = useState(false);
 
-  const { status, error } = useSelector((state) => state.cart);
+const BasketItemList = () => {
+    const store = useSelector((state) => state);
+    const dispatch = useDispatch();
+    const [cart, setCart] = useState([]);
+    const [isLoading, setLoading] = useState(false);
+
+    const { status, error } = useSelector((state) => state.cart);
 
   useEffect(() => {
     setLoading(true);
@@ -44,7 +46,7 @@ const CartProductList = () => {
   };
 
   const CustomerCart = cart.map((item, index) => (
-    <CartProduct
+    <BasketItem
       item={item}
       key={index}
       deleteProductFromCart={deleteProductFromCart}
@@ -55,14 +57,18 @@ const CartProductList = () => {
     />
   ));
 
-  return (
-    <div>
-      {status === "loading" && <h1>Loading</h1>}
-      {CustomerCart}
-      {/* {error && <h1>OSHIBKA {error}</h1>} */}
-      {cart.length === 0 && <Empty />}
-    </div>
-  );
-};
 
-export default CartProductList;
+    return (
+        <div className={classes.basket__basketlist}>
+        {/* {status && (
+            <div className={classes.basket__loader}>
+              <PuffLoader loading={status} color="purple" size={120} />
+            </div>)} */}
+
+        {CustomerCart}
+        {cart.length === 0 && <Empty />}
+      </div>
+    )
+}
+
+export default BasketItemList

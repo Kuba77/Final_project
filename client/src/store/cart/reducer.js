@@ -145,7 +145,7 @@ const setError = (state, action) => {
   state.error = action.payload;
 };
 const setLoading = (state, action) => {
-  state.status = "loading";
+  state.status = true;
   state.error = null;
 };
 
@@ -186,7 +186,7 @@ const cartSlice = createSlice({
     [getcart.rejected]: setError,
     [addProductToCart.pending]: setLoading,
     [addProductToCart.fulfilled]: (state, action) => {
-      state.status = "resolve";
+      state.status = false;
       state.error = null;
       // state.products = action.payload;
     },
