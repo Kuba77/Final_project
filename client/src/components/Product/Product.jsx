@@ -12,6 +12,7 @@ import {
 } from "../../services/comments";
 import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
 import { useFormik } from "formik";
+import PuffLoader from "react-spinners/PuffLoader";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAuthor from "./ProductAuthor/ProductAuthor";
 import ProductDescription from "./ProductDescription/ProductDescription";
@@ -31,6 +32,7 @@ const Product = () => {
   const store = useSelector((state) => state);
 
   const dispatch = useDispatch();
+  const [isLoading, setLoading] = useState(false);
   const [product, setProduct] = useState({});
   const [comments, setComments] = useState([]);
   const [toggle, setToggle] = useState(0);
@@ -42,8 +44,10 @@ const Product = () => {
   );
 
   const getProduct = useCallback(async () => {
+    setLoading(true);
     const products = await getSelectedProduct(productId);
     setProduct(products);
+    setLoading(false);
   }, [setProduct, productId]);
 
   useEffect(() => {
@@ -90,7 +94,14 @@ const Product = () => {
 
   return (
     <React.Fragment>
-      {!!product.name && (
+
+        {isLoading && (
+            <div className={classes.product__loader}>
+              <PuffLoader loading={isLoading} color="purple" size={120} />
+            </div>
+        )}
+        
+      {!!product.name && !isLoading && (
         <div>
           <div className={classes.product__header}>
             <p>
