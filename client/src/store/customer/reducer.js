@@ -14,7 +14,7 @@ export const letHimComeIn = createAsyncThunk(
       let customer = await loginCustomer(value);
       if (customer.id) {
         dispatch(getcart());
-        // dispatch(getCustomerWishList());
+        dispatch(getCustomerWishList());
         return customer;
       } else {
         return rejectWithValue(customer);

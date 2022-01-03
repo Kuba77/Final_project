@@ -35,3 +35,9 @@ export const itemsInFavorite = createSelector(
   [stateFavorites],
   (favorites) => favorites.favoriteItems
 );
+
+const stateOrders = (state) => state.orders;
+export const itemsInOrders = createSelector(
+  [stateOrders],
+  (orders) => orders.orders
+);

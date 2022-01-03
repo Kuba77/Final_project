@@ -9,6 +9,7 @@ import { setErors, clearErrors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer } from "../../services/user";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
+
 import { setItemInCart, clearCart, getcart } from "../../store/cart/reducer";
 import { letHimComeInGoogle } from "../../store/customer/reducer";
 import { customerCartMovement } from "../../utils/utils";

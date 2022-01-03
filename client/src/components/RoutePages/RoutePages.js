@@ -11,7 +11,7 @@ import FavoritesPage from "../../pages/FavoritesPage/FavoritesPage";
 import ProfilePage from "../../pages/ProfilePage/ProfilePage";
 import { customerData } from "../../store/selectors";
 import OrderPage from "../Order-page/Order-page";
-import PaymentPage from "../Order-page/Payment-page/Payment-page";
+// import PaymentPage from "../Order-page/Payment-page/Payment-page";
 
 const RoutePages = () => {
   const store = useSelector((state) => state);

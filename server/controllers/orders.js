@@ -17,6 +17,10 @@ exports.placeOrder = async (req, res, next) => {
     order.orderNo = String(rand());
     let cartProducts = [];
 
+    if (req.body.customerId) {
+      cartProducts = await subtractProductsFromCart(order.customerId);
+    }
+
     if (req.body.deliveryAddress) {
       order.deliveryAddress = req.body.deliveryAddress;
       // order.deliveryAddress = JSON.parse(req.body.deliveryAddress);
@@ -32,11 +36,13 @@ exports.placeOrder = async (req, res, next) => {
       // order.paymentInfo = JSON.parse(req.body.paymentInfo);
     }
 
-    if (req.body.customerId) {
-      order.customerId = req.body.customerId;
+    // if (req.body.customerId) {
+    //   console.log("####customerId", customerId);
+    //   order.customerId = req.body.customerId;
 
-      cartProducts = await subtractProductsFromCart(order.customerId);
-    }
+    //   cartProducts = await subtractProductsFromCart(order.customerId);
+    //   console.log("####cartProducts", cartProducts);
+    // }
 
     if (
       (!req.body.products || req.body.products.length < 1) &&
@@ -50,7 +56,8 @@ exports.placeOrder = async (req, res, next) => {
     if (cartProducts.length > 0) {
       order.products = _.cloneDeep(cartProducts);
     } else {
-      order.products = JSON.parse(req.body.products);
+      order.products = req.body.products;
+      // order.products = JSON.parse(req.body.products);
     }
 
     order.totalSum = order.products.reduce(
@@ -116,7 +123,8 @@ exports.placeOrder = async (req, res, next) => {
             const productQuantity = product.quantity;
             await Product.findOneAndUpdate(
               { _id: id },
-              { quantity: productQuantity - item.product.quantity },
+              { quantity: productQuantity - item.cartQuantity },
+              // { quantity: productQuantity - item.product.quantity },
               { new: true }
             );
           }
@@ -125,13 +133,13 @@ exports.placeOrder = async (req, res, next) => {
         })
         .catch((err) =>
           res.status(400).json({
-            message: `Error happened on server: "${err}" `,
+            message: `!!!!Error happened on server: "${err}" `,
           })
         );
     }
   } catch (err) {
     res.status(400).json({
-      message: `Error happened on server: "${err}" `,
+      message: `###Error happened on server: "${err}" `,
     });
   }
 };

@@ -54,13 +54,13 @@ const CartProductList = () => {
       localAddRemoveQuantity={localAddRemoveQuantity}
     />
   ));
+  const r = cart.length > 0 ? CustomerCart : <Empty />;
 
   return (
     <div>
-      {status === "loading" && <h1>Loading</h1>}
       {CustomerCart}
-      {/* {error && <h1>OSHIBKA {error}</h1>} */}
       {cart.length === 0 && <Empty />}
+      {/* {r} */}
     </div>
   );
 };

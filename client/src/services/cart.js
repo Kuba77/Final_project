@@ -65,3 +65,14 @@ export const moveCartToDB = async (value) => {
     return e.message;
   }
 };
+export const deleteCart = async (value) => {
+  try {
+    return await axios
+      .delete(`${configData.ADD_PRODUCT_TO_CART}`)
+      .then((res) => {
+        return res;
+      });
+  } catch (e) {
+    return e.message;
+  }
+};
