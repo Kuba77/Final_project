@@ -10,8 +10,6 @@ import Footer from "../Footer/Footer";
 import { createNewOrder } from "../../services/order";
 import { errorMessage } from "../../store/selectors";
 import { getCustomerCart } from "../../services/cart";
-// import { successOrderNotification } from "./Order-toasts/Order-toasts";
-// import { toast } from "react-toastify";
 import axios from "../../services/htttWraper";
 import configData from "../../config/config.json";
 
@@ -110,7 +108,7 @@ const OrderPage = () => {
         initialValues={initialValuesUserForm}
         validationSchema={validationSchema}
         onSubmit={
-          customerData.length == 0 ? onSubmitUnauthorized : onSubmitAuthorized
+          customerData.length === 0 ? onSubmitUnauthorized : onSubmitAuthorized
         }
         errorMessage={error}
       />

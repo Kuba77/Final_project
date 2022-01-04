@@ -18,7 +18,7 @@ const OrderForm = (props) => {
             <Form>
               <FormikControl
                 control="input"
-                type="tel"
+                type="text"
                 label="Please, enter your mobile phone"
                 name="mobile"
               />
@@ -49,7 +49,7 @@ const OrderForm = (props) => {
               />
               <FormikControl
                 control="input"
-                type="number"
+                type="text"
                 label="Please, enter your postcode"
                 name="deliveryAdress.postal"
               />

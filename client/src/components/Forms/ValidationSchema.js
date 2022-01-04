@@ -1,8 +1,9 @@
 import * as Yup from "yup";
 
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-const lettersRegExp = /^[a-zA-Z ]+$/;
+const phoneRegExp = /^\+?3?8?(0\d{9})$/;
+const lettersRegExp = /^[a-zA-Zа-яА-Я ]+$/;
+const emailRegex =
+  /^(([a-zA-Z\-0-9][^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 export const LoginSchema = Yup.object({
   loginOrEmail: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
@@ -30,7 +31,9 @@ export const RegistrationSchema = Yup.object({
 });
 
 export const OrderSchema = Yup.object({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string()
+    .matches(emailRegex, "Input correct email")
+    .required("Required"),
   mobile: Yup.string()
     .matches(phoneRegExp, "Phone number is not valid")
     .required("Required"),
