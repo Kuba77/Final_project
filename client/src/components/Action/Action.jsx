@@ -1,13 +1,9 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { getAllProducts } from "../../services/products";
 import classes from "./Action.module.scss";
 import Timer from "../Timer/Timer";
 import PropTypes from "prop-types";
-import ActionCard from "./ActionCard/ActionCard";
-import SwiperCore, { Navigation, Autoplay } from "swiper/core";
-
-SwiperCore.use([Navigation, Autoplay]);
+import ActionSlider from "./ActionSlider/ActionSlider"
 
 const Action = (props) => {
   const { timer } = props;
@@ -42,49 +38,25 @@ const Action = (props) => {
     getActionTime();
   });
 
-  const ActionArr = action.map((item, index) => (
-    <SwiperSlide key={index}>
-      <ActionCard key={item.name} item={item} />
-    </SwiperSlide>
-  ))
-
-  const ActionSlider = (action, actionTime, timer) => {
-    return (
-      action.length !== 0 && actionTime ?
+  return (
+    <React.Fragment>
+      {action.length !== 0 && actionTime ?
         <div className={classes.action_block}>
           <div className={classes.action_block__container}>
             <div className={classes.timer}>
               <h2>Flash Sale</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                You have a unique opportunity to buy best manga on lover price. Hurry up, action is valid for a limited time.
               </p>
               <Timer time={timer} />
             </div>
 
-            <div className={classes.action_content}>
-              <Swiper
-                navigation={true}
-                loop={true}
-                autoplay={{ delay: 4000, disableOnInteraction: false }}
-                pagination={{
-                  clickable: true,
-                }}
-              >
-                {ActionArr}
-              </Swiper>
-            </div>
+            <ActionSlider actionData={action} />
           </div>
-
-          <div className={classes.blur}></div>
-
-        </div> : ""
-    )
-  }
-
-  return (
-    <React.Fragment>      
-      {ActionSlider(action, actionTime, timer)}
+        </div>
+        :
+        ""
+      }
     </React.Fragment>
   );
 };

@@ -66,21 +66,12 @@ button:disabled {
 }
 
 .form__textarea {
+  width: 90%;
   min-height: 120px;
   padding: 5px 10px;
   border: 1px solid rgb(206, 206, 206);
-  width: 700px;
 
   @include breakpoint(md-only) {
-    width: 500px;
-  }
-
-  @include breakpoint(sm-only) {
-    width: 400px;
-  }
-
-  @include breakpoint(xs-only) {
-    width: 300px;
-    min-height: 100px;
+    width: 100%;
   }
 }

@@ -1,0 +1,16 @@
+@import "../../../styles/config/variables.scss";
+
+.action_content {
+  grid-area: info;
+  display: flex;
+  align-items: center;
+  max-width: 800px;
+
+  @include breakpoint(lg-only) {
+    max-width: 760px;
+  }
+
+  @include breakpoint(md-only) {
+    justify-content: center;
+  }
+}

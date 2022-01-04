@@ -9,8 +9,9 @@ const ProductPriceBlock = (props) => {
 
   return (
     <React.Fragment>
-      <div className={classes.price_block}>
+      <div className={classes.price_store__block}>
         <ProductPrice
+          blockClassName={classes.price_block}
           className={classes.product_info__price}
           price={product.currentPrice}
           salePrice={product.salePrice}
@@ -25,6 +26,7 @@ const ProductPriceBlock = (props) => {
 };
 
 ProductPriceBlock.propTypes = {
+  product: PropTypes.object,
   currentPrice: PropTypes.number,
   salePrice: PropTypes.number,
   quantity: PropTypes.number,

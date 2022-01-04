@@ -15,10 +15,7 @@
     display: grid;
     grid-column-gap: 10px;
     grid-template-areas: "timer info";
-    & img {
-      max-width: 200px;
-      max-height: 200px;
-    }
+   
     @include breakpoint(lg-only) {
       justify-content: center;
       padding: 10px 0 20px 0;
@@ -121,25 +118,5 @@
 
   @include breakpoint(md-only) {
     justify-content: center;
-  }
-}
-
-.blur {
-  position: absolute;
-  top: 10%;
-  right: 0;
-  height: 85%;
-  min-width: 320px;
-  background-color: #5c067ca6;
-  filter: blur(35px);
-  -webkit-filter: blur(35px);
-
-  @include breakpoint(lg-only) {
-    top: 21%;
-    height: 70%;
-  }
-
-  @include breakpoint(md-only) {
-    display: none;
   }
 }

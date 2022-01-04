@@ -5,56 +5,51 @@ import classes from "./CommentForm.module.scss";
 import Button from "../../Button/Button";
 import PropTypes from "prop-types";
 
-const ProductCommentForm = (props) => {
-  const { initialValues, validationSchema, onSubmit, onClick, onFocus } = props;
- 
-  return (
+const CommentForm = (props) => {
+  const { initialValues, validationSchema, onSubmit } = props;
 
+  return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
-      onFocus={onFocus}
     >
       {(formik) => {
         return (
-          <div className={classes.product_block__review}>
-            <Form>
-              <FormikControl
-                control="textarea"
-                type="text"
-                name="content"
-              />
+          <Form>
+            <FormikControl
+              control="textarea"
+              type="text"
+              name="content"
+              placeholder="Please, live your comment here..."
+              onChange={formik.handleChange}
+              value={formik.values.content}
+            />
 
-              <div className={classes.review__buttons}>
-                <Button type="reset" size="m" onClick={formik.handleReset}>
-                  Reset
-                </Button>
+            <div className={classes.review__buttons}>
+              <Button type="reset" size="m" onClick={formik.handleReset}>
+                Reset
+              </Button>
 
-                <Button
-                  type="submit"
-                  size="m"
-                  disabled={!formik.isValid}
-                  onClick={onClick}
-                >
-                  Send
-                </Button>
-              </div>
-
-            </Form>
-          </div>
+              <Button
+                type="submit"
+                size="m"
+              >
+                Send
+              </Button>
+            </div>
+          </Form>
         );
       }}
     </Formik>
   )
 };
 
-ProductCommentForm.propTypes = {
+CommentForm.propTypes = {
   initialValues: PropTypes.object,
   validationSchema: PropTypes.object,
   onSubmit: PropTypes.func,
   onClick: PropTypes.func,
-  onFocus: PropTypes.func,
 };
 
-export default ProductCommentForm;
+export default CommentForm;

@@ -35,7 +35,7 @@ const ActionCard = (props) => {
                         />
 
                         <ProductPrice
-                            className={classes.product_info__price}
+                            blockClassName={classes.action_info__priceblock}
                             price={item.currentPrice}
                             salePrice={item.salePrice}
                         />
