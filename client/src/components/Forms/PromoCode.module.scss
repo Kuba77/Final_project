@@ -1,0 +1,32 @@
+@import '../../styles/config/variables.scss';
+
+.promocode__box{
+    display: flex;
+    align-items: center;
+}
+
+.promocode__input {
+    color: black;
+    font-weight: 600;
+    outline:none;
+    border:none;
+    border-radius:5px;
+    padding:.5rem;
+    background-color: #D4C0DB;
+    width:200px;
+}
+
+.promocode__btn{
+    padding:.5rem;
+    width:3rem;
+    outline:none;
+    border:none;
+    border-radius:5px;
+    margin-left: 1rem;
+    background-color: #755A7D;
+}
+
+.promocode__input::placeholder{
+    font-size: $small-font-size;
+    color:rgba(0, 0, 0, 0.295);
+}

@@ -14,7 +14,11 @@
     & ul{
         display: flex;
         align-items: center;
-        line-height: 4rem;  
+        line-height: 4rem; 
+        @include breakpoint(sm-only){
+            line-height:3rem;
+         } 
+        
 
         li:first-child{
             flex-grow: 2;
@@ -81,7 +85,9 @@
                     font-size: $small-font-size;
                 }
                 @include breakpoint(sm-only){
-                    font-size: .7rem;
+                    font-size: .6rem;
+                    font-weight: 100;
+                    color: rgba(0, 0, 0, 0.664);
                 }
             }
             & span{
@@ -105,7 +111,7 @@
     justify-content:space-around;
     align-items:center;
         @include breakpoint(sm-only){
-            margin-left: 10px;
+            margin-left: 15px;
             width:20%;
         }
         & span {
@@ -167,4 +173,102 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.basket__basketsum{
+    max-width: 1024px;
+    margin:10vh auto;
+    padding:4vh;
+    background-color: #F0E4F4;
+    border-radius: 15px;
+    box-shadow: $box-shadow;
+
+    &__container{
+        display: flex;
+        justify-content:space-between;
+        padding: 2vh;
+
+        @include breakpoint(sm-only){
+            flex-direction:column;
+        }
+    }
+    &__textarea{
+        width:40%;
+        @include breakpoint(sm-only){
+           width:100%;
+        }
+        h4 {
+            font-size: $h2-font-size;
+            font-weight: 600;
+            padding-bottom: 3vh;
+            @include breakpoint(sm-only){
+                text-align: center;
+             }
+        }
+        span {
+      
+            color:rgba(0, 0, 0, 0.473);
+            font-size: $small-font-size;
+        }
+        p {
+            color:rgba(0, 0, 0, 0.973);
+            font-size: $h3-font-size;
+            font-weight: 500;
+            margin-top: 5vh;
+        }
+    }
+}
+
+
+.basket__basketsum__total{
+    width:40%;
+    @include breakpoint(sm-only){
+        width:100%;
+        margin-top: 5vh;
+     }
+    &_area{
+        position: relative;
+        margin-top: 1vh;
+        display: flex;
+        justify-content:space-between;
+        margin-bottom: 2vh;
+        h4{
+            color:#755A7D;
+            font-size: $small-font-size;
+        }
+        p{
+            color:black;
+            font-weight: 600;
+        }
+        &:nth-last-child(3) {
+            padding-top:1vh;
+            border-top: 1px solid #8D28AD;
+        }
+    }
+
+    &_btn{
+        background-color:$first-color;
+        padding: .5rem;
+        border-radius:10px;
+        width: 100%;
+        text-transform: uppercase;
+        
+        &:hover{
+            cursor: pointer;
+            opacity: .7;
+        }
+    }
+    &__continue {
+        margin-top: 1vh;
+        display: flex;
+        justify-content:center;
+        font-size: $small-font-size;
+        color:#8D28AD;
+        &:hover{
+            cursor: pointer;
+            color:#bb19f7;
+        }
+    }
+
+    
 }
