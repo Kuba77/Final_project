@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import classes from "./FavoritesPage.module.scss";
-import Header from "../../components/Header/Header";
 import FavoritesItem from "./FavoriteItem/FavoriteItem";
 import { itemsInFavorite } from "../../store/selectors";
 import Empty from "../../components/Empty/Empty";
@@ -25,11 +24,9 @@ const FavoritesPage = () => {
 
   return (
     <>
-      <Header />
-
       <section className={classes.favorites}>
         <h3 className={classes.favorites__title}>Your Wishlist</h3>
-        {itemsInFavorite(store).length == 0 && <Empty />}
+        {itemsInFavorite(store).length === 0 && <Empty />}
         <div className={classes.favorites__wrapper}>{favoritesItemsList}</div>
       </section>
     </>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import Header from "../../components/Header/Header";
 import classes from "./CollectionPage.module.scss";
 import PuffLoader from "react-spinners/PuffLoader";
 import { getAllProducts } from "../../services/products";
@@ -75,7 +74,6 @@ const CollectionPage = () => {
 
   return (
     <>
-      <Header />
       <section className={classes.collection}>
         {
           <Filters

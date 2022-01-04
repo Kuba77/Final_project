@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 
 const ActionCard = (props) => {
     const { item } = props
+
     return (
         <React.Fragment>
             <Link to={`/product/${item.itemNo}`}>
@@ -33,29 +34,16 @@ const ActionCard = (props) => {
                             author={item.author}
                         />
 
-                        <div className={classes.action_info__priceblock}>
-                            <ProductPrice
-                                className={classes.action_info__price}
-                                price={item.salePrice}
-                            />
+                        <ProductPrice
+                            blockClassName={classes.action_info__priceblock}
+                            price={item.currentPrice}
+                            salePrice={item.salePrice}
+                        />
 
-                            <ProductPrice
-                                className={classes.action_info__price}
-                                price={item.currentPrice}
-                            />
-                        </div>
-
-                        {item.quantity > 0 ? (
-                            <ProductStore
-                                className={classes.product_info__store}
-                                store={`In stock ${item.quantity}`}
-                            />
-                        ) : (
-                            <ProductStore
-                                className={classes.product_info__store}
-                                store="Sold out"
-                            />
-                        )}
+                        <ProductStore
+                            className={classes.product_info__store}
+                            quantity={item.quantity}
+                        />
 
                     </div>
                 </div>

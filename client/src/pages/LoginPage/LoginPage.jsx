@@ -4,8 +4,6 @@ import { useHistory } from "react-router-dom";
 import { letHimComeIn } from "../../store/customer/reducer";
 import { LoginSchema } from "../../components/Forms/ValidationSchema";
 import LoginForm from "../../components/Forms/LoginForm";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import { customerName } from "../../store/selectors";
 
 const LoginPage = () => {
@@ -35,13 +33,11 @@ const LoginPage = () => {
 
   return (
     <>
-      <Header />
       <LoginForm
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       />
-      <Footer />
     </>
   );
 };
