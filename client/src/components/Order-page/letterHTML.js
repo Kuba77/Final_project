@@ -1,3 +1,5 @@
+import OrderList from "./Order-list/Order-list";
+
 export const letterSubject = "Thank you for order! You are welcome!";
 export const letterHtml = `
 <!DOCTYPE html>
@@ -87,6 +89,7 @@ export const letterHtml = `
     <div>
         <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1638784698/hero_img_auj8wy.jpg" alt="image">
         <h2>Thank you for order!</h2>  
+        <p>${OrderList}</p>
         <a href="http://localhost:3000/">Go back to Manga Store</a>
     </div>
 </body>

@@ -2,7 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { createNewOrder } from "../../services/order";
 import { message } from "antd";
 import { deleteCustomerCartDB, clearCart } from "../cart/reducer";
-
+import {
+  letterHtml,
+  letterSubject,
+} from "../../components/Order-page/letterHTML";
 const warningMessageRequest = (value) => message.warning(`${value}`);
 const sucsecMessageRequest = (value) => message.success(`${value}`);
 
@@ -29,9 +32,8 @@ const createOrderAuthorized = createAsyncThunk(
       const newOrder = await createNewOrder({
         ...value,
         customerId: existCustomer._id,
-        letterSubject: "спасибо за покупку!",
-        letterHtml:
-          "<h1>Your order is placed. OrderNo is ########.</h1><p>{Other details about order in your HTML}</p>",
+        letterSubject: letterSubject,
+        letterHtml: letterHtml,
       });
       console.log("newOrder", newOrder);
       if (newOrder.status === 200 && !newOrder.data.message) {
@@ -56,9 +58,8 @@ const createOrderUnauthorized = createAsyncThunk(
       const newOrder = await createNewOrder({
         ...value,
         products: products,
-        letterSubject: "спасибо за покупку!",
-        letterHtml:
-          "<h1>Your order is placed. OrderNo is ########.</h1><p>{Other details about order in your HTML}</p>",
+        letterSubject: letterSubject,
+        letterHtml: letterHtml,
       });
       console.log("newOrder", newOrder);
       if (newOrder.status === 200 && !newOrder.data.message) {

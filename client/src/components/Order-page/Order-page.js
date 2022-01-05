@@ -8,6 +8,9 @@ import { updateCustomer } from "../../store/customer/reducer";
 
 import { itemsInCart } from "../../store/selectors";
 
+import { letterSubject, letterHtml } from "./letterHTML";
+import { getOrderFromApi } from "../../store/order/middleware";
+
 const OrderPage = () => {
   //потом поправить
   const store = useSelector((state) => state);
@@ -40,11 +43,15 @@ const OrderPage = () => {
     shipping: "Kiev 50UAH",
     paymentInfo: "Credit card",
     status: "not shipped",
+    letterSubject: letterSubject,
+    letterHtml: letterHtml,
   };
 
-  const onSubmit = (value) => {
+  const onSubmit = async (value) => {
     dispatch(createOrder(value));
     dispatch(updateCustomer(value));
+    const orderFnApi = await getOrderFromApi();
+    console.log(orderFnApi);
   };
 
   const validationSchema = OrderSchema;
