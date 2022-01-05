@@ -25,6 +25,7 @@ export async function loginCustomer(value) {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         setAuthToken(res.data.token);
+        console.log(res.data.success);
         const user = jwtDecode(res.data.token);
         return user;
       });
@@ -51,10 +52,11 @@ export function logoutCustomer() {
   }
 }
 
-export async function updateCustomer(value) {
+export async function updateUser(value) {
   try {
     return await axios.put(configData.CUSTOMERS_URL, value).then((res) => {
-      return res.data;
+      console.log("updateUser", res);
+      return res;
     });
   } catch (error) {
     return error.response.data;
@@ -67,6 +69,15 @@ export async function updateCustomerPassword(value) {
       .then((res) => {
         return res.data;
       });
+  } catch (error) {
+    return error.response.data;
+  }
+}
+export async function getCustomerInfo() {
+  try {
+    return await axios.get(configData.CUSTOMER_URL).then((res) => {
+      return res;
+    });
   } catch (error) {
     return error.response.data;
   }

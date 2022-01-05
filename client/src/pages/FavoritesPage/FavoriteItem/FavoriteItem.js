@@ -42,12 +42,13 @@ const FavoriteItem = (props) => {
         {salePrice && <span></span>}
       </div>
       <div className={classes.favorites__item__textarea}>
-        <Link to={`/product/${itemNo}`}>
-          <h4>{title}</h4>
-        </Link>
+        <div className={classes.favorites__item__textarea__wrap}>
+          <Link to={`/product/${itemNo}`}>
+            <h4>{title}</h4>
+          </Link>
+        </div>
         <div className={classes.favorites__item__textarea_desc}>
           <p>Author: {author}</p>
-          <p>Quantity: {quantity}</p>
           <div className={classes.favorites__item__textarea_price}>
             <p
               className={classes.favorite__item_price}

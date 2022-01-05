@@ -1,110 +1,59 @@
-import React, { useCallback } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setNewOrder } from "../../store/order/reducer";
 import { useHistory } from "react-router-dom";
-import { setErors, clearErrors } from "../../store/errors/reducer";
 import OrderForm from "../Forms/OrderForm";
 import { OrderSchema } from "../Forms/ValidationSchema";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import { createNewOrder } from "../../services/order";
-import { errorMessage } from "../../store/selectors";
-import { getCustomerCart } from "../../services/cart";
-import { letterHtml, letterSubject } from "../Subscribe/letterConfig";
-import { successOrder } from "../TosterMessages/TosterMessages";
-import { getOrderFromApi } from "../../store/order/middleware";
-import { deleteAllProductsFromCartAfterOrder } from "../../store/order/middleware";
-import { clearCart } from "../../store/cart/reducer";
+import { createOrder } from "../../store/order/reducer";
+import { updateCustomer } from "../../store/customer/reducer";
+
+import { itemsInCart } from "../../store/selectors";
 
 const OrderPage = () => {
+  //потом поправить
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
+
   const customerData = store.customer.customerData;
-  const customerCart = store.cart.products;
-  const createOrderObject = useCallback(
-    async (values) => {
-      try {
-        let newOrder = await createNewOrder(values);
-        if (newOrder.message) {
-          dispatch(setErors(newOrder.message));
-        } else {
-          dispatch(setNewOrder(newOrder.data));
-          dispatch(clearErrors());
-        }
-      } catch (er) {
-        dispatch(setErors(er.response));
-      }
-    },
-    [dispatch]
-  );
 
-  const error = errorMessage(store);
-  const onSubmitAuthorized = async (values) => {
-    console.log(customerData);
-    const resp = await getCustomerCart();
+  useEffect(() => {
+    if (itemsInCart(store).length === 0) history.push("/");
+  }, [store]);
 
-    const customer = resp.customerId;
-    console.log(customer);
-    const newOrder = {
-      customerId: customer._id,
-      deliveryAdress: values.deliveryAdress,
-      shipping: "Kiev 50UAH",
-      paymentInfo: "Credit card",
-      status: "not shipped",
-      email: customer.email,
-      mobile: values.mobile,
-      letterSubject: letterSubject,
-      letterHtml: letterHtml,
-      canceled: false,
-    };
-    createOrderObject(newOrder);
-    successOrder();
-    dispatch(clearCart());
-    setTimeout(() => {
-      history.push("/");
-    }, 2000);
-  };
-  const onSubmitUnauthorized = async (values) => {
-    const newOrder = {
-      products: customerCart,
-      deliveryAdress: values.deliveryAdress,
-      shipping: "Kiev 50UAH",
-      paymentInfo: "Credit card",
-      status: "not shipped",
-      email: values.email,
-      mobile: values.mobile,
-      letterSubject: "Thank you for order! You are welcome!",
-      letterHtml:
-        "<h1>Your order is placed. OrderNo is </h1><p>{Other details about order in your HTML}</p>",
-    };
-    createOrderObject(newOrder);
-  };
   const initialValuesUserForm = {
     deliveryAdress: {
-      country: "",
-      city: "",
-      adress: "",
-      postal: "",
+      country: customerData.deliveryAdress?.country
+        ? customerData?.deliveryAdress.country
+        : "",
+      city: customerData?.deliveryAdress?.city
+        ? customerData?.deliveryAdress?.city
+        : "",
+      adress: customerData.deliveryAdress?.adress
+        ? customerData?.deliveryAdress.adress
+        : "",
+      postal: customerData.deliveryAdress?.postal
+        ? customerData?.deliveryAdress.postal
+        : "",
     },
-    email: !customerData ? "" : customerData.email,
-    mobile: "",
+    email: customerData?.email ? customerData?.email : "",
+    mobile: customerData?.mobile ? customerData?.mobile : "",
+    shipping: "Kiev 50UAH",
+    paymentInfo: "Credit card",
+    status: "not shipped",
+  };
+
+  const onSubmit = (value) => {
+    dispatch(createOrder(value));
+    dispatch(updateCustomer(value));
   };
 
   const validationSchema = OrderSchema;
   return (
-    <>
-      <Header />
-      <OrderForm
-        initialValues={initialValuesUserForm}
-        validationSchema={validationSchema}
-        onSubmit={
-          customerData.length === 0 ? onSubmitUnauthorized : onSubmitAuthorized
-        }
-        errorMessage={error}
-      />
-      <Footer />
-    </>
+    <OrderForm
+      initialValues={initialValuesUserForm}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+    />
   );
 };
 
