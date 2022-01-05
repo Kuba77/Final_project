@@ -10,8 +10,11 @@ import Footer from "../Footer/Footer";
 import { createNewOrder } from "../../services/order";
 import { errorMessage } from "../../store/selectors";
 import { getCustomerCart } from "../../services/cart";
-import axios from "../../services/htttWraper";
-import configData from "../../config/config.json";
+import { letterHtml, letterSubject } from "../Subscribe/letterConfig";
+import { successOrder } from "../TosterMessages/TosterMessages";
+import { getOrderFromApi } from "../../store/order/middleware";
+import { deleteAllProductsFromCartAfterOrder } from "../../store/order/middleware";
+import { clearCart } from "../../store/cart/reducer";
 
 const OrderPage = () => {
   const store = useSelector((state) => state);
@@ -19,18 +22,6 @@ const OrderPage = () => {
   const history = useHistory();
   const customerData = store.customer.customerData;
   const customerCart = store.cart.products;
-  // const newPaymentMethod = {
-  //   customId: "payment-method-1",
-  //   name: "Payment Method #1",
-  //   paymentProcessor: "Adyen",
-  // };
-  // const handleClickPost = () => {
-  //   axios
-  //     .post(`${configData.PAYMENT_URL}`, newPaymentMethod)
-  //     .then((newPaymentMethod) => {
-  //       console.log(newPaymentMethod);
-  //     });
-  // };
   const createOrderObject = useCallback(
     async (values) => {
       try {
@@ -52,6 +43,7 @@ const OrderPage = () => {
   const onSubmitAuthorized = async (values) => {
     console.log(customerData);
     const resp = await getCustomerCart();
+
     const customer = resp.customerId;
     console.log(customer);
     const newOrder = {
@@ -62,19 +54,18 @@ const OrderPage = () => {
       status: "not shipped",
       email: customer.email,
       mobile: values.mobile,
-      letterSubject: "Thank you for order! You are welcome!",
-      letterHtml:
-        "<h1>Your order is placed. OrderNo is 023689452.</h1><p>{Other details about order in your HTML}</p>",
+      letterSubject: letterSubject,
+      letterHtml: letterHtml,
+      canceled: false,
     };
     createOrderObject(newOrder);
-    alert("your order is comleted");
+    successOrder();
+    dispatch(clearCart());
     setTimeout(() => {
       history.push("/");
     }, 2000);
-    // handleClickPost();
   };
   const onSubmitUnauthorized = async (values) => {
-    // console.log(store.cart.products);
     const newOrder = {
       products: customerCart,
       deliveryAdress: values.deliveryAdress,
