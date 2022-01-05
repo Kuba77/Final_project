@@ -4,11 +4,11 @@ const bazeUser = (state) => state.customer;
 
 export const customerData = createSelector(
   [bazeUser],
-  (customer) => customer.customerData
+  (customer) => customer?.customerData
 );
 export const customerName = createSelector(
   [customerData],
-  (customerData) => customerData.firstName
+  (customerData) => customerData?.firstName
 );
 
 const bazeErors = (state) => state.errors;

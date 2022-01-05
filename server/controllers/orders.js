@@ -19,6 +19,7 @@ exports.placeOrder = async (req, res, next) => {
 
     if (req.body.customerId) {
       cartProducts = await subtractProductsFromCart(order.customerId);
+      console.log("####cartProducts", cartProducts);
     }
 
     if (req.body.deliveryAddress) {

@@ -82,7 +82,7 @@ export const addOrRemoveProductToCart = createAsyncThunk(
 export const addProductToCart = createAsyncThunk(
   "cart/addProductToCart",
   async function (value, { rejectWithValue, getState, dispatch }) {
-    const knownCustomer = getState().customer?.customerData?.id;
+    const knownCustomer = getState().customer?.customerData?._id;
     try {
       if (knownCustomer) {
         const response = await addProduct(value._id);
@@ -97,7 +97,6 @@ export const addProductToCart = createAsyncThunk(
       }
     } catch (error) {
       errorMessageRequest(error.message);
-
       return rejectWithValue(error.message);
     }
   }
@@ -105,7 +104,7 @@ export const addProductToCart = createAsyncThunk(
 export const removeProductFromCart = createAsyncThunk(
   "cart/removeProductFromCart",
   async function (value, { rejectWithValue, getState, dispatch }) {
-    const knownCustomer = getState().customer?.customerData?.id;
+    const knownCustomer = getState().customer?.customerData?._id;
     try {
       if (knownCustomer) {
         const response = await removeProduct(value._id);
@@ -140,22 +139,8 @@ export const decr = createAsyncThunk(
     }
   }
 );
-
-export const deleteCartFromStore = createAsyncThunk(
-  "cart/deleteCustomerCart",
-  async function (_, { getState, dispatch }) {
-    const existCustomer = getState().customer?.customerData?.id;
-    if (existCustomer) {
-      dispatch(deleteCustomerCartDB());
-    } else {
-      dispatch(clearCart());
-    }
-  }
-);
-
-const deleteCustomerCartDB = createAsyncThunk(
+export const deleteCustomerCartDB = createAsyncThunk(
   "cart/deleteCustomerCartDB",
-
   async function (_, { rejectWithValue, dispatch }) {
     try {
       const response = await deleteCart();
@@ -172,7 +157,6 @@ const deleteCustomerCartDB = createAsyncThunk(
     }
   }
 );
-
 const setError = (state, action) => {
   state.status = "rejected";
   state.error = action.payload;
@@ -210,13 +194,13 @@ const cartSlice = createSlice({
     },
   },
   extraReducers: {
-    [getcart.pending]: setLoading,
-    [getcart.fulfilled]: (state, action) => {
-      state.status = "resolve";
-      state.error = null;
-      state.products = action.payload;
-    },
-    [getcart.rejected]: setError,
+    // [getcart.pending]: setLoading,
+    // [getcart.fulfilled]: (state, action) => {
+    //   state.status = "resolve";
+    //   state.error = null;
+    //   state.products = action.payload;
+    // },
+    // [getcart.rejected]: setError,
     [addProductToCart.pending]: setLoading,
     [addProductToCart.fulfilled]: (state, action) => {
       state.status = false;

@@ -26,7 +26,7 @@ const RoutePages = () => {
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/registration" component={RegistrationPage}></Route>
       <Route exact path="/profile">
-        {customerData(store).id ? (
+        {customerData(store)?._id ? (
           <ProfilePage />
         ) : (
           <Redirect to="/registration" />

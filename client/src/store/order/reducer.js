@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { createNewOrder } from "../../services/order";
 import { message } from "antd";
-import { deleteCartFromStore } from "../cart/reducer";
+import { deleteCustomerCartDB, clearCart } from "../cart/reducer";
 
 const warningMessageRequest = (value) => message.warning(`${value}`);
 const sucsecMessageRequest = (value) => message.success(`${value}`);
@@ -9,7 +9,7 @@ const sucsecMessageRequest = (value) => message.success(`${value}`);
 export const createOrder = createAsyncThunk(
   "newOrder/createOrder",
   async function (value, { rejectWithValue, dispatch, getState }) {
-    const existCustomer = getState().customer?.customerData?.id;
+    const existCustomer = getState().customer?.customerData?._id;
     try {
       if (existCustomer) {
         dispatch(createOrderAuthorized(value));
@@ -28,16 +28,20 @@ const createOrderAuthorized = createAsyncThunk(
     try {
       const newOrder = await createNewOrder({
         ...value,
-        customerId: existCustomer.id,
+        customerId: existCustomer._id,
+        letterSubject: "спасибо за покупку!",
+        letterHtml:
+          "<h1>Your order is placed. OrderNo is ########.</h1><p>{Other details about order in your HTML}</p>",
       });
-      if (newOrder.message) {
-        throw new Error(` ${newOrder.message}`);
+      console.log("newOrder", newOrder);
+      if (newOrder.status === 200 && !newOrder.data.message) {
+        dispatch(deleteCustomerCartDB());
+        sucsecMessageRequest(`Congratulations  ${existCustomer.login}`);
+        return newOrder.data.order;
+      } else {
+        console.log("newOrder.data.message", newOrder.data.message);
+        throw new Error(` ${newOrder.data.message} `);
       }
-      dispatch(deleteCartFromStore());
-      sucsecMessageRequest(
-        `вы  ${newOrder.data.order.customerId.login} купили ${newOrder.statusText}`
-      );
-      return newOrder.data.order;
     } catch (error) {
       warningMessageRequest(error.message);
       return rejectWithValue(error.message);
@@ -52,13 +56,18 @@ const createOrderUnauthorized = createAsyncThunk(
       const newOrder = await createNewOrder({
         ...value,
         products: products,
+        letterSubject: "спасибо за покупку!",
+        letterHtml:
+          "<h1>Your order is placed. OrderNo is ########.</h1><p>{Other details about order in your HTML}</p>",
       });
-      dispatch(deleteCartFromStore());
-      if (newOrder.data.message) {
-        throw new Error(` ${newOrder.data.message}`);
+      console.log("newOrder", newOrder);
+      if (newOrder.status === 200 && !newOrder.data.message) {
+        dispatch(clearCart());
+        sucsecMessageRequest(`Congratulations  Anonim`);
+        return newOrder.data.order;
+      } else {
+        throw new Error(`#### ${newOrder.data.message} `);
       }
-      sucsecMessageRequest(`вы купили ${newOrder.statusText}`);
-      return newOrder.data.order;
     } catch (error) {
       warningMessageRequest(error.message);
       return rejectWithValue(error.message);
@@ -96,14 +105,14 @@ const orderSlice = createSlice({
     [createOrderUnauthorized.fulfilled]: (state, action) => {
       state.status = "resolve";
       state.error = null;
-      state.orders = action.payload;
+      state.orders.push(action.payload);
     },
     [createOrderUnauthorized.rejected]: setError,
     [createOrderAuthorized.pending]: setLoading,
     [createOrderAuthorized.fulfilled]: (state, action) => {
       state.status = "resolve";
       state.error = null;
-      state.orders = action.payload;
+      state.orders.push(action.payload);
     },
     [createOrderAuthorized.rejected]: setError,
   },
