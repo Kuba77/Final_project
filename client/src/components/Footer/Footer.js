@@ -4,6 +4,7 @@ import logo from "./Footer_img/icon.png"
 import FooterCustomerAreaList from "./FooterCustomerAreaLinks";
 import SubscribeBlock from "../../components/Subscribe/SubscribeBlock";
 import FooterQuickList from "./FooterQuickLinks";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -11,10 +12,10 @@ const Footer = () => {
             <SubscribeBlock />
             <div className={classes.footer_container}>
                 <div className={classes.footer_follow_us}>
-                    <div className={classes.footer_block_logo_title}>
-                        <img className={classes.footer_block_logo} src={logo} alt="Clever" />
+                    <Link to="/" className={classes.footer_block_logo_title}>
+                        <img className={classes.footer_block_logo} src={logo} alt="logo" />
                         <p className={classes.footer_block_text}>Clever</p>
-                    </div>
+                    </Link>
                     <p className={classes.footer_block_description}>Clever is a online bookstore website who sells all genres of
                         books from around the world. Find your book here now</p>
                 </div>

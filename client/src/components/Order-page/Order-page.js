@@ -13,6 +13,8 @@ import { getCustomerCart } from "../../services/cart";
 import axios from "../../services/htttWraper";
 import configData from "../../config/config.json";
 
+import { letterHtml, letterSubject } from "./letterConfig";
+
 const OrderPage = () => {
   // const customerCartData = await getCustomerCart();
 
@@ -50,9 +52,8 @@ const OrderPage = () => {
       status: "not shipped",
       email: customer.email,
       mobile: values.mobile,
-      letterSubject: "Thank you for order! You are welcome!",
-      letterHtml:
-        "<h1>Your order is placed. OrderNo is 023689452.</h1><p>{Other details about order in your HTML}</p>",
+      letterSubject: letterHtml,
+      letterHtml: letterSubject,
     };
     createOrderObject(newOrder);
 
