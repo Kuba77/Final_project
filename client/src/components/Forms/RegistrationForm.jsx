@@ -14,33 +14,6 @@ import { useHistory } from "react-router-dom";
 function RegistrationForm(props) {
   const { initialValues, validationSchema, onSubmit, errorMessage } = props;
 
-
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  const responseSuccessGoogle = useCallback(
-    async (response) => {
-      try {
-        let customer = await logOrRegisterCustomer(response);
-        if (customer.message) {
-          dispatch(setErors(customer.message));
-        } else {
-          dispatch(setCustomer(customer));
-          history.push("/");
-        }
-      } catch (error) {
-        dispatch(setErors(error.response));
-      }
-    },
-    [dispatch]
-  );
-  const responseErrorGoogle = useCallback(
-    async (response) => {
-      dispatch(setErors(response.message));
-    },
-    [dispatch]
-  );
-console.log(errorMessage)
   return (
     <Formik
       initialValues={initialValues}
@@ -97,20 +70,6 @@ console.log(errorMessage)
                 >
                   Submit
                 </button>
-                {/* <button
-                className="form__btn"
-                type="button"
-                onClick={() => { dispatch(removeCustomer()); }}
-              >
-                LOGOUT
-              </button> */}
-                <GoogleLogin
-                  clientId={configData.REACT_APP_GOOGLE_CLIENT_ID}
-                  buttonText="Register with google"
-                  onSuccess={responseSuccessGoogle}
-                  onFailure={responseErrorGoogle}
-                  cookiePolicy={"single_host_origin"}
-                />
               </div>
             </Form>
           </div>

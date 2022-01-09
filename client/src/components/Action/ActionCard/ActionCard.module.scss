@@ -1,0 +1,108 @@
+@import "../../../styles/config/variables.scss";
+
+.action {
+  display: flex;
+  width: 650px;
+  height: 240px;
+  margin: 30px 40px;
+  background-color: $action-background-color;
+  border-radius: 4%;
+  -webkit-border-radius: 4%;
+  -moz-border-radius: 4%;
+  -ms-border-radius: 4%;
+  -o-border-radius: 4%;
+  color: $body-color;
+
+  @include breakpoint(lg-only) {
+    width: 330px;
+  }
+
+  @include breakpoint(md-only) {
+    height: 240px;
+    width: 380px;
+    margin: 0 20px;
+  }
+
+  @include breakpoint(sm-only) {
+    height: 200px;
+    width: 300px;
+    margin: 0 10px;
+  }
+
+  &_img {
+    width: 130px;
+    height: 195px;
+    margin: 20px;
+
+    @include breakpoint(sm-only) {
+      width: 110px;
+      height: 155px;
+    }
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 0;
+    margin-right: 20px;
+    width: 100%;
+
+    @include breakpoint(sm-only) {
+      font-size: 0.75rem;
+    }
+
+    & h2,
+    p {
+      margin: 2px;
+    }
+
+    &__title {
+      font-size: $h3-font-size;
+      color: $container-color;
+      text-transform: uppercase;
+
+      @include breakpoint(md-only) {
+        font-size: $h2-font-size;
+      }
+
+      @include breakpoint(sm-only) {
+        font-size: 0.85rem;
+      }
+    }
+
+    &__priceblock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include breakpoint(md-only) {
+        justify-content: center;
+      }
+
+      & p:first-child {
+        color: $action-text-color;
+        font-size: 1.5rem;
+        font-weight: $font-semi-bold;
+
+        @include breakpoint(md-only) {
+          font-size: 1rem;
+        }
+      }
+
+      & p:last-child {
+        margin-left: 10px;
+        text-decoration: line-through;
+      }
+    }
+
+    &:last-child {
+      margin: 0;
+
+      &_img {
+        padding: auto;
+      }
+    }
+  }
+}

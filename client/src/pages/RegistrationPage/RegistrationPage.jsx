@@ -1,36 +1,29 @@
-import React, { useCallback } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setCustomer } from "../../store/customer/reducer";
-import { setErors, clearErrors } from "../../store/errors/reducer";
-import { registerCustomer } from "../../services/user";
+import { welcomeToTheNewGuy } from "../../store/customer/reducer";
 import { RegistrationSchema } from "../../components/Forms/ValidationSchema";
 import RegistrationForm from "../../components/Forms/RegistrationForm";
 import { errorMessage } from "../../store/selectors";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
+import { customerName } from "../../store/selectors";
+
 const RegistrationPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const store = useSelector((state) => state);
 
-  const singUp = useCallback(
-    async (value) => {
-      try {
-        let newCustomer = await registerCustomer(value);
-        if (newCustomer.message) {
-          dispatch(setErors(newCustomer.message));
-        } else {
-          dispatch(setCustomer(newCustomer.data));
-          dispatch(clearErrors());
-        }
-      } catch (err) {
-        dispatch(setErors(err.response));
-      }
-    },
-    [dispatch]
-  );
+  const singUp = (value) => {
+    dispatch(welcomeToTheNewGuy(value));
+  };
+
+  useEffect(() => {
+    if (customerName(store)) {
+      history.push("/");
+    }
+  }, [store]);
 
   const initialValues = {
     firstName: "",
@@ -42,15 +35,9 @@ const RegistrationPage = () => {
   };
   const validationSchema = RegistrationSchema;
   const error = errorMessage(store);
-  
-  
 
   const onSubmit = (values) => {
     singUp(values);
-    if(error.length === 0) {
-       history.push("/");
-    }
-   
   };
 
   return (

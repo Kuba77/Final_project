@@ -4,7 +4,7 @@ import Main from "../../components/Main/Main";
 import Feature from "../../components/Feature/Feature";
 import Categories from "../../components/Categories/Categories";
 import Footer from "../../components/Footer/Footer";
-
+import Action from "../../components/Action/Action";
 
 const HomePage = () => {
   return (
@@ -13,6 +13,7 @@ const HomePage = () => {
       <Main />
       <Feature />
       <Categories />
+      <Action timer="31 Dec 2021 22:40:00 GMT+2" />
       <Footer />
     </>
   );

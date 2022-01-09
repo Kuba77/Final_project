@@ -1,7 +1,7 @@
 import axios from "./htttWraper";
 import configData from "../config/config.json";
 
-export const addProductToCart = async (value) => {
+export const addProduct = async (value) => {
   try {
     return await axios
       .put(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
@@ -23,7 +23,7 @@ export const decreaseProductQuantity = async (value) => {
     return e.message;
   }
 };
-export const removeProductFromCart = async (value) => {
+export const removeProduct = async (value) => {
   try {
     return await axios
       .delete(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
@@ -39,7 +39,6 @@ export const updateCart = async (value) => {
     return await axios
       .put(`${configData.ADD_PRODUCT_TO_CART}`, value)
       .then((res) => {
-        console.log(res);
         return res.data;
       });
   } catch (e) {
@@ -60,7 +59,6 @@ export const moveCartToDB = async (value) => {
     return await axios
       .post(`${configData.ADD_PRODUCT_TO_CART}`, value)
       .then((res) => {
-        console.log("removed Cart", res);
         return res.data;
       });
   } catch (e) {

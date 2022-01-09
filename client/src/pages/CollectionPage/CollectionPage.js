@@ -48,8 +48,9 @@ const CollectionPage = () => {
   useEffect(() => {
     if (genderSelected.length === 0 && sort === "") {
       getCollection();
+    } else {
+      getGenderProducts(genderSelected, sort);
     }
-    getGenderProducts(genderSelected, sort);
   }, [genderSelected, sort]);
 
   const getCollection = async () => {
@@ -76,14 +77,14 @@ const CollectionPage = () => {
     <>
       <Header />
       <section className={classes.collection}>
-      {(
+        {
           <Filters
             genderSelected={genderSelected}
             sort={sort}
             getselectedGenre={getselectedGenre}
             sortProductByPrice={sortProductByPrice}
           />
-        )}
+        }
 
         {isLoading && (
           <div className={classes.collection__loader}>
@@ -94,13 +95,13 @@ const CollectionPage = () => {
           {!isLoading && <CollectionList collection={currentProduct} />}
         </div>
 
-        {!isLoading && ( <Pagination
-          productsInPage={productsInPage}
-          totalProducts={collection.length}
-          paginate={paginate}
-        />
+        {!isLoading && (
+          <Pagination
+            productsInPage={productsInPage}
+            totalProducts={collection.length}
+            paginate={paginate}
+          />
         )}
-
       </section>
     </>
   );

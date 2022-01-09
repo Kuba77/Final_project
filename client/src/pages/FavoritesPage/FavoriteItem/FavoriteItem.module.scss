@@ -3,28 +3,27 @@
 .favorites__item{
     height:280px;
     width: 100%;
-    cursor: pointer;
     position: relative;
-    border-radius:30px;
+    border-radius:20px;
     box-shadow:$box-shadow;
     display: flex;
     background-color:#f7def5;
         @include breakpoint(sm-only){
-            height:260px;
+            height:230px;
         }
     
     &__img{
 
         img{
             height:280px;
-            border-radius:20px;
+            border-radius:10px;
             box-shadow:$box-shadow;
-            filter: brightness(85%);
             @include breakpoint(sm-only){
-                height:260px;
+                height:230px;
             }
         }
         svg {
+            cursor: pointer;
             position: absolute;
             top: 10px;
             right:10px;
@@ -33,6 +32,7 @@
   
     
     &__textarea{
+        cursor: default;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -46,13 +46,29 @@
             }
 
             h4{
+                cursor: pointer;
                 font-size: $h2-font-size;
                 text-transform: capitalize;
                 color:black;
                 @include breakpoint(sm-only){
                     font-size: $small-font-size;
+
+                }
+                &:hover{
+                    color:$first-color;
+                }
+                
+            }
+            h5{
+              
+                font-size:1rem;
+                text-transform: capitalize;
+                color:$first-color;
+                @include breakpoint(sm-only){
+                    font-size: $small-font-size;
                 }
             }
+           
             p{
                 font-size: $small-font-size;
                 margin-top: 2vh;
@@ -68,9 +84,12 @@
         right: 8%;
     }
     button{
-        width: 100%;
+        width: 70%;
         display: block;
-        padding: .5rem;
+        padding: .6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: $first-color;
         color: #FFF;
         font-weight: 600;
@@ -84,6 +103,11 @@
         &:hover{
             background-color: $hover-color;
         }
+    }
+
+    &_price{
+        color: $first-color;
+        font-size:$h2-font-size;
     }
 }
 
@@ -100,18 +124,19 @@
     overflow: hidden;
 }
 .favorites__item span::before{
-        content:"Your Favorite";
-        position: absolute;
-        width: 150%;
-        height: 40px;
-        font-weight: 600;
-        background-color:$first-color;
-        background-color: rgb(110, 25, 110);
-        transform: rotate(-45deg) translateY(-20px);
-        display: flex;
-        justify-content:center;
-        align-items:center;
-        box-shadow: 0 5px 10px  rgba(0,0,0,0.1);
+    content:"Sale";
+    position: absolute;
+    color: white;
+    width: 150%;
+    height: 40px;
+    font-size: $h1-font-size;
+    font-weight: 600;
+    background-color:rgba(8, 224, 240, 0.945);
+    transform: rotate(-45deg) translateY(-20px);
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow: 0 5px 10px  rgba(0,0,0,0.1);
 }
 
 .favorites__item span::after{
