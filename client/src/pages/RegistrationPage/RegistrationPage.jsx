@@ -5,8 +5,6 @@ import { welcomeToTheNewGuy } from "../../store/customer/reducer";
 import { RegistrationSchema } from "../../components/Forms/ValidationSchema";
 import RegistrationForm from "../../components/Forms/RegistrationForm";
 import { errorMessage } from "../../store/selectors";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 
 import { customerName } from "../../store/selectors";
 
@@ -42,14 +40,12 @@ const RegistrationPage = () => {
 
   return (
     <>
-      <Header />
       <RegistrationForm
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
         errorMessage={error}
       />
-      <Footer />
     </>
   );
 };
