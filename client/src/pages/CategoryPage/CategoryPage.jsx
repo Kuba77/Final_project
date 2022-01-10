@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getFilteredProductByCategory } from "../../services/products";
 import Header from "../../components/Header/Header";
 import PuffLoader from "react-spinners/PuffLoader";
@@ -26,22 +26,17 @@ const CategoryPage = () => {
     <>
       <Header />
       <section className={classes.categoryPage}>
-        <div className={classes.categoryPage__container}>
-          {isLoading && (
+       <div className={classes.categoryPage__textarea}>
+              <h3>{categoryId}</h3>
+         </div>
+         {isLoading && (
             <div className={classes.categoryPage__loader}>
               <PuffLoader loading={isLoading} color="purple" size={120} />
             </div>
           )}
-
-          {!isLoading && (
-            <div className={classes.categoryPage__textarea}>
-              <h3>{categoryId}</h3>
-            </div>
-          )}
-
+        <div className={classes.categoryPage__container}>
           {!isLoading &&
             product.map((item, index) => (
-              // <Link id={item.itemNo} key={item.itemNo} to={`/product/${item.itemNo}`}>
               <BookItem
                 imageSrc={item.imageUrls[1]}
                 price={item.currentPrice}
@@ -51,8 +46,8 @@ const CategoryPage = () => {
                 salePrice={item.salePrice}
                 key={index}
               />
-              // </Link>
             ))}
+           
         </div>
       </section>
     </>

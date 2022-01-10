@@ -1,4 +1,4 @@
-export const letterSubject = 'Thank you for order! You are welcome!';
+export const letterSubject = "Thank you for order! You are welcome!";
 export const letterHtml = `
 <!DOCTYPE html>
 <html lang='en'>

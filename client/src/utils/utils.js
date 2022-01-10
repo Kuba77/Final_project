@@ -102,3 +102,11 @@ export const removeDublikateObj = (arr) => {
   });
   return resultArray;
 };
+
+export const qwe = (arr) => {
+  const copyArr = Object.assign({}, arr);
+  ["paymentInfo", "shipping", "status"].forEach((el) => {
+    delete copyArr[el];
+  });
+  return copyArr;
+};

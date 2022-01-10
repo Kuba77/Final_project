@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
-import CartProductList from "../../components/Cart/CartProductList";
-import CartHeader from "../../components/Cart/CartHeader";
+// import CartProductList from "../../components/Cart/CartProductList";
+// import CartHeader from "../../components/Cart/CartHeader";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import CartSummary from "../../components/Cart/CartSummary";
+// import CartSummary from "../../components/Cart/CartSummary";
+import Basket from "../../components/Basket/Basket";
 
 import { itemsInCart } from "../../store/selectors";
 import { useSelector } from "react-redux";
@@ -46,9 +47,10 @@ const CartPage = () => {
   return (
     <>
       <Header />
-      <CartHeader />
+      {/* <CartHeader />
       <CartProductList />
-      <CartSummary totalSum={totalSum} addPromoCode={addPromoCode} />
+      <CartSummary totalSum={totalSum} addPromoCode={addPromoCode} /> */}
+      <Basket />
       <Footer />
     </>
   );

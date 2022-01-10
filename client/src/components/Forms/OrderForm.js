@@ -1,6 +1,6 @@
 import React from "react";
 import FormikControl from "./FormikControl";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import classes from "./Form.module.scss";
 
 const OrderForm = (props) => {
@@ -19,18 +19,6 @@ const OrderForm = (props) => {
               <FormikControl
                 control="input"
                 type="text"
-                label="Please, enter your firstname"
-                name="firstName"
-              />
-              <FormikControl
-                control="input"
-                type="text"
-                label="Please, enter your lastname"
-                name="lastName"
-              />
-              <FormikControl
-                control="input"
-                type="tel"
                 label="Please, enter your mobile phone"
                 name="mobile"
               />
@@ -61,7 +49,7 @@ const OrderForm = (props) => {
               />
               <FormikControl
                 control="input"
-                type="number"
+                type="text"
                 label="Please, enter your postcode"
                 name="deliveryAdress.postal"
               />
