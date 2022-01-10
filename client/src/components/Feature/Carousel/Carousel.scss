@@ -128,11 +128,26 @@
 }
 
 .promotion-container {
-    & .swiper-button-prev {
-        left: 50px;
+    @include breakpoint(sm-only) {
+        & .swiper-button-prev {
+            left: 90px;
+        }
+
+        & .swiper-button-next {
+            right: 90px;
+        }
     }
 
-    & .swiper-button-next {
-        right: 50px;
+    @include breakpoint(xs-only) {
+        // & .swiper-button-prev {
+        //     left: 150px;
+        // }
+
+        // & .swiper-button-next {
+        //     right: 150px;
+        // }
+        & .swiper-button-prev, .swiper-button-next {
+            display: none;
+        }
     }
 }

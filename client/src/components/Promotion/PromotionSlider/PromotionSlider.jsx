@@ -21,9 +21,11 @@ const PromotionSlider = (props) => {
       <div className={classes.promotion_content}>
         <Swiper
           className="promotion-container"
+          centeredSlides={true}
+          slidesPerView={"auto"}
           navigation={true}
           loop={true}
-          // autoplay={{ delay: 4000, disableOnInteraction: false }}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
           pagination={{
             clickable: true,
           }}

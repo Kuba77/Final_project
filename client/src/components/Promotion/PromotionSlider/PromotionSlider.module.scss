@@ -4,11 +4,7 @@
   grid-area: info;
   display: flex;
   align-items: center;
-  max-width: 800px;
-
-  @include breakpoint(lg-only) {
-    max-width: 760px;
-  }
+  max-width: 600px;
 
   @include breakpoint(md-only) {
     justify-content: center;
