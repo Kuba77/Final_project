@@ -16,9 +16,8 @@ import ProductComments from "./ProductComments/ProductComments";
 import classes from "./Product.module.scss";
 import Button from "../Button/Button";
 import {
-  customerData,
   itemsInCart,
-  itemsInFavorite,
+  itemsInFavorite, 
 } from "../../store/selectors";
 import PuffLoader from "react-spinners/PuffLoader";
 
@@ -27,8 +26,9 @@ const Product = () => {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [toggle, setToggle] = useState(0);
+
   const isItemInFavorites = itemsInFavorite(store).some(
     (item) => item._id === product._id
   );

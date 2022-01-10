@@ -17,10 +17,10 @@ import PropTypes from "prop-types";
 
 const ProductComments = (props) => {
   const { product } = props;
+  const store = useSelector((state) => state);
   let { productId } = useParams();
   const [comments, setComments] = useState([]);
   const validationSchema = CommentSchema;
-  const store = useSelector((state) => state);
   const initialValues = {
     content: ""
   };
@@ -54,13 +54,14 @@ const ProductComments = (props) => {
 
   useEffect(() => {
     getComments();
-  }, []);
+  }, []); 
 
   const deleteComment = useCallback(
     async (value) => {
       await deleteProductComment(value);
       getComments();
     }, []);
+
 
   const NoComments = () => {
     return (
@@ -70,9 +71,9 @@ const ProductComments = (props) => {
         </p>
       </div>)
   }
-
+ 
   const CommentsArray = comments.map((item) => {
-    return <div key={item._id} className={classes.review}>
+    return <div key={item._id} className={classes.review}>  
       <div className={classes.review__header}>
         <p className={classes.review__customer}>
           {item.customer.firstName} {item.customer.lastName}

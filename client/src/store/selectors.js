@@ -35,3 +35,12 @@ export const itemsInFavorite = createSelector(
   [stateFavorites],
   (favorites) => favorites.favoriteItems
 );
+
+const stateComments = (state) => state.comments;
+export const productComments = createSelector(
+  [stateComments],
+  (comments) => comments.comments
+);
+
+export const statePromotion = (state) => state.promotion;
+export const productPromotion = createSelector([statePromotion], (promotion) => promotion.promotionData);

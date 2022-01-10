@@ -1,6 +1,6 @@
 @import "../../styles/config/variables.scss";
 
-.action_block {
+.promotion_block {
   max-height: 350px;
   background-color: $action-background-color-light;
   margin: 80px 0;
@@ -13,7 +13,7 @@
     margin: 0 auto;
     padding: 25px 0;
     display: grid;
-    grid-column-gap: 10px;
+    grid-column-gap: 30px;
     grid-template-areas: "timer info";
    
     @include breakpoint(lg-only) {
@@ -42,6 +42,7 @@
   grid-area: timer;
   max-width: 300px;
   margin-left: 15px;
+  align-self: center;
 
   @include breakpoint(lg-only) {
     display: flex;
@@ -56,7 +57,7 @@
 
   & h2 {
     color: $body-color;
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     align-self: center;
 
     @include breakpoint(lg-only) {
@@ -86,7 +87,7 @@
   }
 
   & span {
-    font-size: 2.2rem;
+    font-size: 2.7rem;
 
     @include breakpoint(lg-only) {
       text-align: start;
@@ -106,11 +107,11 @@
   }
 }
 
-.action_content {
+.promotion_content {
   grid-area: info;
   display: flex;
   align-items: center;
-  max-width: 800px;
+  max-width: 700px;
 
   @include breakpoint(lg-only) {
     max-width: 760px;

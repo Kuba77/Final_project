@@ -1,6 +1,6 @@
 @import "../../../styles/config/variables.scss";
 
-.action_content {
+.promotion_content {
   grid-area: info;
   display: flex;
   align-items: center;
@@ -13,4 +13,8 @@
   @include breakpoint(md-only) {
     justify-content: center;
   }
+}
+
+.swiper-slide {
+  height: 200px;
 }
