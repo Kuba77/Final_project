@@ -5,11 +5,11 @@ import OrderForm from "../Forms/OrderForm";
 import { OrderSchema } from "../Forms/ValidationSchema";
 import { createOrder } from "../../store/order/reducer";
 import { updateCustomer } from "../../store/customer/reducer";
-
 import { itemsInCart } from "../../store/selectors";
-
 import { letterSubject, letterHtml } from "./letterHTML";
-import { getOrderFromApi } from "../../store/order/middleware";
+import OrderList from "./Order-list/Order-list";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const OrderPage = () => {
   //потом поправить
@@ -50,17 +50,21 @@ const OrderPage = () => {
   const onSubmit = async (value) => {
     dispatch(createOrder(value));
     dispatch(updateCustomer(value));
-    const orderFnApi = await getOrderFromApi();
-    console.log(orderFnApi);
   };
 
   const validationSchema = OrderSchema;
   return (
-    <OrderForm
-      initialValues={initialValuesUserForm}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-    />
+    <>
+      {" "}
+      <Header />
+      <OrderList />
+      <OrderForm
+        initialValues={initialValuesUserForm}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      />
+      <Footer />
+    </>
   );
 };
 

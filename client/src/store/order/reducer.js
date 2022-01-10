@@ -3,9 +3,10 @@ import { createNewOrder } from "../../services/order";
 import { message } from "antd";
 import { deleteCustomerCartDB, clearCart } from "../cart/reducer";
 import {
-  letterHtml,
   letterSubject,
+  letterHtml,
 } from "../../components/Order-page/letterHTML";
+
 const warningMessageRequest = (value) => message.warning(`${value}`);
 const sucsecMessageRequest = (value) => message.success(`${value}`);
 
@@ -54,11 +55,12 @@ const createOrderUnauthorized = createAsyncThunk(
   "newOrder/createOrderUnauthorized",
   async function (value, { rejectWithValue, dispatch, getState }) {
     const products = getState().cart?.products;
+    console.log("value", value);
     try {
       const newOrder = await createNewOrder({
         ...value,
         products: products,
-        letterSubject: letterSubject,
+        letterSubject: `Спасибо за покупку! Ваш номер заказа`,
         letterHtml: letterHtml,
       });
       console.log("newOrder", newOrder);
