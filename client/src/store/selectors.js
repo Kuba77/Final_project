@@ -27,6 +27,11 @@ export const errorMessage = createSelector(
   (errorsData) => errorsData
 );
 
+export const errMessage = createSelector(
+  [bazeUser],
+  (customer) => customer.error.loginOrEmail
+);
+
 export const stateCart = (state) => state.cart;
 export const itemsInCart = createSelector([stateCart], (cart) => cart.products);
 

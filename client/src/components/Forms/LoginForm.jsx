@@ -12,13 +12,15 @@ import configData from "../../config/config.json";
 import { setItemInCart, clearCart, getcart } from "../../store/cart/reducer";
 import { letHimComeInGoogle } from "../../store/customer/reducer";
 import { customerCartMovement } from "../../utils/utils";
-import { customerName } from "../../store/selectors";
+import { customerName, errMessage} from "../../store/selectors";
+import TextError from './components/TextError';
 
 function LoginForm(props) {
   const { initialValues, validationSchema, onSubmit } = props;
   const dispatch = useDispatch();
   const history = useHistory();
   const store = useSelector((state) => state);
+  const error = errMessage(store);
 
   const responseSuccessGoogle = (response) => {
     dispatch(letHimComeInGoogle(response));
@@ -36,6 +38,8 @@ function LoginForm(props) {
     },
     [dispatch]
   );
+
+  // console.log(errMessage(store))
 
   return (
     <Formik
@@ -61,6 +65,7 @@ function LoginForm(props) {
                 label="Password"
                 name="password"
               />
+              {error ? <div>error</div> : ""}
               <div className={classes.button__wrapper}>
                 <button
                   className={classes.form__btn}
