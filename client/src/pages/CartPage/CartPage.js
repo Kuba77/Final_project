@@ -46,12 +46,10 @@ const CartPage = () => {
 
   return (
     <>
-      <Header />
       {/* <CartHeader />
       <CartProductList />
       <CartSummary totalSum={totalSum} addPromoCode={addPromoCode} /> */}
       <Basket />
-      <Footer />
     </>
   );
 };

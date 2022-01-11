@@ -1,3 +1,4 @@
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HomePage from "../../pages/HomePage/HomePage";
@@ -12,11 +13,15 @@ import ProfilePage from "../../pages/ProfilePage/ProfilePage";
 import { customerData } from "../../store/selectors";
 import OrderPage from "../Order-page/Order-page";
 import LiqPayForm from "../Order-page/Payment-page";
+import Header from "../Header/Header";
+import Footer from "..//Footer/Footer";
 
 const RoutePages = () => {
   const store = useSelector((state) => state);
 
   return (
+    <React.Fragment>
+    <Header />
     <Switch>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="/cart" component={CartPage}></Route>
@@ -40,6 +45,8 @@ const RoutePages = () => {
       <Route exact path="/order" component={OrderPage}></Route>
       <Route exact path="/payment" component={LiqPayForm}></Route>
     </Switch>
+    <Footer />
+    </React.Fragment>
   );
 };
 
