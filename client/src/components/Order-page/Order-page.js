@@ -10,6 +10,8 @@ import { letterSubject, letterHtml } from "./letterHTML";
 import OrderList from "./Order-list/Order-list";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import { getOrderFromApi } from "../../store/order/middleware";
+import { clearCart } from "../../store/cart/reducer";
 
 const OrderPage = () => {
   //потом поправить
@@ -50,6 +52,7 @@ const OrderPage = () => {
   const onSubmit = async (value) => {
     dispatch(createOrder(value));
     dispatch(updateCustomer(value));
+    dispatch(clearCart());
   };
 
   const validationSchema = OrderSchema;

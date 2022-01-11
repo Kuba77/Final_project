@@ -39,7 +39,7 @@ const Product = () => {
   const isItemInFavorites = itemsInFavorite(store).some(
     (item) => item._id === product._id
   );
-  const isItemInCart = itemsInCart(store)?.some(
+  const isItemInCart = itemsInCart(store).some(
     (item) => item.product._id === product._id
   );
 

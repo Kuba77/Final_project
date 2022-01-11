@@ -1,3 +1,4 @@
+
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
@@ -10,6 +11,7 @@ module.exports = async (passport) => {
   const configs = await getConfigs();
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
   opts.secretOrKey = keys.secretOrKey;
+  
 
   passport.use(
     "jwt",

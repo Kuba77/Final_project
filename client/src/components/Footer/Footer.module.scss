@@ -53,9 +53,7 @@
   }
 }
 .footer_block_logo_title{
-  display: flex;
-  @media screen and (min-width: 600px) and (max-width:969px) {
-  }
+  display: inline-flex;
   @media screen and (min-width: 320px) and (max-width:599px){
     display: flex;
     justify-content: center;
@@ -83,6 +81,7 @@
   padding-left: 25px;
   font-size: 30px;
   font-weight: 700;
+  margin-bottom: 0;
   @media screen and (min-width: 970px) and (max-width:1260px){
     font-weight: 600;
     font-size: 25px;
@@ -208,13 +207,13 @@
 .footer_quick_links_link{
   font-family: $body-font;
   color: $text-color-light;
-  margin-top: 5px;
+  margin-top: 12px;
   &:hover {
     color: black;
     transition: 0.25s;
 }
   @media screen and (min-width: 968px) and (max-width:1260px){
-    margin-top: 5px;
+    margin-top: 10px;
   }
   @media screen and (min-width: 320px) and (max-width:599px){
     margin-top: 5px;
@@ -300,8 +299,6 @@
     }
   }
 }
-
-
 .footer_subscribe_block{
   display: flex;
   justify-content: space-between;

@@ -1,6 +1,7 @@
 {
     "REACT_APP_GOOGLE_CLIENT_ID":"649718085227-lo924pc5nifh55shg8u0gf3vm7olsmvn.apps.googleusercontent.com",
     "BASE_URL":"http://localhost:3000/api",
+    "REACT_APP_API_URL":"https://api-manga-store.herokuapp.com/api",
     "GOOGLE_LOGIN_URL":"/logingoogle",
     "CUSTOMERS_URL":"/customers",
     "CUSTOMER_URL":"/customers/customer",

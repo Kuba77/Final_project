@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Footer.module.scss"
-import FormSubscribe from "./FormSubscribe";
+import FormSubscribe from "../Forms/FormSubscribe";
 
 const SubscribeBlock = () =>{  
     return(
