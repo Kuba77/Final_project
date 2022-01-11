@@ -1,89 +1,67 @@
-import React, { useCallback } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setNewOrder } from "../../store/order/reducer";
 import { useHistory } from "react-router-dom";
-import { setErors, clearErrors } from "../../store/errors/reducer";
 import OrderForm from "../Forms/OrderForm";
 import { OrderSchema } from "../Forms/ValidationSchema";
+import { createOrder } from "../../store/order/reducer";
+import { updateCustomer } from "../../store/customer/reducer";
+import { itemsInCart } from "../../store/selectors";
+import { letterSubject, letterHtml } from "./letterHTML";
+import OrderList from "./Order-list/Order-list";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { createNewOrder } from "../../services/order";
-import { errorMessage } from "../../store/selectors";
-import { getCustomerCart } from "../../services/cart";
-import axios from "../../services/htttWraper";
-import configData from "../../config/config.json";
 
 const OrderPage = () => {
-  // const customerCartData = await getCustomerCart();
-
-  const dispatch = useDispatch();
+  //потом поправить
   const store = useSelector((state) => state);
+  const dispatch = useDispatch();
   const history = useHistory();
 
-  const createOrderObject = useCallback(
-    async (values) => {
-      try {
-        let newOrder = await createNewOrder(values);
-        if (newOrder.message) {
-          dispatch(setErors(newOrder.message));
-        } else {
-          dispatch(setNewOrder(newOrder.data));
-          dispatch(clearErrors());
-        }
-      } catch (er) {
-        dispatch(setErors(er.response));
-      }
-    },
-    [dispatch]
-  );
-  const error = errorMessage(store);
-  const onSubmit = async (values) => {
-    const resp = await getCustomerCart();
-    const customer = resp.customerId;
-    // const product = resp.products[0].product;
+  const customerData = store.customer.customerData;
 
-    const newOrder = {
-      customerId: customer._id,
-      deliveryAdress: values.deliveryAdress,
-      shipping: "Kiev 50UAH",
-      paymentInfo: "Credit card",
-      status: "not shipped",
-      email: customer.email,
-      mobile: values.mobile,
-      letterSubject: "Thank you for order! You are welcome!",
-      letterHtml:
-        "<h1>Your order is placed. OrderNo is 023689452.</h1><p>{Other details about order in your HTML}</p>",
-    };
-    createOrderObject(newOrder);
+  useEffect(() => {
+    if (itemsInCart(store).length === 0) history.push("/");
+  }, [store]);
 
-    axios.get(configData.ORDERS_URL).then((resp) => {
-      alert(`Your order #${resp.data[0].orderNo}`);
-      setTimeout(() => {
-        history.push("/");
-      }, 2000);
-    });
-  };
-  const initialValues = {
+  const initialValuesUserForm = {
     deliveryAdress: {
-      country: "",
-      city: "",
-      adress: "",
-      postal: "",
+      country: customerData.deliveryAdress?.country
+        ? customerData?.deliveryAdress.country
+        : "",
+      city: customerData?.deliveryAdress?.city
+        ? customerData?.deliveryAdress?.city
+        : "",
+      adress: customerData.deliveryAdress?.adress
+        ? customerData?.deliveryAdress.adress
+        : "",
+      postal: customerData.deliveryAdress?.postal
+        ? customerData?.deliveryAdress.postal
+        : "",
     },
-    firstName: "",
-    lastName: "",
-    email: "",
-    mobile: "",
+    email: customerData?.email ? customerData?.email : "",
+    mobile: customerData?.mobile ? customerData?.mobile : "",
+    shipping: "Kiev 50UAH",
+    paymentInfo: "Credit card",
+    status: "not shipped",
+    letterSubject: letterSubject,
+    letterHtml: letterHtml,
   };
+
+  const onSubmit = async (value) => {
+    dispatch(createOrder(value));
+    dispatch(updateCustomer(value));
+  };
+
   const validationSchema = OrderSchema;
   return (
     <>
+      {" "}
       <Header />
+      <OrderList />
       <OrderForm
-        initialValues={initialValues}
+        initialValues={initialValuesUserForm}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
-        // errorMessage={error}
       />
       <Footer />
     </>

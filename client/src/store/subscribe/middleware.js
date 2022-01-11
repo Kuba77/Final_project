@@ -1,27 +1,33 @@
 import axios from "axios";
 import { message } from "antd";
 import configData from "../../config/config.json";
-import {successMassage, warningMessage, errorMessage} from "../../components/TosterMessages/TosterMessages";
+
+import {
+  successMassage,
+  warningMessage,
+  errorMessage,
+} from "../../components/TosterMessages/TosterMessages";
 import "antd/dist/antd.css";
 
-const warningMessageRequest = (requestMessage) => message.warning(`${requestMessage}`);
+const warningMessageRequest = (requestMessage) =>
+  message.warning(`${requestMessage}`);
 
 const createNewSubscribe = (credentials) => {
   axios
     .post(`${configData.SUBSCRIBERS}`, credentials)
     .then((response) => {
       if (response.status === 200) {
-        successMassage()
+        successMassage();
       } else {
-        warningMessage()
+        warningMessage();
       }
     })
     .catch((error) => {
       const requestMessage = error.response.data.message;
       if (requestMessage) {
-        warningMessageRequest(requestMessage)
+        warningMessageRequest(requestMessage);
       } else {
-        errorMessage()
+        errorMessage();
       }
     });
 };

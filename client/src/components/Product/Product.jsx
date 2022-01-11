@@ -5,7 +5,14 @@ import { getSelectedProduct } from "../../services/products";
 import { addOrRemoveProductToCart } from "../../store/cart/reducer";
 import { addOrRemoveProductToFavorite } from "../../store/favorites/reducer";
 import { MdOutlineCancel } from "react-icons/md";
-import { BsBasket, BsFillHeartFill } from "react-icons/bs";
+import {
+  createProductComment,
+  deleteProductComment,
+  getAllProductComments,
+} from "../../services/comments";
+import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
+import { useFormik } from "formik";
+import PuffLoader from "react-spinners/PuffLoader";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAuthor from "./ProductAuthor/ProductAuthor";
 import ProductDescription from "./ProductDescription/ProductDescription";
@@ -19,14 +26,14 @@ import {
   itemsInCart,
   itemsInFavorite, 
 } from "../../store/selectors";
-import PuffLoader from "react-spinners/PuffLoader";
+
 
 const Product = () => {
   let { productId } = useParams();
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [product, setProduct] = useState({});
   const [isLoading, setLoading] = useState(false);
+  const [product, setProduct] = useState({});
   const [toggle, setToggle] = useState(0);
 
   const isItemInFavorites = itemsInFavorite(store).some(
@@ -37,8 +44,11 @@ const Product = () => {
   );
 
   const getProduct = useCallback(async () => {
-    const productItem = await getSelectedProduct(productId);
-    setProduct(productItem)
+    // const productItem = await getSelectedProduct(productId);
+    // setProduct(productItem)
+    // setLoading(true);
+    const products = await getSelectedProduct(productId);
+    setProduct(products);
     setLoading(false);
   }, [setProduct, productId]);
 
@@ -57,9 +67,13 @@ const Product = () => {
   return (
     <React.Fragment>
 
-      <LoadSpiner />
-
-      {!!product.name && (
+        {isLoading && (
+            <div className={classes.product__loader}>
+              <PuffLoader loading={isLoading} color="purple" size={120} />
+            </div>
+        )}
+        
+      {!!product.name && !isLoading && (
         <div>
           <div className={classes.product__header}>
             <p>

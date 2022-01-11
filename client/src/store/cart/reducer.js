@@ -6,6 +6,7 @@ import {
   getCustomerCart,
   moveCartToDB,
   updateCart,
+  deleteCart,
 } from "../../services/cart";
 import { removeDublikateObj } from "../../utils/utils";
 import { message } from "antd";
@@ -81,7 +82,7 @@ export const addOrRemoveProductToCart = createAsyncThunk(
 export const addProductToCart = createAsyncThunk(
   "cart/addProductToCart",
   async function (value, { rejectWithValue, getState, dispatch }) {
-    const knownCustomer = getState().customer?.customerData?.id;
+    const knownCustomer = getState().customer?.customerData?._id;
     try {
       if (knownCustomer) {
         const response = await addProduct(value._id);
@@ -96,7 +97,6 @@ export const addProductToCart = createAsyncThunk(
       }
     } catch (error) {
       errorMessageRequest(error.message);
-
       return rejectWithValue(error.message);
     }
   }
@@ -104,11 +104,11 @@ export const addProductToCart = createAsyncThunk(
 export const removeProductFromCart = createAsyncThunk(
   "cart/removeProductFromCart",
   async function (value, { rejectWithValue, getState, dispatch }) {
-    const knownCustomer = getState().customer?.customerData?.id;
+    const knownCustomer = getState().customer?.customerData?._id;
     try {
       if (knownCustomer) {
         const response = await removeProduct(value._id);
-        if (!response._id) {
+        if (!response._id && response.products.length !== 0) {
           throw new Error(
             "I can't remove an item from my cart, try again later."
           );
@@ -139,19 +139,36 @@ export const decr = createAsyncThunk(
     }
   }
 );
-
+export const deleteCustomerCartDB = createAsyncThunk(
+  "cart/deleteCustomerCartDB",
+  async function (_, { rejectWithValue, dispatch }) {
+    try {
+      const response = await deleteCart();
+      if (response.status === 200 && response.data.message) {
+        dispatch(clearCart());
+      } else {
+        throw new Error(
+          "I can't remove an item from my cart, try again later."
+        );
+      }
+    } catch (error) {
+      errorMessageRequest(error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
 const setError = (state, action) => {
   state.status = "rejected";
   state.error = action.payload;
 };
 const setLoading = (state, action) => {
-  state.status = "loading";
+  state.status = true;
   state.error = null;
 };
 
 const defaultState = {
   products: [],
-  // status: null,
+  status: null,
   error: null,
 };
 
@@ -177,18 +194,17 @@ const cartSlice = createSlice({
     },
   },
   extraReducers: {
-    [getcart.pending]: setLoading,
-    [getcart.fulfilled]: (state, action) => {
-      state.status = "resolve";
-      state.error = null;
-      state.products = action.payload;
-    },
-    [getcart.rejected]: setError,
+    // [getcart.pending]: setLoading,
+    // [getcart.fulfilled]: (state, action) => {
+    //   state.status = "resolve";
+    //   state.error = null;
+    //   state.products = action.payload;
+    // },
+    // [getcart.rejected]: setError,
     [addProductToCart.pending]: setLoading,
     [addProductToCart.fulfilled]: (state, action) => {
-      state.status = "resolve";
+      state.status = false;
       state.error = null;
-      // state.products = action.payload;
     },
     [addProductToCart.rejected]: setError,
     [decr.pending]: setLoading,
@@ -202,7 +218,6 @@ const cartSlice = createSlice({
     [removeProductFromCart.fulfilled]: (state, action) => {
       state.status = "resolve";
       state.error = null;
-      // state.products = action.payload;
     },
     [removeProductFromCart.rejected]: setError,
     [moveAnonimCartToDb.pending]: setLoading,
@@ -218,6 +233,19 @@ const cartSlice = createSlice({
       state.products = action.payload;
     },
     [updateAnonimCartAndCustomerCart.rejected]: setError,
+    [updateAnonimCartAndCustomerCart.rejected]: setError,
+    [updateAnonimCartAndCustomerCart.fulfilled]: (state, action) => {
+      state.status = "resolve";
+      state.error = null;
+      state.products = action.payload;
+    },
+    [updateAnonimCartAndCustomerCart.rejected]: setError,
+    [deleteCustomerCartDB.rejected]: setError,
+    [deleteCustomerCartDB.fulfilled]: (state, action) => {
+      state.status = "resolve";
+      state.error = null;
+    },
+    [deleteCustomerCartDB.rejected]: setError,
   },
 });
 

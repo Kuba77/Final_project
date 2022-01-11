@@ -239,6 +239,7 @@
   }
 }
 .footer_input_subscribe{
+  outline: none;
   font-family: $body-font;
   width: 65%;
   min-height: 55px;
@@ -331,7 +332,7 @@
 .footer_subscribe_title{
     margin-left: 3%;
     font-weight: 600;
-    font-size: 28px;
+    font-size: $h1-font-size;
     line-height: 55px;
     color: $text-color;
     max-width: 50%;
