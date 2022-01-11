@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { customerData } from "../../store/selectors";
 import { Formik, Form } from "formik";
 import classes from "./ProfileForm.module.scss";
-
+import { BiImageAdd } from 'react-icons/bi'
 
 const ProfileForm = (props) => {
   const { initialValues, validationSchema, onSubmit } = props;

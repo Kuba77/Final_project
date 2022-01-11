@@ -1,11 +1,11 @@
 import React from "react";
 import { Formik } from "formik";
-import classes from "../Subscribe/Footer.module.scss";
+import classes from "./Footer.module.scss";
 import * as yup from "yup";
 
-import createNewSubscribe from "../../store/subscribe/createNewSubscribe";
+import createNewSubscribe from "../../store/subscribe/middleware";
 import { connect } from "react-redux";
-import { letterHtmlSubscribe, letterSubjectSubscribe } from "../Subscribe/letterConfig";
+import { letterHtmlSubscribe, letterSubjectSubscribe } from "./letterConfig";
 
 const FormSubscribe = connect(null, { createNewSubscribe })(
   ({ setIsSubscribed, createNewSubscribe }) => {

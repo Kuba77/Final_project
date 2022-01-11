@@ -4,7 +4,6 @@ import getAllCategories from "../../services/catalog";
 
 const CategoriesList = () => {
   const [category, setCategory] = useState([]);
-
   const getCategories = useCallback(async () => {
     const categories = await getAllCategories();
     setCategory(categories);
@@ -14,11 +13,13 @@ const CategoriesList = () => {
     getCategories();
   }, []);
 
-  const itemList = category.map((item) => (
-    <CategoriesItem item={item} key={item.id} />
-  ));
-
-  return <>{itemList}</>;
+  return (
+    <>
+      {category.map((item) => (
+        <CategoriesItem item={item} key={item.id} />
+      ))}
+    </>
+  );
 };
 
 export default CategoriesList;

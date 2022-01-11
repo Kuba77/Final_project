@@ -3,8 +3,7 @@ import cartReducer from "./cart/reducer";
 import favoriteReducer from "./favorites/reducer";
 import customerReducer from "./customer/reducer";
 import errorsReducer from "./errors/reducer";
-import promotionReducer from "./promotion/reducer";
-import ordersReducer from "./order/reducer";
+// import categoriesReducer from "./category/reducer";
 
 function syncWithLocalStorage({ getState }) {
   return (next) => (action) => {
@@ -20,8 +19,7 @@ export const store = configureStore({
     favorites: favoriteReducer,
     customer: customerReducer,
     errors: errorsReducer,
-    promotion: promotionReducer,
-    orders: ordersReducer,
+    // category: categoriesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(syncWithLocalStorage),

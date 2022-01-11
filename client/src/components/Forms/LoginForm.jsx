@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import { Formik, Form } from "formik";
 import { Link, useHistory } from "react-router-dom";
 import FormikControl from "./FormikControl";
@@ -9,11 +9,9 @@ import { setErors, clearErrors } from "../../store/errors/reducer";
 import { logOrRegisterCustomer } from "../../services/user";
 import { GoogleLogin } from "react-google-login";
 import configData from "../../config/config.json";
-
-import { setItemInCart, clearCart, getcart } from "../../store/cart/reducer";
-import { letHimComeInGoogle } from "../../store/customer/reducer";
+import { setItemInCart, clearCart } from "../../store/cart/reducer";
+import { stateCart } from "../../store/selectors";
 import { customerCartMovement } from "../../utils/utils";
-import { customerName } from "../../store/selectors";
 
 function LoginForm(props) {
   const { initialValues, validationSchema, onSubmit } = props;
@@ -21,16 +19,32 @@ function LoginForm(props) {
   const history = useHistory();
   const store = useSelector((state) => state);
 
-  const responseSuccessGoogle = (response) => {
-    dispatch(letHimComeInGoogle(response));
-  };
-
-  useEffect(() => {
-    if (customerName(store)) {
-      history.push("/");
-    }
-  }, [store]);
-
+  const responseSuccessGoogle = useCallback(
+    async (response) => {
+      try {
+        const customer = await logOrRegisterCustomer(response);
+        if (customer.id) {
+          try {
+            const customerCart = await customerCartMovement(stateCart(store));
+            dispatch(clearCart());
+            customerCart.forEach(function (item) {
+              dispatch(setItemInCart(item));
+            });
+          } catch (error) {
+            dispatch(setErors(error.response));
+          }
+          dispatch(setCustomer(customer));
+          dispatch(clearErrors());
+          history.push("/");
+        } else {
+          dispatch(setErors(customer));
+        }
+      } catch (error) {
+        dispatch(setErors(error.response));
+      }
+    },
+    [dispatch, history, store]
+  );
   const responseErrorGoogle = useCallback(
     async (response) => {
       dispatch(setErors(response.message));

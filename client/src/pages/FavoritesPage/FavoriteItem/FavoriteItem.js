@@ -5,28 +5,36 @@ import classes from "./FavoriteItem.module.scss";
 import { AiFillHeart } from "react-icons/ai";
 import { BsBasket } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
-import { addOrRemoveProductToCart } from "../../../store/cart/reducer";
+import { setItemInCart, deleteItemFromCart } from "../../../store/cart/reducer";
+import { deleteFavorites } from "../../../store/favorites/reducer";
 import { itemsInCart } from "../../../store/selectors";
-import { addOrRemoveProductToFavorite } from "../../../store/favorites/reducer";
 
 const FavoriteItem = (props) => {
-  const {
-    imgSrc,
-    title,
-    author,
-    quantity,
-    itemNo,
-    price,
-    salePrice,
-    item,
-    id,
-  } = props;
+  const { imgSrc, title, author, quantity, itemNo, price, salePrice, item } =
+    props;
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
 
-  const isItemInCart = itemsInCart(store).some(
-    (item) => item.product._id === id
-  );
+  const isItemInCart = itemsInCart(store).some((item) => item._id === item._id);
+
+  const deleteFavoritesClick = (e) => {
+    e.stopPropagation();
+    dispatch(deleteFavorites(item._id));
+  };
+
+  const addToCart = (value) => {
+    try {
+      if (isItemInCart) {
+        dispatch(deleteItemFromCart(value._id));
+      } else {
+        dispatch(
+          setItemInCart({ _id: value._id, product: value, cartQuantity: 1 })
+        );
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <div className={classes.favorites__item}>
@@ -35,20 +43,17 @@ const FavoriteItem = (props) => {
         <AiFillHeart
           color="rgb(211, 6, 6)"
           size={32}
-          onClick={() => {
-            dispatch(addOrRemoveProductToFavorite(item._id));
-          }}
+          onClick={deleteFavoritesClick}
         />
         {salePrice && <span></span>}
       </div>
       <div className={classes.favorites__item__textarea}>
-        <div className={classes.favorites__item__textarea__wrap}>
-          <Link to={`/product/${itemNo}`}>
-            <h4>{title}</h4>
-          </Link>
-        </div>
+        <Link to={`/product/${itemNo}`}>
+          <h4>{title}</h4>
+        </Link>
         <div className={classes.favorites__item__textarea_desc}>
           <p>Author: {author}</p>
+          <p>Quantity: {quantity}</p>
           <div className={classes.favorites__item__textarea_price}>
             <p
               className={classes.favorite__item_price}
@@ -62,7 +67,7 @@ const FavoriteItem = (props) => {
 
         <button
           onClick={() => {
-            dispatch(addOrRemoveProductToCart(item));
+            addToCart(item);
           }}
         >
           {isItemInCart ? (

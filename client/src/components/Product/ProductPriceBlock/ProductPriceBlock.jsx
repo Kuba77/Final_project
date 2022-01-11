@@ -9,26 +9,30 @@ const ProductPriceBlock = (props) => {
 
   return (
     <React.Fragment>
-      <div className={classes.price_store__block}>
+      <div className={classes.price_block}>
         <ProductPrice
-          blockClassName={classes.price_block}
           className={classes.product_info__price}
           price={product.currentPrice}
           salePrice={product.salePrice}
         />
-        <ProductStore
-          className={classes.product_info__store}
-          quantity={product.quantity}
-        />
+        {product.quantity > 0 ? (
+          <ProductStore
+            className={classes.product_info__store}
+            store={`In stock ${product.quantity}`}
+          />
+        ) : (
+          <ProductStore
+            className={classes.product_info__store}
+            store="Sold out"
+          />
+        )}
       </div>
     </React.Fragment>
   );
 };
 
 ProductPriceBlock.propTypes = {
-  product: PropTypes.object,
   currentPrice: PropTypes.number,
-  salePrice: PropTypes.number,
   quantity: PropTypes.number,
 }
 

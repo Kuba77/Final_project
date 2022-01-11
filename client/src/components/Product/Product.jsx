@@ -2,8 +2,11 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getSelectedProduct } from "../../services/products";
-import { addOrRemoveProductToCart } from "../../store/cart/reducer";
-import { addOrRemoveProductToFavorite } from "../../store/favorites/reducer";
+import { setItemInCart, deleteItemFromCart } from "../../store/cart/reducer";
+import {
+  setFavoriteItems,
+  deleteFavorites,
+} from "../../store/favorites/reducer";
 import { MdOutlineCancel } from "react-icons/md";
 import {
   createProductComment,
@@ -12,68 +15,124 @@ import {
 } from "../../services/comments";
 import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
 import { useFormik } from "formik";
-import PuffLoader from "react-spinners/PuffLoader";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAuthor from "./ProductAuthor/ProductAuthor";
 import ProductDescription from "./ProductDescription/ProductDescription";
 import ProductPriceBlock from "./ProductPriceBlock/ProductPriceBlock";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ProductImg from "./ProductImg/ProductImg";
-import ProductComments from "./ProductComments/ProductComments";
 import classes from "./Product.module.scss";
 import Button from "../Button/Button";
 import {
+  customerData,
   itemsInCart,
-  itemsInFavorite, 
+  itemsInFavorite,
 } from "../../store/selectors";
-
+import { removeProductFromCart, addProductToCart } from "../../services/cart";
 
 const Product = () => {
   let { productId } = useParams();
   const store = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const [isLoading, setLoading] = useState(false);
-  const [product, setProduct] = useState({});
-  const [toggle, setToggle] = useState(0);
 
+  const dispatch = useDispatch();
+  const [product, setProduct] = useState({});
+  const [comments, setComments] = useState([]);
+  const [toggle, setToggle] = useState(0);
   const isItemInFavorites = itemsInFavorite(store).some(
     (item) => item._id === product._id
   );
   const isItemInCart = itemsInCart(store).some(
-    (item) => item.product._id === product._id
+    (item) => item._id === product._id
   );
+  console.log("itemsInCart(store)", itemsInCart(store));
+  console.log("product._id", product._id);
+  console.log("isItemInCart", isItemInCart);
+  const addToCart = async (value) => {
+    if (customerData(store).id) {
+      if (isItemInCart) {
+        let r = await removeProductFromCart(value._id);
+        console.log("r", r);
+        dispatch(deleteItemFromCart(value._id));
+      } else {
+        let q = await addProductToCart(value._id);
+        console.log("q", q);
+        dispatch(
+          setItemInCart({ _id: value._id, product: value, cartQuantity: 1 })
+        );
+      }
+    } else {
+      if (isItemInCart) {
+        dispatch(deleteItemFromCart(value._id));
+      } else {
+        dispatch(
+          setItemInCart({ _id: value._id, product: value, cartQuantity: 1 })
+        );
+      }
+    }
+  };
+
+  const addToWishList = (info) => {
+    try {
+      if (isItemInFavorites) {
+        dispatch(deleteFavorites(productId));
+      } else {
+        dispatch(setFavoriteItems(info));
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   const getProduct = useCallback(async () => {
-    // const productItem = await getSelectedProduct(productId);
-    // setProduct(productItem)
-    // setLoading(true);
     const products = await getSelectedProduct(productId);
     setProduct(products);
-    setLoading(false);
   }, [setProduct, productId]);
 
   useEffect(() => {
     getProduct();
   }, [getProduct, productId]);
 
-  const LoadSpiner = () => {
-    return isLoading && (
-      <div className={classes.loader} >
-        <PuffLoader color="purple" size={120} />
-      </div>
-    )
-  }
+  const getComments = useCallback(async () => {
+    const product = await getSelectedProduct(productId);
+    const productComments = await getAllProductComments(product._id);
+    setComments(productComments);
+  }, [productId]);
+
+  useEffect(() => {
+    getComments();
+  }, [getComments]);
+
+  const deleteComment = useCallback(
+    async (value) => {
+      await deleteProductComment(value);
+      getComments();
+    },
+    [getComments]
+  );
+
+  const formik = useFormik({
+    initialValues: {
+      content: "",
+    },
+    onSubmit: async function setValues(value) {
+      let commentObject = {
+        product: product,
+        customer: customerData(store),
+        content: value,
+      };
+      try {
+        await createProductComment(commentObject);
+        formik.handleReset();
+        getComments();
+      } catch (error) {
+        alert(error);
+      }
+    },
+  });
 
   return (
     <React.Fragment>
-
-        {isLoading && (
-            <div className={classes.product__loader}>
-              <PuffLoader loading={isLoading} color="purple" size={120} />
-            </div>
-        )}
-        
-      {!!product.name && !isLoading && (
+      {!!product.name && (
         <div>
           <div className={classes.product__header}>
             <p>
@@ -106,7 +165,7 @@ const Product = () => {
                   <Button
                     type="main"
                     onClick={() => {
-                      dispatch(addOrRemoveProductToCart(product));
+                      addToCart(product);
                     }}
                   >
                     {isItemInCart ? (
@@ -118,7 +177,7 @@ const Product = () => {
                   <Button
                     type={isItemInFavorites ? "transparent" : "main"}
                     onClick={() => {
-                      dispatch(addOrRemoveProductToFavorite(product._id));
+                      addToWishList(product);
                     }}
                   >
                     <BsFillHeartFill
@@ -160,8 +219,66 @@ const Product = () => {
               Customer Reviews
             </h3>
 
-            <ProductComments product={product} />
+            <div className={classes.product_block__review}>
+              <form onSubmit={formik.handleSubmit}>
+                <textarea
+                  id="content"
+                  name="content"
+                  type="text"
+                  placeholder="Please, live your comment here..."
+                  onChange={formik.handleChange}
+                  value={formik.values.content}
+                ></textarea>
 
+                <div className={classes.review__buttons}>
+                  <Button type="reset" size="m" onClick={formik.handleReset}>
+                    Reset
+                  </Button>
+
+                  <Button
+                    type="submit"
+                    size="m"
+                    onClick={() => {
+                      if (!customerData(store).id)
+                        alert("You must be authorized to leave a comment");
+                    }}
+                  >
+                    Send
+                  </Button>
+                </div>
+              </form>
+            </div>
+
+            {comments.length === 0 ? (
+              <div className={classes.review__dis}>
+                <p className={classes.review__text}>
+                  This product don't have review. Yours 'll be the first.
+                </p>
+              </div>
+            ) : (
+              comments.map((item) => {
+                return (
+                  <div key={item._id} className={classes.review}>
+                    <div className={classes.review__header}>
+                      <p className={classes.review__customer}>
+                        {item.customer.firstName} {item.customer.lastName}
+                      </p>
+                      <Button
+                        type="main"
+                        onClick={() => {
+                          if (customerData(store).id === item.customer._id) {
+                            deleteComment(item._id);
+                          }
+                        }}
+                      >
+                        <BsFillTrashFill color="#8D28AD" size={16} />
+                      </Button>
+                    </div>
+                    <p className={classes.review__text}>{item.content}</p>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       )}

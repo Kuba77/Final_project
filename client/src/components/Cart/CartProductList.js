@@ -1,67 +1,155 @@
 import React, { useEffect, useState, useCallback } from "react";
 import CartProduct from "./CartProduct";
-import Empty from "../Empty/Empty";
 import { itemsInCart } from "../../store/selectors";
 import { useSelector, useDispatch } from "react-redux";
+import classes from "../../pages/FavoritesPage/FavoritesPage.module.scss";
 import { customerData } from "../../store/selectors";
+import { deleteItemFromCart, rewrite } from "../../store/cart/reducer";
 import {
-  rewrite,
-  addProductToCart,
-  decr,
+  getCustomerCart,
   removeProductFromCart,
-} from "../../store/cart/reducer";
-import { addRemoveQuantity } from "../../utils/utils";
-import PuffLoader from "react-spinners/PuffLoader";
+  decreaseProductQuantity,
+  addProductToCart,
+} from "../../services/cart";
+import { addItemQuantity, decreaseItemQuantity } from "../../utils/utils";
 
 const CartProductList = () => {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const [cart, setCart] = useState([]);
-  const [isLoading, setLoading] = useState(false);
 
-  const { status, error } = useSelector((state) => state.cart);
-
-  useEffect(() => {
-    setLoading(true);
-    setCart(itemsInCart(store));
-    setLoading(false);
+  const getCart = useCallback(async () => {
+    try {
+      if (customerData(store).id) {
+        const customerCart = await getCustomerCart();
+        if (customerCart._id) {
+          setCart(customerCart.products);
+        }
+      } else {
+        setCart(itemsInCart(store));
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }, [store]);
 
-  const localAddRemoveQuantity = useCallback(
-    (value1, value2) => {
-      dispatch(rewrite(addRemoveQuantity(cart, value1._id, value2)));
+  useEffect(() => {
+    getCart();
+  }, []);
+
+  useEffect(() => {
+    setCart(itemsInCart(store));
+  }, [store]);
+
+  const localIncrease = useCallback(
+    (_id) => {
+      let newarr = addItemQuantity(cart, _id);
+      dispatch(rewrite(newarr));
     },
     [cart, dispatch]
   );
-  const increaseProduct = (value) => {
-    dispatch(addProductToCart(value));
-  };
-  const deleteProductFromCart = (value) => {
-    dispatch(removeProductFromCart(value));
-  };
-  const decreaseProduct = (value) => {
-    dispatch(decr(value));
-  };
+  const localDecrease = useCallback(
+    (_id) => {
+      let newarr = decreaseItemQuantity(cart, _id);
+      console.log(newarr);
+      dispatch(rewrite(newarr));
+    },
+    [cart, dispatch]
+  );
 
-  const CustomerCart = cart.map((item, index) => (
-    <CartProduct
-      item={item}
-      key={index}
-      deleteProductFromCart={deleteProductFromCart}
-      decreaseProduct={decreaseProduct}
-      increaseProduct={increaseProduct}
-      customer={customerData(store).id}
-      localAddRemoveQuantity={localAddRemoveQuantity}
-    />
-  ));
+  const localRemoveProd = useCallback(
+    (value) => {
+      dispatch(deleteItemFromCart(`${value}`));
+      setCart(itemsInCart(store));
+    },
+    [store, dispatch]
+  );
+
+  const deleteProductFromCart = useCallback(
+    async (value) => {
+      try {
+        const response = await removeProductFromCart(value);
+        dispatch(rewrite(response.products));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [dispatch]
+  );
+
+  const increaseProduct = useCallback(
+    async (value) => {
+      try {
+        const response = await addProductToCart(value);
+        dispatch(rewrite(response.products));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [dispatch]
+  );
+
+  const decreaseProduct = useCallback(
+    async (value) => {
+      try {
+        const response = await decreaseProductQuantity(value);
+        console.log(value);
+        dispatch(rewrite(response.products));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [dispatch]
+  );
 
   return (
-    <div>
-      {status === "loading" && <h1>Loading</h1>}
-      {CustomerCart}
-      {/* {error && <h1>OSHIBKA {error}</h1>} */}
-      {cart.length === 0 && <Empty />}
-    </div>
+    <>
+      {customerData(store).id ? (
+        <>
+          {cart.length > 0 ? (
+            cart.map((item, index) => (
+              <CartProduct
+                item={item}
+                key={index}
+                deleteProductFromCart={deleteProductFromCart}
+                decreaseProduct={decreaseProduct}
+                increaseProduct={increaseProduct}
+              />
+            ))
+          ) : (
+            <div className={classes.favorites__noitem}>
+              <img
+                alt="No items in cart"
+                src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639408051/sideAssets/SeekPng.com_anime-blush-png_380918_jzwoqn.png"
+              />
+              <h3>No items in cart</h3>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          {cart.length > 0 ? (
+            cart.map((item, index) => (
+              <CartProduct
+                item={item}
+                key={index}
+                deleteProductFromCart={localRemoveProd}
+                increaseProduct={localIncrease}
+                decreaseProduct={localDecrease}
+              />
+            ))
+          ) : (
+            <div className={classes.favorites__noitem}>
+              <img
+                alt="No items in cart"
+                src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639408051/sideAssets/SeekPng.com_anime-blush-png_380918_jzwoqn.png"
+              />
+              <h3>No items in cart</h3>
+            </div>
+          )}
+        </>
+      )}
+    </>
   );
 };
 

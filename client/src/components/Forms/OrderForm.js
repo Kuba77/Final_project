@@ -4,13 +4,9 @@ import { Formik, Form } from "formik";
 import classes from "./Form.module.scss";
 
 const OrderForm = (props) => {
-  const { initialValues, validationSchema, onSubmit } = props;
+  const { initialValues, validationSchema } = props;
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-    >
+    <Formik initialValues={initialValues} validationSchema={validationSchema}>
       {(formik) => {
         return (
           <div className={classes.form__wrapper}>
@@ -19,6 +15,18 @@ const OrderForm = (props) => {
               <FormikControl
                 control="input"
                 type="text"
+                label="Please, enter your firstname"
+                name="firstName"
+              />
+              <FormikControl
+                control="input"
+                type="text"
+                label="Please, enter your lastname"
+                name="lastName"
+              />
+              <FormikControl
+                control="input"
+                type="tel"
                 label="Please, enter your mobile phone"
                 name="mobile"
               />
@@ -32,35 +40,34 @@ const OrderForm = (props) => {
                 control="input"
                 type="text"
                 label="Please, enter your country"
-                name="deliveryAdress.country"
+                name="country"
               />
-
               <FormikControl
                 control="input"
                 type="text"
                 label="Please, enter your city"
-                name="deliveryAdress.city"
+                name="city"
               />
               <FormikControl
                 control="input"
                 type="text"
                 label="Please, enter your adress"
-                name="deliveryAdress.adress"
+                name="adress"
               />
               <FormikControl
                 control="input"
-                type="text"
+                type="number"
                 label="Please, enter your postcode"
-                name="deliveryAdress.postal"
+                name="postal"
               />
-              <button
-                className={classes.form__btn}
-                type="submit"
-                disabled={!formik.isValid}
-              >
-                Submit
-              </button>
             </Form>
+            <button
+              className={classes.form__btn}
+              type="submit"
+              disabled={!formik.isValid}
+            >
+              Submit
+            </button>
           </div>
         );
       }}

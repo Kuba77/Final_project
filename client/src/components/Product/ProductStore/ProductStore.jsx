@@ -2,26 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ProductStore = (props) => {
-    const { className, quantity } = props;
-
-    const ProductQuantity = (quantity) => {
-        return (
-            quantity > 0 ?
-                <p className={className}>In stock {quantity}</p> :
-                <p className={className}>Sold out</p>
-        )
-    }
-
+    const { className, store } = props;
     return (
         <React.Fragment>
-            {ProductQuantity(quantity)}
+            <p className={className}>{store}</p>
         </React.Fragment>
     )
 };
 
 ProductStore.propTypes = {
     className: PropTypes.string,
-    quantity: PropTypes.number,
+    store: PropTypes.string,
 };
 
 export default ProductStore;

@@ -1,4 +1,3 @@
-import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HomePage from "../../pages/HomePage/HomePage";
@@ -8,20 +7,17 @@ import Collection from "../../pages/CollectionPage/CollectionPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import RegistrationPage from "../../pages/RegistrationPage/RegistrationPage";
 import CategoryPage from "../../pages/CategoryPage/CategoryPage";
-import FavoritesPage from "../../pages/FavoritesPage/FavoritesPage";
-import ProfilePage from "../../pages/ProfilePage/ProfilePage";
+import FavoritesPage from "../../pages/FavoritesPage/FavoritesPage"
+import ProfilePage from "../../pages/ProfilePage/ProfilePage"
 import { customerData } from "../../store/selectors";
 import OrderPage from "../Order-page/Order-page";
-import LiqPayForm from "../Order-page/Payment-page";
-import Header from "../Header/Header";
-import Footer from "..//Footer/Footer";
 
 const RoutePages = () => {
+
   const store = useSelector((state) => state);
+  
 
   return (
-    <React.Fragment>
-    <Header />
     <Switch>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="/cart" component={CartPage}></Route>
@@ -31,22 +27,14 @@ const RoutePages = () => {
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/registration" component={RegistrationPage}></Route>
       <Route exact path="/profile">
-        {customerData(store)?._id ? (
-          <ProfilePage />
-        ) : (
-          <Redirect to="/registration" />
-        )}
-      </Route>
+        {customerData(store).id ? <ProfilePage /> : <Redirect to="/registration" />}</Route>
       <Route
         exact
         path="/category/:categoryId"
         component={CategoryPage}
       ></Route>
       <Route exact path="/order" component={OrderPage}></Route>
-      <Route exact path="/payment" component={LiqPayForm}></Route>
     </Switch>
-    <Footer />
-    </React.Fragment>
   );
 };
 

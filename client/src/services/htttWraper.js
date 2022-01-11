@@ -1,8 +1,7 @@
 import configData from "../config/config.json";
 const axios = require("axios");
-axios.defaults.baseURL = configData.REACT_APP_API_URL;
-// axios.defaults.baseURL = configData.BASE_URL;
-const JWTToken = localStorage.getItem("token");
+axios.defaults.baseURL = configData.BASE_URL;
+const JWTToken = sessionStorage.getItem("token");
 
 export const setAuthToken = (token) => {
   if (token) {
