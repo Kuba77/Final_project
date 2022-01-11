@@ -8,12 +8,14 @@ import { MdOutlineCancel } from "react-icons/md";
 import { setItemInCart, deleteItemFromCart } from "../../../store/cart/reducer";
 import { deleteFavorites } from "../../../store/favorites/reducer";
 import { itemsInCart } from "../../../store/selectors";
+import { productPromotion } from "../../../store/selectors";
 
 const FavoriteItem = (props) => {
   const { imgSrc, title, author, quantity, itemNo, price, salePrice, item } =
     props;
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
+  const promotion = productPromotion(store)
 
   const isItemInCart = itemsInCart(store).some((item) => item._id === item._id);
 
@@ -39,7 +41,7 @@ const FavoriteItem = (props) => {
   return (
     <div className={classes.favorites__item}>
       <div className={classes.favorites__item__img}>
-        <img src={imgSrc} />
+        <img src={imgSrc} alt={title}/>
         <AiFillHeart
           color="rgb(211, 6, 6)"
           size={32}

@@ -12,6 +12,7 @@ export const addProductToCart = async (value) => {
     return e.message;
   }
 };
+
 export const decreaseProductQuantity = async (value) => {
   try {
     return await axios
@@ -58,6 +59,30 @@ export const moveCartToDB = async (value) => {
   try {
     return await axios
       .post(`${configData.ADD_PRODUCT_TO_CART}`, value)
+      .then((res) => {
+        return res.data;
+      });
+  } catch (e) {
+    return e.message;
+  }
+};
+
+export const addProduct = async (value) => {
+  try {
+    return await axios
+      .put(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
+      .then((res) => {
+        return res.data;
+      });
+  } catch (e) {
+    return e.message;
+  }
+};
+
+export const removeProduct = async (value) => {
+  try {
+    return await axios
+      .delete(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
       .then((res) => {
         return res.data;
       });

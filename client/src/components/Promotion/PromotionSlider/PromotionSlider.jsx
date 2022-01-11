@@ -25,7 +25,7 @@ const PromotionSlider = (props) => {
           slidesPerView={"auto"}
           navigation={true}
           loop={true}
-          // autoplay={{ delay: 4000, disableOnInteraction: false }}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
           pagination={{
             clickable: true,
           }}

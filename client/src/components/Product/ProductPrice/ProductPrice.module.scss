@@ -1,0 +1,29 @@
+@import '../../../styles/config/variables.scss';
+
+.product {
+   
+    &_action__price {
+        font-size: $big-font-size;
+        color: $promotion-text-color;
+        margin: 0;
+        margin-right: 30px;
+
+        @include breakpoint(lg-only) {
+            font-size: 35px;
+        }
+
+        @include breakpoint(md-only) {
+            font-size: $h1-font-size;
+        }
+    }
+
+    &__price {
+        color: $text-color-light;
+        text-decoration: line-through;
+        margin: 0;
+
+        @include breakpoint(sm) {
+            font-size: $h2-font-size;
+        }
+    }
+}
