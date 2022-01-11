@@ -30,6 +30,11 @@ const Timer = (props) => {
   };
   useEffect(() => {
     startTimer();
+    // return () => {
+    //   setHour({}); 
+    //   setMinute({});
+    //   setSecond({});
+    // };
   }, []);
 
   return (

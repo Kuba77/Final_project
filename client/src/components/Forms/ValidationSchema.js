@@ -50,3 +50,10 @@ export const OrderSchema = Yup.object({
       .required("Required"),
   }),
 });
+
+export const CommentSchema = Yup.object({
+  content: Yup.string()
+  .max(180, "Must be 180 characters or less")
+  .min(1, "Must be 1 characters or more")
+  // .required("Required"),
+});
