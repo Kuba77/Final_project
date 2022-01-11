@@ -233,6 +233,7 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
         <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1638784698/hero_img_auj8wy.jpg" alt="image">
         <h2>Thank tou for your subscribe!</h2>
         <p>You will receive a lot of news...</p>
+        <p>Use promo "Skill" for 13% discont"
         <a href="http://localhost:3000/">Go to Manga Store</a>
     </div>
 </body>

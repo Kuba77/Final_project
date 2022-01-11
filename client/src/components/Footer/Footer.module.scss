@@ -219,6 +219,12 @@
     margin-top: 5px;
   }
 }
+.footer_quick_links_link:last-child{
+  @media screen and (min-width: 320px) and (max-width:599px){
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+}
 
 .footer_subscribe{
   @media screen and (min-width: 1260px) {
