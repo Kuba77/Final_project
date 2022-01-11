@@ -7,8 +7,6 @@ import { registerCustomer, loginCustomer } from "../../services/user";
 import { RegistrationSchema } from "../../components/Forms/ValidationSchema";
 import RegistrationForm from "../../components/Forms/RegistrationForm";
 import { errorMessage } from "../../store/selectors";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import { stateCart } from "../../store/selectors";
 import { customerCartMovement } from "../../utils/utils";
 import { setItemInCart, clearCart } from "../../store/cart/reducer";
@@ -72,14 +70,12 @@ const RegistrationPage = () => {
 
   return (
     <>
-      <Header />
       <RegistrationForm
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
         errorMessage={error}
       />
-      <Footer />
     </>
   );
 };

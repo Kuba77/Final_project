@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getFilteredProductByCategory } from "../../services/products";
-import Header from "../../components/Header/Header";
 import PuffLoader from "react-spinners/PuffLoader";
 import classes from "./CategoryPage.module.scss";
 import BookItem from "../../components/BookItem/BookItem";
@@ -24,7 +23,6 @@ const CategoryPage = () => {
 
   return (
     <>
-      <Header />
       <section className={classes.categoryPage}>
         {isLoading && (
           <div className={classes.categoryPage__loader}>

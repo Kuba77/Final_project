@@ -1,0 +1,135 @@
+@import "../../styles/config/variables.scss";
+
+.promotion_block {
+  background-color: $promotion-background-color-light;
+  margin: 80px 0;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  @include breakpoint(md-only) {
+    margin: 60px 0;
+  }
+
+  @include breakpoint(sm-only) {
+    margin: 40px 0;
+  }
+
+  @include breakpoint(xs-only) {
+    margin: 20px 0;
+  }
+
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px 0;
+    display: grid;
+    grid-column-gap: 30px;
+    grid-template-areas: "timer info";
+   
+    @include breakpoint(lg-only) {
+      justify-content: center;
+      padding: 20px 0;
+      grid-template-areas:
+        "timer"
+        "info";
+    }
+
+    @include breakpoint(md-only) {
+      max-width: 580px;
+    }
+
+    @include breakpoint(sm-only) {
+      padding: 10px 0;
+      max-width: 430px;
+    }
+
+    @include breakpoint(xs-only) {
+      max-width: 300px;
+    }
+  }
+}
+
+.timer {
+  grid-area: timer;
+  max-width: 300px;
+  margin-left: 15px;
+  align-self: center;
+
+  @include breakpoint(lg-only) {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 700px;
+  }
+
+  @include breakpoint(xs-only) {
+    flex-direction: column;
+  }
+
+  & h2 {
+    color: $body-color;
+    font-size: 2.1rem;
+    align-self: center;
+
+    @include breakpoint(lg-only) {
+      text-align: center;
+      min-width: 220px;
+      margin: 0 ;
+    }
+
+    @include breakpoint(sm-only) {
+      font-size: 1.7rem;
+      min-width: 150px;
+    }
+
+    @include breakpoint(xs-only) {
+      margin: 0 auto;
+      text-align: start;
+    }
+  }
+
+  & p {
+    font-size: 14px;
+    margin: 10px 0;
+
+    @include breakpoint(lg-only) {
+      display: none;
+    }
+  }
+
+  & span {
+    font-size: 2.5rem;
+
+    @include breakpoint(lg-only) {
+      text-align: start;
+      margin: 0 0 0 5px;
+      min-width: 220px;
+    }
+
+    @include breakpoint(sm-only) {
+      font-size: 1.7rem;
+      min-width: 150px;
+    }
+
+    @include breakpoint(xs-only) {
+      margin: 0 auto;
+      text-align: start;
+    }
+  }
+}
+
+.promotion_content {
+  grid-area: info;
+  display: flex;
+  align-items: center;
+  max-width: 700px;
+
+  @include breakpoint(lg-only) {
+    max-width: 760px;
+  }
+
+  @include breakpoint(md-only) {
+    justify-content: center;
+  }
+}
