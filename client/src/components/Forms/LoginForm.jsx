@@ -85,7 +85,7 @@ function LoginForm(props) {
                 </button>
                 <GoogleLogin
                   clientId={configData.REACT_APP_GOOGLE_CLIENT_ID}
-                  buttonText="Login with google"
+                  buttonText="GLogin"
                   onSuccess={responseSuccessGoogle}
                   onFailure={responseErrorGoogle}
                   cookiePolicy={"single_host_origin"}
