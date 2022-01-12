@@ -36,6 +36,8 @@ exports.addSubscriber = (req, res, next) => {
         message: `Subscriber with email "${subscriber.email}" is already exists`,
       });
     } else if (subscriber && !subscriber.enabled) {
+      console.log("subscriber !T", subscriber);
+
       const initialQuery = _.cloneDeep(req.body);
       const updatedSubscriber = queryCreator(initialQuery);
       updatedSubscriber.enabled = true;
@@ -46,6 +48,7 @@ exports.addSubscriber = (req, res, next) => {
         { new: true }
       )
         .then(async (subscriber) => {
+          console.log("res", res);
           const mailResult = await sendMail(
             subscriberMail,
             letterSubject,

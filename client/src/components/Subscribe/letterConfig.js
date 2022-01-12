@@ -236,4 +236,3 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
     </div>
 </body>
 </html>`
-
