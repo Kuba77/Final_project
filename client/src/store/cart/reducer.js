@@ -6,6 +6,7 @@ import {
   getCustomerCart,
   moveCartToDB,
   updateCart,
+  deleteCart,
 } from "../../services/cart";
 import { removeDublikateObj } from "../../utils/utils";
 import { message } from "antd";
@@ -217,9 +218,24 @@ const cartSlice = createSlice({
     [updateAnonimCartAndCustomerCart.rejected]: setError,
   },
 });
-
+export const deleteCustomerCartDB = createAsyncThunk(
+  "cart/deleteCustomerCartDB",
+  async function (_, { rejectWithValue, dispatch }) {
+    try {
+      const response = await deleteCart();
+      if (response.status === 200 && response.data.message) {
+        dispatch(clearCart());
+      } else {
+        throw new Error(
+          "I can't remove an item from my cart, try again later."
+        );
+      }
+    } catch (error) {
+      errorMessageRequest(error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
 export const { setItemInCart, deleteItemFromCart, clearCart, rewrite } =
   cartSlice.actions;
 export default cartSlice.reducer;
-
-

@@ -18,6 +18,17 @@ export async function logOrRegisterCustomer(value) {
     return e.message;
   }
 }
+
+export async function registerCustomer(value) {
+  try {
+    return await axios.post(configData.CUSTOMERS_URL, value).then((res) => {
+      return res;
+    });
+  } catch (error) {
+    return error.response.data;
+  }
+}
+
 export async function loginCustomer(value) {
   try {
     return await axios
@@ -32,15 +43,7 @@ export async function loginCustomer(value) {
     return error.response.data;
   }
 }
-export async function registerCustomer(value) {
-  try {
-    return await axios.post(configData.CUSTOMERS_URL, value).then((res) => {
-      return res;
-    });
-  } catch (error) {
-    return error.response.data;
-  }
-}
+
 
 export function logoutCustomer() {
   try {
@@ -50,7 +53,6 @@ export function logoutCustomer() {
     return error.response.data;
   }
 }
-
 export async function updateCustomer(value) {
   try {
     return await axios.put(configData.CUSTOMERS_URL, value).then((res) => {
@@ -60,6 +62,18 @@ export async function updateCustomer(value) {
     return error.response.data;
   }
 }
+
+export async function updateUser(value) {
+  try {
+    return await axios.put(configData.CUSTOMERS_URL, value).then((res) => {
+      console.log("updateUser", res);
+      return res;
+    });
+  } catch (error) {
+    return error.response.data;
+  }
+}
+
 export async function updateCustomerPassword(value) {
   try {
     return await axios
@@ -67,6 +81,16 @@ export async function updateCustomerPassword(value) {
       .then((res) => {
         return res.data;
       });
+  } catch (error) {
+    return error.response.data;
+  }
+}
+
+export async function getCustomerInfo() {
+  try {
+    return await axios.get(configData.CUSTOMER_URL).then((res) => {
+      return res;
+    });
   } catch (error) {
     return error.response.data;
   }

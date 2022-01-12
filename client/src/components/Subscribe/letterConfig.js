@@ -1,5 +1,4 @@
 export const letterSubject = 'Hellow customer'
-
 export const letterHtml = `<!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -136,7 +135,7 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
         h2 {
             position: absolute;
             left: 5%;
-            top: 35%;
+            top: 25%;
             color: #dfdfdf;
             font-size: 2.4rem;
             font-weight: 600;
@@ -145,13 +144,38 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
         @media screen and (min-width: 728px) and (max-width: 1200px){
             h2 {
                 left: 5%;
-                top: 30%;
+                top: 20%;
                 font-size: 1.6rem;
                 font-weight: 400;
             }
         }
         @media screen and (min-width: 320px) and (max-width: 727px){
             h2 {
+                left: 3%;
+                top: 20%;
+                font-size: 1rem;
+                font-weight: 300;
+            }
+        }
+        h3 {
+            position: absolute;
+            left: 5%;
+            top: 35%;
+            color: #dfdfdf;
+            font-size: 2.4rem;
+            font-weight: 600;
+            font-family: "Poppins", sans-serif;
+    }
+        @media screen and (min-width: 728px) and (max-width: 1200px){
+            h3 {
+                left: 5%;
+                top: 30%;
+                font-size: 1.6rem;
+                font-weight: 400;
+            }
+        }
+        @media screen and (min-width: 320px) and (max-width: 727px){
+            h3 {
                 left: 3%;
                 top: 30%;
                 font-size: 1rem;
@@ -161,8 +185,8 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
         p {
             position: absolute;
             left: 5%;
-            top: 45%;
-            color: #dfdfdf;
+            top: 55%;
+            color: #ff1010;
             font-size: 1.8rem;
             font-weight: 600;
             font-family: "Poppins", sans-serif;
@@ -170,7 +194,7 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
         @media screen and (min-width: 728px) and (max-width: 1200px){
             p{
                 left: 5%;
-                top: 40%;
+                top: 50%;
                 font-size: 1.3rem;
                 font-weight: 300;
             }
@@ -178,7 +202,7 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
         @media screen and (min-width: 320px) and (max-width: 727px){
             p {
                 left: 3%;
-                top: 40%;
+                top: 50%;
                 font-size: 0.8rem;
                 font-weight: 300;
             }
@@ -192,7 +216,7 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
             color: white;
             position: absolute;
             left: 5%;
-            top: 65%;
+            top: 75%;
             border-radius: 10px;
             border: none;
             padding: 10px;
@@ -203,7 +227,7 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
         @media screen and (min-width: 728px) and (max-width: 1200px){
             a {
                 left: 5%;
-                top: 60%;
+                top: 70%;
                 width: 25vh;
                 padding: 8px;
                 text-align: center;
@@ -216,7 +240,7 @@ export const letterHtmlSubscribe = `<!DOCTYPE html>
         @media screen and (min-width: 320px) and (max-width: 727px){
             a {
                 left: 3%;
-                top: 60%;
+                top: 70%;
                 width: 15vh;
                 padding: 8px;
                 text-align: center;

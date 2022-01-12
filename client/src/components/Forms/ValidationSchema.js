@@ -39,16 +39,6 @@ export const RegistrationSchema = Yup.object({
 });
 
 export const OrderSchema = Yup.object({
-  firstName: Yup.string()
-  .matches(nameRegExp, "Name is not valid")
-  .min(1, "Must be 2 characters or more")
-  .max(20, "Must be 20 characters or less")
-  .required("Required"),
-lastName: Yup.string()
-  .matches(nameRegExp, "Last name is not valid")
-  .min(1, "Must be 2 characters or more")
-  .max(20, "Must be 20 characters or less")
-  .required("Required"),
   email: Yup.string()
     .matches(emailRegex, "Input correct email")
     .required("Required"),

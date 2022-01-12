@@ -37,4 +37,13 @@ export const itemsInFavorite = createSelector(
 );
 
 export const statePromotion = (state) => state.promotion;
-export const productPromotion = createSelector([statePromotion], (promotion) => promotion.promotionTimer);
+export const productPromotion = createSelector(
+  [statePromotion],
+  (promotion) => promotion.promotionTimer
+);
+
+const stateOrders = (state) => state.orders;
+export const itemsInOrders = createSelector(
+  [stateOrders],
+  (orders) => orders.orders
+);
