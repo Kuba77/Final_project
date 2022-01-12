@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useCallback } from "react";
-import Header from "../../components/Header/Header";
 import classes from "./CollectionPage.module.scss";
 import PuffLoader from "react-spinners/PuffLoader";
 import { getAllProducts } from "../../services/products";
 import CollectionList from "./CollectionList/CollectionList";
 import Pagination from "./Pagination/Pagination";
-
 import Filters from "../../components/Filters/Filters";
 import { chekingArray, filterArray } from "../../utils/utils";
 import { getFilteredProductByQuery } from "../../services/products";
@@ -75,7 +73,6 @@ const CollectionPage = () => {
 
   return (
     <>
-      <Header />
       <section className={classes.collection}>
         {
           <Filters

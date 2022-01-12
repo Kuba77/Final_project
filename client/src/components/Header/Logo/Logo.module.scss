@@ -1,13 +1,14 @@
-@import '../../../styles/config/variables.scss';
+@import "../../../styles/config/variables.scss";
 
-.header__logo{
-    display: flex;
-    flex-grow:4;
-    color: $title-color;
-    font-size: $normal-font-size;
-        img{
-            margin: .3rem;
-            width: 2rem;
-            height: 2rem;
-        }
+.header__logo {
+  display: flex;
+  flex-grow: 4;
+  color: $title-color;
+  font-size: $normal-font-size;
+  margin-top: 1rem;
+  img {
+    margin: 0.3rem;
+    width: 2rem;
+    height: 2rem;
+  }
 }

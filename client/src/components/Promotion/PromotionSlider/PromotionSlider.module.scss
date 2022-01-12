@@ -1,0 +1,16 @@
+@import "../../../styles/config/variables.scss";
+
+.promotion_content {
+  grid-area: info;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+
+  @include breakpoint(md-only) {
+    justify-content: center;
+  }
+}
+
+.swiper-slide {
+  height: 200px;
+}

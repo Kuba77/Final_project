@@ -1,12 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classes from "./BookItem.module.scss";
-
+import { productPromotion } from "../../store/selectors";
 
 const BookItem = (props) => {
   const { imageSrc, title, price, author, itemNo, salePrice} = props;
 
-
+  const store = useSelector((state) => state);
+  const promotion = productPromotion(store)
 
   return (
     <Link to={`/product/${itemNo}`}>

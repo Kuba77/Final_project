@@ -74,7 +74,6 @@ app.use("/", mainRoute);
 
 app.use("/api/logingoogle", loginGoogle);
 
-
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
@@ -84,7 +83,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
 
 const port = process.env.PORT || 5000;
 

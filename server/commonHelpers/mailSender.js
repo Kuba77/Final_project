@@ -5,8 +5,6 @@ const getConfigs = require("../config/getConfigs");
 module.exports = async (subscriberMail, letterSubject, letterHtml, res) => {
   const configs = await getConfigs();
 
-  // console.log("configs", configs);
-
   //authorization for sending email
   let transporter = nodemailer.createTransport({
     service:
@@ -36,15 +34,11 @@ module.exports = async (subscriberMail, letterSubject, letterHtml, res) => {
     html: letterHtml,
   };
 
-  console.log("######MailSender########", mailOptions);
-
   const result = await transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
-      console.log("@@@@@@MailSender@@@@@@", err);
+      console.log("@@@@@@@@@@@@", err);
     }
   });
-
-  console.log(" !!!!!!MailSender!!!!!!!!!", result);
 
   return result;
 };
