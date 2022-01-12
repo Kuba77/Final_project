@@ -37,7 +37,6 @@ export async function deleteProductComment(value) {
     return await axios
       .delete(`${configData.ALL_COMMENTS_URL}/${value}`)
       .then((response) => {
-        console.log(response.data);
         return response.data;
       })
   } catch (error) {

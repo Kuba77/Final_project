@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./cart.module.scss";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { calcTotalPriceOneProd } from "../../utils/utils";
+import {Link} from "react-router-dom"
 
 const CartProduct = (props) => {
   const { item, deleteProductFromCart, decreaseProduct, increaseProduct } =
@@ -10,13 +11,13 @@ const CartProduct = (props) => {
   return (
     <div className={classes.block_product}>
       <div className={classes.product_img_and_text}>
-        <a className={classes.product_img} href={`/products/${item.itemNo}`}>
+        <Link className={classes.product_img} to={`/product/${item.product.itemNo}`}>
           <img
             className={classes.product_img}
             src={item.product.imageUrls[0]}
             alt="product"
           />
-        </a>
+        </Link>
         <div className={classes.product_text}>
           <p className={classes.product_article}>{item.product.categories}</p>
           <h3 className={classes.product_title}>{item.product.name}</h3>
