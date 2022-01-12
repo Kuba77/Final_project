@@ -23,22 +23,18 @@ const CategoryPage = () => {
 
   return (
     <>
-      <section className={classes.categoryPage}>
-        {isLoading && (
+    <section className={classes.categoryPage}>
+     <div className={classes.categoryPage__textarea}>
+            <h3>{categoryId}</h3>
+       </div>
+       {isLoading && (
           <div className={classes.categoryPage__loader}>
             <PuffLoader loading={isLoading} color="purple" size={120} />
           </div>
         )}
-
-        {!isLoading && (
-          <div className={classes.categoryPage__textarea}>
-            <h3>{categoryId}</h3>
-          </div>
-        )}
-
+      <div className={classes.categoryPage__container}>
         {!isLoading &&
           product.map((item, index) => (
-            // <Link id={item.itemNo} key={item.itemNo} to={`/product/${item.itemNo}`}>
             <BookItem
               imageSrc={item.imageUrls[1]}
               price={item.currentPrice}
@@ -48,10 +44,11 @@ const CategoryPage = () => {
               salePrice={item.salePrice}
               key={index}
             />
-            // </Link>
           ))}
-      </section>
-    </>
+         
+      </div>
+    </section>
+  </>
   );
 };
 
