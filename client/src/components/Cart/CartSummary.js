@@ -11,6 +11,7 @@ const CartSummary = (props) => {
       <div className={classes.summary}>
         <div className={classes.block_summary_left}>
           <h3 className={classes.block_summary_title}>Shopping Summary</h3>
+          <p className={classes.block_summary_text}>If you have a discont, please enter this in promo block and tap the button "use"</p>
         </div>
         <div className={classes.block_summary_right}>
           <div className={classes.block_summary_tax}>
@@ -19,7 +20,7 @@ const CartSummary = (props) => {
               <PromoCodeForm addPromoCode={addPromoCode} />
             </div>
           </div>
-          <hr className={classes.block_summary_hr} />
+          {/* <hr className={classes.block_summary_hr} /> */}
           <div className={classes.block_summary_total}>
             <p>Total</p>
             <div className={classes.block_summary_total_price}>

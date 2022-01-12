@@ -372,6 +372,11 @@
   }
 }
 
+.block_summary_text {
+  color: #000000;
+  font-style: italic;
+}
+
 .block_summary_description {
   margin-top: 49px;
   font-size: 18px;
@@ -394,6 +399,8 @@
   display: flex;
   justify-content: space-between;
   margin-top: 29px;
+  border-bottom: 2px solid #8d28ad;
+  padding-bottom: 26px;
 }
 
 .block_summary_total {
@@ -413,14 +420,14 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 27px;
-  color: #755a7d;
+  color: #000;
 }
 
 .block_summary_total {
   font-weight: 500;
   font-size: 18px;
   line-height: 27px;
-  color: #755a7d;
+  color: #000;
 }
 
 .block_summary_subtotal_price {
@@ -610,5 +617,5 @@ hr {
   border: none;
   border-radius: 8px;
   margin-left: 5px;
-  padding: 1px 10px;
+  padding: 1px 5px;
 }
