@@ -149,6 +149,7 @@
   font-size: 18px;
   line-height: 27px;
   color: #4d4d4d;
+  text-transform: uppercase;
 
   @media screen and (min-width: 765px) and (max-width: 1050px) {
     font-size: 12px;
@@ -161,6 +162,7 @@
   line-height: 30px;
   color: #000000;
   margin-top: 10px;
+  text-transform: uppercase;
 
   @media screen and (min-width: 765px) and (max-width: 1050px) {
     font-size: 14px;
@@ -217,6 +219,7 @@
   padding: 15px 15px;
   border-radius: 8px;
   color: #000000;
+  background-color: #8d28ad;
 
   @media screen and (min-width: 765px) and (max-width: 1050px) {
     padding: 5px 10px;
@@ -231,6 +234,7 @@
   color: #000000;
   padding: 15px 15px;
   border-radius: 8px;
+  background-color: #8d28ad;
 
   @media screen and (min-width: 765px) and (max-width: 1050px) {
     padding: 5px 10px;
@@ -589,7 +593,6 @@ hr {
   border-color: #000000;
   background: #f0e4f4;
   color: #221e1e;
-  margin-left: 5px;
   padding-left: 8px;
 
 
