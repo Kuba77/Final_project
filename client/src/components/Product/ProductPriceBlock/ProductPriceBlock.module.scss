@@ -5,7 +5,7 @@
     &__price {
         font-size: $big-font-size;
         color: $text-color-light;
-
+        margin: 0;
         
         @include breakpoint(lg-only) {
             font-size: 35px;
@@ -17,13 +17,15 @@
     }
 
     &__store {
+        margin: 0;
+        
         @include breakpoint(sm) {
             font-size: $h2-font-size;
         }
     }
 }
 
-.price_block {
+.price_store__block {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,4 +44,9 @@
     @include breakpoint(sm-only) {
         margin: 15px 0;
     }
+}
+
+.price_block {
+    display: flex;
+    align-items: center;
 }

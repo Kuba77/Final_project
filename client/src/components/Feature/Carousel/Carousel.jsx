@@ -37,7 +37,7 @@ const Carousel = ({ feature }) => {
           {item.salePrice && <span className={"feature__item_cover"}></span>}
 
           <Link to={`/product/${item.itemNo}`}>
-            <img src={item.imageUrls[2]} />
+            <img src={item.imageUrls[2]}  alt={item.title} />
             <h4>{item.name}</h4>
           </Link>
         </SwiperSlide>

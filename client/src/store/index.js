@@ -4,6 +4,7 @@ import favoriteReducer from "./favorites/reducer";
 import customerReducer from "./customer/reducer";
 import errorsReducer from "./errors/reducer";
 // import categoriesReducer from "./category/reducer";
+import promotionReducer from "./promotion/reducer";
 
 function syncWithLocalStorage({ getState }) {
   return (next) => (action) => {
@@ -20,6 +21,7 @@ export const store = configureStore({
     customer: customerReducer,
     errors: errorsReducer,
     // category: categoriesReducer,
+    promotion: promotionReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(syncWithLocalStorage),
