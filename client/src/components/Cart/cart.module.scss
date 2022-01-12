@@ -291,6 +291,10 @@
   margin-left: 120px;
   cursor: pointer;
 
+  :hover {
+    fill: #8d28ad;
+  }
+
   @media screen and (min-width: 765px) and (max-width: 1050px) {
     left: -50px;
     width: 25px;
