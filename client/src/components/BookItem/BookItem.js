@@ -15,7 +15,7 @@ const BookItem = (props) => {
       <div className={classes.collection__item}>
         <div className={classes.collection__item_img}>
           <img src={imageSrc} alt={title} />
-          {salePrice && (<span className={classes.collection__item_cover}></span>)}
+          {salePrice && promotion && <span className={classes.collection__item_cover}></span>}
         </div>
         <div className={classes.collection__item_info}>
           <div>
@@ -23,8 +23,8 @@ const BookItem = (props) => {
             <span>{author}</span>
           </div>
           <div>
-            <h4 className={classes.collection__item_price} style={salePrice && {textDecoration:'line-through'}}>${price}</h4>
-            {salePrice && (<h5 className={classes.collection__item_price_sale}>${salePrice}</h5>)}
+            <h4 className={classes.collection__item_price} style={salePrice && promotion ? { textDecoration: "line-through" } : { textDecoration: "none" }}>${price}</h4>
+            {salePrice && promotion && <h5 className={classes.collection__item_price_sale}>${salePrice}</h5>}
           </div>
         </div>
       </div>

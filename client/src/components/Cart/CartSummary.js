@@ -20,7 +20,6 @@ const CartSummary = (props) => {
               <PromoCodeForm addPromoCode={addPromoCode} />
             </div>
           </div>
-          {/* <hr className={classes.block_summary_hr} /> */}
           <div className={classes.block_summary_total}>
             <p>Total</p>
             <div className={classes.block_summary_total_price}>

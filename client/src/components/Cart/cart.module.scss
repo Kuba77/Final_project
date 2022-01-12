@@ -105,6 +105,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 15px;
     min-height: 80px;
+    padding: 5px;
   }
 }
 
@@ -116,7 +117,7 @@
 .product_img {
   width: 105px;
   height: 150px;
-  background: #c4c4c4;
+  // background: #c4c4c4;
   border-radius: 20px;
   margin-left: 10%;
 
@@ -148,6 +149,7 @@
   font-size: 18px;
   line-height: 27px;
   color: #4d4d4d;
+  text-transform: uppercase;
 
   @media screen and (min-width: 765px) and (max-width: 1050px) {
     font-size: 12px;
@@ -160,6 +162,7 @@
   line-height: 30px;
   color: #000000;
   margin-top: 10px;
+  text-transform: uppercase;
 
   @media screen and (min-width: 765px) and (max-width: 1050px) {
     font-size: 14px;
@@ -216,6 +219,7 @@
   padding: 15px 15px;
   border-radius: 8px;
   color: #000000;
+  background-color: #8d28ad;
 
   @media screen and (min-width: 765px) and (max-width: 1050px) {
     padding: 5px 10px;
@@ -230,6 +234,7 @@
   color: #000000;
   padding: 15px 15px;
   border-radius: 8px;
+  background-color: #8d28ad;
 
   @media screen and (min-width: 765px) and (max-width: 1050px) {
     padding: 5px 10px;
@@ -398,9 +403,11 @@
 .block_summary_tax {
   display: flex;
   justify-content: space-between;
-  margin-top: 29px;
+  margin-top: 9px;
   border-bottom: 2px solid #8d28ad;
   padding-bottom: 26px;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 
 .block_summary_total {
@@ -448,6 +455,9 @@
 
 .block_summary_tax_price {
   display: flex;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 100%;
 
   p {
     font-weight: 600;
@@ -571,6 +581,10 @@ hr {
   }
 }
 
+.promo_form {
+  width: 100%;
+}
+
 .input_promo {
   font-family: "Poppins", sans-serif;
   max-width: 60%;
@@ -579,7 +593,6 @@ hr {
   border-color: #000000;
   background: #f0e4f4;
   color: #221e1e;
-  margin-left: 5px;
   padding-left: 8px;
 
 
@@ -617,5 +630,5 @@ hr {
   border: none;
   border-radius: 8px;
   margin-left: 5px;
-  padding: 1px 5px;
+  padding: 1px 15px;
 }

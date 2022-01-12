@@ -6,15 +6,11 @@
     width: 14rem;
     height: 340px;
 
-
-
-
     h4 {
         font-size: $normal-font-size;
         color: black;
         text-transform: capitalize;
     }
-
 }
 
 .swiper-slide img {
@@ -27,11 +23,10 @@
     &:hover {
         box-shadow: rgba(100, 15, 100, 0.711) 0px 3px 8px;
     }
-
 }
 
 .swiper-container {
-    padding: 3vh;
+    padding: 5vh;
 }
 
 .swiper-pagination-fraction {
@@ -44,14 +39,11 @@
     border-radius: 5px;
 }
 
-
 .swiper-button-prev,
 .swiper-button-next {
 
     color: white;
 }
-
-
 
 .collection__item_img {
     width: 100%;
@@ -73,13 +65,10 @@
         }
     }
 
-
     @include breakpoint(sm-only) {
         height: 270px;
     }
 }
-
-
 
 .feature__item_cover {
     position: absolute;
@@ -91,7 +80,6 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-
 }
 
 .feature__item_cover::before {

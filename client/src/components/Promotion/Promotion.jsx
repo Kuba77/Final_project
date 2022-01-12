@@ -9,7 +9,7 @@ import { productPromotion } from "../../store/selectors";
 import PropTypes from "prop-types";
 
 const Promotion = () => {
-  const promotionDataTime = "12 Jan 2022 23:30:00 GMT+2";
+  const promotionDataTime = "13 Jan 2022 13:30:00 GMT+2";
   const store = useSelector((state) => state);
   const [promotionData, setPromotionData] = useState([]);
   const dispatch = useDispatch();

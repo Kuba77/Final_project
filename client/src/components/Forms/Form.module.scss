@@ -26,6 +26,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 .form__btn {
   padding: 0.9375rem 1.25rem;
   margin-right: 1%;
@@ -33,6 +34,7 @@
   color: #fff;
   border-radius: 4px;
 }
+
 .button__wrapper {
   display: flex;
   justify-content: space-between;
@@ -43,6 +45,7 @@
   margin: 20px 0px;
   color: rgba(0, 0, 0, 0.35);
 }
+
 .form__link {
   color: $first-color;
   margin-left: 1%;
@@ -52,10 +55,23 @@
   color: red;
   text-align: left;
 }
+
 button:disabled {
   background-color: $first-color-disabled;
 }
+
 .from_title {
   color: $title-color;
   font-size: $h1-font-size;
+}
+
+.form__textarea {
+  width: 90%;
+  min-height: 120px;
+  padding: 5px 10px;
+  border: 1px solid rgb(206, 206, 206);
+
+  @include breakpoint(md-only) {
+    width: 100%;
+  }
 }
