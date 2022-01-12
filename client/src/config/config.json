@@ -13,8 +13,9 @@
     "DECREASE_PRODUCT_QUANTITY":"/cart/product",
     "SUBSCRIBERS": "/subscribers",
     "ALL_COMMENTS_URL": "/comments",
-    "PRODUCT_COMMENTS_URL": "/comments/product"
-
-    
+    "PRODUCT_COMMENTS_URL": "/comments/product",
+    "ORDERS_URL": "/orders",
+    "WISHLIST": "/wishlist",
+    "REACT_APP_API_URL":"https://api-manga-store.herokuapp.com/api"
 }
  

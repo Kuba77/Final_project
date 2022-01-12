@@ -2,18 +2,10 @@
   "name": "clever",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   "engines": {
     "node": "<=16.13.1"
   },
->>>>>>> FP-44
-=======
-  "engines": {
-    "node": "<=16.13.1"
-  },
->>>>>>> 48cef75b9f70351d2cbf06f3d093ac29394a7e7b
+
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.15.0",

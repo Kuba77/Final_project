@@ -33,7 +33,7 @@ describe("Testing of ProductAutor component", () => {
     render(
       <ProductAuthor className="class" author={product.author} />
     );
-    screen.debug();
+    // screen.debug();
   });
 
   it("ProductAuthor shows right info", () => {
