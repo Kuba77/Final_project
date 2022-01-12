@@ -5,21 +5,17 @@ const FooterCustomerAreaList = () => {
 
     return(
         <>
-            <FooterLink 
+           <FooterLink 
                 name={"My Account"}
-                to={"/account"}
+                to={"/profile"}
             />
             <FooterLink 
-                name={"Orders"}
-                to={"/orders"}
+                name={"Favorites"}
+                to={"/favorites"}
             />
             <FooterLink 
-                name={"Privacy Policy"}
-                to={"/privacy"}
-            />
-            <FooterLink 
-                name={"FAQ"}
-                to={"/faq"}
+                name={"Cart"}
+                to={"/cart"}
             />
         </>
     )
