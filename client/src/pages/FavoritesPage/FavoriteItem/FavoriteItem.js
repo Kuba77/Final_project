@@ -41,13 +41,14 @@ const FavoriteItem = (props) => {
   return (
     <div className={classes.favorites__item}>
       <div className={classes.favorites__item__img}>
-        <img src={imgSrc} alt={title}/>
+        <img src={imgSrc} alt={title} />
         <AiFillHeart
           color="rgb(211, 6, 6)"
           size={32}
           onClick={deleteFavoritesClick}
         />
         {salePrice && <span></span>}
+        {/* {salePrice && promotion ? <span></span> : ""} */}
       </div>
       <div className={classes.favorites__item__textarea}>
         <Link to={`/product/${itemNo}`}>
@@ -61,6 +62,10 @@ const FavoriteItem = (props) => {
               className={classes.favorite__item_price}
               style={salePrice && { textDecoration: "line-through" }}
             >
+              {/* <p
+                className={classes.favorite__item_price}
+                style={salePrice && promotion ? { textDecoration: "line-through" } : { textDecoration: "none" }}
+              > */}
               ${price}
             </p>
             {salePrice && <h5>${salePrice}</h5>}

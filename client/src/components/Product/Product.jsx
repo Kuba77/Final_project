@@ -17,7 +17,7 @@ import classes from "./Product.module.scss";
 import Button from "../Button/Button";
 import {
   itemsInCart,
-  itemsInFavorite, 
+  itemsInFavorite,
 } from "../../store/selectors";
 import PuffLoader from "react-spinners/PuffLoader";
 
@@ -26,7 +26,7 @@ const Product = () => {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [toggle, setToggle] = useState(0);
 
   const isItemInFavorites = itemsInFavorite(store).some(
@@ -91,11 +91,11 @@ const Product = () => {
                 <div className={classes.product_button}>
                   <Button
                     type="main"
-                    onClick={() => {
-                      dispatch(addOrRemoveProductToCart(product));
-                    }}
+                    onClick={(() => {
+                      if(product.quantity > 0) dispatch(addOrRemoveProductToCart(product));
+                    })}
                   >
-                    {isItemInCart ? (
+                    {isItemInCart || product.quantity <= 0 ? (
                       <MdOutlineCancel color="white" size={30} />
                     ) : (
                       <BsBasket color="white" size={26} />

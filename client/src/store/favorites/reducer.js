@@ -57,7 +57,7 @@ export const addCartToWishList = createAsyncThunk(
       if (response.status === 200) {
         return response.data.products;
       } else {
-        throw new Error(`Autorize plz . ${response}`);
+        throw new Error(`You have to authorize to add a product to your favorites. ${response}`);
       }
     } catch (error) {
       warningMessageRequest(error.message);

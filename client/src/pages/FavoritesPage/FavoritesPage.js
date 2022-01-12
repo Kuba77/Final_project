@@ -11,7 +11,7 @@ const FavoritesPage = () => {
     <>
       <section className={classes.favorites}>
         <h3 className={classes.favorites__title}>Your Wishlist</h3>
-        {itemsInFavorite(store).length == 0 && (
+        {itemsInFavorite(store).length === 0 && (
           <>
             <div className={classes.favorites__noitem}>
               <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639408051/sideAssets/SeekPng.com_anime-blush-png_380918_jzwoqn.png" />
