@@ -105,6 +105,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 15px;
     min-height: 80px;
+    padding: 5px;
   }
 }
 
@@ -116,7 +117,7 @@
 .product_img {
   width: 105px;
   height: 150px;
-  background: #c4c4c4;
+  // background: #c4c4c4;
   border-radius: 20px;
   margin-left: 10%;
 
@@ -398,9 +399,11 @@
 .block_summary_tax {
   display: flex;
   justify-content: space-between;
-  margin-top: 29px;
+  margin-top: 9px;
   border-bottom: 2px solid #8d28ad;
   padding-bottom: 26px;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 
 .block_summary_total {
@@ -448,6 +451,9 @@
 
 .block_summary_tax_price {
   display: flex;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 100%;
 
   p {
     font-weight: 600;
@@ -571,6 +577,10 @@ hr {
   }
 }
 
+.promo_form {
+  width: 100%;
+}
+
 .input_promo {
   font-family: "Poppins", sans-serif;
   max-width: 60%;
@@ -617,5 +627,5 @@ hr {
   border: none;
   border-radius: 8px;
   margin-left: 5px;
-  padding: 1px 5px;
+  padding: 1px 15px;
 }
