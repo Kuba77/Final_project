@@ -39,7 +39,6 @@ function RegistrationForm(props) {
     },
     [dispatch]
   );
-  console.log(errorMessage);
   return (
     <Formik
       initialValues={initialValues}

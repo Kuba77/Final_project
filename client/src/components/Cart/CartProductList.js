@@ -29,7 +29,7 @@ const CartProductList = () => {
         setCart(itemsInCart(store));
       }
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }, [store]);
 
@@ -51,7 +51,6 @@ const CartProductList = () => {
   const localDecrease = useCallback(
     (_id) => {
       let newarr = decreaseItemQuantity(cart, _id);
-      console.log(newarr);
       dispatch(rewrite(newarr));
     },
     [cart, dispatch]
@@ -71,7 +70,7 @@ const CartProductList = () => {
         const response = await removeProductFromCart(value);
         dispatch(rewrite(response.products));
       } catch (error) {
-        console.log(error);
+        throw error;
       }
     },
     [dispatch]
@@ -83,7 +82,7 @@ const CartProductList = () => {
         const response = await addProductToCart(value);
         dispatch(rewrite(response.products));
       } catch (error) {
-        console.log(error);
+        throw error;
       }
     },
     [dispatch]
@@ -93,10 +92,9 @@ const CartProductList = () => {
     async (value) => {
       try {
         const response = await decreaseProductQuantity(value);
-        console.log(value);
         dispatch(rewrite(response.products));
       } catch (error) {
-        console.log(error);
+        throw error;
       }
     },
     [dispatch]
