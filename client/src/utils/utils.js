@@ -74,3 +74,24 @@ export const customerCartMovement = async (arr) => {
   }
   return customerCart.products;
 };
+
+
+export const removeDublikateObj = (arr) => {
+  const resultArray = [];
+  arr.map((item) => {
+    if (
+      resultArray.find((object) => {
+        if (object.product._id === item.product._id) {
+          object.cartQuantity = object.cartQuantity + item.cartQuantity;
+          return true;
+        } else {
+          return false;
+        }
+      })
+    ) {
+    } else {
+      resultArray.push(item);
+    }
+  });
+  return resultArray;
+};

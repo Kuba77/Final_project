@@ -6,8 +6,6 @@ import { setErors, clearErrors } from "../../store/errors/reducer";
 import { setCustomer } from "../../store/customer/reducer";
 import { LoginSchema } from "../../components/Forms/ValidationSchema";
 import LoginForm from "../../components/Forms/LoginForm";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import { setItemInCart, clearCart } from "../../store/cart/reducer";
 
 import { stateCart } from "../../store/selectors";
@@ -57,13 +55,11 @@ const LoginPage = () => {
 
   return (
     <>
-      <Header />
       <LoginForm
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       />
-      <Footer />
     </>
   );
 };

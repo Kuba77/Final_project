@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import classes from "./FavoritesPage.module.scss";
-import Header from "../../components/Header/Header";
 import FavoritesItem from "./FavoriteItem/FavoriteItem";
 import { itemsInFavorite } from "../../store/selectors";
 
@@ -10,11 +9,9 @@ const FavoritesPage = () => {
 
   return (
     <>
-      <Header />
-
       <section className={classes.favorites}>
         <h3 className={classes.favorites__title}>Your Wishlist</h3>
-        {itemsInFavorite(store).length == 0 && (
+        {itemsInFavorite(store).length === 0 && (
           <>
             <div className={classes.favorites__noitem}>
               <img src="https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639408051/sideAssets/SeekPng.com_anime-blush-png_380918_jzwoqn.png" />
