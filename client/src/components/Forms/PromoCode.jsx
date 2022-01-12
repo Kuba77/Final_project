@@ -1,7 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import classes from "./PromoCode.module.scss";
-import { AiOutlineArrowRight } from 'react-icons/ai';
+import classes from "../Cart/cart.module.scss"
 
 const PromoCodeForm = (props) => {
   const { addPromoCode } = props;
@@ -9,27 +8,24 @@ const PromoCodeForm = (props) => {
     initialValues: {
       promo: "",
     },
-    onSubmit: (values) => {
+    onSubmit: (values, {resetForm}) => {
       let word = values.promo;
       addPromoCode(word);
+      resetForm();
     },
   });
   
   return (
     <form onSubmit={formik.handleSubmit}>
-        <div class={classes.promocode__box}>
-            <input
-              className={classes.promocode__input}
-              placeholder='Enter promo code here'
-              id="promo"
-              name="promo"
-              type="text"
-            />
-            <button type="submit" className={classes.promocode__btn}>
-              <AiOutlineArrowRight/>
-           </button>
-      </div>
-    
+      <input
+        className={classes.input_promo}
+        id="promo"
+        name="promo"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.promo}
+      />
+      <button className={classes.button_submit} type="submit">USE</button>
     </form>
   );
 };
