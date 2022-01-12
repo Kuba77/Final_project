@@ -6,16 +6,20 @@ const FooterQuickList = () =>{
     return(
         <>
             <FooterLink 
+                name={"Contact us"}
+                to={"/contact"}
+            />
+            <FooterLink 
                 name={"Products"}
                 to={"/products"}
             />
             <FooterLink 
-                name={"Registration"}
-                to={"/registration"}
+                name={"Login"}
+                to={"/login"}
             />
             <FooterLink 
-                name={"Sign Un"}
-                to={"/login"}
+                name={"Sign Up"}
+                to={"/sign"}
             />
         </>
     )

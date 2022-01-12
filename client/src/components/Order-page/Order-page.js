@@ -1,20 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import OrderForm from "../Forms/OrderForm";
 import { OrderSchema } from "../Forms/ValidationSchema";
-import { createOrder } from "../../store/order/reducer";
-import { updateCustomer } from "../../store/customer/reducer";
+import { letterHtml, letterSubject } from "./letterConfig";
 import { itemsInCart } from "../../store/selectors";
-import { letterSubject, letterHtml } from "./letterHTML";
-import OrderList from "./Order-list/Order-list";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import { getOrderFromApi } from "../../store/order/middleware";
+import { createOrder } from "../../store/order/reducer";
+import { updateCustomer } from "../../services/user";
+import { useHistory } from "react-router-dom";
 import { clearCart } from "../../store/cart/reducer";
-
+import OrderList from "./Order-list/Order-list";
 const OrderPage = () => {
-  //потом поправить
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -54,19 +49,15 @@ const OrderPage = () => {
     dispatch(updateCustomer(value));
     dispatch(clearCart());
   };
-
   const validationSchema = OrderSchema;
   return (
     <>
-      {" "}
-      <Header />
       <OrderList />
       <OrderForm
         initialValues={initialValuesUserForm}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       />
-      <Footer />
     </>
   );
 };

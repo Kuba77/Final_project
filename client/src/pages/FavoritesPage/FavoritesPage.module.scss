@@ -1,18 +1,22 @@
 @import '../../styles/config/variables.scss';
 
-.favorites{
-    max-width:1200px;
-    margin:5vh auto;
+.favorites {
+    max-width: 1200px;
+    margin: 5vh auto;
     padding: 2vh;
-    @include breakpoint(sm-only){
+
+    @include breakpoint(sm-only) {
         margin: 10vh auto;
     }
-    @include breakpoint(md-only){
+
+    @include breakpoint(md-only) {
         margin: 10vh auto;
     }
-    &__title{
+
+    &__title {
         position: relative;
-        font-size:$h1-font-size;
+        font-size: $h1-font-size;
+
         &::after {
             content: "";
             position: absolute;
@@ -23,43 +27,46 @@
             right: 0;
             border-radius: 10px;
             background: $first-color;
-    
-            @include breakpoint(sm-only){
+
+            @include breakpoint(sm-only) {
                 width: 50%;
             }
         }
     }
-    &__noitem{
+
+    &__noitem {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-            img{
-                width:500px;
-                height:360px;
-            }
-            h3{
-                font-size: $h1-font-size;
-                color:black;
-                text-transform: uppercase;
-            }
+        padding: 10px;
+
+        img {
+            width: 500px;
+            height: 360px;
+        }
+
+        h3 {
+            font-size: $h1-font-size;
+            color: black;
+            text-transform: uppercase;
+        }
     }
 
-    &__wrapper{
+    &__wrapper {
         margin: 5vh auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 500px));
-        gap:3rem;
-        @include breakpoint(md-only){
-            grid-template-columns: repeat(auto-fit, minmax(300px,auto));
+        gap: 3rem;
+
+        @include breakpoint(md-only) {
+            grid-template-columns: repeat(auto-fit, minmax(300px, auto));
         }
-        @include breakpoint(sm-only){
-            grid-template-columns: repeat(auto-fit, minmax(300px,auto));
-            gap:1rem;
+
+        @include breakpoint(sm-only) {
+            grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+            gap: 1rem;
         }
-    } 
+    }
 
 }
-
-
-

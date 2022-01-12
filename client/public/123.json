@@ -1,0 +1,1510 @@
+
+
+[
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Haikyuu4_goablb.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602209/Haikyuu3_ov2wvz.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602206/Haikyuu2_gzvz0r.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Haikyuu1_sno4kw.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Drama"
+        ],
+        "quantity": 0,
+        "_id": "61a29d798cf0b609aef2fb78",
+        "name": "haikyuu!!",
+        "author": "Furudate Haruichi",
+        "currentPrice": 270,
+        "previousPrice": 250,
+        "categories": "manga",
+        "book_format": "Paperback",
+        "date_published": "February 20, 2012 – July 20, 2020",
+        "publisher": "Shueisha",
+        "description": "Ever since he saw the legendary player known as the “Little Giant“ compete at the national volleyball finals, Shoyo Hinata has aimed to be the best volleyball player ever! He decides to join the team at the high school the Little Giant went to – and then surpass him.Who says you need to be tall to play volleyball when you can jump higher than anyone else?",
+        "vol": 45,
+        "country": "Japan",
+        "itemNo": "258643",
+        "date": "2021-11-27T21:04:57.242Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637700284/gantz9_ci9nbm.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637700283/gantz8_mvivmi.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637700283/gantz_bwddpz.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637700283/gantz7_bpvcbl.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Drama",
+            "Romance",
+            "Supernatural"
+        ],
+        "quantity": 0,
+        "_id": "61a3749def63640c078ca7f2",
+        "name": "gantz",
+        "author": "Oku Hiroya",
+        "categories": "manhwa",
+        "currentPrice": 22,
+        "previousPrice": 33,
+        "book_format": "Paperback",
+        "date_published": "June 29, 2000 – June 20, 2013",
+        "publisher": "Shueisha",
+        "description": "Somewhere in Tokyo, there is a room. In that room is a black sphere. Periodically, people who should otherwise have died are transferred to the room. There, the sphere gives them special suits and weapons, and sends them out on a mission to kill aliens here on Earth. While these missions take place, the rest of the world is largely oblivious to them. These missions are lethal--few participants survive them. The sphere calls the shots, and it’s not the slightest bit nice. Its name... Gantz.",
+        "vol": 37,
+        "country": "Japan",
+        "itemNo": "841621",
+        "date": "2021-11-28T12:22:53.845Z",
+        "__v": 0,
+        "salePrice": 15
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Naruto1_we6qqt.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602207/Naruto3_chhozv.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602208/Naruto2_kpdjjr.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602207/Naruto4_ji0qyq.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Drama"
+        ],
+        "quantity": 0,
+        "_id": "61a3752aef63640c078ca7f3",
+        "name": "naruto",
+        "author": "Kishimoto Masashi",
+        "currentPrice": 5,
+        "categories": "manga",
+        "book_format": "Paperback",
+        "date_published": "February 20, 2012 – July 20, 2020",
+        "publisher": "Shueisha",
+        "description": "Twelve years ago, the powerful Nine-Tailed Demon Fox attacked the ninja village of Konohagakure the village hidden in the leaves. The demon was defeated and sealed into the infant Naruto Uzumaki, by the Fourth Hokage who sacrificed his life to protect the village. Now, Naruto is the number one most Unpredictable knuckleheaded ninja who’s determined to become the next Hokage and be acknowledged by everyone who ever doubted him! From cool fights showing what it really means to be a ninja to fights for things they believe in to hairbrained fun and jokes naruto’s adventures have got it all! With the will to never give up and a great left hook along with his ninja way: to never go back on his word, will Naruto the former outcast achieve his dream?",
+        "vol": 45,
+        "country": "Japan",
+        "itemNo": "806942",
+        "date": "2021-11-28T12:25:14.463Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602207/Bleach1_ahsvoh.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602207/Bleach2_ztmuq5.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602206/Bleach3_wdjr0y.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602206/Bleach4_ts9kfs.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Drama",
+            "Supernatural"
+        ],
+        "quantity": 0,
+        "_id": "61a375b4ef63640c078ca7f4",
+        "name": "Bleach",
+        "author": "Kubo Tite",
+        "currentPrice": 50,
+        "categories": "manhwa",
+        "book_format": "Paperback",
+        "date_published": "August 7, 2001 – August 22, 2016",
+        "publisher": "Shueisha",
+        "description": "Ichigo Kurosaki has always been able to see ghosts, but this ability doesn’t change his life nearly as much as his close encounter with Rukia Kuchiki, a Soul Reaper and member of the mysterious Soul Society. While fighting a Hollow, an evil spirit that preys on humans who display psychic energy, Rukia attempts to lend Ichigo some of her powers so that he can save his family; but much to her surprise, Ichigo absorbs every last drop of her energy. Now a full-fledged Soul Reaper himself, Ichigo quickly learns that the world he inhabits is one full of dangerous spirits, and along with Rukia--who is slowly regaining her powers--it’s Ichigo’s job to protect the innocent from Hollows and help the spirits themselves find peace. In 2005, Bleach was awarded the Shogakukan Manga Award in the Shounen category.",
+        "vol": 74,
+        "country": "Japan",
+        "itemNo": "690876",
+        "date": "2021-11-28T12:27:32.466Z",
+        "__v": 0,
+        "salePrice": 42
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602207/KimetsunoYaiba1_gg8pmw.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602207/KimetsunoYaiba3_j53fn8.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602207/KimetsunoYaiba2_lko9ar.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602206/KimetsunoYaiba4_zwqtnw.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Supernatural"
+        ],
+        "quantity": 0,
+        "_id": "61a37624ef63640c078ca7f5",
+        "name": "kimetsu no yaiba",
+        "author": "Gotouge Koyoharu",
+        "currentPrice": 138,
+        "categories": "manhuas",
+        "book_format": "Paperback",
+        "date_published": "February 15, 2016 – May 18, 2020",
+        "publisher": "Shueisha",
+        "description": "Tanjiro is the eldest son in a family that has lost its father. Tanjiro visits another town one day to sell charcoal but ends up staying the night at someone else’s house instead of going home because of a rumor about a demon that stalks a nearby mountain at night. When he goes home the next day, tragedy is waiting for him.",
+        "vol": 23,
+        "country": "Japan",
+        "itemNo": "413602",
+        "date": "2021-11-28T12:29:24.950Z",
+        "__v": 0,
+        "salePrice": 100
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602206/FairyTail1_o3jckk.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602205/FairyTail3_sl5lqb.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602205/FairyTail4_utnjpt.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602206/FairyTail2_rca5ze.jpg"
+        ],
+        "genre": [
+            "Adventure",
+            "Action",
+            "Comedy"
+        ],
+        "quantity": 0,
+        "_id": "61a37682ef63640c078ca7f6",
+        "name": "fairy tail",
+        "author": "Mashima Hiro",
+        "categories": "manhuas",
+        "currentPrice": 378,
+        "book_format": "Paperback",
+        "date_published": "August 2, 2006 – July 26, 2017",
+        "publisher": "Kodansha",
+        "description": "A young celestial mage, Lucy Heartfilia, runs away from home and travels to the land of Fiore to join the magical Fairy Tail Guild. Along the way, she meets Natsu Dragneel, a teenage boy looking for his foster parent, a dragon named Igneel, with his best friend, Happy the cat. Shortly after their meeting, Lucy is abducted by Bora of Prominence, who was posing as Salamander of Fairy Tail, to be sold as a slave. Natsu rescues her and reveals that he is the real Salamander of fairy tail and has the skills of a Dragon Slayer, an ancient fire magic. He offers her membership into the guild, which she gladly accepts, they along with Erza Scarlet -Armored maiden, Gray Fullbuster -Ice Maker, and Happy become a team performing various missions offered to the Fairy Tail guild. Fairy Tail won the 2009 Kodansha Manga Award for shounen manga. It has also won The Society for the Promotion of Japanese Animation’s Industry Awards for best comedy manga.",
+        "vol": 63,
+        "country": "Japan",
+        "itemNo": "187746",
+        "date": "2021-11-28T12:30:58.112Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602205/TokyoGhoul1_skirdd.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602205/TokyoGhoul2_yyksqe.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602205/TokyoGhoul3_oxacly.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602205/TokyoGhoul4_s8i2gx.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Drama",
+            "Supernatural"
+        ],
+        "quantity": 1,
+        "_id": "61a376d8ef63640c078ca7f7",
+        "name": "tokyo ghoul",
+        "author": "Ishida Sui",
+        "currentPrice": 64,
+        "categories": "manga",
+        "book_format": "Paperback",
+        "date_published": "September 8, 2011 – September 18, 2014",
+        "publisher": "Shueisha",
+        "description": "Strange murders are happening in Tokyo. Due to liquid evidence at the scene, the police conclude the attacks are the results of ’eater’ type ghouls. College buddies Kaneki and Hide come up with the idea that ghouls are imitating humans so that’s why they haven’t ever seen one. Little did they know that their theory may very well become reality.",
+        "vol": 14,
+        "country": "Japan",
+        "itemNo": "695013",
+        "date": "2021-11-28T12:32:24.492Z",
+        "__v": 0,
+        "salePrice": 44
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626522/soulEater_cgfwbk.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602205/SoulEater1_o1uqjl.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602205/SoulEater2_xicdtr.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602204/SoulEater3_qgd92n.jpg"
+        ],
+        "genre": [
+            "Adventure",
+            "Action",
+            "Comedy",
+            "Drama",
+            "Supernatural"
+        ],
+        "quantity": 0,
+        "_id": "61a37752ef63640c078ca7f8",
+        "name": "soul eater",
+        "author": "Ohkubo Atsushi",
+        "currentPrice": 150,
+        "categories": "oelManga",
+        "book_format": "Paperback",
+        "date_published": "May 12, 2004 – August 12, 2013",
+        "publisher": "Square Enix",
+        "description": "From Yen Press: Maka is a weapon meister, determined to turn her partner, a living scythe named Soul Eater, into a powerful death scythe a€” the ultimate weapon of Death himself! Charged with the task of collecting and devouring the tainted souls of ninety-nine humans and one witch, Maka and her fellow meisters strive to master their weapons as they face off against the bizarre and dangerous minions of the underworld. But the meistersa€? own personal quirks may prove a bigger obstacle than any sultry enchantress!",
+        "vol": 25,
+        "country": "Japan",
+        "itemNo": "431462",
+        "date": "2021-11-28T12:34:26.258Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602204/FullMetalAlchemist1_vn00ps.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602204/FullMetalAlchemist2_wwhgwo.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602204/FullMetalAlchemist4_rltddb.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602204/FullMetalAlchemist3_iscodb.jpg"
+        ],
+        "genre": [
+            "Adventure",
+            "Action",
+            "Comedy",
+            "Drama",
+            "Supernatural"
+        ],
+        "quantity": 0,
+        "_id": "61a377b0ef63640c078ca7f9",
+        "name": "fullmetal alchemist",
+        "author": "Hiromu Arakawa",
+        "currentPrice": 162,
+        "categories": "manga",
+        "book_format": "Paperback",
+        "date_published": "July 12, 2001 – June 11, 2010",
+        "publisher": "Square Enix",
+        "description": "In an alchemical ritual gone wrong, Edward Elric lost his arm and his leg, and his brother Alphonse became nothing but a soul in a suit of armor. Equipped with mechanical “auto-mail“ limbs, Edward becomes a state alchemist, seeking the one thing that can requantity his brother and himself... the legendary Philosopher’s Stone.",
+        "vol": 27,
+        "country": "Japan",
+        "itemNo": "336152",
+        "date": "2021-11-28T12:36:00.299Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602204/TsubasaReservoirChronicle1_tvhpom.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602203/TsubasaReservoirChronicle4_xymvh5.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602204/TsubasaReservoirChronicle2_wpaynw.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602203/TsubasaReservoirChronicle3_w3f4r6.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Supernatural",
+            "Romance"
+        ],
+        "quantity": 0,
+        "_id": "61a37801ef63640c078ca7fa",
+        "name": "tsubasa: reservoir chronicle",
+        "author": "CLAMP",
+        "currentPrice": 168,
+        "categories": "ranobe",
+        "book_format": "Paperback",
+        "date_published": "May 2003 – October 2009",
+        "publisher": "Kodansha",
+        "description": "Sakura is the princess of Clow - and possessor of a mysterious, misunderstood power that promises to change the world. Syaoran is her childhood friend and leader of the archaeological dig that took his father’s life. They reside in an alternate reality where whatever you least expect can happen - and does. When Sakura ventures to the dig site to declare her love for Syaoran, a puzzling symbol is uncovered - which triggers a remarkable quest. Now Syaoran embarks upon a desperate journey through other worlds - all in the name of saving Sakura.",
+        "vol": 28,
+        "country": "Japan",
+        "itemNo": "789183",
+        "date": "2021-11-28T12:37:21.780Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602203/XxxHolic1_qvycjg.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697909/xxxholic_fekubs.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602203/XxxHolic2_tbdcga.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637602203/XxxHolic3_m2l3xb.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Drama",
+            "Supernatural"
+        ],
+        "quantity": 300,
+        "_id": "61a3784fef63640c078ca7fb",
+        "name": "xxxholic",
+        "author": "Ohkawa Ageha CLAMP",
+        "currentPrice": 138,
+        "categories": "ranobe",
+        "book_format": "Paperback",
+        "date_published": "2003 – 2017",
+        "publisher": "Kodansha",
+        "description": "Watanuki Kimihiro is haunted by visions of ghosts and spirits. Seemingly by chance, he encounters a mysterious witch named Y?ko, who claims she can help. In desperation, he accepts, but realizes that he’s just been tricked into working for Y?ko in order to pay off the cost of her services. Soon he’s employed in her little shop- a job which turns out to be nothing like his previous work experience!",
+        "vol": 23,
+        "country": "Japan",
+        "itemNo": "87926",
+        "date": "2021-11-28T12:38:39.842Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/Tomo-chanWaOnnaNoKo3_vlca2o.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/Tomo-chanWaOnnaNoKo2_s3urt6.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/Tomo-chanWaOnnaNoKo1_pdc04l.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/Tomo-chanWaOnnaNoKo4_aceftl.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Romance"
+        ],
+        "quantity": 432,
+        "_id": "61a37894ef63640c078ca7fc",
+        "name": "tomo-chan wa onna no ko!",
+        "author": "Yanagida Fumita",
+        "currentPrice": 48,
+        "categories": "ranobe",
+        "book_format": "Paperback",
+        "date_published": "April 7, 2015 – July 14, 2019",
+        "publisher": "Kodansha",
+        "description": "Tomo Aizawa was able to successfully confess to her crush Junichirou Kubota. There is only one problem: He just sees her as his buddy. He even thought that she was a boy until they went to middle school together, because her grade school was in a different school district. So, Tomo-chan’s struggle for Jun’s affection begins.",
+        "vol": 8,
+        "country": "Japan",
+        "itemNo": "37390",
+        "date": "2021-11-28T12:39:48.633Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/Kengan_Asura1_nhfohs.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626474/Kengan_Asura2_pwmujn.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626474/Kengan_Asura4_sx97p3.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626474/Kengan_Asura3_zu97tk.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Drama"
+        ],
+        "quantity": 0,
+        "_id": "61a378ddef63640c078ca7fd",
+        "name": "kengan asura",
+        "author": "Sandrovich Yabako",
+        "currentPrice": 162,
+        "book_format": "Paperback",
+        "categories": "ranobe",
+        "date_published": "April 18, 2012 – August 9, 2018",
+        "publisher": "Shogakukan",
+        "description": "Since the Edo periods of Japan, gladiator arenas exist in certain areas. In these arenas, wealthy business owners and merchants hire gladiators to fight in unarmed combat where winner takes all. Toki Taouma, nicknamed “Ashura“, joins these arenas and devastates his opponents. His spectacular ability to crush his enemies catches the attention of the big business owners, including the Nogi Group chairman, Nogi Hideki.",
+        "vol": 27,
+        "country": "Japan",
+        "itemNo": "321513",
+        "date": "2021-11-28T12:41:01.514Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626474/Magi_LabyrinthofMagic1_witg8r.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626474/Magi_LabyrinthofMagic2_esjeqk.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626520/Magi_LabyrinthofMagic4_qff8f8.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626474/Magi_LabyrinthofMagic3_c0kwl4.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Drama"
+        ],
+        "quantity": 0,
+        "_id": "61a37934ef63640c078ca7fe",
+        "name": "magi - labyrinth of magic",
+        "categories": "ranobe",
+        "author": "Ohtaka Shinobu",
+        "currentPrice": 222,
+        "book_format": "Paperback",
+        "date_published": "June 3, 2009 – October 11, 2017",
+        "publisher": "Shogakukan",
+        "description": "In a world similar to that of Scheherezade’s tales, a mysterious young boy named Aladdin drifts from place to place with his djinn Ugo. Ugo lives inside a golden recorder, and Aladdin is on the hunt for his true container “The Djinn’s Metal Vessel“. One day he encounters Alibaba, a poor lad determined to enter one of the mysterious Dungeons that popped up a decade ago in order to make his fortune. Thus the the two begin their adventure in a Persia that never was.",
+        "vol": 37,
+        "country": "Japan",
+        "itemNo": "125071",
+        "date": "2021-11-28T12:42:28.322Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626520/KaichouwaMaid-sama1_t3xmj0.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626519/KaichouwaMaid-sama3_dxhjp6.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626519/KaichouwaMaid-sama2_kt3uxv.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626517/KaichouwaMaid-sama4_kekogl.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Drama",
+            "Romance"
+        ],
+        "quantity": 26,
+        "_id": "61a3798def63640c078ca7ff",
+        "name": "kaichou wa maid-sama!",
+        "author": "Fujiwara Hiro",
+        "currentPrice": 108,
+        "categories": "manhwa",
+        "book_format": "Paperback",
+        "date_published": "December 24, 2005 – September 24, 2013",
+        "publisher": "Hakusensha",
+        "description": "Brilliant and overachieving, Misaki Ayuzawa is the President of the Student Council at Seika High School, formerly a boys’ school. Unfortunately, most of the students are still male and stuck in their slovenly habits, so man-hating Misaki really socks it to ’em in an attempt to make the school presentable to attract more female students. But what will she do when the sexiest boy in school finds out that after school, Misaki works in a maid cafe.",
+        "vol": 18,
+        "country": "Japan",
+        "itemNo": "716804",
+        "date": "2021-11-28T12:43:57.833Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626516/Claymore3_uq36gq.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626516/Claymore4_vgzu37.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626516/Claymore2_ntx8nq.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626517/Claymore1_yzox2c.jpg"
+        ],
+        "genre": [
+            "Action"
+        ],
+        "quantity": 0,
+        "_id": "61a37a40ef63640c078ca800",
+        "name": "claymore",
+        "author": "Yagi Norihiro",
+        "currentPrice": 162,
+        "categories": "manhwa",
+        "book_format": "Paperback",
+        "date_published": "June 6, 2001 – October 4, 2014",
+        "publisher": "Shueisha",
+        "description": "In a world where monsters called Yoma prey on humans and live among them in disguise, humanity’s only hope is a new breed of warrior known as Claymores. Half human, half monster, these silver-eyed slayers possess supernatural strength, but are condemned to fight their savage impulses or lose their humanity completely.",
+        "vol": 27,
+        "country": "Japan",
+        "itemNo": "49124",
+        "date": "2021-11-28T12:46:56.193Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626513/KamisamaHajimemashita1_kkqr2w.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626512/KamisamaHajimemashita4_vlckdv.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626513/KamisamaHajimemashita3_xwgmxe.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626516/KamisamaHajimemashita2_mmetp8.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Supernatural",
+            "Romance"
+        ],
+        "quantity": 0,
+        "_id": "61a37a71ef63640c078ca801",
+        "name": "kamisama hajimemashita",
+        "author": "Suzuki Julietta",
+        "categories": "manhwa",
+        "currentPrice": 150,
+        "book_format": "Paperback",
+        "date_published": "February 20, 2008 – May 20, 2016",
+        "publisher": "Hakusensha",
+        "description": "Momozono Nanami’s dad, a man with a penchant for gambling, disappeared after accumulating a huge amount of debt. Thus, she was chased out of her house by the debt collectors. When she met a timid man being chased by a dog, he told her that he’d give her his house. She believed his persuasive talk, but when she went to his house… it turned out to be a shrine. Moreover, a guy with fox ears appeared, which made Nanami even more confused. What will become of homeless and confused Nanami?",
+        "vol": 25,
+        "country": "Japan",
+        "itemNo": "515514",
+        "date": "2021-11-28T12:47:45.322Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626512/KurokonoBasuke1_fv5fhq.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626512/KurokonoBasuke3_klaobl.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626512/KurokonoBasuke2_zawkhq.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626512/KurokonoBasuke4_dfsgai.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Drama"
+        ],
+        "quantity": 0,
+        "_id": "61a37aacef63640c078ca802",
+        "name": "kuroko no basuke",
+        "author": "Fujimaki Tadatoshi",
+        "currentPrice": 30,
+        "book_format": "Paperback",
+        "date_published": "December 8, 2008 – September 1, 2014",
+        "publisher": "Shueisha",
+        "description": "Kuroko is a member from the legendary middle school basketball team known as “The Generation of Miracles “, and while nobody seems to know about him, the main 5 players of the team all admit that he is a better player. When he joins the high school basketball team, everyone is surprised to find out that he is small, weak, and easy to miss. What is the secret that makes him so strong, and how will he help his high school team?",
+        "vol": 5,
+        "categories": "manhwa",
+        "country": "Japan",
+        "itemNo": "933085",
+        "date": "2021-11-28T12:48:44.714Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626509/SlamDunk4_xwnf67.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626512/SlamDunk1_ldswmv.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626510/SlamDunk3_dtrwjo.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626510/SlamDunk2_un85pg.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Drama"
+        ],
+        "quantity": 69,
+        "_id": "61a37adeef63640c078ca803",
+        "name": "slam dunk",
+        "categories": "manhwa",
+        "author": "Inoue Takehiko",
+        "currentPrice": 186,
+        "book_format": "Paperback",
+        "date_published": "October 1, 1990 – June 17, 1996",
+        "publisher": "Shueisha",
+        "description": "Winning isn’t everything in the game of basketball, but who wants to come in second? It takes dedication and discipline to be the best, and the Shohoku High hoops team wants to be just that. They have one last year to make their captain’s dream of reaching the finals come true--will they do it? Takehiko Inoue’s legendary beloved basketball manga is finally here and the tale of a lifetime is in your hands. Hanamichi Sakuragi’s got no game with girls—none at all! It doesn’t help that he’s known for throwing down at a moment’s notice and always coming out on top. A hopeless bruiser, he’s been rejected by 50 girls in a row! All that changes when he meets the girl of his dreams, Haruko, and she’s actually not afraid of him! When she introduces him to the game of basketball, his life is changed forever... Notes: - Includes a oneshot called 10 Days After. - In 1995 Slam Dunk received the 40th Shogakukan Manga Award for shounen.",
+        "vol": 31,
+        "country": "Japan",
+        "itemNo": "8762",
+        "date": "2021-11-28T12:49:34.254Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637776579/ShokugekinoSoma1_crikuw.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637776579/ShokugekinoSoma4_niaht3.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637776579/ShokugekinoSoma3_qawxze.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637776579/ShokugekinoSoma2_pfoevb.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Drama"
+        ],
+        "quantity": 0,
+        "_id": "61a37b01ef63640c078ca804",
+        "name": "shokugeki no soma",
+        "categories": "manhwa",
+        "author": "Tsukuda Yuuto",
+        "currentPrice": 32,
+        "book_format": "Paperback",
+        "date_published": "November 26, 2012 – August 29, 2019",
+        "publisher": "Shueisha",
+        "description": "Yukihira Souma is an ambitious 15-year-old whose dream is to surpass the culinary skills of his famous father, Yukihira Jouichirou. But just as Souma graduates from middle school, his father abruptly closes down the family restaurant and leaves to cook in Europe. Although downtrodden, Souma’s fighting spirit is rekindled when his father enrols him in an elite culinary school where only 10% of the students graduate. Can Souma survive in the cut-throat world of Tootsuki Academy?",
+        "vol": 36,
+        "country": "Japan",
+        "itemNo": "185230",
+        "date": "2021-11-28T12:50:09.811Z",
+        "__v": 0,
+        "salePrice": 16
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626506/InuYasha1_crwcim.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626505/InuYasha4_i2kl2s.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626506/InuYasha3_eml0im.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626506/InuYasha2_r1sl04.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Drama",
+            "Supernatural",
+            "Romance"
+        ],
+        "quantity": 4,
+        "_id": "61a37b2cef63640c078ca805",
+        "name": "inuyasha",
+        "author": "Takashi Rumiko",
+        "categories": "manhwa",
+        "currentPrice": 336,
+        "book_format": "Paperback",
+        "date_published": "November 13, 1996 – June 18, 2008",
+        "publisher": "Shogakukan",
+        "description": "Kagome is a modern Japanese high-school girl. Never the type to believe in myths and legends, her world view dramatically changes when, one day, she’s pulled out of her own time and into another! There, in Japan’s ancient past, Kagome discovers more than a few of those dusty old legends are true, and that her destiny is linked to one legendary creature in particular--the dog-like half-demon called Inuyasha! That same trick of fate also ties them both to the Shikon Jewel, or “Jewel of Four Souls.“ But demons beware...the smallest shard of the Shikon Jewel can give the user unimaginable power. Won the 47th Shogakukan Manga Award in the Shounen category.",
+        "vol": 56,
+        "country": "Japan",
+        "itemNo": "439552",
+        "date": "2021-11-28T12:50:52.993Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626504/Vampire_Knight1_roqw94.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626505/Vampire_Knight2_ms4yqd.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626501/Vampire_Knight3_xbqpdr.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626501/Vampire_Knight4_ysidix.jpg"
+        ],
+        "genre": [
+            "Drama",
+            "Supernatural",
+            "Romance"
+        ],
+        "quantity": 6,
+        "_id": "61a37b5def63640c078ca806",
+        "name": "vampire knight",
+        "author": "Hino Matsuri",
+        "currentPrice": 114,
+        "categories": "manhwa",
+        "book_format": "Paperback",
+        "date_published": "November 24, 2004 – May 24, 2013",
+        "publisher": "Hakusensha",
+        "description": "Yuuki’s earliest memory is of a stormy night in winter, where she was attacked by a vampire... And then rescued by another. Now 10 years later, Cross Yuuki, the adopted daughter of the headmaster of Cross Academy, has grown up and become a guardian of the vampire race, protecting her childhood crush, Kaname, from discovery as he leads a group of vampires at the elite boarding school. But also at her side is Kiryuu Zero, a childhood friend who’s hatred for the creatures that destroyed everything he held dear, is now determined never to trust them. This coexisting arrangement seems all well and good, but have the vampires truly renounced their murderous ways, or is there a darker truth behind their actions. Because in this world of secrets, nothing is as it seems. And the currentPrice of misplaced trust may even be worse than death.",
+        "vol": 19,
+        "country": "Japan",
+        "itemNo": "652859",
+        "date": "2021-11-28T12:51:41.911Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626501/OuranHighSchoolHostClub2_ten1mw.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626501/OuranHighSchoolHostClub1_el3hei.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626501/OuranHighSchoolHostClub3_srziss.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626501/OuranHighSchoolHostClub4_lfjdt9.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Drama",
+            "Romance"
+        ],
+        "quantity": 5,
+        "_id": "61a37b88ef63640c078ca807",
+        "categories": "manhwa",
+        "name": "ouran high school host club",
+        "author": "Hatori Bisco",
+        "currentPrice": 108,
+        "book_format": "Paperback",
+        "date_published": "September 2002 – November 2010",
+        "publisher": "Hakusensha",
+        "description": "In this screwball romantic comedy, Haruhi, a poor girl at a rich kids’ school, is forced to repay an $80,000 debt by working for the school’s swankiest, all-male club--as a boy! There, she discovers just how wealthy the six members are and how different the rich are from everybody else... Includes 4 chapters of the story “Romantic Egoist“ in various volumes, starring a pair of twins who play matchmaker with their fellow students, teachers and the like. member. Not realizing she’s female due to her appearance, they fix her up and give her a male uniform. She’s an instant hit, so they decide to have her keep up the charade even after they find out the truth. Haruhi, being common almost to a fault, doesn’t know what to make of the unconventional activities of the Host Club (or of the even more unconventional members), but having little choice, she plays along. Before long, real bonds are formed, friends made, and Haruhi finds herself accepted in a way she could never have been otherwise in this affluent school.",
+        "vol": 18,
+        "country": "Japan",
+        "itemNo": "686825",
+        "date": "2021-11-28T12:52:24.496Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626500/Bakuman1_hnz5ot.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626497/Bakuman2_vd7dq0.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626496/Bakuman4_qgxkcu.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626496/Bakuman3_mkbrio.jpg"
+        ],
+        "genre": [
+            "Comedy",
+            "Drama",
+            "Romance"
+        ],
+        "quantity": 16,
+        "_id": "61a37bbeef63640c078ca808",
+        "categories": "manhwa",
+        "name": "bakuman",
+        "author": "Ohba Tsugumi",
+        "currentPrice": 120,
+        "book_format": "Paperback",
+        "date_published": "August 11, 2008 – April 23, 2012",
+        "publisher": "Shueisha",
+        "description": "Moritaka Mashiro (Saiko), with his superb drawing skill, is invited by his writing genius classmate Akito Takagi (Shujin) to tread the difficult path of the mangaka!! His sights are set on his naive yet earnest joint dream with Miho Azuki, who is aiming to become a voice actress!! Saiko and Shujin team up as writer and artist, aiming to be serialized in Weekly Shonen Jump, make a hit, and then release an anime. They bring their manuscripts into editors and set off on the road to becoming pro manga artists!! This is a new-age story of manga success!! MinatoAce : It’s not easy to become and live as a mangaka, as Mashiro Moritaka knows from his late uncle. At 9th grade, while trying to keep up with reality, school and then a normal job, he left his notebook with a sketch of Azuki Miho, a girl he likes. Takagi Akito, a first-rate student found it and tries to convince Mashiro to draw a manga with his story. Mashiro doesn’t like the idea and declines. Takagi, however, sticks to his dream and found out that Azuki wants to be a voice actress and has already gotten a good reply from a production company. Takagi then brought Mashiro to her house and told her his dream... Mashiro then tells her that he will write a manga with Takagi and will ask Azuki to voice their anime. Out of confusion, Mashiro asks her if their dreams become reality, will she marry him? She says yes, only if their dreams become true, and not otherwise!! Now, the lives of wannabe mangakas begin!!! Nominated for the 3rd Manga Taisho Award (2010).",
+        "vol": 20,
+        "country": "Japan",
+        "itemNo": "47363",
+        "date": "2021-11-28T12:53:18.471Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626494/PandoraHearts3_ki4vwh.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626495/PandoraHearts2_b4ewy0.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626493/PandoraHearts4_bhu6js.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626492/PandoraHearts1_bmpxxk.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Drama",
+            "Supernatural",
+            "Romance"
+        ],
+        "quantity": 44,
+        "_id": "61a37c7def63640c078ca809",
+        "categories": "manhwa",
+        "name": "pandora hearts",
+        "author": "Mochizuki Jun",
+        "currentPrice": 144,
+        "book_format": "Paperback",
+        "date_published": "May 18, 2006 – March 18, 2015",
+        "publisher": "Square Enix",
+        "description": "The air of celebration surrounding fifteen-year-old Oz Vessalius’s coming-of-age ceremony quickly turns to horror when he is condemned for a sin about which he knows nothing. He is thrown into an eternal prison known as the Abyss, from which there is no escape. There, he meets a young girl named Alice, who is not what she seems. Now that the relentless cogs of fate have begun to turn, will they lead only to crushing despair for Oz, or is there some shred of hope for him to grasp on to? But B-Rabbit, one of the Abyss’s “Chains“, comes to save Oz. She tells him her name is Alice, and in order to break free from the Abyss, he makes a contract with her. Once back in his world, Oz is approached by the organization known as Pandora, and he becomes caught up in the mysteries that surround them. With the power of B-Rabbit on his side, Oz begins his quest to find the truth. Why was his existence such a sin that he had to be sent to the Abyss? Why has Alice lost her memories? What happened one hundred years ago when an entire city was dragged down into the Abyss? There are many questions unfolding around him, and Oz, along with his companions, will have to act quickly before it’s too late.",
+        "vol": 24,
+        "country": "Japan",
+        "itemNo": "750263",
+        "date": "2021-11-28T12:56:29.364Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626491/Sakamotodesuga1_z0bfxx.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626482/Sakamotodesuga2_ai1vx3.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626478/Sakamotodesuga3_xd6fdg.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626478/Sakamotodesuga4_gtoruf.jpg"
+        ],
+        "genre": [
+            "Comedy"
+        ],
+        "quantity": 13,
+        "_id": "61a37ca2ef63640c078ca80a",
+        "categories": "manhwa",
+        "name": "sakamoto desu ga?",
+        "author": "Sano Nami",
+        "currentPrice": 24,
+        "book_format": "Paperback",
+        "date_published": "April 14, 2012 – December 14, 2015",
+        "publisher": "Enterbrain",
+        "description": "First-year high-school student Sakamoto isn’t just cool, he’s the coolest! Almost immediately after starting school, he began attracting everyone’s attention. The girls love him, and most of the boys resent him. There’s even a boy in the class who works as a model, but who is constantly upstaged by Sakamoto! No matter what tricks the other boys try to play on him, Sakamoto always manages to foil them with ease and grace. Though Sakamoto may seem cool and aloof, he helps others when asked, such as in the case of the boy in his class who was being constantly bullied. No matter what difficulties Sakamoto encounters, he moves through his high-school life with confidence and class! [tethysdust] In volume 1 is included the one-shot: Katahaba Hiroshi.",
+        "vol": 4,
+        "country": "Japan",
+        "itemNo": "864060",
+        "date": "2021-11-28T12:57:06.695Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/Gokusen1_tne9cr.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/Gokusen2_oqrljv.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/Gokusen4_uzziux.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/Gokusen3_nb7yo3.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Romance"
+        ],
+        "quantity": 323,
+        "_id": "61a37cc4ef63640c078ca80b",
+        "categories": "manhwa",
+        "name": "gokusen",
+        "author": "Morimoto Kozueko",
+        "currentPrice": 90,
+        "book_format": "Paperback",
+        "date_published": "2000 – 2007",
+        "publisher": "Shueisha",
+        "description": "At first glance this looks like the female version of GTO. However Kumiko is the daughter of a Yakuza boss and must hide her background so she doesn’t get fired from her first teaching job. Comparisons aside, Gokusen stands in it own right with its witty humour and dialogue. From Baka-Updates: Fresh out of college, Kumiko “Yankumi“ Yamaguchi becomes a math teacher at an all-boys high school. Unfortunately for her, she’s assigned by the school board as the homeroom teacher for class 2-D, which happens to be the class of delinquent students. When the class attempts to make a living hell out of Yankumi’s career, they fail as her persistence and aggression gain their respect. However, little does anyone in the school know that Yankumi is actually heir to the Kuroda Group - one of Tokyo’s most powerful yakuza clans.",
+        "vol": 15,
+        "country": "Japan",
+        "itemNo": "419255",
+        "date": "2021-11-28T12:57:40.627Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/AirGear1_hmcovb.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/AirGear2_kdm5kl.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/AirGear4_lz8dzh.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/AirGear3_sfs1lz.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Romance",
+            "Supernatural",
+            "Drama"
+        ],
+        "quantity": 88,
+        "_id": "61a37ce9ef63640c078ca80c",
+        "categories": "manhwa",
+        "name": "air gear",
+        "author": "Oh! Great",
+        "currentPrice": 222,
+        "book_format": "Paperback",
+        "date_published": "November 6, 2002 – May 23, 2012",
+        "publisher": "Kodansha",
+        "description": "Itsuki Minami needs no introduction – everybody’s heard of the “Babyface” of the Eastside. He’s the toughest kid at Higashi Junior High School, easy on the eyes but dangerously tough when he needs to be. Plus, Itsuki lives with the mysterious and sexy Noyamano sisters. Life is never dull, but it becomes dangerous when Itsuki leads his school to victory over some vindictive Westside punks with gangster connections. Now he stands to lose his school, his friends, and everything he cares about. But in his darkest hour, the Noyamano girls come to Itsuki’s aid. They can teach him a powerful skill that will save their school from the gangsters’ siege–and introduce Itsuki to a thrilling and terrifying new world.",
+        "vol": 37,
+        "country": "Japan",
+        "itemNo": "410125",
+        "date": "2021-11-28T12:58:17.497Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/PrinceofTennis1_dstd2b.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/PrinceofTennis2_ai0ysn.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/PrinceofTennis3_ax4mq6.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/PrinceofTennis4_qdqnnc.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Drama"
+        ],
+        "quantity": 7,
+        "_id": "61a37da4ef63640c078ca80d",
+        "categories": "manga",
+        "name": "prince of tennis",
+        "author": "Konomi Takeshi",
+        "currentPrice": 252,
+        "book_format": "Paperback",
+        "date_published": "July 19, 1999 – March 3, 2008",
+        "publisher": "Shueisha",
+        "description": "Ryoma Echizen just joined the Seishun Academy’s tennis team, which is known for being one of the most competitive teams in Japan. Its members are incredibly talented, gifted, and athletic. With rigorous and extremely intense practices, the upperclassmen of the team expect the very best from themselves and they expect even more from the new members of the team. While most of the freshmen are on pins and needles hoping they won’t get cut from the team, Ryoma Echizen is confident, cool, and collected. Some might even say he’s cocky, but at least he’s got the skills to back up his attitude. With his virtually unreturnable “twist serve,“ Ryoma is sure to make the starting team. Join Ryoma and the other first years, as they train hard, make friends, and try to find a place for themselves on the team. And meet Ryoma’s cute but chronically shy classmate Sakuno Ryuzaki. She’s got a big crush on Ryoma, but will he ever notice her? Ryoma Echizen is the Prince of Tennis. He may be ready for the Seishun Academy tennis team, but are they ready for him?!",
+        "vol": 42,
+        "country": "Japan",
+        "itemNo": "665596",
+        "date": "2021-11-28T13:01:24.524Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/Berserk4_qfjpj6.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/Berserk2_srstgu.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/Berserk1_q8pnnl.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/Berserk3_kovca1.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Romance",
+            "Supernatural"
+        ],
+        "quantity": 14,
+        "_id": "61a37dcbef63640c078ca80e",
+        "categories": "manga",
+        "name": "berserk",
+        "author": "Miura Kentaro",
+        "currentPrice": 240,
+        "book_format": "Paperback",
+        "date_published": "August 1989 – September 2021",
+        "publisher": "Hakusensha",
+        "description": "Gats, known as the Black Swordsman, seeks sanctuary from the demonic forces attracted to him and his woman because of a demonic mark on their necks, and also vengeance against the man who branded him as an unholy sacrifice. Aided only by his titanic strength gained from a harsh childhood lived with mercenaries, a gigantic sword, and an iron prosthetic left hand, Gats must struggle against his bleak destiny, all the while fighting with a rage that might strip him of his humanity. Warning: This manga is for mature audiences only, since it has sexual content and graphic violence (gore, blood, rape, etc). Definitely not for the weak hearted.",
+        "vol": 40,
+        "country": "Japan",
+        "itemNo": "934981",
+        "date": "2021-11-28T13:02:03.178Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/Beelzebub1_kisvrr.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626477/Beelzebub3_twbzhv.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/Beelzebub2_ts9qiw.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/Beelzebub4_snsrn9.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Romance",
+            "Supernatural"
+        ],
+        "quantity": 25,
+        "_id": "61a37df0ef63640c078ca80f",
+        "categories": "manga",
+        "name": "beelzebub",
+        "author": "Tamura Ryuhei",
+        "currentPrice": 168,
+        "book_format": "Paperback",
+        "date_published": "February 23, 2009 – March 13, 2015",
+        "publisher": "Shueisha",
+        "description": "The story follows the “strongest juvenile delinquent,“ Oga Tatsumi as he watches over the demon king’s son (AKA the future demon king, nicknamed Beel) with the destruction of the world hanging in the balance.",
+        "vol": 28,
+        "country": "Japan",
+        "itemNo": "269542",
+        "date": "2021-11-28T13:02:40.104Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/KatekyoHitmanReborn2_ypij54.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/KatekyoHitmanReborn1_ie67sy.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626475/KatekyoHitmanReborn4_bnltpl.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637626476/KatekyoHitmanReborn3_ad2gm0.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Supernatural",
+            "Drama"
+        ],
+        "quantity": 23,
+        "_id": "61a37e12ef63640c078ca810",
+        "categories": "manga",
+        "name": "katekyo hitman reborn",
+        "author": "Amano Akira",
+        "currentPrice": 252,
+        "book_format": "Paperback",
+        "date_published": "May 24, 2004 – November 12, 2012",
+        "publisher": "Shueisha",
+        "description": "Tsuna comes home one day, only to be greeted by a little baby mafioso who apparently is his new home tutor. His job is to guide Tsuna into his role as the 10th Boss of the Vongola mafia family. With the help of all his new friends and an array of special items such as the “Dying Will Bullet“, he might just be able to do it.",
+        "vol": 42,
+        "country": "Japan",
+        "itemNo": "440030",
+        "date": "2021-11-28T13:03:14.681Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697889/ShamanKing1_omkud1.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697890/ShamanKing4_nmqocp.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697889/ShamanKing3_icb8q7.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697889/ShamanKing2_euazi1.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Supernatural",
+            "Drama"
+        ],
+        "quantity": 15,
+        "_id": "61a37e3def63640c078ca811",
+        "categories": "manga",
+        "name": "shaman king",
+        "author": "Takei Hiroyuki",
+        "currentPrice": 210,
+        "book_format": "Paperback",
+        "date_published": "June 30, 1998 – August 30, 2004",
+        "publisher": "Shueisha",
+        "description": "Yoh Asakura is a shaman--one of the gifted few who, thanks to training or natural talent, can channel spirits that most people can’t even see. With the help of his fiancée, Anna, Yoh is in training for the ultimate shaman sports event: the “Shaman Fight in Tokyo,“ the once-every-500-years tournament to see who can shape humanity’s future and become the Shaman King. But unfortunately for Yoh, every shaman in the world is competing for the same prize…",
+        "vol": 35,
+        "country": "Japan",
+        "itemNo": "932761",
+        "date": "2021-11-28T13:03:57.115Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697841/DragonBall1_epu1zl.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697841/DragonBall3_zvengd.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697841/DragonBall2_vzvnhp.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697841/DragonBall5_hjq6lr.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Supernatural"
+        ],
+        "quantity": 8,
+        "_id": "61a37e63ef63640c078ca812",
+        "categories": "manga",
+        "name": "dragon ball",
+        "author": "Toriyama Akira",
+        "currentPrice": 252,
+        "book_format": "Paperback",
+        "date_published": "December 3, 1984 – June 5, 1995",
+        "publisher": "Shueisha",
+        "description": "The genius Bulma, while searching for the Dragon Balls which can grant any wish, meets a simple minded little boy with a strange monkey tail, Son Goku. Together, they meet many people and many foes in their adventure chasing after the Dragon Balls, with Son Goku progressively learning to be the best fighter. Dragon Ball is loosely based on the Chinese story Saiyuki (Journey to the West) : for example, the main character is based on Son Goku the monkey king.",
+        "vol": 42,
+        "country": "Japan",
+        "itemNo": "817752",
+        "date": "2021-11-28T13:04:35.756Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637705954/hell2_adb6xo.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697875/Hellsing3_vnufgn.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697874/Hellsing2_trvlic.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637705954/hell_ldxazp.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Supernatural"
+        ],
+        "quantity": 17,
+        "_id": "61a37ed6ef63640c078ca813",
+        "categories": "manga",
+        "name": "hellsing",
+        "author": "Hirano Kouta",
+        "currentPrice": 60,
+        "book_format": "Paperback",
+        "date_published": "May 1997 – September 30, 2008",
+        "publisher": "Shonen Gahosha",
+        "description": "Vampires exist. It is the duty of Hellsing, an organization sponsored by the British government, to hide that frightening fact and protect the blissfully unaware populace. Along with its own personal army, Hellsing also has a few secret weapons. Alucard, an incredibly powerful vampire, has been controlled by Hellsing for years. Although he dislikes being a servant to the Hellsing family, he certainly enjoys his job as Hellsing’s vampire exterminator. Seras is a fledgling vampire and a former police woman. Although reluctant to embrace her new self, she is still a valuable member of the organization. Integra Hellsing, the current leader, is usually fully capable of fulfilling her duty, but lately, vampire activity has been on the rise. Unfortunately, the cause is more alarming than anything she could have imagined. A group long thought dead has been plotting in secret since their apparent destruction over 50 years ago. Plotting to plunge England, and perhaps the entire world, into war.",
+        "vol": 10,
+        "country": "Japan",
+        "itemNo": "362479",
+        "date": "2021-11-28T13:06:30.884Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697840/DeathNote4_tngbie.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697840/DeathNote1_gb9wxj.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697841/DeathNote2_zzrh5t.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697840/DeathNote3_cxbdia.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Supernatural",
+            "Drama"
+        ],
+        "quantity": 5,
+        "_id": "61a37ef7ef63640c078ca814",
+        "categories": "manga",
+        "name": "death note",
+        "author": "Ohba Tsugumi, Asami Yuuko",
+        "currentPrice": 72,
+        "book_format": "Paperback",
+        "date_published": "December 1, 2003 – May 15, 2006",
+        "publisher": "Shueisha",
+        "description": "An overachieving 12th grader, Yagami Light is an aspiring young man who seems destined for success. Unfortunately, his daily habits bore his incredible intelligence--So when a strange black notebook falls from the heavens during his class, it isn’t long before he takes it for himself. In his room, he finds, to his horror/fascination, that the Death Note is real, and owned by Ryuk, a Shinigami (Death God). Any person’s name written in the Death Note will die in 40 seconds as long as the person’s name is not the same as some one else. But if the name is unique, the person will die.... without fail. With this supposed gift of God, Light swears upon his grave that he will ’cleanse’ the world of the evil and needless people that inhabit it, thus creating a utopia for all. With the world’s greatest detective, L, hot on his tail, will Light’s ideals prove too fantastic to realize, or will he succeed bringing justice?",
+        "vol": 12,
+        "country": "Japan",
+        "itemNo": "37506",
+        "date": "2021-11-28T13:07:03.212Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697898/SpiceandWolf1_zy4zhi.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697898/SpiceandWolf4_gscxmo.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697897/SpiceandWolf3_gbjv72.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697898/SpiceandWolf2_tdsyyx.jpg"
+        ],
+        "genre": [
+            "Adventure",
+            "Romance",
+            "Supernatural",
+            "Drama"
+        ],
+        "quantity": 90,
+        "_id": "61a37f16ef63640c078ca815",
+        "categories": "manga",
+        "name": "spice and wolf",
+        "author": "Hasekura Isuna",
+        "currentPrice": 102,
+        "book_format": "Paperback",
+        "date_published": "September 27, 2007 – December 27, 2017",
+        "publisher": "ASCII Media Works",
+        "description": "With his carthorse as his only companion, the young merchant Kraft Lawrence slowly wends his way through dusty back roads in search of profitable trade. But this monotony screeches to a halt when, one night, he encounters a harvest goddess in the guise of a beautiful young girl…with wolf ears and a tail! Longing for the northern lands of her birth, Holo the Wisewolf joins Lawrence as he follows the ebb and flow of trade through the countryside. And when the two come across a compelling but suspicious opportunity for profit, will Lawrence with his mercantile chops and Holo with her ancient instincts be able to separate the truth from the lies — and make some coin while they’re at it?!",
+        "vol": 17,
+        "country": "Japan",
+        "itemNo": "706236",
+        "date": "2021-11-28T13:07:34.193Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697898/SwordArtOnline1_nnzyve.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697899/SwordArtOnline3_gekr9z.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697897/SwordArtOnline2_dx8df0.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697904/SwordArtOnline4_lduoac.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Romance"
+        ],
+        "quantity": 10,
+        "_id": "61a37f5aef63640c078ca816",
+        "categories": "manhuas",
+        "name": "sword art online",
+        "author": "Kawahara Reki",
+        "currentPrice": 150,
+        "book_format": "Paperback",
+        "date_published": "April 10, 2009 – September 2021",
+        "publisher": "Dengeki Bunko",
+        "description": "In the year 2022, gamers rejoice as Sword Art Online - a VRMMORPG (Virtual Reality Massively Multiplayer Online Role Playing Game) like no other - opens its virtual doors, allowing players to take full advantage of the ultimate in gaming technology: NerveGear, a system that allows users to completely immerse themselves in the game world by manipulating their brain waves to create a wholly realistic gaming experience. But when the game goes live, the elation of the players quickly turns to horror as they discover that, for all its amazing features, SAO is missing one of the most basic functions of any MMORPG - a log-out button. Now trapped in the virtual world of Aincrad, their bodies held captive by NerveGear in the real world, users are issued a chilling ultimatum: conquer all one hundred floors of Aincrad to regain your freedom. But in the warped world of SAO, “game over” means certain death - both virtual and real…",
+        "vol": 25,
+        "country": "Japan",
+        "itemNo": "670411",
+        "date": "2021-11-28T13:08:42.102Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697868/GirltheWild3_ywsdmy.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697867/GirltheWild2_g21asu.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697844/GirltheWild1_a2our0.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697868/GirltheWild4_j03k52.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Romance",
+            "Drama"
+        ],
+        "quantity": 89,
+        "_id": "61a37f77ef63640c078ca817",
+        "categories": "manhuas",
+        "name": "girl the wild's",
+        "author": "Hun",
+        "currentPrice": 120,
+        "book_format": "Paperback",
+        "date_published": "August 7, 2011 – October 2016",
+        "publisher": "Bohai",
+        "description": "Wild’s High has a 42-year history as a fighting specialized, girls only, private high school meant solely for the elite. It is also the place that Wild’s-League is held: the most popular event in the country and the only place in the world where teenage girls have brutal fights with their lives on the line. One year the school changed from a girls only school to a mixed gender school. The only male student, Song Jae Gu, has been granted a full 3-year scholarship regardless of grades. Being someone who had to spend every moment either working or taking care of his younger brother and sister, he accepted. But after meeting Queen, the bloody champion of Wild’s-League, drenching her in coffee, calling her a monster, and getting caught seeing her while she was taking a shower... his scholarship could prove fatal.",
+        "vol": 2,
+        "country": "South Korea",
+        "itemNo": "624256",
+        "date": "2021-11-28T13:09:11.869Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697880/MahoukaKoukouNoRettousei4_gh8mj3.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697880/MahoukaKoukouNoRettousei2_fwow9y.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697880/MahoukaKoukouNoRettousei3_edqdgs.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697880/MahoukaKoukouNoRettousei1_hxsycj.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Romance",
+            "Supernatural",
+            "Drama"
+        ],
+        "quantity": 19,
+        "_id": "61a37f93ef63640c078ca818",
+        "categories": "manhuas",
+        "name": "mahouka koukou no rettousei",
+        "author": "Hayashi Fumino, Satou Tsutomu",
+        "currentPrice": 192,
+        "book_format": "Paperback",
+        "date_published": "July 10, 2011 – September 10, 2020",
+        "publisher": "ASCII Media Works",
+        "description": "Magic is a product of neither legends nor fairy tales. It has become a technology of reality for nearly a century. Various countries in the world are locked in a race in nurturing Magicians. Shiba Tatsuya is an honor student without magic capability at First High School, a magic high school along with his sister who happens to be the top student among the freshmen. What will happen to him? How will he live his school life where he is one of the many reserves in the school looked down upon by the chosen magical students?",
+        "vol": 32,
+        "country": "Japan",
+        "itemNo": "294364",
+        "date": "2021-11-28T13:09:39.365Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697839/Blame1_curs4g.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697840/Blame3_ialere.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697839/Blame2_d0uztc.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697840/Blame4_hujkqt.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Drama"
+        ],
+        "quantity": 9,
+        "_id": "61a37fb5ef63640c078ca819",
+        "categories": "manhuas",
+        "name": "blame!",
+        "author": "Nihei Tsutomu",
+        "currentPrice": 60,
+        "book_format": "Paperback",
+        "date_published": "1997 – 2003",
+        "publisher": "Kodansha",
+        "description": "Killy is a man of few words. He wanders, seemingly endlessly, through a lonely, gargantuan labyrinth of concrete and steel, fighting off cyborgs and other futuristic nightmares, searching only for something called Net Terminal Genes. And he has a very powerful gun, which he uses without hesitation whenever anything resembling danger rears its ugly head. Who is this quiet, violent, determined man and what are these Genes he seeks? The small communities he finds tucked into the crevices of this towering, dystopic ruin hardly give him leads on his treasure, driving him to find larger enclaves of civilization where people can reveal more about the world he lives in and the quarry he seeks.",
+        "vol": 10,
+        "country": "Japan",
+        "itemNo": "429464",
+        "date": "2021-11-28T13:10:13.358Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637777271/Beastars1_el9epb.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637777271/Beastars3_few5c6.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637777281/Beastars4_xnacqp.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637777271/Beastars2_wv1bzz.jpg"
+        ],
+        "genre": [
+            "Supernatural"
+        ],
+        "quantity": 17,
+        "_id": "61a37fdaef63640c078ca81a",
+        "categories": "manhuas",
+        "name": "beastars",
+        "author": "Paru Itagaki",
+        "currentPrice": 132,
+        "book_format": "Paperback",
+        "date_published": "September 8, 2016 – October 8, 2020",
+        "publisher": "Akita Shoten",
+        "description": "In a world populated by anthropomorphic animals, herbivores and carnivores coexist with each other. For the adolescences of the Cherryton School, school life is filled with hope, romance, distrust, and uneasiness. The main character is Legosi the wolf, a member of the drama club. Despite his menacing appearance, he has a very gentle heart. Throughout most of his life, he has always been an object of fear and hatred by other animals, and he’s been quite accustomed to that lifestyle. But soon, he finds himself becoming more involved with his fellow classmates who have their own share of insecurities and finds his life in school changing slowly.",
+        "vol": 22,
+        "country": "Japan",
+        "itemNo": "500184",
+        "date": "2021-11-28T13:10:50.835Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697904/AkamegaKiru1_kgw8wv.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697838/AkamegaKiru3_bcd0pc.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697904/AkamegaKiru2_bgjlvo.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697839/AkamegaKiru4_rixbop.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Romance",
+            "Drama"
+        ],
+        "quantity": 25,
+        "_id": "61a38044ef63640c078ca81b",
+        "categories": "oelManga",
+        "name": "akame ga kiru!",
+        "author": "Takahiro ",
+        "currentPrice": 60,
+        "book_format": "Paperback",
+        "date_published": "October 25, 2013 – January 25, 2019",
+        "publisher": "Square Enix",
+        "description": "Teenage country bumpkin Tatsumi dreams of earning enough money for his impoverished village by working in the Capital - but his short-lived plans go awry when he’s robbed by a buxom beauty upon arrival! Penniless, Tatsumi is taken in by the lovely Lady Aria, but just when his Capital dreams seem in reach yet again, Lady Aria’s mansion is besieged by Night Raid - a team of ruthless assassins who targets high-ranking members of the upper class! As Tatsumi is quick to learn, appearances can be deceiving in the Capital, and this team of assassins just might be… the good guys?!",
+        "vol": 10,
+        "country": "Japan",
+        "itemNo": "769285",
+        "date": "2021-11-28T13:12:36.723Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697889/RosarioVampire1_gspd8e.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697889/RosarioVampire3_etcggw.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697890/RosarioVampire4_fxihby.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697889/RosarioVampire2_psujhj.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Romance",
+            "Supernatural"
+        ],
+        "quantity": 1,
+        "_id": "61a38067ef63640c078ca81c",
+        "categories": "oelManga",
+        "name": "rosario + vampire",
+        "author": "Ikeda Akihisa",
+        "currentPrice": 60,
+        "book_format": "Paperback",
+        "date_published": "July 6, 2004 – September 22, 2007",
+        "publisher": "Shueisha",
+        "description": "By a bizzare coincidence, Tsukune Aono has accidentally gotten himself admitted to a youkai acadamy, a school attended by monsters (youkai). Just when he thinks he’ll run away from there, he meets the beautiful girl Moka and his mood turns ultra happy. However, she transforms into her true form when the rosary on her chest is taken off, she’s a super vampire!",
+        "vol": 10,
+        "country": "Japan",
+        "itemNo": "153618",
+        "date": "2021-11-28T13:13:11.724Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697880/KaibutsuOujo4_yuwnfo.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697878/KaibutsuOujo2_dtqohv.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697879/KaibutsuOujo3_a8sedn.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697877/KaibutsuOujo1_lswniv.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Supernatural"
+        ],
+        "quantity": 18,
+        "_id": "61a38083ef63640c078ca81d",
+        "categories": "oelManga",
+        "name": "kaibutsu oujo",
+        "author": "Mitsunaga Yasunori",
+        "currentPrice": 120,
+        "book_format": "Paperback",
+        "date_published": "July 2005 – April 2013",
+        "publisher": "Kodansha",
+        "description": "From Del Rey: Werewolves, demons, monsters, vampires. All these ferocious creatures are afraid of the same thing: the beautiful Princess Hime, an awesome warrior who fights off the forces of evil with a chainsaw and a smile. Not only does she look great in a tiara, she has power that allows her to raise the dead. She’s a girl on a mission, and with the help of her undead servant and a supercute robot, there’s no creature of darkness she can’t take down!",
+        "vol": 20,
+        "country": "Japan",
+        "itemNo": "282219",
+        "date": "2021-11-28T13:13:39.342Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697890/ShingekinoKyojin1_vn4ryk.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697890/ShingekinoKyojin2_fdicyy.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697897/ShingekinoKyojin4_dj18pl.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697896/ShingekinoKyojin3_pxrtz7.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Supernatural",
+            "Drama"
+        ],
+        "quantity": 0,
+        "_id": "61a380a2ef63640c078ca81e",
+        "categories": "oelManga",
+        "name": "shingeki no kyojin",
+        "author": "Isayama Hajime",
+        "currentPrice": 30,
+        "book_format": "Paperback",
+        "date_published": "September 9, 2009 – April 9, 2021",
+        "publisher": "Kodansha",
+        "description": "Several hundred years ago, humans were nearly exterminated by giants. Giants are typically several stories tall, seem to have no intelligence, devour human beings and, worst of all, seem to do it for the pleasure rather than as a food source. A small percentage of humanity survived by walling themselves in a city protected by extremely high walls, even taller than the biggest of giants. Flash forward to the present and the city has not seen a giant in over 100 years. Teenage boy Elen and his foster sister Mikasa witness something horrific as the city walls are destroyed by a super giant that appears out of thin air. As the smaller giants flood the city, the two kids watch in horror as their mother is eaten alive. Elen vows that he will murder every single giant and take revenge for all of mankind.",
+        "vol": 34,
+        "country": "Japan",
+        "itemNo": "784309",
+        "date": "2021-11-28T13:14:10.638Z",
+        "__v": 0,
+        "salePrice": 22
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697869/Helck1_zgu89y.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697869/Helck2_upqqr0.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697869/Helck4_d6jtou.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697869/Helck3_de6uqv.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Comedy"
+        ],
+        "quantity": 1,
+        "_id": "61a380bbef63640c078ca81f",
+        "categories": "oelManga",
+        "name": "helck",
+        "author": "Nanao Nanaki",
+        "currentPrice": 72,
+        "book_format": "Paperback",
+        "date_published": "May 4, 2014 – November 26, 2017",
+        "publisher": "Shogakukan",
+        "description": "After the last Demon King was defeated, a Demon Kingdom is running a contest to choose the next King. A muscular and high-level human named Helck joined and said that he wants to destroy all human. Is he serious? Elf “Vamirio“, one of the four Great Kings of the whole Demon Empire, cannot believe in this. She is monitoring the contest. The story starts in the Demon Kingdom. What’s the secret behind Helck and the human world?",
+        "vol": 12,
+        "country": "Japan",
+        "itemNo": "688833",
+        "date": "2021-11-28T13:14:35.854Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697839/BattleAngelAlita1_wne3w1.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697839/BattleAngelAlita2_f6mzpm.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697839/BattleAngelAlita3_k0fo5h.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697838/BattleAngelAlita4_iwadwg.jpg"
+        ],
+        "genre": [
+            "Action"
+        ],
+        "quantity": 0,
+        "_id": "61a380d9ef63640c078ca820",
+        "categories": "oelManga",
+        "name": "battle angel alita",
+        "author": "Kishiro Yukito",
+        "currentPrice": 54,
+        "book_format": "Paperback",
+        "date_published": "December 15, 1990 – April 1, 1995",
+        "publisher": "Shueisha",
+        "description": "Alita is a powerful cyborg with a soft heart and a mysterious past. Her second lease on life isn’t easy: her heart is broken, she gains and loses friends to the cruel world of the Scrapyard far below the Utopian city of Tiphares, and she serves many masters in her quest to protect the innocent and create a new life for herself.",
+        "vol": 9,
+        "country": "Japan",
+        "itemNo": "636901",
+        "date": "2021-11-28T13:15:05.828Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697909/UntilDeathDoUsPart4_ft7j2c.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697903/UntilDeathDoUsPart1_ztzojf.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697909/UntilDeathDoUsPart2_cyzq73.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697909/UntilDeathDoUsPart3_o2gg34.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Drama",
+            "Supernatural"
+        ],
+        "quantity": 0,
+        "_id": "61a380feef63640c078ca821",
+        "categories": "manga",
+        "name": "until death do us part",
+        "author": "Takashige Hiroshi",
+        "currentPrice": 15,
+        "book_format": "Paperback",
+        "date_published": "December 2005 – November 20, 2015",
+        "publisher": "Square Enix",
+        "description": "From Yen Press: Haruka Tooyama is a twelve-year-old girl with incredible precognitive abilities. But her accuracy in predicting the future has made her a target for any number of greedy corporations that would use her power for their own profit. When she is kidnapped, Haruka uses her gift to seek out someone who can help her escape and fixes upon a blind man making his way through the busy streets of Tokyo. Though it may seem an odd choice, Haruka’s powers have not led her wrong. Despite his inability to see, her chosen protector’s fighting skills become apparent when he draws a sword from his walking stick and deftly takes out her captors. Knowing she will always be pursued for her gift, Haruka begs the mystery swordsman to keep her safe…“until death do us part.",
+        "vol": 25,
+        "country": "Japan",
+        "itemNo": "350707",
+        "date": "2021-11-28T13:15:42.759Z",
+        "__v": 0,
+        "salePrice": 6
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697880/Noblesse2_pds5yh.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697888/Noblesse4_e5wdxw.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697883/Noblesse3_l8ed29.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1637697880/Noblesse1_dqteyy.jpg"
+        ],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Drama",
+            "Supernatural"
+        ],
+        "quantity": 0,
+        "_id": "61a38119ef63640c078ca822",
+        "categories": "manga",
+        "name": "noblesse",
+        "author": "Son Jae-ho",
+        "currentPrice": 42,
+        "book_format": "Paperback",
+        "date_published": "December 30, 2007 – January 7, 2019",
+        "publisher": "Naver Webtoon",
+        "description": "He awakens. For 820 years he has slumbered with no knowledge of mankind’s advancements and scientific achievments. The land which he once knew has become an unfamiliar place with new technologies, attitudes, and lifestyles. Cadis Etrama Di Raizel, Rai, while seeking to familiarize himself with this era, somehow locates a loyal servant of his, Frankenstein, who is currently the principal of a South Korean high school. Rai decides that this high school would be the perfect place to help him learn about the new world. He enrolls, and suddenly becomes the friend of Shinwoo, an immature teenager who is also a master martial artist. But this new world is no safer than the old, and the dignified, bewildered, technologically illiterate Rai finds himself caught up in adventures both hilarious and dangerous.",
+        "vol": 7,
+        "country": "South Korea",
+        "itemNo": "935441",
+        "date": "2021-11-28T13:16:09.535Z",
+        "__v": 0
+    },
+    {
+        "enabled": true,
+        "imageUrls": [
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639138963/over1_g2gvfb.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639139043/latest_rpvgzk.png",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639139124/51JR-8MbsSL_qduawo.jpg",
+            "https://res.cloudinary.com/dl7xlw7cl/image/upload/v1639139164/overlord-vol-11-light-novel_xfpjmw.jpg"
+        ],
+        "genre": [
+            "Adventure",
+            "Action"
+        ],
+        "quantity": 7,
+        "_id": "61b349e1c4af137eee9c1967",
+        "name": "Overlord",
+        "author": "Kugane Maruyama",
+        "currentPrice": 10,
+        "previousPrice": 14,
+        "categories": "ranobe",
+        "book_format": "Paperback",
+        "date_published": "July 20 2012",
+        "publisher": "Kugane Maruyama",
+        "description": "In the year 2126, a Dive Massively Multiplayer Online Role-Playing Game or DMMO-RPG called YGGDRASIL was released. It stands out among all other DMMORPG's due to its unusually high ability for the player to interact with the game. After an intense 12-year run, the game servers are about to be shut down. Within the game exist a Guild, Ainz Ooal Gown, once consisting of 41 members and credited as one of the strongest guilds in the game. Now only four of the members remain, the other 37 having quit the game. Of those four only one actually continues to play; his name is Momonga and he remains the guild leader, maintaining their headquarters, the Great Tomb of Nazarick. He invites the remaining guild members, but of those only one appears and only for a short while before leaving. Though Momonga is saddened by this, he accepts the reality that his friends have their real lives to take care of. And so, he stays in the guild alone until the servers shut down.",
+        "vol": 14,
+        "country": "Japan",
+        "itemNo": "258646",
+        "date": "2021-11-27T21:04:57.242Z",
+        "__v": 0,
+        "salePrice": 8
+    }
+  ]

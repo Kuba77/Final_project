@@ -82,7 +82,7 @@ export const addOrRemoveProductToCart = createAsyncThunk(
 export const addProductToCart = createAsyncThunk(
   "cart/addProductToCart",
   async function (value, { rejectWithValue, getState, dispatch }) {
-    const knownCustomer = getState().customer?.customerData?._id;
+    const knownCustomer = getState().customer?.customerData?.id;
     try {
       if (knownCustomer) {
         const response = await addProduct(value._id);
@@ -97,6 +97,7 @@ export const addProductToCart = createAsyncThunk(
       }
     } catch (error) {
       errorMessageRequest(error.message);
+
       return rejectWithValue(error.message);
     }
   }
@@ -104,11 +105,11 @@ export const addProductToCart = createAsyncThunk(
 export const removeProductFromCart = createAsyncThunk(
   "cart/removeProductFromCart",
   async function (value, { rejectWithValue, getState, dispatch }) {
-    const knownCustomer = getState().customer?.customerData?._id;
+    const knownCustomer = getState().customer?.customerData?.id;
     try {
       if (knownCustomer) {
         const response = await removeProduct(value._id);
-        if (!response._id && response.products.length !== 0) {
+        if (!response._id) {
           throw new Error(
             "I can't remove an item from my cart, try again later."
           );
@@ -139,36 +140,18 @@ export const decr = createAsyncThunk(
     }
   }
 );
-export const deleteCustomerCartDB = createAsyncThunk(
-  "cart/deleteCustomerCartDB",
-  async function (_, { rejectWithValue, dispatch }) {
-    try {
-      const response = await deleteCart();
-      if (response.status === 200 && response.data.message) {
-        dispatch(clearCart());
-      } else {
-        throw new Error(
-          "I can't remove an item from my cart, try again later."
-        );
-      }
-    } catch (error) {
-      errorMessageRequest(error.message);
-      return rejectWithValue(error.message);
-    }
-  }
-);
+
 const setError = (state, action) => {
   state.status = "rejected";
   state.error = action.payload;
 };
 const setLoading = (state, action) => {
-  state.status = true;
+  state.status = "loading";
   state.error = null;
 };
 
 const defaultState = {
   products: [],
-  status: null,
   error: null,
 };
 
@@ -194,16 +177,16 @@ const cartSlice = createSlice({
     },
   },
   extraReducers: {
-    // [getcart.pending]: setLoading,
-    // [getcart.fulfilled]: (state, action) => {
-    //   state.status = "resolve";
-    //   state.error = null;
-    //   state.products = action.payload;
-    // },
-    // [getcart.rejected]: setError,
+    [getcart.pending]: setLoading,
+    [getcart.fulfilled]: (state, action) => {
+      state.status = "resolve";
+      state.error = null;
+      state.products = action.payload;
+    },
+    [getcart.rejected]: setError,
     [addProductToCart.pending]: setLoading,
     [addProductToCart.fulfilled]: (state, action) => {
-      state.status = false;
+      state.status = "resolve";
       state.error = null;
     },
     [addProductToCart.rejected]: setError,
@@ -233,22 +216,26 @@ const cartSlice = createSlice({
       state.products = action.payload;
     },
     [updateAnonimCartAndCustomerCart.rejected]: setError,
-    [updateAnonimCartAndCustomerCart.rejected]: setError,
-    [updateAnonimCartAndCustomerCart.fulfilled]: (state, action) => {
-      state.status = "resolve";
-      state.error = null;
-      state.products = action.payload;
-    },
-    [updateAnonimCartAndCustomerCart.rejected]: setError,
-    [deleteCustomerCartDB.rejected]: setError,
-    [deleteCustomerCartDB.fulfilled]: (state, action) => {
-      state.status = "resolve";
-      state.error = null;
-    },
-    [deleteCustomerCartDB.rejected]: setError,
   },
 });
-
+export const deleteCustomerCartDB = createAsyncThunk(
+  "cart/deleteCustomerCartDB",
+  async function (_, { rejectWithValue, dispatch }) {
+    try {
+      const response = await deleteCart();
+      if (response.status === 200 && response.data.message) {
+        dispatch(clearCart());
+      } else {
+        throw new Error(
+          "I can't remove an item from my cart, try again later."
+        );
+      }
+    } catch (error) {
+      errorMessageRequest(error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
 export const { setItemInCart, deleteItemFromCart, clearCart, rewrite } =
   cartSlice.actions;
 export default cartSlice.reducer;

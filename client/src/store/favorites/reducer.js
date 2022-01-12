@@ -4,6 +4,11 @@ import {
   getWishList,
   deleteProductFromFavorites,
 } from "../../services/wishlist";
+import {
+  successMassage,
+  warningMessage,
+  errorMessage,
+} from "../../components/TosterMessages/TosterMessages";
 import { message } from "antd";
 
 const warningMessageRequest = (value) => message.warning(`${value}`);
@@ -13,10 +18,11 @@ export const getCustomerWishList = createAsyncThunk(
   async function (value, { rejectWithValue, dispatch }) {
     try {
       const response = await getWishList(value);
-      if (response.status === 200 && response.data !== null) {
-        dispatch(setFavoriteArray(response.data.products));
+      if (response.status === 200 && response.data != null) {
+        return response.data.products;
       }
       if (response.data === null) {
+        dispatch(removeFavorites());
       } else {
         throw new Error("Can/t load favorites. Server Eror");
       }
@@ -51,10 +57,11 @@ export const addCartToWishList = createAsyncThunk(
       if (response.status === 200) {
         return response.data.products;
       } else {
-        throw new Error(`Autorize plz . ${response}`);
+        throw new Error(`You have to authorize to add a product to your favorites. ${response}`);
       }
     } catch (error) {
       warningMessageRequest(error.message);
+
       return rejectWithValue(error.message);
     }
   }
@@ -86,7 +93,7 @@ const setLoading = (state, action) => {
 
 const defaultState = {
   favoriteItems: [],
-  status: null,
+  // status: null,
   error: null,
 };
 
@@ -117,6 +124,7 @@ const favoriteSlice = createSlice({
     [getCustomerWishList.fulfilled]: (state, action) => {
       state.status = "resolve";
       state.error = null;
+      state.favoriteItems = action.payload;
     },
     [getCustomerWishList.rejected]: setError,
     [addCartToWishList.pending]: setLoading,
@@ -136,10 +144,6 @@ const favoriteSlice = createSlice({
   },
 });
 
-export const {
-  setFavoriteItems,
-  deleteFavorites,
-  removeFavorites,
-  setFavoriteArray,
-} = favoriteSlice.actions;
+export const { setFavoriteItems, deleteFavorites, removeFavorites } =
+  favoriteSlice.actions;
 export default favoriteSlice.reducer;

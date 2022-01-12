@@ -5,14 +5,7 @@ import { getSelectedProduct } from "../../services/products";
 import { addOrRemoveProductToCart } from "../../store/cart/reducer";
 import { addOrRemoveProductToFavorite } from "../../store/favorites/reducer";
 import { MdOutlineCancel } from "react-icons/md";
-import {
-  createProductComment,
-  deleteProductComment,
-  getAllProductComments,
-} from "../../services/comments";
-import { BsBasket, BsFillHeartFill, BsFillTrashFill } from "react-icons/bs";
-import { useFormik } from "formik";
-import PuffLoader from "react-spinners/PuffLoader";
+import { BsBasket, BsFillHeartFill } from "react-icons/bs";
 import ProductTitle from "./ProductTitle/ProductTitle";
 import ProductAuthor from "./ProductAuthor/ProductAuthor";
 import ProductDescription from "./ProductDescription/ProductDescription";
@@ -24,31 +17,28 @@ import classes from "./Product.module.scss";
 import Button from "../Button/Button";
 import {
   itemsInCart,
-  itemsInFavorite, 
+  itemsInFavorite,
 } from "../../store/selectors";
-
+import PuffLoader from "react-spinners/PuffLoader";
 
 const Product = () => {
   let { productId } = useParams();
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [isLoading, setLoading] = useState(false);
   const [product, setProduct] = useState({});
+  const [isLoading, setLoading] = useState(true);
   const [toggle, setToggle] = useState(0);
 
   const isItemInFavorites = itemsInFavorite(store).some(
     (item) => item._id === product._id
   );
-  const isItemInCart = itemsInCart(store).some(
+  const isItemInCart = itemsInCart(store)?.some(
     (item) => item.product._id === product._id
   );
 
   const getProduct = useCallback(async () => {
-    // const productItem = await getSelectedProduct(productId);
-    // setProduct(productItem)
-    // setLoading(true);
-    const products = await getSelectedProduct(productId);
-    setProduct(products);
+    const productItem = await getSelectedProduct(productId);
+    setProduct(productItem)
     setLoading(false);
   }, [setProduct, productId]);
 
@@ -67,12 +57,8 @@ const Product = () => {
   return (
     <React.Fragment>
 
-        {isLoading && (
-            <div className={classes.product__loader}>
-              <PuffLoader loading={isLoading} color="purple" size={120} />
-            </div>
-        )}
-        
+      <LoadSpiner />
+
       {!!product.name && !isLoading && (
         <div>
           <div className={classes.product__header}>
@@ -105,11 +91,11 @@ const Product = () => {
                 <div className={classes.product_button}>
                   <Button
                     type="main"
-                    onClick={() => {
-                      dispatch(addOrRemoveProductToCart(product));
-                    }}
+                    onClick={(() => {
+                      if(product.quantity > 0) dispatch(addOrRemoveProductToCart(product));
+                    })}
                   >
-                    {isItemInCart ? (
+                    {isItemInCart || product.quantity <= 0 ? (
                       <MdOutlineCancel color="white" size={30} />
                     ) : (
                       <BsBasket color="white" size={26} />

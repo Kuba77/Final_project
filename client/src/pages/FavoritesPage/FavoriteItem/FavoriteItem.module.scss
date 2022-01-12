@@ -9,7 +9,7 @@
     display: flex;
     background-color:#f7def5;
         @include breakpoint(sm-only){
-            height:220px;
+            height:230px;
         }
     
     &__img{
@@ -19,7 +19,7 @@
             border-radius:10px;
             box-shadow:$box-shadow;
             @include breakpoint(sm-only){
-                height:220px;
+                height:230px;
             }
         }
         svg {
@@ -44,11 +44,7 @@
             @include breakpoint(sm-only){
                 margin-top: 3vh;
             }
-            &__wrap{
-                @include breakpoint(sm-only){
-                    padding: 0 14px;
-                } 
-            }
+
             h4{
                 cursor: pointer;
                 font-size: $h2-font-size;
@@ -56,7 +52,7 @@
                 color:black;
                 @include breakpoint(sm-only){
                     font-size: $small-font-size;
-                    
+
                 }
                 &:hover{
                     color:$first-color;

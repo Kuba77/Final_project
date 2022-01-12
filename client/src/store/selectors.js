@@ -4,11 +4,11 @@ const bazeUser = (state) => state.customer;
 
 export const customerData = createSelector(
   [bazeUser],
-  (customer) => customer?.customerData
+  (customer) => customer.customerData
 );
 export const customerName = createSelector(
   [customerData],
-  (customerData) => customerData?.firstName
+  (customerData) => customerData.firstName
 );
 
 const bazeErors = (state) => state.errors;
@@ -37,7 +37,10 @@ export const itemsInFavorite = createSelector(
 );
 
 export const statePromotion = (state) => state.promotion;
-export const productPromotion = createSelector([statePromotion], (promotion) => promotion.promotionTimer);
+export const productPromotion = createSelector(
+  [statePromotion],
+  (promotion) => promotion.promotionTimer
+);
 
 const stateOrders = (state) => state.orders;
 export const itemsInOrders = createSelector(

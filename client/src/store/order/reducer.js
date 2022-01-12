@@ -3,9 +3,9 @@ import { createNewOrder } from "../../services/order";
 import { message } from "antd";
 import { deleteCustomerCartDB, clearCart } from "../cart/reducer";
 import {
-  letterSubject,
   letterHtml,
-} from "../../components/Order-page/letterHTML";
+  letterSubject,
+} from "../../components/Order-page/letterConfig";
 
 const warningMessageRequest = (value) => message.warning(`${value}`);
 const sucsecMessageRequest = (value) => message.success(`${value}`);
@@ -13,12 +13,14 @@ const sucsecMessageRequest = (value) => message.success(`${value}`);
 export const createOrder = createAsyncThunk(
   "newOrder/createOrder",
   async function (value, { rejectWithValue, dispatch, getState }) {
-    const existCustomer = getState().customer?.customerData?._id;
+    const existCustomer = getState().customer?.customerData._id;
     try {
       if (existCustomer) {
         dispatch(createOrderAuthorized(value));
+        console.log("authorized");
       } else {
         dispatch(createOrderUnauthorized(value));
+        console.log("unathorized");
       }
     } catch (error) {
       return rejectWithValue(error.message);

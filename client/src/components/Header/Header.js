@@ -46,9 +46,9 @@ const Header = () => {
       <Nav />
       <Basket />
 
-      {customerData(store)?._id && <UserMenu />}
+      {customerData(store).id && <UserMenu />}
 
-      {size.width > 768 && !customerData(store)?._id && (
+      {size.width > 768 && !customerData(store).id && (
         <Button type="primary" size="s" onClick={HandleGoToLoginPage}>
           {"Sign in"}
         </Button>
@@ -60,7 +60,7 @@ const Header = () => {
           <Nav
             isMenu
             menuToggle={handleMenuToggle}
-            customerName={customerData(store)?.firstName}
+            customerName={customerData(store).firstName}
           />
           <div className={classes.searchBar__burger}>
             <SearchBar />

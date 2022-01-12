@@ -5,7 +5,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 20px;
     background-color: $first-color-light;
-    padding: 40px;
+    padding: 15px 40px;
 
     @include breakpoint(md-only) {
       padding: 15px;

@@ -4,7 +4,6 @@ import PuffLoader from "react-spinners/PuffLoader";
 import { getAllProducts } from "../../services/products";
 import CollectionList from "./CollectionList/CollectionList";
 import Pagination from "./Pagination/Pagination";
-
 import Filters from "../../components/Filters/Filters";
 import { chekingArray, filterArray } from "../../utils/utils";
 import { getFilteredProductByQuery } from "../../services/products";

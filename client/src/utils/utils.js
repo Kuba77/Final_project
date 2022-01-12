@@ -26,17 +26,9 @@ export function filterArray(servResp, data) {
   return result;
 }
 
-export const addRemoveQuantity = (arr, _id, operation) => {
-  if (operation === "minus") {
-    return decreaseItemQuantity(arr, _id);
-  } else {
-    return addItemQuantity(arr, _id);
-  }
-};
-
-const addItemQuantity = (arr, _id) => {
+export const addItemQuantity = (arr, _id) => {
   let updateItem = arr.map((item) => {
-    if (item.product._id === _id) {
+    if (item._id === _id) {
       return { ...item, cartQuantity: item.cartQuantity + 1 };
     } else {
       return item;
@@ -44,7 +36,7 @@ const addItemQuantity = (arr, _id) => {
   });
   return updateItem;
 };
-const decreaseItemQuantity = (arr, _id) => {
+export const decreaseItemQuantity = (arr, _id) => {
   let updateItem = arr.map((item) => {
     if (item._id === _id) {
       return { ...item, cartQuantity: item.cartQuantity - 1 };
@@ -109,4 +101,11 @@ export const qwe = (arr) => {
     delete copyArr[el];
   });
   return copyArr;
+};
+export const addRemoveQuantity = (arr, _id, operation) => {
+  if (operation === "minus") {
+    return decreaseItemQuantity(arr, _id);
+  } else {
+    return addItemQuantity(arr, _id);
+  }
 };

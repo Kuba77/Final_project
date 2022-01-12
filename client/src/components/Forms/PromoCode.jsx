@@ -16,7 +16,7 @@ const PromoCodeForm = (props) => {
   });
   
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form className={classes.promo_form} onSubmit={formik.handleSubmit}>
       <input
         className={classes.input_promo}
         id="promo"

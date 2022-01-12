@@ -11,8 +11,9 @@ const Basket = () => {
 
   return (
     <div className={classes.header__cart}>
-       <Link to="/cart">
-        <Counter quantity={store.cart?.products?.length} />
+      <Counter quantity={store.cart?.products?.length} />
+
+      <Link to="/cart">
         <BsBasket color="black" size={22} />
       </Link>
     </div>

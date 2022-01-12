@@ -1,7 +1,7 @@
 import axios from "./htttWraper";
 import configData from "../config/config.json";
 
-export const addProduct = async (value) => {
+export const addProductToCart = async (value) => {
   try {
     return await axios
       .put(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
@@ -12,6 +12,7 @@ export const addProduct = async (value) => {
     return e.message;
   }
 };
+
 export const decreaseProductQuantity = async (value) => {
   try {
     return await axios
@@ -23,7 +24,7 @@ export const decreaseProductQuantity = async (value) => {
     return e.message;
   }
 };
-export const removeProduct = async (value) => {
+export const removeProductFromCart = async (value) => {
   try {
     return await axios
       .delete(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
@@ -48,7 +49,6 @@ export const updateCart = async (value) => {
 export const getCustomerCart = async () => {
   try {
     return await axios.get(`${configData.ADD_PRODUCT_TO_CART}`).then((res) => {
-      console.log(res.data);
       return res.data;
     });
   } catch (e) {
@@ -66,6 +66,31 @@ export const moveCartToDB = async (value) => {
     return e.message;
   }
 };
+
+export const addProduct = async (value) => {
+  try {
+    return await axios
+      .put(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
+      .then((res) => {
+        return res.data;
+      });
+  } catch (e) {
+    return e.message;
+  }
+};
+
+export const removeProduct = async (value) => {
+  try {
+    return await axios
+      .delete(`${configData.ADD_PRODUCT_TO_CART}/${value}`)
+      .then((res) => {
+        return res.data;
+      });
+  } catch (e) {
+    return e.message;
+  }
+};
+
 export const deleteCart = async () => {
   try {
     return await axios

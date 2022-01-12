@@ -8,6 +8,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { addOrRemoveProductToCart } from "../../../store/cart/reducer";
 import { itemsInCart } from "../../../store/selectors";
 import { addOrRemoveProductToFavorite } from "../../../store/favorites/reducer";
+import { productPromotion } from "../../../store/selectors";
 
 const FavoriteItem = (props) => {
   const {
@@ -21,8 +22,10 @@ const FavoriteItem = (props) => {
     item,
     id,
   } = props;
+
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
+  const promotion = productPromotion(store)
 
   const isItemInCart = itemsInCart(store).some(
     (item) => item.product._id === id
@@ -31,7 +34,7 @@ const FavoriteItem = (props) => {
   return (
     <div className={classes.favorites__item}>
       <div className={classes.favorites__item__img}>
-        <img src={imgSrc} />
+        <img src={imgSrc} alt={title} />
         <AiFillHeart
           color="rgb(211, 6, 6)"
           size={32}
@@ -39,24 +42,23 @@ const FavoriteItem = (props) => {
             dispatch(addOrRemoveProductToFavorite(item._id));
           }}
         />
-        {salePrice && <span></span>}
+        {salePrice && promotion && <span></span>}
       </div>
       <div className={classes.favorites__item__textarea}>
-        <div className={classes.favorites__item__textarea__wrap}>
-          <Link to={`/product/${itemNo}`}>
-            <h4>{title}</h4>
-          </Link>
-        </div>
+        <Link to={`/product/${itemNo}`}>
+          <h4>{title}</h4>
+        </Link>
         <div className={classes.favorites__item__textarea_desc}>
           <p>Author: {author}</p>
+          <p>Quantity: {quantity}</p>
           <div className={classes.favorites__item__textarea_price}>
             <p
               className={classes.favorite__item_price}
-              style={salePrice && { textDecoration: "line-through" }}
+              style={salePrice && promotion ? { textDecoration: "line-through" } : { textDecoration: "none" }}
             >
               ${price}
             </p>
-            {salePrice && <h5>${salePrice}</h5>}
+            {salePrice && promotion && <h5>${salePrice}</h5>}
           </div>
         </div>
 

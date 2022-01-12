@@ -7,7 +7,6 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { customerData } from "../../../store/selectors";
 import { logoutCustomer } from "../../../services/user";
 import { removeCustomer } from "../../../store/customer/reducer";
-import { removeOrders } from "../../../store/order/reducer";
 import { clearCart } from "../../../store/cart/reducer";
 import { removeFavorites } from "../../../store/favorites/reducer";
 import { useClickOutside } from "react-click-outside-hook";
@@ -25,11 +24,11 @@ const UserMenu = () => {
     dispatch(removeCustomer());
     dispatch(clearCart());
     dispatch(removeFavorites());
-    dispatch(removeOrders());
   };
   const closeMenuHandler = () => {
     setOpen(false);
-  };
+  }; 
+
 
   useEffect(() => {
     if (isClickOutside) {
@@ -38,11 +37,7 @@ const UserMenu = () => {
   }, [isClickOutside]);
 
   return (
-    <div
-      className={classes.header__userMenu}
-      ref={parentRef}
-      onClick={userMenuHandler}
-    >
+    <div className={classes.header__userMenu} ref={parentRef} onClick={userMenuHandler}>
       <div className={classes.header__userMenu_profile}>
         <img
           src={
@@ -55,7 +50,7 @@ const UserMenu = () => {
       </div>
       <div
         className={classes.header__userMenu_menu}
-        style={isOpen ? { display: "block" } : { display: "none" }}
+        style={isOpen ? { display: 'block' } : { display: 'none'}}
       >
         <ul>
           <Link to="/profile">

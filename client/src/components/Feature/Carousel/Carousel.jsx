@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useWindowSize from "../../../hooks/useWindowSize";
 import "swiper/swiper.min.css";
@@ -7,11 +8,14 @@ import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "./Carousel.scss";
 import SwiperCore, { EffectCoverflow, Navigation, Autoplay } from "swiper/core";
+import { productPromotion } from "../../../store/selectors";
 
 SwiperCore.use([EffectCoverflow, Navigation, Autoplay]);
 
 const Carousel = ({ feature }) => {
   const size = useWindowSize();
+  const store = useSelector((state) => state);
+  const promotion = productPromotion(store)
 
   return (
     <Swiper
@@ -34,10 +38,10 @@ const Carousel = ({ feature }) => {
     >
       {feature.map((item, index) => (
         <SwiperSlide key={index}>
-          {item.salePrice && <span className={"feature__item_cover"}></span>}
+          {item.salePrice && promotion && <span className={"feature__item_cover"}></span>}
 
           <Link to={`/product/${item.itemNo}`}>
-            <img src={item.imageUrls[2]} />
+            <img src={item.imageUrls[2]}  alt={item.title} />
             <h4>{item.name}</h4>
           </Link>
         </SwiperSlide>
