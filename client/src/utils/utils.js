@@ -75,7 +75,6 @@ export const customerCartMovement = async (arr) => {
   return customerCart.products;
 };
 
-
 export const removeDublikateObj = (arr) => {
   const resultArray = [];
   arr.map((item) => {
@@ -94,4 +93,19 @@ export const removeDublikateObj = (arr) => {
     }
   });
   return resultArray;
+};
+
+export const qwe = (arr) => {
+  const copyArr = Object.assign({}, arr);
+  ["paymentInfo", "shipping", "status"].forEach((el) => {
+    delete copyArr[el];
+  });
+  return copyArr;
+};
+export const addRemoveQuantity = (arr, _id, operation) => {
+  if (operation === "minus") {
+    return decreaseItemQuantity(arr, _id);
+  } else {
+    return addItemQuantity(arr, _id);
+  }
 };

@@ -4,10 +4,11 @@ import OrderForm from "../Forms/OrderForm";
 import { OrderSchema } from "../Forms/ValidationSchema";
 import { letterHtml, letterSubject } from "./letterConfig";
 import { itemsInCart } from "../../store/selectors";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import { createOrder } from "../../store/order/reducer";
+import { updateCustomer } from "../../services/user";
 import { useHistory } from "react-router-dom";
-
+import { clearCart } from "../../store/cart/reducer";
+import OrderList from "./Order-list/Order-list";
 const OrderPage = () => {
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -42,15 +43,21 @@ const OrderPage = () => {
     letterSubject: letterSubject,
     letterHtml: letterHtml,
   };
+
+  const onSubmit = async (value) => {
+    dispatch(createOrder(value));
+    dispatch(updateCustomer(value));
+    dispatch(clearCart());
+  };
   const validationSchema = OrderSchema;
   return (
     <>
-      <Header />
+      <OrderList />
       <OrderForm
         initialValues={initialValuesUserForm}
         validationSchema={validationSchema}
+        onSubmit={onSubmit}
       />
-      <Footer />
     </>
   );
 };

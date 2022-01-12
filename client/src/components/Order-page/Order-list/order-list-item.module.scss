@@ -1,0 +1,73 @@
+@import "../../../styles/config/variables.scss";
+
+.order_item {
+  &__wrapper {
+    border: 1px solid $first-color;
+    display: flex;
+    flex-direction: column;
+    box-shadow: $box-shadow;
+    width: 120px;
+    border-radius: 10px;
+    @include breakpoint(md-only) {
+      width: 100px;
+    }
+    @include breakpoint(sm-only) {
+      width: 120px;
+    }
+  }
+  &__image {
+    border-radius: 10px;
+  }
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    &_title {
+      color: $title-color;
+      font-size: $smaller-font-size;
+    }
+    &_price {
+      color: $text-color-light;
+      font-size: $smaller-font-size;
+    }
+  }
+  &__quantity {
+    color: $text-color-light;
+    @include breakpoint(md-only) {
+      font-size: $smaller-font-size;
+    }
+    @include breakpoint(sm-only) {
+      font-size: $smaller-font-size;
+    }
+  }
+  &__footer {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+.order_list__wrapper {
+  justify-content: center;
+  box-shadow: $box-shadow;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
+  gap: 1rem;
+  align-items: center;
+  padding: 15px;
+
+  @include breakpoint(md-only) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  }
+  @include breakpoint(sm-only) {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 120px));
+  }
+}
+.order_list__container {
+  text-align: center;
+  @include breakpoint(sm-only) {
+    margin-top: 60px;
+  }
+}
